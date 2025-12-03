@@ -9,7 +9,7 @@ const Profiles = ({ profiles }: ProfilesProps) => {
   }
 
   return (
-    <div className="my-8 flex flex-col gap-6 px-3 col-span-3">
+    <div className="my-8 md:flex flex-col gap-6 px-3 col-span-3 hidden">
       {profiles
         .filter(Boolean)
         .map((profile, index) => {

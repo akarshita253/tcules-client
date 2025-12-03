@@ -9,7 +9,6 @@ const config: Config = {
   theme: {
     extend: {
       fontSize: {
-        // Custom small sizes
         "2xs": ["8px", { lineHeight: "12px" }],
         xs: ["10px", { lineHeight: "15px" }],
         sm: ["12px", { lineHeight: "18px" }],
@@ -46,7 +45,6 @@ const config: Config = {
         md: "768px",
         lg: "1024px",
         xl: "1440px",
-        "2xl": "1920px",
       },
       colors: {
         yellow: {

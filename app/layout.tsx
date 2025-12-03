@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/global/Navbar";
+// import Navbar from "@/components/global/Navbar";
 import Footer from "@/components/global/Footer";
 import { Figtree, Playfair_Display } from "next/font/google";
 
@@ -26,7 +26,7 @@ export default function RootLayout({
       >
         {/* <Navbar /> */}
         {children}
-        <Footer/>
+        {/* <Footer/> */}
       </body>
     </html>
   );

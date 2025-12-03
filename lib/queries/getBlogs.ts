@@ -54,6 +54,7 @@ export const GET_BLOG = gql`
         }
         ... on ComponentBlogAndCasestudiesSectionImage {
           __typename
+          layout
           imageSection {
             alternativeText
             url

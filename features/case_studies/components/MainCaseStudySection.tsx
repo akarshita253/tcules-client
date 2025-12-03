@@ -1,9 +1,9 @@
-import Image from "next/image";
 import BlogDescription from "@/features/blog/components/BlogDescription";
 import CodeBlock from "@/features/blog/components/CodeBlock";
 import VideoBlock from "@/features/blog/components/VideoBlock";
 import { CaseStudiesQuery } from "@/lib/codegen/graphql";
 import Separator from "@/features/blog/components/Sepration";
+import { MultiImageLayout } from "@/components/global/MultiImageBlock";
 
 type MainSectionBlock = NonNullable<
   NonNullable<CaseStudiesQuery["caseStudies"][0]>["caseStudyContents"]
@@ -18,21 +18,13 @@ export const renderBlock = (block: MainSectionBlock) => {
       );
     case "ComponentBlogAndCasestudiesSectionImage":
       return (
-        <div key={block.id}>
-          {block.imageSection
-            ?.filter((img): img is NonNullable<typeof img> => img !== null)
-            ?.map((singleImage) => (
-              <div key={singleImage.url} className="my-8">
-                <Image
-                  src={`${process.env.STRAPI_URL}${singleImage.url}`}
-                  alt={singleImage.alternativeText ?? "Blog Image"}
-                  width={singleImage.width ?? 600}
-                  height={singleImage.height ?? 400}
-                  unoptimized
-                  className="w-full h-auto rounded"
-                />
-              </div>
-            ))}
+        <div key={block.id} className="my-10">
+          <MultiImageLayout
+            images={(block.imageSection ?? []).filter(
+              (img): img is NonNullable<typeof img> => !!img
+            )}
+            layout={(block.layout ?? "default") as "default" | "twoLeftFocus" | "twoRightFocus" | "bento"}
+          />
         </div>
       );
     case "ComponentBlogAndCasestudiesSepration":
@@ -50,9 +42,7 @@ export const renderBlock = (block: MainSectionBlock) => {
         />
       );
     case "ComponentBlogAndCasestudiesCodeSection":
-      return (
-        <CodeBlock key={block.id} codeSnippet={block.codeSnippet ?? ""} />
-      );
+      return <CodeBlock key={block.id} codeSnippet={block.codeSnippet ?? ""} />;
     default:
       console.warn("Unknown block type:", block.__typename);
       return null;

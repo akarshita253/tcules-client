@@ -61,6 +61,7 @@ export const CASE_STUDY_QUERY = gql`
         ... on ComponentBlogAndCasestudiesSectionImage {
           __typename
           id
+          layout
           imageSection {
             alternativeText
             url

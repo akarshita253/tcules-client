@@ -138,4 +138,10 @@
   body {
     @apply bg-background text-foreground;
   }
+  section {
+    @apply w-full;
+  }
+    h1 {
+      @apply text-neutral-900 text-[32px] font-semibold leading-[120%] tracking-[0.64px] md:text-[64px] md:font-medium md:leading-[120%];
+    }
 }

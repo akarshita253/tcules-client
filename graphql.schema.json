@@ -432,6 +432,7 @@ export interface ComponentBlogAndCasestudiesSectionImage {
   id: Scalars['ID']['output'];
   imageSection: Array<Maybe<UploadFile>>;
   imageSection_connection?: Maybe<UploadFileRelationResponseCollection>;
+  layout?: Maybe<Enum_Componentblogandcasestudiessectionimage_Layout>;
 }
 
 
@@ -748,6 +749,12 @@ export interface DeleteMutationResponse {
   __typename?: 'DeleteMutationResponse';
   documentId: Scalars['ID']['output'];
 }
+
+export type Enum_Componentblogandcasestudiessectionimage_Layout =
+  | 'bento'
+  | 'default'
+  | 'twoLeftFocus'
+  | 'twoRightFocus';
 
 export type Enum_Componentblogandcasestudiessepration_Styles =
   | 'dashed'
@@ -1972,7 +1979,7 @@ export type BlogsQuery = { __typename?: 'Query', blogs: Array<{ __typename: 'Blo
       | { __typename: 'ComponentBlogAndCasestudiesBlogOrCasestudyText', id: string, blogContent?: string | null }
       | { __typename: 'ComponentBlogAndCasestudiesCodeSection', id: string, codeSnippet?: string | null }
       | { __typename: 'ComponentBlogAndCasestudiesIframe', url?: string | null, title?: string | null, width?: number | null, description?: any | null, embedCode?: string | null, height?: number | null, id: string, thumbnail?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null }
-      | { __typename: 'ComponentBlogAndCasestudiesSectionImage', imageSection: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null> }
+      | { __typename: 'ComponentBlogAndCasestudiesSectionImage', layout?: Enum_Componentblogandcasestudiessectionimage_Layout | null, imageSection: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null> }
       | { __typename: 'ComponentBlogAndCasestudiesSepration', title?: string | null, color?: string | null, marginBottom?: number | null, marginTop?: number | null, thickness?: number | null }
       | { __typename: 'ComponentBlogAndCasestudiesTldrSection', id: string, heading?: string | null, tdlrDescription?: string | null }
       | { __typename: 'ComponentBlogAndCasestudiesVideo', id: string, autoplay?: boolean | null, description?: any | null, loop?: boolean | null, title?: string | null, videoFile: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null>, thumbnail?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null }
@@ -1980,6 +1987,11 @@ export type BlogsQuery = { __typename?: 'Query', blogs: Array<{ __typename: 'Blo
       | { __typename: 'ComponentSharedSeo', metaTitle: string, metaDescription: string, shareImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null }
       | { __typename?: 'Error' }
      | null> | null } | null> };
+
+export type AllBlogsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AllBlogsQuery = { __typename?: 'Query', blogs: Array<{ __typename?: 'Blog', title?: string | null, slug?: string | null, publishedAt?: any | null, createdAt?: any | null, featureImage: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null> } | null> };
 
 export type CaseStudiesQueryVariables = Exact<{
   slug: Scalars['String']['input'];
@@ -1990,7 +2002,7 @@ export type CaseStudiesQuery = { __typename?: 'Query', caseStudies: Array<{ __ty
       | { __typename: 'ComponentBlogAndCasestudiesBlogOrCasestudyText', id: string, blogContent?: string | null }
       | { __typename: 'ComponentBlogAndCasestudiesCodeSection', id: string, codeSnippet?: string | null }
       | { __typename: 'ComponentBlogAndCasestudiesIframe', id: string, title?: string | null, url?: string | null, height?: number | null, width?: number | null, embedCode?: string | null, description?: any | null, thumbnail?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null }
-      | { __typename: 'ComponentBlogAndCasestudiesSectionImage', id: string, imageSection: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null> }
+      | { __typename: 'ComponentBlogAndCasestudiesSectionImage', id: string, layout?: Enum_Componentblogandcasestudiessectionimage_Layout | null, imageSection: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null> }
       | { __typename: 'ComponentBlogAndCasestudiesSepration', title?: string | null, marginTop?: number | null, marginBottom?: number | null, color?: string | null, styles?: Enum_Componentblogandcasestudiessepration_Styles | null }
       | { __typename: 'ComponentBlogAndCasestudiesVideo', id: string, title?: string | null, autoplay?: boolean | null, loop?: boolean | null, description?: any | null, videoFile: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null>, thumbnail?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null }
       | { __typename?: 'ComponentElementsLink' }
@@ -1998,3 +2010,8 @@ export type CaseStudiesQuery = { __typename?: 'Query', caseStudies: Array<{ __ty
       | { __typename: 'ComponentSharedSeo', metaTitle: string, metaDescription: string, shareImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null }
       | { __typename: 'Error', message?: string | null, code: string }
      | null> | null } | null> };
+
+export type AllCaseStudiesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AllCaseStudiesQuery = { __typename?: 'Query', caseStudies: Array<{ __typename: 'CaseStudy', title?: string | null, slug?: string | null, description?: string | null, publishedAt?: any | null, documentId: string, thumbnail?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null } | null> };
