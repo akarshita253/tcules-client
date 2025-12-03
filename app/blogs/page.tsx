@@ -1,11 +1,32 @@
-import React from 'react'
+import { Cards } from "@/components/global/Cards";
+import { AllBlogsQuery } from "@/features/blog/types/blogTypes";
+import { GET_BLOGS } from "@/lib/queries/getBlogs";
+import { strapiRequest } from "@/lib/utils";
+import Link from "next/link";
 
-const BlogList = () => {
+const BlogList = async () => {
+  const data = await strapiRequest<AllBlogsQuery>(GET_BLOGS);
+  const allBlogs = data?.blogs;
   return (
-    <div>
-      Blog list
-    </div>
-  )
-}
+    <main>
+      {allBlogs?.map((blog) => {
+        const imageUrl = {
+          url: blog.featureImage?.url,
+          alternativeText: blog.featureImage?.alternativeText,
+        };
+        return (
+          <Link key={blog.slug} href={`/blogs/${blog.slug}`}>
+            <Cards
+              title={blog.title || ""}
+              createdAt={blog.createdAt}
+              description={""}
+              imageUrl={imageUrl}
+            />
+          </Link>
+        );
+      })}
+    </main>
+  );
+};
 
-export default BlogList
+export default BlogList;

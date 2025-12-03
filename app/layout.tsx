@@ -24,7 +24,7 @@ export default function RootLayout({
       <body
         className={`${figtree.variable} ${playfair.variable} antialiased`}
       >
-        <Navbar />
+        {/* <Navbar /> */}
         {children}
         <Footer/>
       </body>

@@ -1,31 +1,37 @@
 import { gql } from "@apollo/client";
 
-export const GET_BLOG = gql`
-  query Blogs($slug: String!) {
-    blogs(filters: { slug: { eq: $slug } }) {
+export const CASE_STUDY_QUERY = gql`
+  query CaseStudies($slug: String!) {
+    caseStudies(filters: { slug: { eq: $slug } }) {
       __typename
-      createdAt
-      updatedAt
       title
       slug
-      featureImage {
+      thumbnail {
         alternativeText
         url
         width
         height
       }
-      blogProfileSection {
-        id
-        name
-        designation
-        profilePicture {
-          url
-          width
-          height
-          alternativeText
-        }
+      description
+      publishedAt
+      documentId
+      heroImage {
+        alternativeText
+        url
+        width
+        height
       }
-      mainSection {
+      profile {
+        id
+        heading
+        description
+      }
+      statement {
+        id
+        type
+        desc
+      }
+      caseStudyContents {
         ... on ComponentBlogAndCasestudiesBlogOrCasestudyText {
           __typename
           id
@@ -38,13 +44,13 @@ export const GET_BLOG = gql`
         }
         ... on ComponentBlogAndCasestudiesIframe {
           __typename
-          url
-          title
-          width
-          description
-          embedCode
-          height
           id
+          title
+          url
+          height
+          width
+          embedCode
+          description
           thumbnail {
             alternativeText
             url
@@ -54,6 +60,7 @@ export const GET_BLOG = gql`
         }
         ... on ComponentBlogAndCasestudiesSectionImage {
           __typename
+          id
           imageSection {
             alternativeText
             url
@@ -64,39 +71,35 @@ export const GET_BLOG = gql`
         ... on ComponentBlogAndCasestudiesSepration {
           __typename
           title
-          color
-          marginBottom
           marginTop
-          thickness
-        }
-        ... on ComponentBlogAndCasestudiesTldrSection {
-          __typename
-          id
-          heading
-          tdlrDescription
+          marginBottom
+          color
+          styles
         }
         ... on ComponentBlogAndCasestudiesVideo {
           __typename
           id
-          autoplay
-          description
-          loop
           title
           videoFile {
             alternativeText
             url
-            height
             width
+            height
           }
+          autoplay
+          loop
+          description
           thumbnail {
             alternativeText
             url
-            height
             width
+            height
           }
         }
-        ... on ComponentSharedRichText {
+        ... on ComponentSharedQuote {
           __typename
+          id
+          title
           body
         }
         ... on ComponentSharedSeo {
@@ -110,24 +113,31 @@ export const GET_BLOG = gql`
             height
           }
         }
+        ... on Error {
+          __typename
+          message
+          code
+        }
       }
     }
   }
 `;
 
-export const GET_BLOGS = gql`
-  query AllBlogs {
-    blogs {
+export const GET_ALL_CASE_STUDIES = gql`
+  query AllCaseStudies {
+    caseStudies {
+      __typename
       title
       slug
-      publishedAt
-      createdAt
-      featureImage {
+      thumbnail {
         alternativeText
         url
-        height
         width
+        height
       }
+      description
+      publishedAt
+      documentId
     }
   }
 `;

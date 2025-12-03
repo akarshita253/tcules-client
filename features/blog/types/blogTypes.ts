@@ -19,3 +19,22 @@ export interface ProfilesProps {
 export interface BlogDescriptionProps {
   content: string;
 }
+
+export type AllBlogs = {
+  __typename: "Blog";
+  title: string | null;
+  slug: string | null;
+  publishedAt: string | null;
+  createdAt: string | null;
+  featureImage: {
+    alternativeText: string;
+    url: string;
+    height: string;
+    width: string;
+  };
+};
+
+export type AllBlogsQuery = {
+  __typename?: "Query";
+  blogs: Array<AllBlogs>;
+};

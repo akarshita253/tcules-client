@@ -1,4 +1,3 @@
-import Card from "@/components/ui/card";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 
@@ -13,9 +12,7 @@ const ExploreResources = () => {
         <Link href="#" className="flex items-center gap-2 text-neutral-700 uppercase">View all <ChevronRight className="text-neutral-700"/></Link>
       </div>
       <div className="grid grid-cols-3 gap-4 mt-16">
-        <Card/>
-        <Card/>
-        <Card/>
+
       </div>
     </section>
   );
