@@ -9,7 +9,7 @@ const HeadingAndTime = ({ title, createdAt, updatedAt }: HeadingAndTimeProps) =>
     <div className="pt-12">
       <Link href="/blogs">Blogs</Link>
       <div className="my-8 border-b border-neutral-400">
-        <h1 className="text-center my-8">
+        <h1 className="text-center my-8 text-neutral-800">
           {title}
         </h1>
         <div className="py-6">
@@ -18,7 +18,7 @@ const HeadingAndTime = ({ title, createdAt, updatedAt }: HeadingAndTimeProps) =>
             <span>.</span>
             <span>11 mins</span>
           </div>
-          <p>
+          <p className="text-neutral-500">
             <small>Last updated on {formatDate(updatedAt)}</small>
           </p>
         </div>

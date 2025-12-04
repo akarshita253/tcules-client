@@ -1,4 +1,4 @@
-import { Cards } from "@/components/global/Cards";
+import { Cards } from "@/components/shared/Cards";
 import { AllCaseStudiesQuery } from "@/features/case_studies/types/caseStudyTypes";
 import { strapiRequest } from "@/lib/utils";
 import Link from "next/link";

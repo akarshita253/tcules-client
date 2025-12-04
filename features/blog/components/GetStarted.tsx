@@ -9,7 +9,7 @@ const GetStarted = () => {
         <h4 className="text-[20px] font-medium leading-[130%]">
           Get started with free UX consultation
         </h4>
-      <Button>Schedule a call</Button>
+      <Button className="uppercase">Schedule a call</Button>
     </div>
   );
 };

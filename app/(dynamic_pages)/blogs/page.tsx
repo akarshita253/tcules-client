@@ -1,4 +1,4 @@
-import { Cards } from "@/components/global/Cards";
+import { Cards } from "@/components/shared/Cards";
 import { AllBlogsQuery } from "@/features/blog/types/blogTypes";
 import { GET_BLOGS } from "@/lib/queries/getBlogs";
 import { strapiRequest } from "@/lib/utils";

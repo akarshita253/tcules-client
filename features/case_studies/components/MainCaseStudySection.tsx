@@ -1,9 +1,9 @@
-import BlogDescription from "@/features/blog/components/BlogDescription";
-import CodeBlock from "@/features/blog/components/CodeBlock";
-import VideoBlock from "@/features/blog/components/VideoBlock";
+import CodeBlock from "@/components/shared/CodeBlock";
+import VideoBlock from "@/components/shared/VideoBlock";
 import { CaseStudiesQuery } from "@/lib/codegen/graphql";
-import Separator from "@/features/blog/components/Sepration";
-import { MultiImageLayout } from "@/components/global/MultiImageBlock";
+import Separator from "@/components/shared/Sepration";
+import { MultiImageLayout } from "@/components/shared/MultiImageBlock";
+import DisplayContent from "@/components/shared/DisplayContent";
 
 type MainSectionBlock = NonNullable<
   NonNullable<CaseStudiesQuery["caseStudies"][0]>["caseStudyContents"]
@@ -14,7 +14,7 @@ export const renderBlock = (block: MainSectionBlock) => {
   switch (block.__typename) {
     case "ComponentBlogAndCasestudiesBlogOrCasestudyText":
       return (
-        <BlogDescription key={block.id} content={block.blogContent ?? ""} />
+        <DisplayContent key={block.id} content={block.blogContent ?? ""} />
       );
     case "ComponentBlogAndCasestudiesSectionImage":
       return (

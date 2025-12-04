@@ -16,7 +16,7 @@ export interface ProfilesProps {
   profiles: Blog["blogProfileSection"];
 }
 
-export interface BlogDescriptionProps {
+export interface DisplayContentProps {
   content: string;
 }
 

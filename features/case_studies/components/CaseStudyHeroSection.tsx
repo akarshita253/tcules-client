@@ -1,3 +1,4 @@
+import { Container } from "@/components/global/Container";
 import Image from "next/image";
 
 const CaseStudyHeroSection = ({
@@ -23,9 +24,9 @@ const CaseStudyHeroSection = ({
         priority
         unoptimized
       />
-        <div className="absolute bottom-8 left-8 flex items-center justify-center z-10 py-12 max-w-[960px]">
-          <h1 className="text-gray-100 ">{title}</h1>
-        </div>
+        <Container className="absolute z-10 left-0 right-0 mx-auto bottom-10 sm:bottom-16">
+            <h1 className="text-neutral-50">{title}</h1>
+        </Container>
     </div>
   );
 };

@@ -30,7 +30,7 @@ const Positioning = ({ profile, statement }: PositioningProps) => {
     <section className="sm:py-30 py-16 bg-neutral-900 ">
       <Container className="text-neutral-100">
         <div className="grid sm:grid-cols-12 sm:gap-4 gap-8">
-          <div className="sm:col-span-4 flex justify-between sm:flex-col gap-9">
+          <div className="sm:col-span-4 flex justify-between sm:flex-col gap-4 sm:gap-9">
             {profile &&
               profile.length > 0 &&
               profile.map((item) => (

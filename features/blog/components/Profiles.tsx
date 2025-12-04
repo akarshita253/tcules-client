@@ -9,11 +9,11 @@ const Profiles = ({ profiles }: ProfilesProps) => {
   }
 
   return (
-    <div className="my-8 md:flex flex-col gap-6 px-3 col-span-3 hidden">
-      {profiles
-        .filter(Boolean)
-        .map((profile, index) => {
-          const img = profile?.profilePicture?.[0]; // Assuming first picture
+    <div className=" col-span-3 px-3">
+      <small className="uppercase font-medium">Authors</small>
+      <div className="my-8 flex flex-row flex-wrap md:flex-nowrap md:flex-col gap-6">
+        {profiles.filter(Boolean).map((profile, index) => {
+          const img = profile?.profilePicture?.[0];
           const url = img?.url ? `${STRAPI_URL}${img.url}` : null;
 
           return (
@@ -22,7 +22,9 @@ const Profiles = ({ profiles }: ProfilesProps) => {
                 {url ? (
                   <Image
                     src={url}
-                    alt={img?.alternativeText || profile?.name || "Profile image"}
+                    alt={
+                      img?.alternativeText || profile?.name || "Profile image"
+                    }
                     width={160}
                     height={160}
                     loading="lazy"
@@ -32,12 +34,17 @@ const Profiles = ({ profiles }: ProfilesProps) => {
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold">{profile?.name || "Unknown"}</h3>
-                <p className="text-gray-800 text-xs">{profile?.designation || "No designation"}</p>
+                <h4 className="text-md font-semibold">
+                  {profile?.name || "Unknown"}
+                </h4>
+                <p className="text-gray-800 text-sm font-medium uppercase">
+                  {profile?.designation || "No designation"}
+                </p>
               </div>
             </div>
           );
         })}
+      </div>
     </div>
   );
 };

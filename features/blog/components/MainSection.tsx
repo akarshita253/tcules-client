@@ -1,10 +1,10 @@
 import { BlogsQuery } from "@/lib/codegen/graphql";
-import BlogDescription from "./BlogDescription";
 import TdlrSection from "./TdlrSection";
 import Image from "next/image";
-import Separator from "./Sepration";
-import VideoBlock from "./VideoBlock";
-import CodeBlock from "./CodeBlock";
+import Separator from "../../../components/shared/Sepration";
+import VideoBlock from "../../../components/shared/VideoBlock";
+import CodeBlock from "../../../components/shared/CodeBlock";
+import DisplayContent from "@/components/shared/DisplayContent";
 
 type MainSectionBlock = NonNullable<
   NonNullable<BlogsQuery["blogs"][0]>["mainSection"]
@@ -15,7 +15,7 @@ export const renderBlock = (block: MainSectionBlock) => {
   switch (block.__typename) {
     case "ComponentBlogAndCasestudiesBlogOrCasestudyText":
       return (
-        <BlogDescription key={block.id} content={block.blogContent ?? ""} />
+        <DisplayContent key={block.id} content={block.blogContent ?? ""} />
       );
     case "ComponentBlogAndCasestudiesTldrSection":
       return (

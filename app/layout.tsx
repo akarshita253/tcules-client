@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-// import Navbar from "@/components/global/Navbar";
-import Footer from "@/components/global/Footer";
-import { Figtree, Playfair_Display } from "next/font/google";
+import { Figtree, Playfair_Display, Bricolage_Grotesque} from "next/font/google";
 
 const figtree = Figtree({ subsets: ["latin"], variable: "--font-figtree" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
+const bricolageGrotesque = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-bricolage" });
 
 
 
@@ -22,11 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${figtree.variable} ${playfair.variable} antialiased`}
+        className={`${figtree.variable} ${playfair.variable} ${bricolageGrotesque.variable} antialiased`}
       >
-        {/* <Navbar /> */}
         {children}
-        {/* <Footer/> */}
       </body>
     </html>
   );

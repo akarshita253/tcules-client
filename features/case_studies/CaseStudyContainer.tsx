@@ -38,7 +38,7 @@ const CaseStudyContainer = ({
     <>
       <CaseStudyHeroSection title={caseStudy?.title} image={safeHeroImage} />
       <Positioning profile={profile} statement={statement} />
-      <Container className="sm:py-30">
+      <Container className="md:py-[120px] py-16">
         <Block>
           {caseStudy.caseStudyContents?.map((block) => renderBlock(block))}
         </Block>
