@@ -18,7 +18,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "tcules-server-production.up.railway.app",
+        hostname: "res.cloudinary.com",
       },
     ],
   },

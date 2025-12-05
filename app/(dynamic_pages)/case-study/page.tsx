@@ -21,7 +21,7 @@ const CaseStudyList = async () => {
           height: caseStudy.thumbnail?.height ? parseInt(caseStudy.thumbnail.height, 10) : undefined
         };
         return (
-          <Link key={caseStudy.slug} href={`/case-studies/${caseStudy.slug}`}>
+          <Link key={caseStudy.slug} href={`/case-study/${caseStudy.slug}`}>
             <Cards
               title={caseStudy.title || ""}
               createdAt={caseStudy.publishedAt}

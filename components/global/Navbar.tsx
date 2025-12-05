@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { Button } from "../ui/button"
 
 const Navbar = () => {
@@ -7,8 +8,12 @@ const Navbar = () => {
         <div className="font-bold text-4xl">Tcules</div>
         <div className="flex gap-8 items-center">
             <ul className="flex gap-8">
-                <li>Projects</li>
-                <li>Services</li>
+                <li>
+                  <Link href="/blogs">Blogs</Link>
+                </li>
+                <li>
+                  <Link href="/case-study">Case Study</Link>
+                </li>
                 <li>Products</li>
                 <li>Industries</li>
                 <li>Resources</li>
