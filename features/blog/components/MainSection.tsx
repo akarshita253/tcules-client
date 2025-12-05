@@ -10,7 +10,7 @@ type MainSectionBlock = NonNullable<
   NonNullable<BlogsQuery["blogs"][0]>["mainSection"]
 >[number];
 
-export const renderBlock = (block: MainSectionBlock) => {
+export const renderBlock = (block: MainSectionBlock,index:number) => {
   if (!block || block.__typename === "Error") return null;
   switch (block.__typename) {
     case "ComponentBlogAndCasestudiesBlogOrCasestudyText":
@@ -51,7 +51,7 @@ export const renderBlock = (block: MainSectionBlock) => {
 
       case "ComponentBlogAndCasestudiesCodeSection":
         return (
-          <CodeBlock key={block.id} codeSnippet={block.codeSnippet ?? ""} />
+          <CodeBlock key={index} codeSnippet={block.codeSnippet ?? ""} />
         )
     default:
       console.warn("Unknown block type:");

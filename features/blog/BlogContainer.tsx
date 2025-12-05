@@ -29,7 +29,7 @@ const BlogContainer = ({
         <div className="pt-8 pb-24 md:grid grid-cols-12 gap-6">
           <Profiles profiles={profiles} />
           <div className="col-span-6">
-            {(blog.mainSection ?? []).map((block) => renderBlock(block))}
+            {(blog.mainSection ?? []).map((block,index) => renderBlock(block,index))}
           </div>
           <GetStarted />
         </div>
