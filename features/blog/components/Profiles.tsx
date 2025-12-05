@@ -1,8 +1,6 @@
 import Image from "next/image";
 import { ProfilesProps } from "../types/blogTypes";
 
-const STRAPI_URL = process.env.STRAPI_URL;
-
 const Profiles = ({ profiles }: ProfilesProps) => {
   if (!profiles || profiles.length === 0) {
     return <p>No profiles available.</p>;
@@ -14,7 +12,7 @@ const Profiles = ({ profiles }: ProfilesProps) => {
       <div className="my-8 flex flex-row flex-wrap md:flex-nowrap md:flex-col gap-6">
         {profiles.filter(Boolean).map((profile, index) => {
           const img = profile?.profilePicture?.[0];
-          const url = img?.url ? `${STRAPI_URL}${img.url}` : null;
+          const url = img?.url ? `${img.url}` : null;
 
           return (
             <div key={profile?.id ?? index} className="flex items-center gap-3">

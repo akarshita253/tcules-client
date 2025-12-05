@@ -12,20 +12,18 @@ interface MultiImageLayoutProps {
   images: ImageItem[];
   layout: "default" | "twoLeftFocus" | "twoRightFocus" | "bento";
   className?: string;
-  envStrapiUrl?: string;
 }
 
 export function MultiImageLayout({
   images,
   layout,
   className,
-  envStrapiUrl = process.env.STRAPI_URL || "",
 }: MultiImageLayoutProps) {
   const safeImages = images.filter((img): img is ImageItem => !!img?.url);
 
   if (safeImages.length === 0) return null;
 
-  const getImageSrc = (img: ImageItem) => `${envStrapiUrl}${img.url}`;
+  const getImageSrc = (img: ImageItem) => `${img.url}`;
 
   switch (layout) {
     case "default":
@@ -52,7 +50,7 @@ export function MultiImageLayout({
           <MultiImageLayout
             images={safeImages}
             layout="default"
-            {...{ className, envStrapiUrl }}
+            {...{ className }}
           />
         );
       return (
@@ -78,7 +76,7 @@ export function MultiImageLayout({
           <MultiImageLayout
             images={safeImages}
             layout="default"
-            {...{ className, envStrapiUrl }}
+            {...{ className }}
           />
         );
       return (
@@ -177,7 +175,7 @@ export function MultiImageLayout({
         <MultiImageLayout
           images={safeImages}
           layout="default"
-          {...{ className, envStrapiUrl }}
+          {...{ className }}
         />
       );
   }

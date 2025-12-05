@@ -28,7 +28,7 @@ export default function VideoBlock({
 }: VideoBlockProps) {
   const videoUrl = "";
   const posterUrl = thumbnail
-    ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${thumbnail.url}`
+    ? `${thumbnail.url}`
     : undefined;
 
   return (
@@ -77,12 +77,6 @@ export default function VideoBlock({
           Your browser does not support the video tag.
         </video>
       </div>
-
-      {/* {videoFile.alternativeText && (
-        <p className="text-center text-sm text-gray-500 mt-4 italic">
-          {videoFile.alternativeText}
-        </p>
-      )} */}
     </div>
   );
 }

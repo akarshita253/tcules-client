@@ -17,7 +17,7 @@ const CaseStudyHeroSection = ({
   return (
     <div className="relative h-screen w-full overflow-hidden ">
       <Image
-        src={`${process.env.STRAPI_URL}${image?.url ?? ""}`}
+        src={`${image?.url ?? ""}`}
         alt={image?.alternativeText ?? "Case Study Hero Image"}
         fill
         className="object-cover"

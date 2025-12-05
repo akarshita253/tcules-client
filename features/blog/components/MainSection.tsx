@@ -25,7 +25,7 @@ export const renderBlock = (block: MainSectionBlock) => {
      return (
       <div key={block.imageSection[0]?.url} className="my-8">
         <Image
-          src={`${process.env.STRAPI_URL}${block.imageSection[0]?.url ?? ""}`}
+          src={`${block.imageSection[0]?.url ?? ""}`}
           alt={block.imageSection[0]?.alternativeText ?? "Blog Image"}
           width={block.imageSection[0]?.width ?? 600}
           height={block.imageSection[0]?.height ?? 400}

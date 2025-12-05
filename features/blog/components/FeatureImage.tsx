@@ -1,8 +1,6 @@
 import Image from "next/image";
 import { FeatureImageProps } from "../types/blogTypes";
 
-const STRAPI_URL = process.env.STRAPI_URL;
-
 const FeatureImage = ({ featureImage }: FeatureImageProps) => {
   if (!featureImage || featureImage.length === 0) {
     return <p>No feature image available.</p>;
@@ -11,7 +9,7 @@ const FeatureImage = ({ featureImage }: FeatureImageProps) => {
   return (
     <div className="my-12">
       {featureImage.filter(Boolean).map((img, index) => {
-        const url = `${STRAPI_URL}${img?.url}`;
+        const url = `${img?.url}`;
         const hasWidth = !!img?.width;
 
         const width = img?.width ?? undefined;
