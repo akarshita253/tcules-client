@@ -11,8 +11,10 @@ const client = new ApolloClient({
 });
 
 
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+const STRAPI_URL = process.env.STRAPI_URL;
 const STRAPI_GRAPHQL_ENDPOINT = `${STRAPI_URL}/graphql`;
+console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>",STRAPI_GRAPHQL_ENDPOINT)
+console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>",STRAPI_URL)
 
 export const strapiClient = new GraphQLClient(STRAPI_GRAPHQL_ENDPOINT);
 
