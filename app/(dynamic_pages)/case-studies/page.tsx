@@ -1,13 +1,15 @@
-export const dynamic = "force-dynamic";
-
 import { Cards } from "@/components/shared/Cards";
 import { AllCaseStudiesQuery } from "@/features/case_studies/types/caseStudyTypes";
 import { strapiRequest } from "@/lib/utils";
 import Link from "next/link";
 import { GET_ALL_CASE_STUDIES } from "@/lib/queries/getCaseStudies";
+import { notFound } from "next/navigation";
 
 const CaseStudyList = async () => {
   const data = await strapiRequest<AllCaseStudiesQuery>(GET_ALL_CASE_STUDIES);
+    if (!data) {
+      notFound();
+    }
   const allCaseStudies = data?.caseStudies;
   return (
     <main>

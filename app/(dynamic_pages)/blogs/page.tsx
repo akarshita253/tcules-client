@@ -3,13 +3,12 @@ import { AllBlogsQuery } from "@/features/blog/types/blogTypes";
 import { GET_BLOGS } from "@/lib/queries/getBlogs";
 import { strapiRequest } from "@/lib/utils";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 const BlogList = async () => {
   const data = await strapiRequest<AllBlogsQuery>(GET_BLOGS);
-    if (!data) {
-    return {
-      notFound: true,
-    }
+  if (!data) {
+    notFound();
   }
   const allBlogs = data?.blogs;
   return (

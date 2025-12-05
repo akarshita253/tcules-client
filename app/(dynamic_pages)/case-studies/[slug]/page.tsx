@@ -1,9 +1,8 @@
-export const dynamic = "force-dynamic";
-
 import CaseStudyContainer from "@/features/case_studies/CaseStudyContainer";
 import { CaseStudiesQuery } from "@/lib/codegen/graphql";
 import { CASE_STUDY_QUERY } from "@/lib/queries/getCaseStudies";
 import { strapiRequest } from "@/lib/utils";
+import { notFound } from "next/navigation";
 
 interface PageProps {
   params: Promise<{
@@ -13,9 +12,14 @@ interface PageProps {
 
 const SingleCaseStudy = async ({ params }: PageProps) => {
   const { slug } = await params;
-  const data = await strapiRequest<CaseStudiesQuery>(CASE_STUDY_QUERY, { slug });
+  const data = await strapiRequest<CaseStudiesQuery>(CASE_STUDY_QUERY, {
+    slug,
+  });
+  if (!data) {
+    notFound();
+  }
   const caseStudy = data?.caseStudies[0];
-  return <CaseStudyContainer caseStudy={caseStudy!}/>;
+  return <CaseStudyContainer caseStudy={caseStudy!} />;
 };
 
 export default SingleCaseStudy;

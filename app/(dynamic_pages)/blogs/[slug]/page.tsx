@@ -1,9 +1,8 @@
-export const dynamic = "force-dynamic";
-
 import BlogContainer from "@/features/blog/BlogContainer";
 import { BlogsQuery } from "@/lib/codegen/graphql";
 import { GET_BLOG } from "@/lib/queries/getBlogs";
 import { strapiRequest } from "@/lib/utils";
+import { notFound } from "next/navigation";
 
 interface PageProps {
   params: Promise<{
@@ -14,6 +13,9 @@ interface PageProps {
 const SingleBlog = async ({ params }: PageProps) => {
   const { slug } = await params;
   const data = await strapiRequest<BlogsQuery>(GET_BLOG, { slug });
+    if (!data) {
+      notFound();
+    }
   const blog = data.blogs?.[0];
   return <BlogContainer blog={blog!} />;
 };
