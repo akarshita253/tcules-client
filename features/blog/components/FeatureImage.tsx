@@ -16,7 +16,6 @@ const FeatureImage = ({ featureImage }: FeatureImageProps) => {
 
         const width = img?.width ?? undefined;
         const height = img?.height ?? undefined;
-
         return (
           <div
             key={url + index}

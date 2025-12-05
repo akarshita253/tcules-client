@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { Cards } from "@/components/shared/Cards";
 import { AllBlogsQuery } from "@/features/blog/types/blogTypes";
 import { GET_BLOGS } from "@/lib/queries/getBlogs";

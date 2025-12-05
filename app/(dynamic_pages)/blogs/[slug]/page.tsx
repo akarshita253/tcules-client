@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import BlogContainer from "@/features/blog/BlogContainer";
 import { BlogsQuery } from "@/lib/codegen/graphql";
 import { GET_BLOG } from "@/lib/queries/getBlogs";

@@ -13,6 +13,7 @@ const CaseStudyHeroSection = ({
     height: number;
   };
 }) => {
+  console.log(image.url)
   return (
     <div className="relative h-screen w-full overflow-hidden ">
       <Image

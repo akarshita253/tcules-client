@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import CaseStudyContainer from "@/features/case_studies/CaseStudyContainer";
 import { CaseStudiesQuery } from "@/lib/codegen/graphql";
 import { CASE_STUDY_QUERY } from "@/lib/queries/getCaseStudies";
