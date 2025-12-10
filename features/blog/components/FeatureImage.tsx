@@ -17,7 +17,7 @@ const FeatureImage = ({ featureImage }: FeatureImageProps) => {
         return (
           <div
             key={url + index}
-            className={`${!hasWidth ? "relative w-full h-[400px]" : ""}`}
+            className={`${!hasWidth ? "relative w-full h-[602px]" : ""}`}
           >
             <Image
               src={url}

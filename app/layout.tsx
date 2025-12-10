@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Figtree, Playfair_Display, Bricolage_Grotesque} from "next/font/google";
 
-const figtree = Figtree({ subsets: ["latin"], variable: "--font-figtree" });
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
-const bricolageGrotesque = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-bricolage" });
+const figtree = Figtree({ subsets: ["latin"], variable: "--font-label" });
+const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-display" });
+const bricolageGrotesque = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-heading" });
 
 
 

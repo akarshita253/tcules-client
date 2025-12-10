@@ -18,25 +18,33 @@ const BlogContainer = ({
   const profiles = blog.blogProfileSection;
 
   return (
-    <Container>
-      <Block>
-        <HeadingAndTime
-          title={title}
-          createdAt={createdAt}
-          updatedAt={updatedAt}
-        />
-        <FeatureImage featureImage={featureImage} />
-        <div className="pt-8 pb-24 md:grid grid-cols-12 gap-6">
-          <Profiles profiles={profiles} />
-          <div className="col-span-6">
-            {(blog.mainSection ?? []).map((block,index) => renderBlock(block,index))}
-          </div>
-          <GetStarted />
+    <>
+      <Container className="grid grid-cols-12 gap-6 ">
+        <Block className="lg:col-start-2 lg:col-end-12 col-start-1 col-end-13">
+          <HeadingAndTime
+            title={title}
+            createdAt={createdAt}
+            updatedAt={updatedAt}
+          />
+          <FeatureImage featureImage={featureImage} />
+        </Block>
+      </Container>
+      <Container className="pt-8 pb-24 md:grid grid-cols-12 gap-6">
+        <Profiles profiles={profiles} />
+        <div className="md:col-start-3 lg:col-start-4 lg:col-end-10 md:col-end-11">
+          {(blog.mainSection ?? []).map((block, index) =>
+            renderBlock(block, index)
+          )}
         </div>
-        <ExploreResources />
-        <CtaSection />
-      </Block>
-    </Container>
+        <GetStarted />
+      </Container>
+      <Container>
+        <Block className="col-span-12">
+          <ExploreResources />
+          <CtaSection />
+        </Block>
+      </Container>
+    </>
   );
 };
 

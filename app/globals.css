@@ -4,99 +4,98 @@
 
 @theme {
 
-  --font-figtree: "Figtree", sans-serif;
-  --font-playfair: "Playfair Display", serif;
-  --font-bricolage: "Bricolage Grotesque", sans-serif;
+  --font-label: "Figtree", sans-serif;
+  --font-display: "Playfair Display", serif;
+  --font-heading: "Bricolage Grotesque", sans-serif;
 
-  --breakpoint-xs: 15.5rem;
   --breakpoint-sm: 30rem;
   --breakpoint-md: 48rem;
   --breakpoint-lg: 64rem;
   --breakpoint-xl: 90rem;
 
   /* Yellow */
-  --color-yellow-50: #FFF9E9;
-  --color-yellow-100: #FFF1CB;
-  --color-yellow-200: #FFE5A2;
-  --color-yellow-300: #FFD977;
-  --color-yellow-400: #FFCE4E;
-  --color-yellow-500: #FFC327;
-  --color-yellow-600: #FFFBEB;
-  --color-yellow-700: #B58A1C;
-  --color-yellow-800: #916F16;
-  --color-yellow-900: #735812;
+  --color-sec-yellow-50: #fff9e9;
+  --color-sec-yellow-100: #fff1cb;
+  --color-sec-yellow-200: #ffe5a2;
+  --color-sec-yellow-300: #ffd977;
+  --color-sec-yellow-400: #ffce4e;
+  --color-sec-yellow-500: #ffc327;
+  --color-sec-yellow-600: #fffbeb;
+  --color-sec-yellow-700: #b58a1c;
+  --color-sec-yellow-800: #916f16;
+  --color-sec-yellow-900: #735812;
 
   /* Green */
-  --color-green-50: #E6F7F2;
-  --color-green-100: #C3EBDF;
-  --color-green-200: #94DAC6;
-  --color-green-300: #63C9AC;
-  --color-green-400: #34B993;
-  --color-green-500: #07AA7B;
-  --color-green-600: #069169;
-  --color-green-700: #057957;
-  --color-green-800: #046146;
-  --color-green-900: #034C37;
+  --color-sec-green-50: #e6f7f2;
+  --color-sec-green-100: #c3ebdf;
+  --color-sec-green-200: #94dac6;
+  --color-sec-green-300: #63c9ac;
+  --color-sec-green-400: #34b993;
+  --color-sec-green-500: #07aa7b;
+  --color-sec-green-600: #069169;
+  --color-sec-green-700: #057957;
+  --color-sec-green-800: #046146;
+  --color-sec-green-900: #034c37;
 
   /* Blue */
-  --color-blue-50: #E8F3FD;
-  --color-blue-100: #C7E1FA;
-  --color-blue-200: #9BCAF6;
-  --color-blue-300: #6CB2F2;
-  --color-blue-400: #409AEE;
-  --color-blue-500: #1684EA;
-  --color-blue-600: #1370C7;
-  --color-blue-700: #105EA6;
-  --color-blue-800: #0D4B85;
-  --color-blue-900: #0A3B69;
+  --color-sec-blue-50: #e8f3fd;
+  --color-sec-blue-100: #c7e1fa;
+  --color-sec-blue-200: #9bcaf6;
+  --color-sec-blue-300: #6cb2f2;
+  --color-sec-blue-400: #409aee;
+  --color-sec-blue-500: #1684ea;
+  --color-sec-blue-600: #1370c7;
+  --color-sec-blue-700: #105ea6;
+  --color-sec-blue-800: #0d4b85;
+  --color-sec-blue-900: #0a3b69;
 
   /* Pink */
-  --color-pink-50: #F4E8F1;
-  --color-pink-100: #E5C7DD;
-  --color-pink-200: #D09AC3;
-  --color-pink-300: #BA6CA7;
-  --color-pink-400: #A63F8C;
-  --color-pink-500: #921573;
-  --color-pink-600: #7C1262;
-  --color-pink-700: #680F52;
-  --color-pink-800: #530C42;
-  --color-pink-900: #420934;
+  --color-sec-pink-50: #f4e8f1;
+  --color-sec-pink-100: #e5c7dd;
+  --color-sec-pink-200: #d09ac3;
+  --color-sec-pink-300: #ba6ca7;
+  --color-sec-pink-400: #a63f8c;
+  --color-sec-pink-500: #921573;
+  --color-sec-pink-600: #7c1262;
+  --color-sec-pink-700: #680f52;
+  --color-sec-pink-800: #530c42;
+  --color-sec-pink-900: #420934;
 
   /* Red */
-  --color-red-50: #FEECEB;
-  --color-red-100: #FDD2CF;
-  --color-red-200: #FCAEA8;
-  --color-red-300: #FB8980;
-  --color-red-400: #F96559;
-  --color-red-500: #F84335;
-  --color-red-600: #D3392D;
-  --color-red-700: #B03026;
-  --color-red-800: #8D261E;
-  --color-red-900: #701E18;
+  --color-sec-red-50: #feeceb;
+  --color-sec-red-100: #fdd2cf;
+  --color-sec-red-200: #fcaea8;
+  --color-sec-red-300: #fb8980;
+  --color-sec-red-400: #f96559;
+  --color-sec-red-500: #f84335;
+  --color-sec-red-600: #d3392d;
+  --color-sec-red-700: #b03026;
+  --color-sec-red-800: #8d261e;
+  --color-sec-red-900: #701e18;
 
   /* Neutral (gray) */
-  --color-neutral-50: #FFFFFF;
-  --color-neutral-100: #F2F2F2;
-  --color-neutral-200: #E6E6E6;
-  --color-neutral-300: #D5D5D5;
-  --color-neutral-400: #B1B1B1;
+  --color-neutral-50: #ffffff;
+  --color-neutral-100: #f2f2f2;
+  --color-neutral-200: #e6e6e6;
+  --color-neutral-300: #d5d5d5;
+  --color-neutral-400: #b1b1b1;
   --color-neutral-500: #909090;
-  --color-neutral-600: #6D6D6D;
+  --color-neutral-600: #6d6d6d;
   --color-neutral-700: #464646;
   --color-neutral-800: #222222;
   --color-neutral-900: #000000;
 
   /* Accent */
-  --color-accent-50: #E6FDEE;
-  --color-accent-100: #C3FAD5;
-  --color-accent-200: #93F7B4;
-  --color-accent-300: #61F391;
-  --color-accent-400: #31EF70;
-  --color-accent-500: #04EC50;
-  --color-accent-600: #03C944;
-  --color-accent-700: #03A839;
-  --color-accent-800: #02872E;
-  --color-accent-900: #026A24;
+  --color-accent-50: #e6fdee;
+  --color-accent-100: #c3fad5;
+  --color-accent-200: #93f7b4;
+  --color-accent-300: #61f391;
+  --color-accent-400: #31ef70;
+  --color-accent-500: #04ec50;
+  --color-accent-600: #03c944;
+  --color-accent-700: #03a839;
+  --color-accent-800: #02872e;
+  --color-accent-900: #026a24;
 
   /* Font Weight */
   --font-weight-thin: 100;
@@ -110,11 +109,11 @@
   --font-weight-black: 900;
 
   /* Text and line height */
-    --text-2xs: 8px;
-  --text-2xs--line-height: 12px;
+  --text-2xs: 8px;
+  --text-2xs--line-height: 140%;
 
   --text-xs: 10px;
-  --text-xs--line-height: 15px;
+  --text-xs--line-height: 140%;
 
   --text-sm: 12px;
   --text-sm--line-height: 140%;
@@ -123,16 +122,16 @@
   --text-md--line-height: 140%;
 
   --text-lg: 16px;
-  --text-lg--line-height: 24px;
+  --text-lg--line-height: 140%;
 
   --text-xl: 18px;
-  --text-xl--line-height: 30px;
+  --text-xl--line-height: 140%;
 
   --text-2xl: 20px;
-  --text-2xl--line-height: 36px;
+  --text-2xl--line-height: 140%;
 
   --text-3xl: 24px;
-  --text-3xl--line-height: 42px;
+  --text-3xl--line-height: 140%;
 
   --text-4xl: 28px;
   --text-4xl--line-height: 120%;
@@ -141,7 +140,7 @@
   --text-5xl--line-height: 120%;
 
   --text-6xl: 40px;
-  --text-6xl--line-height: 72px;
+  --text-6xl--line-height: 120%;
 
   --text-7xl: 48px;
   --text-7xl--line-height: 120%;
@@ -150,10 +149,10 @@
   --text-8xl--line-height: 120%;
 
   --text-9xl: 64px;
-  --text-9xl--line-height: 108px;
+  --text-9xl--line-height: 120%;
 
   --text-10xl: 72px;
-  --text-10xl--line-height: 120px
+  --text-10xl--line-height: 120%;
 }
 
 @theme inline {
@@ -255,38 +254,81 @@
   section {
     @apply w-full;
   }
+}
 
-  h1 {
-    @apply font-bricolage text-7xl md:text-8xl
-  }
+/* Heading */
+.text-heading-xl {
+  @apply font-heading text-10xl font-normal;
+}
+.text-heading-lg {
+  @apply font-heading text-9xl font-medium;
+}
+.text-heading-md {
+  @apply font-heading text-8xl font-medium;
+}
+.text-heading-sm {
+  @apply font-heading text-7xl font-medium;
+}
+.text-heading-xs {
+  @apply font-heading text-5xl font-medium;
+}
+.text-heading-2xs {
+  @apply font-heading text-3xl font-medium;
+}
 
-  h2 {
-    @apply font-bricolage text-4xl md:text-5xl
-  }
+/* Display */
+.text-display-lg {
+  @apply font-display text-10xl font-semibold italic;
+}
+.text-display-md {
+  @apply font-display text-9xl font-medium italic;
+}
+.text-display-sm {
+  @apply font-display text-8xl font-medium italic;
+}
+.text-display-xs {
+  @apply font-display text-7xl font-medium italic;
+}
 
-  h3 {
-    @apply font-bricolage
-  }
+/* Label */
+.text-label-5xl {
+  @apply font-label text-5xl font-medium;
+}
+.text-label-4xl {
+  @apply font-label text-3xl font-bold;
+}
+.text-label-3xl {
+  @apply font-label text-3xl font-medium;
+}
+.text-label-2xl {
+  @apply font-label text-3xl font-normal;
+}
+.text-label-xl {
+  @apply font-label text-2xl font-normal;
+}
+.text-label-lg {
+  @apply font-label text-2xl font-semibold;
+}
+.text-label-md {
+  @apply font-label text-xl font-normal;
+}
+.text-label-sm {
+  @apply font-label text-lg font-normal;
+}
+.text-label-xs {
+  @apply font-label text-lg font-semibold;
+}
+.text-label-2xs {
+  @apply font-label text-md font-normal;
+}
+.text-label-3xs {
+  @apply font-label text-md font-semibold;
+}
 
-  h4 {
-    @apply font-bricolage
-  }
-
-  h5 {
-    @apply font-bricolage
-  }
-
-  h6 {
-    @apply font-bricolage
-  }
-  p{
-    @apply font-figtree
-  }
-  span {
-    @apply font-figtree
-  }
-  small{
-    @apply font-figtree text-sm
-  }
-
+/* Caption */
+.text-caption-lg {
+  @apply text-sm font-medium;
+}
+.text-caption-md {
+  @apply text-sm font-medium;
 }

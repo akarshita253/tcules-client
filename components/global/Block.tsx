@@ -7,7 +7,7 @@ interface BlockProps {
 
 export function Block({ className, children }: BlockProps) {
   return (
-    <div className={cn("max-w-[1116px] mx-auto", className)}>
+    <div className={cn("", className)}>
       {children}
     </div>
   );

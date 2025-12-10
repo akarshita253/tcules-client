@@ -22,10 +22,10 @@ export default function CodeBlock({ codeSnippet }: CodeBlockProps) {
   };
 
   return (
-    <div className="my-12 max-w-[887px] mx-auto">
+    <div className="my-12 mx-auto">
       <div className="relative rounded-2xl overflow-hidden shadow-lg border border-gray-200">
         {/* Header with copy button on the right */}
-        <div className="flex items-center justify-end px-5 py-3 bg-[#E6E6E6]">
+        <div className="flex items-center justify-end px-3 bg-[#E6E6E6]">
           <button
             onClick={handleCopy}
             className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 "
