@@ -35,27 +35,27 @@ const Positioning = ({ profile, statement }: PositioningProps) => {
               profile.length > 0 &&
               profile.map((item) => (
                 <div className="flex flex-col gap-1" key={item.id}>
-                  <small className="text-[14px] text-neutral-600">
+                  <small className="text-label-2xs text-neutral-600">
                     {item.heading}
                   </small>
-                  <small className="text-[16px]">{item.description}</small>
+                  <small className="text-label-sm">{item.description}</small>
                 </div>
               ))}
           </div>
           <div className="sm:col-span-8 flex flex-col gap-12">
             <div>
-              <h2 className="text-neutral-600 text-[32px] leading-[120%] mb-2 flex items-center gap-2">
+              <h2 className="text-neutral-600 text-heading-xs mb-2 flex items-center gap-2">
                 <ArrowRight color="red" />
                 <span>Problem</span>
               </h2>
-              <p className="leading-[140%]">{problem}</p>
+              <p className="text-label-xl">{problem}</p>
             </div>
             <div>
-              <h2 className="text-neutral-600 text-[32px] leading-[120%] mb-2 flex items-center gap-2">
+              <h2 className="text-neutral-600 text-heading-xs mb-2 flex items-center gap-2">
                 <ArrowRight color="green" />
                 <span>Solution</span>
               </h2>
-              <p className="leading-[140%]">{solution}</p>
+              <p className="text-label-xl">{solution}</p>
             </div>
           </div>
         </div>

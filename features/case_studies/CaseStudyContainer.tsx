@@ -38,8 +38,8 @@ const CaseStudyContainer = ({
     <>
       <CaseStudyHeroSection title={caseStudy?.title} image={safeHeroImage} />
       <Positioning profile={profile} statement={statement} />
-      <Container className="md:py-[120px] py-16">
-        <Block>
+      <Container className="md:py-[120px] py-16 md:grid grid-cols-12 gap-6">
+        <Block className="lg:col-start-2 col-start-1 lg:col-end-12 col-end-13">
           {caseStudy.caseStudyContents?.map((block) => renderBlock(block))}
         </Block>
       </Container>
