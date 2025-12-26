@@ -31,3 +31,4 @@ export function formatDate(dateString: string | null | undefined) {
     year: "numeric",
   });
 }
+
