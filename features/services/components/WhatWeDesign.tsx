@@ -1,7 +1,6 @@
 "use client";
 
 import Section from "@/components/global/Section";
-import Ai from "@/public/ai.svg";
 import Image from "next/image";
 import { ServiceQuery } from "@/lib/codegen/graphql";
 import { useState } from "react";
@@ -54,7 +53,9 @@ const WhatWeDesign = ({
             <h4 className="text-heading-2xs text-neutral-900 mb-1">
               {tile?.heading}
             </h4>
-            <p className="text-label-md text-neutral-700">{tile?.description}</p>
+            <p className="text-label-md text-neutral-700">
+              {tile?.description}
+            </p>
           </div>
         ))}
       </div>
@@ -77,7 +78,12 @@ const WhatWeDesign = ({
           </p>
         </div>
         <div className="relative ">
-          <Image src={Ai} alt="AI Fluent Process" width={100} height={100} />
+          <Image
+            src={whatWeDesignSectionData?.bottomDetails?.cardImage?.url || ""}
+            alt="AI Fluent Process"
+            width={100}
+            height={100}
+          />
         </div>
       </div>
     </Section>
