@@ -3,7 +3,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { ServiceQuery } from "@/lib/codegen/graphql";
 import Link from "next/link";
 
-const ServiceMisc = ({
+const Miscellaneous = ({
   miscSectionData,
 }: {
   miscSectionData: NonNullable<ServiceQuery["service"]>["miscSection"];
@@ -30,4 +30,4 @@ const ServiceMisc = ({
   );
 };
 
-export default ServiceMisc;
+export default Miscellaneous;

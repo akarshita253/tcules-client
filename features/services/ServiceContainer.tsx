@@ -6,8 +6,8 @@ import WhatWeDesign from "./components/WhatWeDesign";
 import HowWeWork from "./components/HowWeWork";
 import OperatingPhilosophy from "./components/OperatingPhilosophy";
 import ExploreRecentWork from "./components/ExploreRecentWork";
-import ServiceMisc from "./components/ServiceMisc";
 import { ServiceQuery } from "@/lib/codegen/graphql";
+import Miscellaneous from "../../components/shared/Miscellaneous";
 
 const ServiceContainer = ({service}:{service: NonNullable<ServiceQuery["service"]>}) => {
 
@@ -33,7 +33,7 @@ const ServiceContainer = ({service}:{service: NonNullable<ServiceQuery["service"
             <HowWeWork howWeWorkSectionData={HOW_WE_WORK_SECTION} />
             <OperatingPhilosophy operatingPhilosophySectionData={OPERATING_PHILOSOPHY_SECTION} />
             <ExploreRecentWork recentWorkSectionData={RECENT_WORK_SECTION} />
-            <ServiceMisc miscSectionData={SERVICE_MISC_SECTION} />
+            <Miscellaneous miscSectionData={SERVICE_MISC_SECTION} />
         </Block>
       </Container>
     </main>
