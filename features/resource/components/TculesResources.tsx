@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Service from "@/public/service.svg";
+// import Service from "@/public/service.svg";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
@@ -106,7 +106,7 @@ const TculesResources = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 md:gap-y-12 gap-x-4 md:gap-x-6">
-        <Card className="relative w-full overflow-hidden gap-0 pb-0">
+        {/* <Card className="relative w-full overflow-hidden gap-0 pb-0">
           <CardHeader className="h-[344px] relative rounded-xl overflow-hidden mb-4">
             <Image src={Service} alt="Service" fill objectFit="cover" />
             <small className="bg-neutral-50 rounded-full text-neutral-800 absolute top-4 left-4 text-caption-lg py-1.5 px-3.5">
@@ -189,7 +189,7 @@ const TculesResources = () => {
             <span>{" . "}</span>
             <span className="text-label-md">11 mins</span>
           </CardFooter>
-        </Card>
+        </Card> */}
       </div>
     </Section>
   );
