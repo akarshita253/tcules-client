@@ -2,7 +2,7 @@ import Section from "@/components/global/Section";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
-import Service from "@/public/service.svg";
+// import Service from "@/public/service.svg";
 
 const ResourceHeroSec = () => {
   return (
@@ -24,7 +24,7 @@ const ResourceHeroSec = () => {
           teams solving complexity-heavy product problems.
         </p>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="relative w-full h-40 rounded-xl overflow-hidden">
+          {/* <div className="relative w-full h-40 rounded-xl overflow-hidden">
             <Image src={Service} fill className="object-cover" alt="Hero section image"/>
             <h3 className="p-4 absolute bottom-0 left-0 text-neutral-50 text-heading-2xs">Articles</h3>
           </div>
@@ -39,7 +39,7 @@ const ResourceHeroSec = () => {
           <div className="relative w-full h-40 rounded-xl overflow-hidden">
             <Image src={Service} fill className="object-cover" alt="Hero section image"/>
             <h3 className="p-4 absolute bottom-0 left-0 text-neutral-50 text-heading-2xs">Articles</h3>
-          </div>
+          </div> */}
         </div>
       </Section>
       <div className="p-8">
