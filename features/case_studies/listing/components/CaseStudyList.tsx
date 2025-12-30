@@ -162,15 +162,18 @@ const CaseStudyList = () => {
                 >
                   <div className="col-span-2">
                     <div className="relative rounded-xl overflow-hidden w-full h-[168px]">
-                      <Image
-                        src={singleCaseStudy?.thumbnail?.url || ""}
-                        fill
-                        alt={
-                          singleCaseStudy?.thumbnail?.alternativeText ||
-                          "Case study"
-                        }
-                        className="object-cover"
-                      />
+                      {singleCaseStudy?.thumbnail?.url !== undefined &&
+                      singleCaseStudy?.thumbnail?.url.length > 0 ? (
+                        <Image
+                          src={singleCaseStudy?.thumbnail?.url || ""}
+                          fill
+                          alt={
+                            singleCaseStudy?.thumbnail?.alternativeText ||
+                            "Case study"
+                          }
+                          className="object-cover"
+                        />
+                      ) : null}
                     </div>
                   </div>
                   <div
@@ -188,13 +191,16 @@ const CaseStudyList = () => {
                     <div>
                       {singleCaseStudy?.categories !== undefined &&
                         singleCaseStudy?.categories.length > 0 &&
-                        singleCaseStudy.categories.map((category) => {
+                        singleCaseStudy.categories.map((category, index) => {
+                          const isLast =
+                            index === singleCaseStudy.categories.length - 1;
                           return (
                             <span
                               className="text-caption-lg text-neutral-500"
                               key={category?.documentId}
                             >
                               {category?.name}
+                              {!isLast && <span className="mx-2 text-accent-600">•</span>}
                             </span>
                           );
                         })}
