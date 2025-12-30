@@ -13,7 +13,6 @@ export interface Scalars {
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
   AboutBlocksDynamicZoneInput: { input: any; output: any; }
-  ArticleBlocksDynamicZoneInput: { input: any; output: any; }
   BlogMainSectionDynamicZoneInput: { input: any; output: any; }
   CaseStudyCaseStudyContentsDynamicZoneInput: { input: any; output: any; }
   DateTime: { input: any; output: any; }
@@ -38,64 +37,8 @@ export interface AboutInput {
   title?: InputMaybe<Scalars['String']['input']>;
 }
 
-export interface Article {
-  __typename?: 'Article';
-  author?: Maybe<Author>;
-  blocks?: Maybe<Array<Maybe<ArticleBlocksDynamicZone>>>;
-  category?: Maybe<Category>;
-  cover?: Maybe<UploadFile>;
-  createdAt?: Maybe<Scalars['DateTime']['output']>;
-  description?: Maybe<Scalars['String']['output']>;
-  documentId: Scalars['ID']['output'];
-  publishedAt?: Maybe<Scalars['DateTime']['output']>;
-  slug?: Maybe<Scalars['String']['output']>;
-  title?: Maybe<Scalars['String']['output']>;
-  updatedAt?: Maybe<Scalars['DateTime']['output']>;
-}
-
-export type ArticleBlocksDynamicZone = ComponentSharedMedia | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSlider | Error;
-
-export interface ArticleEntityResponseCollection {
-  __typename?: 'ArticleEntityResponseCollection';
-  nodes: Array<Article>;
-  pageInfo: Pagination;
-}
-
-export interface ArticleFiltersInput {
-  and?: InputMaybe<Array<InputMaybe<ArticleFiltersInput>>>;
-  author?: InputMaybe<AuthorFiltersInput>;
-  category?: InputMaybe<CategoryFiltersInput>;
-  createdAt?: InputMaybe<DateTimeFilterInput>;
-  description?: InputMaybe<StringFilterInput>;
-  documentId?: InputMaybe<IdFilterInput>;
-  not?: InputMaybe<ArticleFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<ArticleFiltersInput>>>;
-  publishedAt?: InputMaybe<DateTimeFilterInput>;
-  slug?: InputMaybe<StringFilterInput>;
-  title?: InputMaybe<StringFilterInput>;
-  updatedAt?: InputMaybe<DateTimeFilterInput>;
-}
-
-export interface ArticleInput {
-  author?: InputMaybe<Scalars['ID']['input']>;
-  blocks?: InputMaybe<Array<Scalars['ArticleBlocksDynamicZoneInput']['input']>>;
-  category?: InputMaybe<Scalars['ID']['input']>;
-  cover?: InputMaybe<Scalars['ID']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
-  slug?: InputMaybe<Scalars['String']['input']>;
-  title?: InputMaybe<Scalars['String']['input']>;
-}
-
-export interface ArticleRelationResponseCollection {
-  __typename?: 'ArticleRelationResponseCollection';
-  nodes: Array<Article>;
-}
-
 export interface Author {
   __typename?: 'Author';
-  articles: Array<Maybe<Article>>;
-  articles_connection?: Maybe<ArticleRelationResponseCollection>;
   avatar?: Maybe<UploadFile>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   documentId: Scalars['ID']['output'];
@@ -103,20 +46,6 @@ export interface Author {
   name?: Maybe<Scalars['String']['output']>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
-}
-
-
-export interface AuthorArticlesArgs {
-  filters?: InputMaybe<ArticleFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-}
-
-
-export interface AuthorArticles_ConnectionArgs {
-  filters?: InputMaybe<ArticleFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 }
 
 export interface AuthorEntityResponseCollection {
@@ -127,7 +56,6 @@ export interface AuthorEntityResponseCollection {
 
 export interface AuthorFiltersInput {
   and?: InputMaybe<Array<InputMaybe<AuthorFiltersInput>>>;
-  articles?: InputMaybe<ArticleFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   documentId?: InputMaybe<IdFilterInput>;
   email?: InputMaybe<StringFilterInput>;
@@ -139,7 +67,6 @@ export interface AuthorFiltersInput {
 }
 
 export interface AuthorInput {
-  articles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   avatar?: InputMaybe<Scalars['ID']['input']>;
   email?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
@@ -149,6 +76,8 @@ export interface AuthorInput {
 export interface Blog {
   __typename?: 'Blog';
   blogProfileSection?: Maybe<Array<Maybe<ComponentSharedProfile>>>;
+  categories: Array<Maybe<Category>>;
+  categories_connection?: Maybe<CategoryRelationResponseCollection>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   documentId: Scalars['ID']['output'];
   featureImage: Array<Maybe<UploadFile>>;
@@ -156,6 +85,8 @@ export interface Blog {
   mainSection?: Maybe<Array<Maybe<BlogMainSectionDynamicZone>>>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   slug?: Maybe<Scalars['String']['output']>;
+  tags: Array<Maybe<Tag>>;
+  tags_connection?: Maybe<TagRelationResponseCollection>;
   title?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
 }
@@ -163,6 +94,20 @@ export interface Blog {
 
 export interface BlogBlogProfileSectionArgs {
   filters?: InputMaybe<ComponentSharedProfileFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface BlogCategoriesArgs {
+  filters?: InputMaybe<CategoryFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface BlogCategories_ConnectionArgs {
+  filters?: InputMaybe<CategoryFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 }
@@ -181,6 +126,20 @@ export interface BlogFeatureImage_ConnectionArgs {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 }
 
+
+export interface BlogTagsArgs {
+  filters?: InputMaybe<TagFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface BlogTags_ConnectionArgs {
+  filters?: InputMaybe<TagFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
 export interface BlogEntityResponseCollection {
   __typename?: 'BlogEntityResponseCollection';
   nodes: Array<Blog>;
@@ -190,26 +149,35 @@ export interface BlogEntityResponseCollection {
 export interface BlogFiltersInput {
   and?: InputMaybe<Array<InputMaybe<BlogFiltersInput>>>;
   blogProfileSection?: InputMaybe<ComponentSharedProfileFiltersInput>;
+  categories?: InputMaybe<CategoryFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   documentId?: InputMaybe<IdFilterInput>;
   not?: InputMaybe<BlogFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<BlogFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
   slug?: InputMaybe<StringFilterInput>;
+  tags?: InputMaybe<TagFiltersInput>;
   title?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 }
 
 export interface BlogInput {
   blogProfileSection?: InputMaybe<Array<InputMaybe<ComponentSharedProfileInput>>>;
+  categories?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   featureImage?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   mainSection?: InputMaybe<Array<Scalars['BlogMainSectionDynamicZoneInput']['input']>>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   title?: InputMaybe<Scalars['String']['input']>;
 }
 
 export type BlogMainSectionDynamicZone = ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentSharedRichText | ComponentSharedSeo | Error;
+
+export interface BlogRelationResponseCollection {
+  __typename?: 'BlogRelationResponseCollection';
+  nodes: Array<Blog>;
+}
 
 export interface BooleanFilterInput {
   and?: InputMaybe<Array<InputMaybe<Scalars['Boolean']['input']>>>;
@@ -239,6 +207,8 @@ export interface BooleanFilterInput {
 export interface CaseStudy {
   __typename?: 'CaseStudy';
   caseStudyContents?: Maybe<Array<Maybe<CaseStudyCaseStudyContentsDynamicZone>>>;
+  categories: Array<Maybe<Category>>;
+  categories_connection?: Maybe<CategoryRelationResponseCollection>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   documentId: Scalars['ID']['output'];
@@ -247,9 +217,25 @@ export interface CaseStudy {
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   slug?: Maybe<Scalars['String']['output']>;
   statement?: Maybe<Array<Maybe<ComponentBlogAndCasestudiesProblemAndSolution>>>;
+  tags: Array<Maybe<Tag>>;
+  tags_connection?: Maybe<TagRelationResponseCollection>;
   thumbnail?: Maybe<UploadFile>;
   title?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
+}
+
+
+export interface CaseStudyCategoriesArgs {
+  filters?: InputMaybe<CategoryFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface CaseStudyCategories_ConnectionArgs {
+  filters?: InputMaybe<CategoryFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 }
 
 
@@ -266,6 +252,20 @@ export interface CaseStudyStatementArgs {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 }
 
+
+export interface CaseStudyTagsArgs {
+  filters?: InputMaybe<TagFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface CaseStudyTags_ConnectionArgs {
+  filters?: InputMaybe<TagFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
 export type CaseStudyCaseStudyContentsDynamicZone = ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesVideo | ComponentElementsLink | ComponentSharedQuote | ComponentSharedSeo | Error;
 
 export interface CaseStudyEntityResponseCollection {
@@ -276,6 +276,7 @@ export interface CaseStudyEntityResponseCollection {
 
 export interface CaseStudyFiltersInput {
   and?: InputMaybe<Array<InputMaybe<CaseStudyFiltersInput>>>;
+  categories?: InputMaybe<CategoryFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   description?: InputMaybe<StringFilterInput>;
   documentId?: InputMaybe<IdFilterInput>;
@@ -285,26 +286,52 @@ export interface CaseStudyFiltersInput {
   publishedAt?: InputMaybe<DateTimeFilterInput>;
   slug?: InputMaybe<StringFilterInput>;
   statement?: InputMaybe<ComponentBlogAndCasestudiesProblemAndSolutionFiltersInput>;
+  tags?: InputMaybe<TagFiltersInput>;
   title?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 }
 
 export interface CaseStudyInput {
   caseStudyContents?: InputMaybe<Array<Scalars['CaseStudyCaseStudyContentsDynamicZoneInput']['input']>>;
+  categories?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   description?: InputMaybe<Scalars['String']['input']>;
   heroImage?: InputMaybe<Scalars['ID']['input']>;
   profile?: InputMaybe<Array<InputMaybe<ComponentBlogAndCasestudiesCompanyProfileInput>>>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;
   statement?: InputMaybe<Array<InputMaybe<ComponentBlogAndCasestudiesProblemAndSolutionInput>>>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   thumbnail?: InputMaybe<Scalars['ID']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
 }
 
+export interface CaseStudyLandingPage {
+  __typename?: 'CaseStudyLandingPage';
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  documentId: Scalars['ID']['output'];
+  heroSection?: Maybe<ComponentSingleTypeCaseStudyPageHeroSection>;
+  misc?: Maybe<ComponentSingleTypeCaseStudyPageMiscellaneous>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+}
+
+export interface CaseStudyLandingPageInput {
+  heroSection?: InputMaybe<ComponentSingleTypeCaseStudyPageHeroSectionInput>;
+  misc?: InputMaybe<ComponentSingleTypeCaseStudyPageMiscellaneousInput>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+}
+
+export interface CaseStudyRelationResponseCollection {
+  __typename?: 'CaseStudyRelationResponseCollection';
+  nodes: Array<CaseStudy>;
+}
+
 export interface Category {
   __typename?: 'Category';
-  articles: Array<Maybe<Article>>;
-  articles_connection?: Maybe<ArticleRelationResponseCollection>;
+  blogs: Array<Maybe<Blog>>;
+  blogs_connection?: Maybe<BlogRelationResponseCollection>;
+  case_studies_categories: Array<Maybe<CaseStudy>>;
+  case_studies_categories_connection?: Maybe<CaseStudyRelationResponseCollection>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   documentId: Scalars['ID']['output'];
@@ -315,15 +342,29 @@ export interface Category {
 }
 
 
-export interface CategoryArticlesArgs {
-  filters?: InputMaybe<ArticleFiltersInput>;
+export interface CategoryBlogsArgs {
+  filters?: InputMaybe<BlogFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 }
 
 
-export interface CategoryArticles_ConnectionArgs {
-  filters?: InputMaybe<ArticleFiltersInput>;
+export interface CategoryBlogs_ConnectionArgs {
+  filters?: InputMaybe<BlogFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface CategoryCase_Studies_CategoriesArgs {
+  filters?: InputMaybe<CaseStudyFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface CategoryCase_Studies_Categories_ConnectionArgs {
+  filters?: InputMaybe<CaseStudyFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 }
@@ -336,7 +377,8 @@ export interface CategoryEntityResponseCollection {
 
 export interface CategoryFiltersInput {
   and?: InputMaybe<Array<InputMaybe<CategoryFiltersInput>>>;
-  articles?: InputMaybe<ArticleFiltersInput>;
+  blogs?: InputMaybe<BlogFiltersInput>;
+  case_studies_categories?: InputMaybe<CaseStudyFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   description?: InputMaybe<StringFilterInput>;
   documentId?: InputMaybe<IdFilterInput>;
@@ -349,11 +391,17 @@ export interface CategoryFiltersInput {
 }
 
 export interface CategoryInput {
-  articles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  blogs?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  case_studies_categories?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   description?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;
+}
+
+export interface CategoryRelationResponseCollection {
+  __typename?: 'CategoryRelationResponseCollection';
+  nodes: Array<Category>;
 }
 
 export interface ComponentBlogAndCasestudiesBlogOrCasestudyText {
@@ -970,6 +1018,38 @@ export interface ComponentSharedTilesInput {
   id?: InputMaybe<Scalars['ID']['input']>;
 }
 
+export interface ComponentSingleTypeCaseStudyPageHeroSection {
+  __typename?: 'ComponentSingleTypeCaseStudyPageHeroSection';
+  button?: Maybe<ComponentElementsButtons>;
+  description?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+}
+
+export interface ComponentSingleTypeCaseStudyPageHeroSectionInput {
+  button?: InputMaybe<ComponentElementsButtonsInput>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+}
+
+export interface ComponentSingleTypeCaseStudyPageMiscellaneous {
+  __typename?: 'ComponentSingleTypeCaseStudyPageMiscellaneous';
+  button?: Maybe<ComponentElementsButtons>;
+  description?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  label?: Maybe<Scalars['String']['output']>;
+}
+
+export interface ComponentSingleTypeCaseStudyPageMiscellaneousInput {
+  button?: InputMaybe<ComponentElementsButtonsInput>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+}
+
 export interface DateTimeFilterInput {
   and?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
@@ -1049,7 +1129,7 @@ export interface FloatFilterInput {
   startsWith?: InputMaybe<Scalars['Float']['input']>;
 }
 
-export type GenericMorph = About | Article | Author | Blog | CaseStudy | Category | ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCaseStudyPositioning | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesCompanyProfile | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesProblemAndSolution | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentElementsButtons | ComponentElementsElements | ComponentElementsLink | ComponentElementsPoints | ComponentNavbarNavbarLevel1Group | ComponentNavbarNavbarLevel2Group | ComponentServiceExploreRecentWork | ComponentServiceHeroSection | ComponentServiceHowWeWork | ComponentServiceOurOperatingPhilosophy | ComponentServiceServiceMisc | ComponentServiceWhatWeDesign | ComponentServiceWhyTeamHireUs | ComponentSharedCard | ComponentSharedMedia | ComponentSharedProfile | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | ComponentSharedSlider | ComponentSharedTiles | Global | Homepage | I18NLocale | Navbar | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Service | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = About | Author | Blog | CaseStudy | CaseStudyLandingPage | Category | ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCaseStudyPositioning | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesCompanyProfile | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesProblemAndSolution | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentElementsButtons | ComponentElementsElements | ComponentElementsLink | ComponentElementsPoints | ComponentNavbarNavbarLevel1Group | ComponentNavbarNavbarLevel2Group | ComponentServiceExploreRecentWork | ComponentServiceHeroSection | ComponentServiceHowWeWork | ComponentServiceOurOperatingPhilosophy | ComponentServiceServiceMisc | ComponentServiceWhatWeDesign | ComponentServiceWhyTeamHireUs | ComponentSharedCard | ComponentSharedMedia | ComponentSharedProfile | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | ComponentSharedSlider | ComponentSharedTiles | ComponentSingleTypeCaseStudyPageHeroSection | ComponentSingleTypeCaseStudyPageMiscellaneous | Global | Homepage | I18NLocale | Navbar | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Service | Tag | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export interface Global {
   __typename?: 'Global';
@@ -1190,22 +1270,22 @@ export interface Mutation {
   __typename?: 'Mutation';
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
-  createArticle?: Maybe<Article>;
   createAuthor?: Maybe<Author>;
   createBlog?: Maybe<Blog>;
   createCaseStudy?: Maybe<CaseStudy>;
   createCategory?: Maybe<Category>;
   createReviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>;
   createReviewWorkflowsWorkflowStage?: Maybe<ReviewWorkflowsWorkflowStage>;
+  createTag?: Maybe<Tag>;
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
   deleteAbout?: Maybe<DeleteMutationResponse>;
-  deleteArticle?: Maybe<DeleteMutationResponse>;
   deleteAuthor?: Maybe<DeleteMutationResponse>;
   deleteBlog?: Maybe<DeleteMutationResponse>;
   deleteCaseStudy?: Maybe<DeleteMutationResponse>;
+  deleteCaseStudyLandingPage?: Maybe<DeleteMutationResponse>;
   deleteCategory?: Maybe<DeleteMutationResponse>;
   deleteGlobal?: Maybe<DeleteMutationResponse>;
   deleteHomepage?: Maybe<DeleteMutationResponse>;
@@ -1213,6 +1293,7 @@ export interface Mutation {
   deleteReviewWorkflowsWorkflow?: Maybe<DeleteMutationResponse>;
   deleteReviewWorkflowsWorkflowStage?: Maybe<DeleteMutationResponse>;
   deleteService?: Maybe<DeleteMutationResponse>;
+  deleteTag?: Maybe<DeleteMutationResponse>;
   deleteUploadFile?: Maybe<UploadFile>;
   /** Delete an existing role */
   deleteUsersPermissionsRole?: Maybe<UsersPermissionsDeleteRolePayload>;
@@ -1228,10 +1309,10 @@ export interface Mutation {
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
   updateAbout?: Maybe<About>;
-  updateArticle?: Maybe<Article>;
   updateAuthor?: Maybe<Author>;
   updateBlog?: Maybe<Blog>;
   updateCaseStudy?: Maybe<CaseStudy>;
+  updateCaseStudyLandingPage?: Maybe<CaseStudyLandingPage>;
   updateCategory?: Maybe<Category>;
   updateGlobal?: Maybe<Global>;
   updateHomepage?: Maybe<Homepage>;
@@ -1239,6 +1320,7 @@ export interface Mutation {
   updateReviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>;
   updateReviewWorkflowsWorkflowStage?: Maybe<ReviewWorkflowsWorkflowStage>;
   updateService?: Maybe<Service>;
+  updateTag?: Maybe<Tag>;
   updateUploadFile: UploadFile;
   /** Update an existing role */
   updateUsersPermissionsRole?: Maybe<UsersPermissionsUpdateRolePayload>;
@@ -1251,12 +1333,6 @@ export interface MutationChangePasswordArgs {
   currentPassword: Scalars['String']['input'];
   password: Scalars['String']['input'];
   passwordConfirmation: Scalars['String']['input'];
-}
-
-
-export interface MutationCreateArticleArgs {
-  data: ArticleInput;
-  status?: InputMaybe<PublicationStatus>;
 }
 
 
@@ -1296,6 +1372,12 @@ export interface MutationCreateReviewWorkflowsWorkflowStageArgs {
 }
 
 
+export interface MutationCreateTagArgs {
+  data: TagInput;
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
 export interface MutationCreateUsersPermissionsRoleArgs {
   data: UsersPermissionsRoleInput;
 }
@@ -1303,11 +1385,6 @@ export interface MutationCreateUsersPermissionsRoleArgs {
 
 export interface MutationCreateUsersPermissionsUserArgs {
   data: UsersPermissionsUserInput;
-}
-
-
-export interface MutationDeleteArticleArgs {
-  documentId: Scalars['ID']['input'];
 }
 
 
@@ -1337,6 +1414,11 @@ export interface MutationDeleteReviewWorkflowsWorkflowArgs {
 
 
 export interface MutationDeleteReviewWorkflowsWorkflowStageArgs {
+  documentId: Scalars['ID']['input'];
+}
+
+
+export interface MutationDeleteTagArgs {
   documentId: Scalars['ID']['input'];
 }
 
@@ -1389,13 +1471,6 @@ export interface MutationUpdateAboutArgs {
 }
 
 
-export interface MutationUpdateArticleArgs {
-  data: ArticleInput;
-  documentId: Scalars['ID']['input'];
-  status?: InputMaybe<PublicationStatus>;
-}
-
-
 export interface MutationUpdateAuthorArgs {
   data: AuthorInput;
   documentId: Scalars['ID']['input'];
@@ -1413,6 +1488,12 @@ export interface MutationUpdateBlogArgs {
 export interface MutationUpdateCaseStudyArgs {
   data: CaseStudyInput;
   documentId: Scalars['ID']['input'];
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface MutationUpdateCaseStudyLandingPageArgs {
+  data: CaseStudyLandingPageInput;
   status?: InputMaybe<PublicationStatus>;
 }
 
@@ -1458,6 +1539,13 @@ export interface MutationUpdateReviewWorkflowsWorkflowStageArgs {
 
 export interface MutationUpdateServiceArgs {
   data: ServiceInput;
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface MutationUpdateTagArgs {
+  data: TagInput;
+  documentId: Scalars['ID']['input'];
   status?: InputMaybe<PublicationStatus>;
 }
 
@@ -1533,9 +1621,6 @@ export type PublicationStatus =
 export interface Query {
   __typename?: 'Query';
   about?: Maybe<About>;
-  article?: Maybe<Article>;
-  articles: Array<Maybe<Article>>;
-  articles_connection?: Maybe<ArticleEntityResponseCollection>;
   author?: Maybe<Author>;
   authors: Array<Maybe<Author>>;
   authors_connection?: Maybe<AuthorEntityResponseCollection>;
@@ -1545,6 +1630,7 @@ export interface Query {
   caseStudies: Array<Maybe<CaseStudy>>;
   caseStudies_connection?: Maybe<CaseStudyEntityResponseCollection>;
   caseStudy?: Maybe<CaseStudy>;
+  caseStudyLandingPage?: Maybe<CaseStudyLandingPage>;
   categories: Array<Maybe<Category>>;
   categories_connection?: Maybe<CategoryEntityResponseCollection>;
   category?: Maybe<Category>;
@@ -1562,6 +1648,9 @@ export interface Query {
   reviewWorkflowsWorkflows: Array<Maybe<ReviewWorkflowsWorkflow>>;
   reviewWorkflowsWorkflows_connection?: Maybe<ReviewWorkflowsWorkflowEntityResponseCollection>;
   service?: Maybe<Service>;
+  tag?: Maybe<Tag>;
+  tags: Array<Maybe<Tag>>;
+  tags_connection?: Maybe<TagEntityResponseCollection>;
   uploadFile?: Maybe<UploadFile>;
   uploadFiles: Array<Maybe<UploadFile>>;
   uploadFiles_connection?: Maybe<UploadFileEntityResponseCollection>;
@@ -1575,28 +1664,6 @@ export interface Query {
 
 
 export interface QueryAboutArgs {
-  status?: InputMaybe<PublicationStatus>;
-}
-
-
-export interface QueryArticleArgs {
-  documentId: Scalars['ID']['input'];
-  status?: InputMaybe<PublicationStatus>;
-}
-
-
-export interface QueryArticlesArgs {
-  filters?: InputMaybe<ArticleFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  status?: InputMaybe<PublicationStatus>;
-}
-
-
-export interface QueryArticles_ConnectionArgs {
-  filters?: InputMaybe<ArticleFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   status?: InputMaybe<PublicationStatus>;
 }
 
@@ -1663,6 +1730,11 @@ export interface QueryCaseStudies_ConnectionArgs {
 
 export interface QueryCaseStudyArgs {
   documentId: Scalars['ID']['input'];
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface QueryCaseStudyLandingPageArgs {
   status?: InputMaybe<PublicationStatus>;
 }
 
@@ -1771,6 +1843,28 @@ export interface QueryReviewWorkflowsWorkflows_ConnectionArgs {
 
 
 export interface QueryServiceArgs {
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface QueryTagArgs {
+  documentId: Scalars['ID']['input'];
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface QueryTagsArgs {
+  filters?: InputMaybe<TagFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface QueryTags_ConnectionArgs {
+  filters?: InputMaybe<TagFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   status?: InputMaybe<PublicationStatus>;
 }
 
@@ -1986,6 +2080,81 @@ export interface StringFilterInput {
   null?: InputMaybe<Scalars['Boolean']['input']>;
   or?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   startsWith?: InputMaybe<Scalars['String']['input']>;
+}
+
+export interface Tag {
+  __typename?: 'Tag';
+  blogs: Array<Maybe<Blog>>;
+  blogs_connection?: Maybe<BlogRelationResponseCollection>;
+  case_studies: Array<Maybe<CaseStudy>>;
+  case_studies_connection?: Maybe<CaseStudyRelationResponseCollection>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  documentId: Scalars['ID']['output'];
+  name?: Maybe<Scalars['String']['output']>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+}
+
+
+export interface TagBlogsArgs {
+  filters?: InputMaybe<BlogFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface TagBlogs_ConnectionArgs {
+  filters?: InputMaybe<BlogFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface TagCase_StudiesArgs {
+  filters?: InputMaybe<CaseStudyFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface TagCase_Studies_ConnectionArgs {
+  filters?: InputMaybe<CaseStudyFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface TagEntityResponseCollection {
+  __typename?: 'TagEntityResponseCollection';
+  nodes: Array<Tag>;
+  pageInfo: Pagination;
+}
+
+export interface TagFiltersInput {
+  and?: InputMaybe<Array<InputMaybe<TagFiltersInput>>>;
+  blogs?: InputMaybe<BlogFiltersInput>;
+  case_studies?: InputMaybe<CaseStudyFiltersInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  description?: InputMaybe<StringFilterInput>;
+  documentId?: InputMaybe<IdFilterInput>;
+  name?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<TagFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<TagFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+}
+
+export interface TagInput {
+  blogs?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  case_studies?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+}
+
+export interface TagRelationResponseCollection {
+  __typename?: 'TagRelationResponseCollection';
+  nodes: Array<Tag>;
 }
 
 export interface UploadFile {
@@ -2301,10 +2470,22 @@ export type CaseStudiesQuery = { __typename?: 'Query', caseStudies: Array<{ __ty
       | { __typename: 'Error', message?: string | null, code: string }
      | null> | null } | null> };
 
-export type AllCaseStudiesQueryVariables = Exact<{ [key: string]: never; }>;
+export type CaseStudyLandingPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AllCaseStudiesQuery = { __typename?: 'Query', caseStudies: Array<{ __typename: 'CaseStudy', title?: string | null, slug?: string | null, description?: string | null, publishedAt?: any | null, documentId: string, thumbnail?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null } | null> };
+export type CaseStudyLandingPageQuery = { __typename?: 'Query', caseStudyLandingPage?: { __typename?: 'CaseStudyLandingPage', heroSection?: { __typename?: 'ComponentSingleTypeCaseStudyPageHeroSection', heading?: string | null, description?: string | null, button?: { __typename?: 'ComponentElementsButtons', name?: string | null, href?: string | null } | null } | null, misc?: { __typename?: 'ComponentSingleTypeCaseStudyPageMiscellaneous', label?: string | null, heading?: string | null, description?: string | null, button?: { __typename?: 'ComponentElementsButtons', name?: string | null, href?: string | null } | null } | null } | null };
+
+export type AllCaseStudiesQueryVariables = Exact<{
+  filters?: InputMaybe<CaseStudyFiltersInput>;
+}>;
+
+
+export type AllCaseStudiesQuery = { __typename?: 'Query', caseStudies: Array<{ __typename: 'CaseStudy', documentId: string, title?: string | null, description?: string | null, slug?: string | null, thumbnail?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null, categories: Array<{ __typename?: 'Category', documentId: string, name?: string | null } | null>, tags: Array<{ __typename?: 'Tag', documentId: string, name?: string | null } | null> } | null> };
+
+export type CategoriesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type CategoriesQuery = { __typename?: 'Query', categories: Array<{ __typename?: 'Category', documentId: string, name?: string | null, description?: string | null, slug?: string | null } | null> };
 
 export type ServiceQueryVariables = Exact<{ [key: string]: never; }>;
 

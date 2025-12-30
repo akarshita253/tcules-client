@@ -1,36 +1,21 @@
-import { Cards } from "@/components/shared/Cards";
-import { AllCaseStudiesQuery } from "@/features/case_studies/types/caseStudyTypes";
+import CaseStudyListingContainer from "@/features/case_studies/listing/CaseStudyListingContainer";
+import { CaseStudyLandingPageQuery } from "@/lib/codegen/graphql";
+import { GET_CASESTUDY_LANDING_PAGE_DATA } from "@/lib/queries/getCaseStudies";
 import { strapiRequest } from "@/lib/utils";
-import Link from "next/link";
-import { GET_ALL_CASE_STUDIES } from "@/lib/queries/getCaseStudies";
 import { notFound } from "next/navigation";
 
 const CaseStudyList = async () => {
-  const data = await strapiRequest<AllCaseStudiesQuery>(GET_ALL_CASE_STUDIES);
-    if (!data) {
-      notFound();
-    }
-  const allCaseStudies = data?.caseStudies;
+
+  const response = await strapiRequest<CaseStudyLandingPageQuery>(GET_CASESTUDY_LANDING_PAGE_DATA);
+const caseStudyLandingPageData = response.caseStudyLandingPage;
+
+  if (!response) {
+    notFound();
+  }
+
   return (
     <main>
-      {allCaseStudies?.map((caseStudy) => {
-        const imageUrl = {
-          url: caseStudy.thumbnail?.url || "",
-          alternativeText: caseStudy.thumbnail?.alternativeText || "",
-          width: caseStudy.thumbnail?.width ? parseInt(caseStudy.thumbnail.width, 10) : undefined,
-          height: caseStudy.thumbnail?.height ? parseInt(caseStudy.thumbnail.height, 10) : undefined
-        };
-        return (
-          <Link key={caseStudy.slug} href={`/case-studies/${caseStudy.slug}`}>
-            <Cards
-              title={caseStudy.title || ""}
-              createdAt={caseStudy.publishedAt}
-              description={caseStudy.description || ""}
-              imageUrl={imageUrl}
-            />
-          </Link>
-        );  
-      })}
+      <CaseStudyListingContainer caseStudyLandingPageData={caseStudyLandingPageData!}/>
     </main>
   );
 };

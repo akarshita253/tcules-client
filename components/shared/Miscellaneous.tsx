@@ -1,12 +1,12 @@
 import Section from "@/components/global/Section";
 import { buttonVariants } from "@/components/ui/button";
-import { ServiceQuery } from "@/lib/codegen/graphql";
+import { CaseStudyLandingPageQuery, ServiceQuery } from "@/lib/codegen/graphql";
 import Link from "next/link";
 
 const Miscellaneous = ({
   miscSectionData,
 }: {
-  miscSectionData: NonNullable<ServiceQuery["service"]>["miscSection"];
+  miscSectionData: NonNullable<ServiceQuery["service"]>["miscSection"] | NonNullable<CaseStudyLandingPageQuery["caseStudyLandingPage"]>["misc"];
 }) => {
   return (
     <Section>

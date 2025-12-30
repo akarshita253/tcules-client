@@ -124,21 +124,63 @@ export const CASE_STUDY_QUERY = gql`
   }
 `;
 
-export const GET_ALL_CASE_STUDIES = gql`
-  query AllCaseStudies {
-    caseStudies {
-      __typename
-      title
-      slug
-      thumbnail {
-        alternativeText
-        url
-        width
-        height
-      }
+export const GET_CASESTUDY_LANDING_PAGE_DATA = gql`
+query CaseStudyLandingPage {
+  caseStudyLandingPage {
+    heroSection {
+      heading
       description
-      publishedAt
+      button {
+        name
+        href
+      }
+    }  
+    misc {
+      label
+      heading
+      description
+      button {
+        name
+        href
+      }
+    }
+  }
+}
+`
+
+export const GET_ALL_CASE_STUDIES = gql`
+  query AllCaseStudies($filters: CaseStudyFiltersInput) {
+  caseStudies(filters: $filters) {
+    __typename
+    documentId
+    title
+    description
+    thumbnail {
+      url
+      width
+      height
+      alternativeText
+    }
+    slug
+    categories {
       documentId
+      name
+    }
+    tags {
+      documentId
+      name
+    }
+  }
+}
+`;
+
+export const GET_CASESTUDY_CATEGORIES = gql`
+  query Categories {
+    categories {
+      documentId
+      name
+      description
+      slug
     }
   }
 `;
