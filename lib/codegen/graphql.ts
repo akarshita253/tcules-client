@@ -628,6 +628,132 @@ export type ComponentElementsPointsInput = {
   listText?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type ComponentHowWeWorkCardDetails = {
+  __typename?: 'ComponentHowWeWorkCardDetails';
+  id: Scalars['ID']['output'];
+};
+
+export type ComponentHowWeWorkCards = {
+  __typename?: 'ComponentHowWeWorkCards';
+  button?: Maybe<ComponentElementsLink>;
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  points?: Maybe<Array<Maybe<ComponentElementsPoints>>>;
+};
+
+
+export type ComponentHowWeWorkCardsPointsArgs = {
+  filters?: InputMaybe<ComponentElementsPointsFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type ComponentHowWeWorkCardsFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentHowWeWorkCardsFiltersInput>>>;
+  button?: InputMaybe<ComponentElementsLinkFiltersInput>;
+  heading?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentHowWeWorkCardsFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentHowWeWorkCardsFiltersInput>>>;
+  points?: InputMaybe<ComponentElementsPointsFiltersInput>;
+};
+
+export type ComponentHowWeWorkCardsInput = {
+  button?: InputMaybe<ComponentElementsLinkInput>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  points?: InputMaybe<Array<InputMaybe<ComponentElementsPointsInput>>>;
+};
+
+export type ComponentHowWeWorkHowWeWorkHeroSection = {
+  __typename?: 'ComponentHowWeWorkHowWeWorkHeroSection';
+  button?: Maybe<Array<Maybe<ComponentElementsButtons>>>;
+  description?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+};
+
+
+export type ComponentHowWeWorkHowWeWorkHeroSectionButtonArgs = {
+  filters?: InputMaybe<ComponentElementsButtonsFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type ComponentHowWeWorkHowWeWorkHeroSectionInput = {
+  button?: InputMaybe<Array<InputMaybe<ComponentElementsButtonsInput>>>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type ComponentHowWeWorkLowFrictionWays = {
+  __typename?: 'ComponentHowWeWorkLowFrictionWays';
+  details?: Maybe<Array<Maybe<ComponentHowWeWorkCards>>>;
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+};
+
+
+export type ComponentHowWeWorkLowFrictionWaysDetailsArgs = {
+  filters?: InputMaybe<ComponentHowWeWorkCardsFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type ComponentHowWeWorkLowFrictionWaysInput = {
+  details?: InputMaybe<Array<InputMaybe<ComponentHowWeWorkCardsInput>>>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type ComponentHowWeWorkRightDetails = {
+  __typename?: 'ComponentHowWeWorkRightDetails';
+  description?: Maybe<Array<Maybe<ComponentElementsPoints>>>;
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+};
+
+
+export type ComponentHowWeWorkRightDetailsDescriptionArgs = {
+  filters?: InputMaybe<ComponentElementsPointsFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type ComponentHowWeWorkRightDetailsFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentHowWeWorkRightDetailsFiltersInput>>>;
+  description?: InputMaybe<ComponentElementsPointsFiltersInput>;
+  heading?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentHowWeWorkRightDetailsFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentHowWeWorkRightDetailsFiltersInput>>>;
+};
+
+export type ComponentHowWeWorkRightDetailsInput = {
+  description?: InputMaybe<Array<InputMaybe<ComponentElementsPointsInput>>>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type ComponentHowWeWorkRightStartingPoint = {
+  __typename?: 'ComponentHowWeWorkRightStartingPoint';
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  leftCard?: Maybe<Array<Maybe<ComponentSharedCard>>>;
+};
+
+
+export type ComponentHowWeWorkRightStartingPointLeftCardArgs = {
+  filters?: InputMaybe<ComponentSharedCardFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type ComponentHowWeWorkRightStartingPointInput = {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  leftCard?: InputMaybe<Array<InputMaybe<ComponentSharedCardInput>>>;
+};
+
 export type ComponentLegalDetails = {
   __typename?: 'ComponentLegalDetails';
   description?: Maybe<Scalars['String']['output']>;
@@ -871,9 +997,11 @@ export type ComponentServiceWhyTeamHireUsInput = {
 
 export type ComponentSharedCard = {
   __typename?: 'ComponentSharedCard';
+  button?: Maybe<ComponentElementsButtons>;
   cardImage?: Maybe<UploadFile>;
   cardTiles?: Maybe<Array<Maybe<ComponentSharedTiles>>>;
   description?: Maybe<Scalars['JSON']['output']>;
+  details?: Maybe<Array<Maybe<ComponentHowWeWorkRightDetails>>>;
   heading?: Maybe<Scalars['String']['output']>;
   icon?: Maybe<UploadFile>;
   id: Scalars['ID']['output'];
@@ -889,6 +1017,13 @@ export type ComponentSharedCardCardTilesArgs = {
 };
 
 
+export type ComponentSharedCardDetailsArgs = {
+  filters?: InputMaybe<ComponentHowWeWorkRightDetailsFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
 export type ComponentSharedCardListArgs = {
   filters?: InputMaybe<ComponentElementsPointsFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
@@ -897,8 +1032,10 @@ export type ComponentSharedCardListArgs = {
 
 export type ComponentSharedCardFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSharedCardFiltersInput>>>;
+  button?: InputMaybe<ComponentElementsButtonsFiltersInput>;
   cardTiles?: InputMaybe<ComponentSharedTilesFiltersInput>;
   description?: InputMaybe<JsonFilterInput>;
+  details?: InputMaybe<ComponentHowWeWorkRightDetailsFiltersInput>;
   heading?: InputMaybe<StringFilterInput>;
   isIconVisible?: InputMaybe<BooleanFilterInput>;
   list?: InputMaybe<ComponentElementsPointsFiltersInput>;
@@ -907,9 +1044,11 @@ export type ComponentSharedCardFiltersInput = {
 };
 
 export type ComponentSharedCardInput = {
+  button?: InputMaybe<ComponentElementsButtonsInput>;
   cardImage?: InputMaybe<Scalars['ID']['input']>;
   cardTiles?: InputMaybe<Array<InputMaybe<ComponentSharedTilesInput>>>;
   description?: InputMaybe<Scalars['JSON']['input']>;
+  details?: InputMaybe<Array<InputMaybe<ComponentHowWeWorkRightDetailsInput>>>;
   heading?: InputMaybe<Scalars['String']['input']>;
   icon?: InputMaybe<Scalars['ID']['input']>;
   id?: InputMaybe<Scalars['ID']['input']>;
@@ -1144,7 +1283,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']['input']>;
 };
 
-export type GenericMorph = About | Author | Blog | CaseStudy | CaseStudyLandingPage | Category | ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCaseStudyPositioning | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesCompanyProfile | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesProblemAndSolution | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentElementsButtons | ComponentElementsElements | ComponentElementsLink | ComponentElementsPoints | ComponentLegalDetails | ComponentNavbarNavbarLevel1Group | ComponentNavbarNavbarLevel2Group | ComponentServiceExploreRecentWork | ComponentServiceHeroSection | ComponentServiceHowWeWork | ComponentServiceOurOperatingPhilosophy | ComponentServiceServiceMisc | ComponentServiceWhatWeDesign | ComponentServiceWhyTeamHireUs | ComponentSharedCard | ComponentSharedMedia | ComponentSharedProfile | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | ComponentSharedSlider | ComponentSharedTiles | ComponentSingleTypeCaseStudyPageHeroSection | ComponentSingleTypeCaseStudyPageMiscellaneous | Global | Homepage | I18NLocale | Navbar | PrivacyPolicy | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Service | Tag | TermsOfUse | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = About | Author | Blog | CaseStudy | CaseStudyLandingPage | Category | ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCaseStudyPositioning | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesCompanyProfile | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesProblemAndSolution | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentElementsButtons | ComponentElementsElements | ComponentElementsLink | ComponentElementsPoints | ComponentHowWeWorkCardDetails | ComponentHowWeWorkCards | ComponentHowWeWorkHowWeWorkHeroSection | ComponentHowWeWorkLowFrictionWays | ComponentHowWeWorkRightDetails | ComponentHowWeWorkRightStartingPoint | ComponentLegalDetails | ComponentNavbarNavbarLevel1Group | ComponentNavbarNavbarLevel2Group | ComponentServiceExploreRecentWork | ComponentServiceHeroSection | ComponentServiceHowWeWork | ComponentServiceOurOperatingPhilosophy | ComponentServiceServiceMisc | ComponentServiceWhatWeDesign | ComponentServiceWhyTeamHireUs | ComponentSharedCard | ComponentSharedMedia | ComponentSharedProfile | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | ComponentSharedSlider | ComponentSharedTiles | ComponentSingleTypeCaseStudyPageHeroSection | ComponentSingleTypeCaseStudyPageMiscellaneous | Global | Homepage | HowWeWork | I18NLocale | Navbar | PrivacyPolicy | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Service | Tag | TermsOfUse | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type Global = {
   __typename?: 'Global';
@@ -1176,6 +1315,26 @@ export type Homepage = {
 
 export type HomepageInput = {
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+};
+
+export type HowWeWork = {
+  __typename?: 'HowWeWork';
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  documentId: Scalars['ID']['output'];
+  heroSection?: Maybe<ComponentHowWeWorkHowWeWorkHeroSection>;
+  miscSection?: Maybe<ComponentSingleTypeCaseStudyPageMiscellaneous>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  secondSection?: Maybe<ComponentHowWeWorkRightStartingPoint>;
+  thirdSection?: Maybe<ComponentHowWeWorkLowFrictionWays>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type HowWeWorkInput = {
+  heroSection?: InputMaybe<ComponentHowWeWorkHowWeWorkHeroSectionInput>;
+  miscSection?: InputMaybe<ComponentSingleTypeCaseStudyPageMiscellaneousInput>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  secondSection?: InputMaybe<ComponentHowWeWorkRightStartingPointInput>;
+  thirdSection?: InputMaybe<ComponentHowWeWorkLowFrictionWaysInput>;
 };
 
 export type I18NLocale = {
@@ -1304,6 +1463,7 @@ export type Mutation = {
   deleteCategory?: Maybe<DeleteMutationResponse>;
   deleteGlobal?: Maybe<DeleteMutationResponse>;
   deleteHomepage?: Maybe<DeleteMutationResponse>;
+  deleteHowWeWork?: Maybe<DeleteMutationResponse>;
   deleteNavbar?: Maybe<DeleteMutationResponse>;
   deletePrivacyPolicy?: Maybe<DeleteMutationResponse>;
   deleteReviewWorkflowsWorkflow?: Maybe<DeleteMutationResponse>;
@@ -1333,6 +1493,7 @@ export type Mutation = {
   updateCategory?: Maybe<Category>;
   updateGlobal?: Maybe<Global>;
   updateHomepage?: Maybe<Homepage>;
+  updateHowWeWork?: Maybe<HowWeWork>;
   updateNavbar?: Maybe<Navbar>;
   updatePrivacyPolicy?: Maybe<PrivacyPolicy>;
   updateReviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>;
@@ -1536,6 +1697,12 @@ export type MutationUpdateHomepageArgs = {
 };
 
 
+export type MutationUpdateHowWeWorkArgs = {
+  data: HowWeWorkInput;
+  status?: InputMaybe<PublicationStatus>;
+};
+
+
 export type MutationUpdateNavbarArgs = {
   data: NavbarInput;
   status?: InputMaybe<PublicationStatus>;
@@ -1688,6 +1855,7 @@ export type Query = {
   category?: Maybe<Category>;
   global?: Maybe<Global>;
   homepage?: Maybe<Homepage>;
+  howWeWork?: Maybe<HowWeWork>;
   i18NLocale?: Maybe<I18NLocale>;
   i18NLocales: Array<Maybe<I18NLocale>>;
   i18NLocales_connection?: Maybe<I18NLocaleEntityResponseCollection>;
@@ -1821,6 +1989,11 @@ export type QueryGlobalArgs = {
 
 
 export type QueryHomepageArgs = {
+  status?: InputMaybe<PublicationStatus>;
+};
+
+
+export type QueryHowWeWorkArgs = {
   status?: InputMaybe<PublicationStatus>;
 };
 
@@ -2576,6 +2749,11 @@ export type ServiceQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type ServiceQuery = { __typename?: 'Query', service?: { __typename?: 'Service', hero?: { __typename: 'ComponentServiceHeroSection', heading?: string | null, description?: string | null, label?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null, heroSectionButton?: Array<{ __typename?: 'ComponentElementsButtons', name?: string | null, href?: string | null } | null> | null } | null, whyTeamHireSection?: { __typename: 'ComponentServiceWhyTeamHireUs', heading?: string | null, whyHireUsCards?: Array<{ __typename?: 'ComponentSharedCard', id: string, heading?: string | null, description?: any | null, icon?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null, list?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null } | null> | null } | null, whatWeDesignSection?: { __typename: 'ComponentServiceWhatWeDesign', heading?: string | null, whatWeDesignCards?: Array<{ __typename?: 'ComponentSharedCard', heading?: string | null, icon?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null, cardTiles?: Array<{ __typename?: 'ComponentSharedTiles', id: string, heading?: string | null, description?: string | null } | null> | null } | null> | null, bottomDetails?: { __typename?: 'ComponentSharedCard', heading?: string | null, description?: any | null, cardImage?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null } | null } | null, operatingPhilosophySection?: { __typename: 'ComponentServiceOurOperatingPhilosophy', heading?: string | null, operatingPhilosophyCards?: Array<{ __typename?: 'ComponentSharedCard', id: string, heading?: string | null, description?: any | null, cardImage?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null } | null> | null } | null, howWeWorkSection?: { __typename: 'ComponentServiceHowWeWork', heading?: string | null, labels?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null, link?: { __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null } | null, howWeWorkCards?: Array<{ __typename?: 'ComponentSharedCard', id: string, heading?: string | null, cardTiles?: Array<{ __typename?: 'ComponentSharedTiles', id: string, heading?: string | null, description?: string | null } | null> | null } | null> | null } | null, recentWorkSection?: { __typename: 'ComponentServiceExploreRecentWork', heading?: string | null, exploreLink?: { __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null } | null, exploreCards?: Array<{ __typename?: 'ComponentSharedCard', id: string, heading?: string | null, description?: any | null, cardImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, cardTiles?: Array<{ __typename?: 'ComponentSharedTiles', id: string, heading?: string | null, description?: string | null } | null> | null, list?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null } | null> | null } | null, miscSection?: { __typename: 'ComponentServiceServiceMisc', heading?: string | null, description?: string | null, label?: string | null, button?: { __typename?: 'ComponentElementsButtons', id: string, name?: string | null, href?: string | null } | null } | null } | null };
 
+export type HowWeWorkQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type HowWeWorkQuery = { __typename?: 'Query', howWeWork?: { __typename?: 'HowWeWork', heroSection?: { __typename?: 'ComponentHowWeWorkHowWeWorkHeroSection', heading?: string | null, description?: string | null, button?: Array<{ __typename?: 'ComponentElementsButtons', name?: string | null, href?: string | null } | null> | null } | null, secondSection?: { __typename?: 'ComponentHowWeWorkRightStartingPoint', heading?: string | null, leftCard?: Array<{ __typename?: 'ComponentSharedCard', id: string, heading?: string | null, description?: any | null, button?: { __typename?: 'ComponentElementsButtons', name?: string | null, href?: string | null } | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, url: string, height?: number | null } | null, list?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null, details?: Array<{ __typename?: 'ComponentHowWeWorkRightDetails', heading?: string | null, description?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null } | null> | null } | null> | null } | null, thirdSection?: { __typename?: 'ComponentHowWeWorkLowFrictionWays', heading?: string | null, details?: Array<{ __typename?: 'ComponentHowWeWorkCards', id: string, heading?: string | null, points?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null, button?: { __typename?: 'ComponentElementsLink', name?: string | null, description?: string | null } | null } | null> | null } | null, miscSection?: { __typename?: 'ComponentSingleTypeCaseStudyPageMiscellaneous', label?: string | null, heading?: string | null, description?: string | null, button?: { __typename?: 'ComponentElementsButtons', name?: string | null, href?: string | null } | null } | null } | null };
+
 export type PrivacyPolicyQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2600,5 +2778,6 @@ export const CaseStudyLandingPageDocument = {"kind":"Document","definitions":[{"
 export const AllCaseStudiesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AllCaseStudies"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"filters"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"CaseStudyFiltersInput"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"caseStudies"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filters"},"value":{"kind":"Variable","name":{"kind":"Name","value":"filters"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"documentId"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"thumbnail"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"categories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"documentId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","name":{"kind":"Name","value":"tags"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"documentId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]} as unknown as DocumentNode<AllCaseStudiesQuery, AllCaseStudiesQueryVariables>;
 export const CategoriesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Categories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"categories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"documentId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}}]}}]} as unknown as DocumentNode<CategoriesQuery, CategoriesQueryVariables>;
 export const ServiceDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Service"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"service"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hero"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"label"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"listText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"heroSectionButton"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"href"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"whyTeamHireSection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"whyHireUsCards"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"icon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"list"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"listText"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"whatWeDesignSection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"whatWeDesignCards"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"icon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"cardTiles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"bottomDetails"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"cardImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"operatingPhilosophySection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"operatingPhilosophyCards"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"cardImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"howWeWorkSection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"labels"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"listText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"link"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"href"}}]}},{"kind":"Field","name":{"kind":"Name","value":"howWeWorkCards"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"cardTiles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"recentWorkSection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"exploreLink"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"href"}}]}},{"kind":"Field","name":{"kind":"Name","value":"exploreCards"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"cardImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}},{"kind":"Field","name":{"kind":"Name","value":"cardTiles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}},{"kind":"Field","name":{"kind":"Name","value":"list"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"listText"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"miscSection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"button"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"href"}}]}}]}}]}}]}}]} as unknown as DocumentNode<ServiceQuery, ServiceQueryVariables>;
+export const HowWeWorkDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"HowWeWork"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"howWeWork"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heroSection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"button"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"href"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"secondSection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"leftCard"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"button"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"href"}}]}},{"kind":"Field","name":{"kind":"Name","value":"icon"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}},{"kind":"Field","name":{"kind":"Name","value":"list"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"listText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"details"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"description"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"listText"}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"thirdSection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"details"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"points"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"listText"}}]}},{"kind":"Field","name":{"kind":"Name","value":"button"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"miscSection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"button"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"href"}}]}}]}}]}}]}}]} as unknown as DocumentNode<HowWeWorkQuery, HowWeWorkQueryVariables>;
 export const PrivacyPolicyDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"PrivacyPolicy"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"privacyPolicy"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}},{"kind":"Field","name":{"kind":"Name","value":"legalDescription"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ComponentLegalDetails"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]}}]}}]}}]} as unknown as DocumentNode<PrivacyPolicyQuery, PrivacyPolicyQueryVariables>;
 export const TermsOfUseDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"TermsOfUse"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"termsOfUse"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}},{"kind":"Field","name":{"kind":"Name","value":"legalDescription"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"InlineFragment","typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"ComponentLegalDetails"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"heading"}},{"kind":"Field","name":{"kind":"Name","value":"description"}}]}}]}}]}}]}}]} as unknown as DocumentNode<TermsOfUseQuery, TermsOfUseQueryVariables>;

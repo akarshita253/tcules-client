@@ -1,0 +1,71 @@
+import Image from "next/image";
+import Section from "@/components/global/Section";
+import { Block } from "@/components/global/Block";
+import Sub from "@/public/Sub2.png";
+import { Container } from "@/components/global/Container";
+import { CircleDot } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { HowWeWorkQuery } from "@/lib/codegen/graphql";
+
+const LowFrictionWaysSec = ({
+  lowFrictionWaysData,
+}: {
+  lowFrictionWaysData: NonNullable<
+    NonNullable<HowWeWorkQuery["howWeWork"]>["thirdSection"]
+  >;
+}) => {
+  return (
+    <Container className="md:grid grid-cols-12 gap-6">
+      <Block className="lg:col-start-2 col-start-1 lg:col-end-12 col-end-13">
+        <Section>
+          <h2 className="text-heading-xs text-neutral-800 mb-6">
+            {lowFrictionWaysData?.heading}
+          </h2>
+          <div className="flex flex-col justify-between gap-6">
+            {lowFrictionWaysData?.details &&
+              lowFrictionWaysData?.details.map((singleDetail) => {
+                return (
+                  <div
+                    className="p-[38px] bg-neutral-50 rounded-xl shadow-[0_4px_45.1px_0_rgba(0,0,0,0.03)] relative"
+                    key={singleDetail?.id}
+                  >
+                    <div className="absolute bottom-0">
+                      <Image src={Sub} alt="Sub" width={376} height={376} />
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-4 mb-6">
+                      <h3 className="text-heading-xs text-neutral-800 z-10">
+                        {singleDetail?.heading}
+                      </h3>
+                      <div className="flex justify-between flex-col gap-4">
+                        {singleDetail?.points &&
+                          singleDetail?.points.map((singlePoint) => {
+                            return (
+                              <p
+                                className="flex gap-3 items-center text-label-xl z-10"
+                                key={singlePoint?.id}
+                              >
+                                <span>
+                                  <CircleDot className="text-neutral-500" size={16}/>
+                                </span>
+                                <span>{singlePoint?.listText}</span>
+                              </p>
+                            );
+                          })}
+                      </div>
+                    </div>
+                    <div className="flex justify-end">
+                      <Button className="uppercase bg-neutral-900 text-neutral-50 ">
+                        {singleDetail?.button?.name}
+                      </Button>
+                    </div>
+                  </div>
+                );
+              })}
+          </div>
+        </Section>
+      </Block>
+    </Container>
+  );
+};
+
+export default LowFrictionWaysSec;
