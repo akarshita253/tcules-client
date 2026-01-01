@@ -1,14 +1,12 @@
-import Navbar from "@/components/global/Navbar";
+import { HomepageQuery } from "@/lib/codegen/graphql";
+import { HOME_PAGE_QUERY } from "@/lib/queries/getHomepage";
+import { strapiRequest } from "@/lib/utils";
+import HomePageContainer from "@/features/homepage/HomePageContainer";
 
-export default function Home() {
-  return (
-    <>
-      <Navbar />
-      <div className="flex min-h-screen bg-accent-300 items-center justify-center font-sans dark:bg-black">
-        <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">
-          Hello world!
-        </h1>
-      </div>
-    </>
-  );
+const Homepage = async ()=> {
+  const response = await strapiRequest<HomepageQuery>(HOME_PAGE_QUERY);
+  const homepageData = response.homepage;
+  return <HomePageContainer homepageData={homepageData!}/>
 }
+
+export default Homepage
