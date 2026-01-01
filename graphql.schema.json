@@ -17,6 +17,7 @@ export interface Scalars {
   CaseStudyCaseStudyContentsDynamicZoneInput: { input: any; output: any; }
   DateTime: { input: any; output: any; }
   JSON: { input: any; output: any; }
+  LabSingleTypeDetailSectionDynamicZoneInput: { input: any; output: any; }
   PrivacyPolicyLegalDescriptionDynamicZoneInput: { input: any; output: any; }
   TermsOfUseLegalDescriptionDynamicZoneInput: { input: any; output: any; }
 }
@@ -750,6 +751,20 @@ export interface ComponentHowWeWorkRightStartingPointInput {
   leftCard?: InputMaybe<Array<InputMaybe<ComponentSharedCardInput>>>;
 }
 
+export interface ComponentLabsCardSection {
+  __typename?: 'ComponentLabsCardSection';
+  cards?: Maybe<Array<Maybe<ComponentSharedCard>>>;
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+}
+
+
+export interface ComponentLabsCardSectionCardsArgs {
+  filters?: InputMaybe<ComponentSharedCardFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
 export interface ComponentLegalDetails {
   __typename?: 'ComponentLegalDetails';
   description?: Maybe<Scalars['String']['output']>;
@@ -1052,6 +1067,30 @@ export interface ComponentSharedCardInput {
   list?: InputMaybe<Array<InputMaybe<ComponentElementsPointsInput>>>;
 }
 
+export interface ComponentSharedHeroSection {
+  __typename?: 'ComponentSharedHeroSection';
+  button?: Maybe<Array<Maybe<ComponentElementsLink>>>;
+  description?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  highlightedDescription?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+}
+
+
+export interface ComponentSharedHeroSectionButtonArgs {
+  filters?: InputMaybe<ComponentElementsLinkFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface ComponentSharedHeroSectionInput {
+  button?: InputMaybe<Array<InputMaybe<ComponentElementsLinkInput>>>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  highlightedDescription?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+}
+
 export interface ComponentSharedMedia {
   __typename?: 'ComponentSharedMedia';
   file?: Maybe<UploadFile>;
@@ -1277,7 +1316,7 @@ export interface FloatFilterInput {
   startsWith?: InputMaybe<Scalars['Float']['input']>;
 }
 
-export type GenericMorph = About | Author | Blog | CaseStudy | CaseStudyLandingPage | Category | ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCaseStudyPositioning | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesCompanyProfile | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesProblemAndSolution | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentElementsButtons | ComponentElementsElements | ComponentElementsLink | ComponentElementsPoints | ComponentHowWeWorkCardDetails | ComponentHowWeWorkCards | ComponentHowWeWorkHowWeWorkHeroSection | ComponentHowWeWorkLowFrictionWays | ComponentHowWeWorkRightDetails | ComponentHowWeWorkRightStartingPoint | ComponentLegalDetails | ComponentNavbarNavbarLevel1Group | ComponentNavbarNavbarLevel2Group | ComponentServiceExploreRecentWork | ComponentServiceHeroSection | ComponentServiceHowWeWork | ComponentServiceOurOperatingPhilosophy | ComponentServiceServiceMisc | ComponentServiceWhatWeDesign | ComponentServiceWhyTeamHireUs | ComponentSharedCard | ComponentSharedMedia | ComponentSharedProfile | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | ComponentSharedSlider | ComponentSharedTiles | ComponentSingleTypeCaseStudyPageHeroSection | ComponentSingleTypeCaseStudyPageMiscellaneous | Global | Homepage | HowWeWork | I18NLocale | Navbar | PrivacyPolicy | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Service | Tag | TermsOfUse | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = About | Author | Blog | CaseStudy | CaseStudyLandingPage | Category | ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCaseStudyPositioning | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesCompanyProfile | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesProblemAndSolution | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentElementsButtons | ComponentElementsElements | ComponentElementsLink | ComponentElementsPoints | ComponentHowWeWorkCardDetails | ComponentHowWeWorkCards | ComponentHowWeWorkHowWeWorkHeroSection | ComponentHowWeWorkLowFrictionWays | ComponentHowWeWorkRightDetails | ComponentHowWeWorkRightStartingPoint | ComponentLabsCardSection | ComponentLegalDetails | ComponentNavbarNavbarLevel1Group | ComponentNavbarNavbarLevel2Group | ComponentServiceExploreRecentWork | ComponentServiceHeroSection | ComponentServiceHowWeWork | ComponentServiceOurOperatingPhilosophy | ComponentServiceServiceMisc | ComponentServiceWhatWeDesign | ComponentServiceWhyTeamHireUs | ComponentSharedCard | ComponentSharedHeroSection | ComponentSharedMedia | ComponentSharedProfile | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | ComponentSharedSlider | ComponentSharedTiles | ComponentSingleTypeCaseStudyPageHeroSection | ComponentSingleTypeCaseStudyPageMiscellaneous | Global | Homepage | HowWeWork | I18NLocale | LabSingleType | Navbar | PrivacyPolicy | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Service | Tag | TermsOfUse | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export interface Global {
   __typename?: 'Global';
@@ -1434,6 +1473,26 @@ export interface JsonFilterInput {
   startsWith?: InputMaybe<Scalars['JSON']['input']>;
 }
 
+export interface LabSingleType {
+  __typename?: 'LabSingleType';
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  detailSection?: Maybe<Array<Maybe<LabSingleTypeDetailSectionDynamicZone>>>;
+  documentId: Scalars['ID']['output'];
+  heroSection?: Maybe<ComponentSharedHeroSection>;
+  miscSection?: Maybe<ComponentServiceServiceMisc>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+}
+
+export type LabSingleTypeDetailSectionDynamicZone = ComponentLabsCardSection | Error;
+
+export interface LabSingleTypeInput {
+  detailSection?: InputMaybe<Array<Scalars['LabSingleTypeDetailSectionDynamicZoneInput']['input']>>;
+  heroSection?: InputMaybe<ComponentSharedHeroSectionInput>;
+  miscSection?: InputMaybe<ComponentServiceServiceMiscInput>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+}
+
 export interface Mutation {
   __typename?: 'Mutation';
   /** Change user password. Confirm with the current password. */
@@ -1458,6 +1517,7 @@ export interface Mutation {
   deleteGlobal?: Maybe<DeleteMutationResponse>;
   deleteHomepage?: Maybe<DeleteMutationResponse>;
   deleteHowWeWork?: Maybe<DeleteMutationResponse>;
+  deleteLabSingleType?: Maybe<DeleteMutationResponse>;
   deleteNavbar?: Maybe<DeleteMutationResponse>;
   deletePrivacyPolicy?: Maybe<DeleteMutationResponse>;
   deleteReviewWorkflowsWorkflow?: Maybe<DeleteMutationResponse>;
@@ -1488,6 +1548,7 @@ export interface Mutation {
   updateGlobal?: Maybe<Global>;
   updateHomepage?: Maybe<Homepage>;
   updateHowWeWork?: Maybe<HowWeWork>;
+  updateLabSingleType?: Maybe<LabSingleType>;
   updateNavbar?: Maybe<Navbar>;
   updatePrivacyPolicy?: Maybe<PrivacyPolicy>;
   updateReviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>;
@@ -1697,6 +1758,12 @@ export interface MutationUpdateHowWeWorkArgs {
 }
 
 
+export interface MutationUpdateLabSingleTypeArgs {
+  data: LabSingleTypeInput;
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
 export interface MutationUpdateNavbarArgs {
   data: NavbarInput;
   status?: InputMaybe<PublicationStatus>;
@@ -1852,6 +1919,7 @@ export interface Query {
   i18NLocale?: Maybe<I18NLocale>;
   i18NLocales: Array<Maybe<I18NLocale>>;
   i18NLocales_connection?: Maybe<I18NLocaleEntityResponseCollection>;
+  labSingleType?: Maybe<LabSingleType>;
   me?: Maybe<UsersPermissionsMe>;
   navbar?: Maybe<Navbar>;
   privacyPolicy?: Maybe<PrivacyPolicy>;
@@ -2009,6 +2077,11 @@ export interface QueryI18NLocales_ConnectionArgs {
   filters?: InputMaybe<I18NLocaleFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface QueryLabSingleTypeArgs {
   status?: InputMaybe<PublicationStatus>;
 }
 
@@ -2736,6 +2809,14 @@ export type CategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type CategoriesQuery = { __typename?: 'Query', categories: Array<{ __typename?: 'Category', documentId: string, name?: string | null, description?: string | null, slug?: string | null } | null> };
+
+export type LabSingleTypeQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type LabSingleTypeQuery = { __typename?: 'Query', labSingleType?: { __typename?: 'LabSingleType', heroSection?: { __typename?: 'ComponentSharedHeroSection', heading?: string | null, description?: string | null, highlightedDescription?: string | null, button?: Array<{ __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null } | null> | null } | null, detailSection?: Array<
+      | { __typename: 'ComponentLabsCardSection', id: string, heading?: string | null, cards?: Array<{ __typename?: 'ComponentSharedCard', id: string, heading?: string | null, description?: any | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, url: string, height?: number | null } | null, list?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null, cardImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, cardTiles?: Array<{ __typename?: 'ComponentSharedTiles', id: string, heading?: string | null, description?: string | null } | null> | null } | null> | null }
+      | { __typename?: 'Error' }
+     | null> | null, miscSection?: { __typename?: 'ComponentServiceServiceMisc', label?: string | null, heading?: string | null, description?: string | null, button?: { __typename?: 'ComponentElementsButtons', name?: string | null, href?: string | null } | null } | null } | null };
 
 export type ServiceQueryVariables = Exact<{ [key: string]: never; }>;
 

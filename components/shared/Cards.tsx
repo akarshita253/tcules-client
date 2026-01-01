@@ -15,7 +15,7 @@ interface CardProps {
   altText?: string;
 }
 
-export function Cards({ imageUrl, title, createdAt, description }: CardProps) {
+export function Cards({ imageUrl, title, createdAt, description="" }: CardProps) {
 
   return (
     <Card className="w-full sm:max-w-sm overflow-hidden shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
@@ -32,6 +32,7 @@ export function Cards({ imageUrl, title, createdAt, description }: CardProps) {
       <CardContent className="px-6 space-y-3">
         <h3 className="text-heading-2xs leading-[120%]">{title}</h3>
         <p className="text-label-md text-neutral-600">{formatDate(createdAt)}</p>
+        {description && <p className="text-label-md text-neutral-600">{description}</p>}
       </CardContent>
     </Card>
   );
