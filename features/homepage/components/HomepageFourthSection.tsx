@@ -36,15 +36,15 @@ const HomepageFourthSection = ({
             </Button>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-12 gap-2">
           {fourthSectionData?.cards &&
             fourthSectionData?.cards.length > 0 &&
             fourthSectionData?.cards?.map((card, index) => {
               return (
                 <div
                   className={cn(
-                    "p-8 col-span-6 flex flex-col justify-between gap-4 rounded-xl relative overflow-hidden",
-                    index === 2 && "col-span-12"
+                    "p-8 sm:col-span-6 flex flex-col justify-between gap-4 rounded-xl relative overflow-hidden  min-h-[234px]",
+                    index === 2 && "sm:col-span-12"
                   )}
                   key={card?.id}
                 >

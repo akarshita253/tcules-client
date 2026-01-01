@@ -28,14 +28,14 @@ const HomepageFifthSection = ({
           fifthSectionData?.case_studies.length > 0 &&
           fifthSectionData?.case_studies.map((item) => (
             <div
-              className="bg-neutral-50 flex justify-between items-center py-6 px-8 rounded-xl gap-12"
+              className="bg-neutral-50 flex flex-col sm:flex-row justify-between items-center py-6 px-8 rounded-xl gap-12"
               key={item?.title}
             >
-              <div className="flex items-center gap-4 flex-wrap">
+              <div className="flex items-center gap-4 flex-wrap flex-col md:flex-row">
                 <h3 className="text-label-xl text-neutral-900 flex-6">
                   {item?.title}
                 </h3>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 flex-wrap md:flex-nowrap">
                   {item?.tags &&
                     item?.tags.length > 0 &&
                     item?.tags.map((tag, index) => (
