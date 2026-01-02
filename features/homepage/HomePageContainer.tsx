@@ -24,14 +24,26 @@ const HomePageContainer = ({
     <main className="bg-neutral-100">
       <Container className="md:grid grid-cols-12 gap-6">
         <Block className="lg:col-start-2 col-start-1 lg:col-end-12 col-end-13">
-            <HomepageHeroSection heroSectionData={heroSectionData}/>
-            <HomepageSecondSection secondSectionData={secondSectionData}/>
-            <HomepageThirdSection thirdSectionData={thirdSectionData}/>
-            <HomepageFourthSection fourthSectionData={fourthSectionData}/>
-            <HomepageFifthSection fifthSectionData={fifthSectionData}/>
-            <ContactAndTestimonials contactSectionData={contactSectionData}/>
+          <HomepageHeroSection heroSectionData={heroSectionData} />
         </Block>
       </Container>
+      <div className="px-3">
+        <HomepageSecondSection secondSectionData={secondSectionData} />
+      </div>
+      <Container className="md:grid grid-cols-12 gap-6">
+        <Block className="lg:col-start-2 col-start-1 lg:col-end-12 col-end-13">
+          <HomepageThirdSection thirdSectionData={thirdSectionData} />
+          <HomepageFourthSection fourthSectionData={fourthSectionData} />
+          <HomepageFifthSection fifthSectionData={fifthSectionData} />
+        </Block>
+      </Container>
+      <div className="bg-neutral-50">
+        <Container className="md:grid grid-cols-12 gap-6">
+          <Block className="lg:col-start-2 col-start-1 lg:col-end-12 col-end-13">
+            <ContactAndTestimonials contactSectionData={contactSectionData} />
+          </Block>
+        </Container>
+      </div>
     </main>
   );
 };
