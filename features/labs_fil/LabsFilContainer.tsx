@@ -16,7 +16,6 @@ const LabsFilContainer = ({
 }: {
   labsFilData: NonNullable<LabsFilLandingPageQuery>["labsFilLandingPage"];
 }) => {
-  console.log(labsFilData);
   const heroSectionData = labsFilData?.heroSection;
   const secondSectionData = labsFilData?.secondSection;
   const thirdSectionData = labsFilData?.thirdSection;
