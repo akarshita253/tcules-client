@@ -332,3 +332,45 @@
 .text-caption-md {
   @apply text-sm font-medium;
 }
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+.idea-textarea::selection {
+  background-color: transparent !important;
+  color: #e5e5e5 !important;
+}
+
+.idea-textarea::-moz-selection {
+  background-color: transparent !important;
+  color: #e5e5e5 !important;
+}
+
+/* 🔥 Chrome autofill & highlight fix */
+.idea-textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #0a0a0a inset !important;
+  -webkit-text-fill-color: #a3a3a3 !important;
+  caret-color: #e5e5e5;
+}
+/* Radix Accordion animation hooks */
+[data-slot="accordion-content"][data-state="open"] {
+  animation: accordion-down 300ms ease-out;
+}
+
+[data-slot="accordion-content"][data-state="closed"] {
+  animation: accordion-up 300ms ease-out;
+}

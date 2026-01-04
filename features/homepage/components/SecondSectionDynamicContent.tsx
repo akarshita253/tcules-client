@@ -13,7 +13,6 @@ const SecondSectionDynamicContent = ({
   secondSectionData: NonNullable<HomepageQuery["homepage"]>["secondSection"];
 }) => {
   const [index, setIndex] = useState(0);
-  console.log(index, "this is index");
   return (
     <>
       <Container className="md:grid grid-cols-12 gap-6 relative z-20 h-full">
