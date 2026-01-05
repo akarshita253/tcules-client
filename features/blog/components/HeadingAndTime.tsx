@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { HeadingAndTimeProps } from "../types/blogTypes";
 import { formatDate } from "@/lib/utils";
 import Breadcrumbs from "@/components/global/Breadcrumbs";

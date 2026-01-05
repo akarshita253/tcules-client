@@ -1,34 +1,21 @@
 import Section from "@/components/global/Section";
-import { ServiceQuery } from "@/lib/codegen/graphql";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { CapablitiesCardSection } from "../CapablityContainer";
 
-const HowWeWork = ({
-  howWeWorkSectionData,
-}: {
-  howWeWorkSectionData: NonNullable<
-    ServiceQuery["service"]
-  >["howWeWorkSection"];
-}) => {
+type EngineeringServiceSectionProps = {
+  engineeringServiceSectionData: CapablitiesCardSection;
+};
+
+const EngineeringServiceSection = ({engineeringServiceSectionData}:EngineeringServiceSectionProps) => {
   return (
     <Section>
-      <h2 className="text-heading-xs text-neutral-800 mb-6 sm:mb-12">
-        {howWeWorkSectionData?.heading}
-      </h2>
-      <div className="flex items-center flex-wrap gap-6 mb-4 sm:mb-6">
-        {howWeWorkSectionData?.labels?.map((label) => {
-          return (
-            <p
-              className="bg-neutral-100 p-3 rounded-xl uppercase text-caption-lg"
-              key={label?.id}
-            >
-              {label?.listText}
-            </p>
-          );
-        })}
-      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:mb-12 mb-6">
-        {howWeWorkSectionData?.howWeWorkCards?.map((singleCard) => {
+        <h2 className="p-8">
+            <span className="text-heading-sm text-neutral-800">{engineeringServiceSectionData?.heading?.split("|").at(0)}</span>
+            <span className="text-display-xs text-accent-600">{engineeringServiceSectionData?.heading?.split("|").at(1)}</span>
+        </h2>
+        {engineeringServiceSectionData?.sectionCards?.map((singleCard) => {
           return (
             <div
               className="p-4 sm:p-6 bg-neutral-100 rounded-xl"
@@ -38,19 +25,23 @@ const HowWeWork = ({
                 {singleCard?.heading}
               </h3>
               <div>
-                {singleCard?.cardTiles?.map((singleTile) => {
+                {singleCard?.cardPoints?.map((singleTile) => {
                   return (
                     <div
                       key={singleTile?.id}
                       className="flex items-start  gap-2"
                     >
                       <span className="shrink-0 relative top-1">
-                        <ArrowRight width={20} height={20} className="text-neutral-700"/>
+                        <ArrowRight
+                          width={20}
+                          height={20}
+                          className="text-neutral-700"
+                        />
                       </span>
 
                       <p className="sm:mb-6 mb-4">
                         <span className="text-label-md text-neutral-700">
-                          {singleTile?.heading}
+                          {singleTile?.listText}
                         </span>
                       </p>
                     </div>
@@ -63,8 +54,8 @@ const HowWeWork = ({
       </div>
       <div>
         <p className="text-label-3xs text-neutral-900 text-center uppercase flex items-center gap-3 justify-center">
-          <Link href={howWeWorkSectionData?.link?.href || "#"}>
-            {howWeWorkSectionData?.link?.name}
+          <Link href={engineeringServiceSectionData?.subRouteLink?.href || "#"}>
+            {engineeringServiceSectionData?.subRouteLink?.name}
           </Link>
           <ArrowRight size={16} />
         </p>
@@ -73,4 +64,4 @@ const HowWeWork = ({
   );
 };
 
-export default HowWeWork;
+export default EngineeringServiceSection;

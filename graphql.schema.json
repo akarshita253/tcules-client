@@ -14,10 +14,14 @@ export interface Scalars {
   Float: { input: number; output: number; }
   AboutBlocksDynamicZoneInput: { input: any; output: any; }
   BlogMainSectionDynamicZoneInput: { input: any; output: any; }
+  CapablityCapablitiesSingleTypeDynamicZoneInput: { input: any; output: any; }
   CaseStudyCaseStudyContentsDynamicZoneInput: { input: any; output: any; }
   DateTime: { input: any; output: any; }
+  EventMainSectionDynamicZoneInput: { input: any; output: any; }
+  InterviewMainSectionDynamicZoneInput: { input: any; output: any; }
   JSON: { input: any; output: any; }
   LabSingleTypeDetailSectionDynamicZoneInput: { input: any; output: any; }
+  PodcastMainSectionDynamicZoneInput: { input: any; output: any; }
   PrivacyPolicyLegalDescriptionDynamicZoneInput: { input: any; output: any; }
   TermsOfUseLegalDescriptionDynamicZoneInput: { input: any; output: any; }
 }
@@ -93,6 +97,8 @@ export interface Blog {
   featureImage: Array<Maybe<UploadFile>>;
   featureImage_connection?: Maybe<UploadFileRelationResponseCollection>;
   mainSection?: Maybe<Array<Maybe<BlogMainSectionDynamicZone>>>;
+  podcasts: Array<Maybe<Podcast>>;
+  podcasts_connection?: Maybe<PodcastRelationResponseCollection>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   slug?: Maybe<Scalars['String']['output']>;
   tags: Array<Maybe<Tag>>;
@@ -137,6 +143,20 @@ export interface BlogFeatureImage_ConnectionArgs {
 }
 
 
+export interface BlogPodcastsArgs {
+  filters?: InputMaybe<PodcastFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface BlogPodcasts_ConnectionArgs {
+  filters?: InputMaybe<PodcastFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
 export interface BlogTagsArgs {
   filters?: InputMaybe<TagFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
@@ -164,6 +184,7 @@ export interface BlogFiltersInput {
   documentId?: InputMaybe<IdFilterInput>;
   not?: InputMaybe<BlogFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<BlogFiltersInput>>>;
+  podcasts?: InputMaybe<PodcastFiltersInput>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
   slug?: InputMaybe<StringFilterInput>;
   tags?: InputMaybe<TagFiltersInput>;
@@ -176,6 +197,7 @@ export interface BlogInput {
   categories?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   featureImage?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   mainSection?: InputMaybe<Array<Scalars['BlogMainSectionDynamicZoneInput']['input']>>;
+  podcasts?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;
   tags?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
@@ -212,6 +234,22 @@ export interface BooleanFilterInput {
   null?: InputMaybe<Scalars['Boolean']['input']>;
   or?: InputMaybe<Array<InputMaybe<Scalars['Boolean']['input']>>>;
   startsWith?: InputMaybe<Scalars['Boolean']['input']>;
+}
+
+export interface Capablity {
+  __typename?: 'Capablity';
+  capablitiesSingleType?: Maybe<Array<Maybe<CapablityCapablitiesSingleTypeDynamicZone>>>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  documentId: Scalars['ID']['output'];
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+}
+
+export type CapablityCapablitiesSingleTypeDynamicZone = ComponentCapablitiesCapablitiesCardSection | ComponentServiceHeroSection | ComponentSharedSeo | Error;
+
+export interface CapablityInput {
+  capablitiesSingleType?: InputMaybe<Array<Scalars['CapablityCapablitiesSingleTypeDynamicZoneInput']['input']>>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
 }
 
 export interface CaseStudy {
@@ -345,6 +383,10 @@ export interface Category {
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   documentId: Scalars['ID']['output'];
+  events: Array<Maybe<Event>>;
+  events_connection?: Maybe<EventRelationResponseCollection>;
+  interviews: Array<Maybe<Interview>>;
+  interviews_connection?: Maybe<InterviewRelationResponseCollection>;
   name?: Maybe<Scalars['String']['output']>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   slug?: Maybe<Scalars['String']['output']>;
@@ -379,6 +421,34 @@ export interface CategoryCase_Studies_Categories_ConnectionArgs {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 }
 
+
+export interface CategoryEventsArgs {
+  filters?: InputMaybe<EventFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface CategoryEvents_ConnectionArgs {
+  filters?: InputMaybe<EventFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface CategoryInterviewsArgs {
+  filters?: InputMaybe<InterviewFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface CategoryInterviews_ConnectionArgs {
+  filters?: InputMaybe<InterviewFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
 export interface CategoryEntityResponseCollection {
   __typename?: 'CategoryEntityResponseCollection';
   nodes: Array<Category>;
@@ -392,6 +462,8 @@ export interface CategoryFiltersInput {
   createdAt?: InputMaybe<DateTimeFilterInput>;
   description?: InputMaybe<StringFilterInput>;
   documentId?: InputMaybe<IdFilterInput>;
+  events?: InputMaybe<EventFiltersInput>;
+  interviews?: InputMaybe<InterviewFiltersInput>;
   name?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<CategoryFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<CategoryFiltersInput>>>;
@@ -404,6 +476,8 @@ export interface CategoryInput {
   blogs?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   case_studies_categories?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   description?: InputMaybe<Scalars['String']['input']>;
+  events?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  interviews?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   name?: InputMaybe<Scalars['String']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;
@@ -596,6 +670,51 @@ export interface ComponentBlogAndCasestudiesVideoVideoFile_ConnectionArgs {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 }
 
+export interface ComponentCapablitiesCapablitiesCardSection {
+  __typename?: 'ComponentCapablitiesCapablitiesCardSection';
+  description?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  icon?: Maybe<UploadFile>;
+  id: Scalars['ID']['output'];
+  sectionCards?: Maybe<Array<Maybe<ComponentCapablitiesCapablitiesCards>>>;
+  serviceName?: Maybe<Enum_Componentcapablitiescapablitiescardsection_Servicename>;
+  subRouteLink?: Maybe<ComponentElementsLink>;
+}
+
+
+export interface ComponentCapablitiesCapablitiesCardSectionSectionCardsArgs {
+  filters?: InputMaybe<ComponentCapablitiesCapablitiesCardsFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface ComponentCapablitiesCapablitiesCards {
+  __typename?: 'ComponentCapablitiesCapablitiesCards';
+  cardPoints?: Maybe<Array<Maybe<ComponentElementsPoints>>>;
+  description?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  icon?: Maybe<UploadFile>;
+  id: Scalars['ID']['output'];
+  link?: Maybe<ComponentElementsLink>;
+}
+
+
+export interface ComponentCapablitiesCapablitiesCardsCardPointsArgs {
+  filters?: InputMaybe<ComponentElementsPointsFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface ComponentCapablitiesCapablitiesCardsFiltersInput {
+  and?: InputMaybe<Array<InputMaybe<ComponentCapablitiesCapablitiesCardsFiltersInput>>>;
+  cardPoints?: InputMaybe<ComponentElementsPointsFiltersInput>;
+  description?: InputMaybe<StringFilterInput>;
+  heading?: InputMaybe<StringFilterInput>;
+  link?: InputMaybe<ComponentElementsLinkFiltersInput>;
+  not?: InputMaybe<ComponentCapablitiesCapablitiesCardsFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentCapablitiesCapablitiesCardsFiltersInput>>>;
+}
+
 export interface ComponentContactUsContactUsBottomCards {
   __typename?: 'ComponentContactUsContactUsBottomCards';
   heading?: Maybe<Scalars['String']['output']>;
@@ -701,6 +820,27 @@ export interface ComponentElementsPointsFiltersInput {
 export interface ComponentElementsPointsInput {
   id?: InputMaybe<Scalars['ID']['input']>;
   listText?: InputMaybe<Scalars['String']['input']>;
+}
+
+export interface ComponentEventsEventDetails {
+  __typename?: 'ComponentEventsEventDetails';
+  descOne?: Maybe<Scalars['String']['output']>;
+  descTwo?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+}
+
+export interface ComponentEventsEventDetailsFiltersInput {
+  and?: InputMaybe<Array<InputMaybe<ComponentEventsEventDetailsFiltersInput>>>;
+  descOne?: InputMaybe<StringFilterInput>;
+  descTwo?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentEventsEventDetailsFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentEventsEventDetailsFiltersInput>>>;
+}
+
+export interface ComponentEventsEventDetailsInput {
+  descOne?: InputMaybe<Scalars['String']['input']>;
+  descTwo?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
 }
 
 export interface ComponentHomepageBranchCards {
@@ -1425,6 +1565,7 @@ export interface ComponentServiceExploreRecentWorkInput {
 export interface ComponentServiceHeroSection {
   __typename?: 'ComponentServiceHeroSection';
   description?: Maybe<Scalars['String']['output']>;
+  descriptionTwo?: Maybe<Scalars['String']['output']>;
   heading?: Maybe<Scalars['String']['output']>;
   heroSectionButton?: Maybe<Array<Maybe<ComponentElementsButtons>>>;
   id: Scalars['ID']['output'];
@@ -1447,6 +1588,7 @@ export interface ComponentServiceHeroSectionLabelArgs {
 
 export interface ComponentServiceHeroSectionInput {
   description?: InputMaybe<Scalars['String']['input']>;
+  descriptionTwo?: InputMaybe<Scalars['String']['input']>;
   heading?: InputMaybe<Scalars['String']['input']>;
   heroSectionButton?: InputMaybe<Array<InputMaybe<ComponentElementsButtonsInput>>>;
   id?: InputMaybe<Scalars['ID']['input']>;
@@ -1870,10 +2012,111 @@ export type Enum_Componentblogandcasestudiessepration_Styles =
   | 'solid'
   | 'thick';
 
+export type Enum_Componentcapablitiescapablitiescardsection_Servicename =
+  | 'AI'
+  | 'CommonEntryPoints'
+  | 'Design'
+  | 'Engineering'
+  | 'HowWeWork';
+
 export interface Error {
   __typename?: 'Error';
   code: Scalars['String']['output'];
   message?: Maybe<Scalars['String']['output']>;
+}
+
+export interface Event {
+  __typename?: 'Event';
+  categories: Array<Maybe<Category>>;
+  categories_connection?: Maybe<CategoryRelationResponseCollection>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  documentId: Scalars['ID']['output'];
+  eventWhereAbout?: Maybe<Array<Maybe<ComponentEventsEventDetails>>>;
+  featureImage?: Maybe<UploadFile>;
+  mainSection?: Maybe<Array<Maybe<EventMainSectionDynamicZone>>>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  tags: Array<Maybe<Tag>>;
+  tags_connection?: Maybe<TagRelationResponseCollection>;
+  title?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+}
+
+
+export interface EventCategoriesArgs {
+  filters?: InputMaybe<CategoryFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface EventCategories_ConnectionArgs {
+  filters?: InputMaybe<CategoryFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface EventEventWhereAboutArgs {
+  filters?: InputMaybe<ComponentEventsEventDetailsFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface EventTagsArgs {
+  filters?: InputMaybe<TagFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface EventTags_ConnectionArgs {
+  filters?: InputMaybe<TagFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface EventEntityResponseCollection {
+  __typename?: 'EventEntityResponseCollection';
+  nodes: Array<Event>;
+  pageInfo: Pagination;
+}
+
+export interface EventFiltersInput {
+  and?: InputMaybe<Array<InputMaybe<EventFiltersInput>>>;
+  categories?: InputMaybe<CategoryFiltersInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  description?: InputMaybe<StringFilterInput>;
+  documentId?: InputMaybe<IdFilterInput>;
+  eventWhereAbout?: InputMaybe<ComponentEventsEventDetailsFiltersInput>;
+  not?: InputMaybe<EventFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<EventFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  slug?: InputMaybe<StringFilterInput>;
+  tags?: InputMaybe<TagFiltersInput>;
+  title?: InputMaybe<StringFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+}
+
+export interface EventInput {
+  categories?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  eventWhereAbout?: InputMaybe<Array<InputMaybe<ComponentEventsEventDetailsInput>>>;
+  featureImage?: InputMaybe<Scalars['ID']['input']>;
+  mainSection?: InputMaybe<Array<Scalars['EventMainSectionDynamicZoneInput']['input']>>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  title?: InputMaybe<Scalars['String']['input']>;
+}
+
+export type EventMainSectionDynamicZone = ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | Error;
+
+export interface EventRelationResponseCollection {
+  __typename?: 'EventRelationResponseCollection';
+  nodes: Array<Event>;
 }
 
 export interface Faq {
@@ -1952,7 +2195,7 @@ export interface FloatFilterInput {
   startsWith?: InputMaybe<Scalars['Float']['input']>;
 }
 
-export type GenericMorph = About | Author | Blog | CaseStudy | CaseStudyLandingPage | Category | ClientContact | ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCaseStudyPositioning | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesCompanyProfile | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesProblemAndSolution | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentContactUsContactUsBottomCards | ComponentContactUsSocialMediaLinks | ComponentElementsButtons | ComponentElementsElements | ComponentElementsLink | ComponentElementsPoints | ComponentHomepageBranchCards | ComponentHomepageFourthSectionCards | ComponentHomepageHomepageContactAndTestimonials | ComponentHomepageHomepageFifthSection | ComponentHomepageHomepageFourthSection | ComponentHomepageHomepageHeroSection | ComponentHomepageHomepageSecondSection | ComponentHomepageHomepageSecondSectionPoints | ComponentHomepageHomepageThirdSection | ComponentHowWeWorkCardDetails | ComponentHowWeWorkCards | ComponentHowWeWorkHowWeWorkHeroSection | ComponentHowWeWorkLowFrictionWays | ComponentHowWeWorkRightDetails | ComponentHowWeWorkRightStartingPoint | ComponentLabsCardSection | ComponentLabsFilCardDetails | ComponentLabsFilLabsFilEighthSection | ComponentLabsFilLabsFilFifthSection | ComponentLabsFilLabsFilFourthSection | ComponentLabsFilLabsFilHeroSection | ComponentLabsFilLabsFilSecondSection | ComponentLabsFilLabsFilSeventhSection | ComponentLabsFilLabsFilSixthSection | ComponentLabsFilLabsFilThirdSection | ComponentLabsFilSixthSectionLeftCard | ComponentLabsFilSixthSectionRightCard | ComponentLabsFilThirdSectionCards | ComponentLegalDetails | ComponentNavbarNavbarLevel1Group | ComponentNavbarNavbarLevel2Group | ComponentServiceExploreRecentWork | ComponentServiceHeroSection | ComponentServiceHowWeWork | ComponentServiceOurOperatingPhilosophy | ComponentServiceServiceMisc | ComponentServiceWhatWeDesign | ComponentServiceWhyTeamHireUs | ComponentSharedCard | ComponentSharedHeroSection | ComponentSharedMedia | ComponentSharedProfile | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | ComponentSharedSlider | ComponentSharedTiles | ComponentSingleTypeCaseStudyPageHeroSection | ComponentSingleTypeCaseStudyPageMiscellaneous | ContactUs | Faq | Global | Homepage | HowWeWork | I18NLocale | LabSingleType | LabsFilLandingPage | Navbar | PrivacyPolicy | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Service | Tag | TermsOfUse | Testimonial | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = About | Author | Blog | Capablity | CaseStudy | CaseStudyLandingPage | Category | ClientContact | ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCaseStudyPositioning | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesCompanyProfile | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesProblemAndSolution | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentCapablitiesCapablitiesCardSection | ComponentCapablitiesCapablitiesCards | ComponentContactUsContactUsBottomCards | ComponentContactUsSocialMediaLinks | ComponentElementsButtons | ComponentElementsElements | ComponentElementsLink | ComponentElementsPoints | ComponentEventsEventDetails | ComponentHomepageBranchCards | ComponentHomepageFourthSectionCards | ComponentHomepageHomepageContactAndTestimonials | ComponentHomepageHomepageFifthSection | ComponentHomepageHomepageFourthSection | ComponentHomepageHomepageHeroSection | ComponentHomepageHomepageSecondSection | ComponentHomepageHomepageSecondSectionPoints | ComponentHomepageHomepageThirdSection | ComponentHowWeWorkCardDetails | ComponentHowWeWorkCards | ComponentHowWeWorkHowWeWorkHeroSection | ComponentHowWeWorkLowFrictionWays | ComponentHowWeWorkRightDetails | ComponentHowWeWorkRightStartingPoint | ComponentLabsCardSection | ComponentLabsFilCardDetails | ComponentLabsFilLabsFilEighthSection | ComponentLabsFilLabsFilFifthSection | ComponentLabsFilLabsFilFourthSection | ComponentLabsFilLabsFilHeroSection | ComponentLabsFilLabsFilSecondSection | ComponentLabsFilLabsFilSeventhSection | ComponentLabsFilLabsFilSixthSection | ComponentLabsFilLabsFilThirdSection | ComponentLabsFilSixthSectionLeftCard | ComponentLabsFilSixthSectionRightCard | ComponentLabsFilThirdSectionCards | ComponentLegalDetails | ComponentNavbarNavbarLevel1Group | ComponentNavbarNavbarLevel2Group | ComponentServiceExploreRecentWork | ComponentServiceHeroSection | ComponentServiceHowWeWork | ComponentServiceOurOperatingPhilosophy | ComponentServiceServiceMisc | ComponentServiceWhatWeDesign | ComponentServiceWhyTeamHireUs | ComponentSharedCard | ComponentSharedHeroSection | ComponentSharedMedia | ComponentSharedProfile | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | ComponentSharedSlider | ComponentSharedTiles | ComponentSingleTypeCaseStudyPageHeroSection | ComponentSingleTypeCaseStudyPageMiscellaneous | ContactUs | Event | Faq | Global | Homepage | HowWeWork | I18NLocale | Interview | LabSingleType | LabsFilLandingPage | Navbar | Podcast | PrivacyPolicy | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Service | Tag | TermsOfUse | Testimonial | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export interface Global {
   __typename?: 'Global';
@@ -2096,6 +2339,90 @@ export interface IntFilterInput {
   startsWith?: InputMaybe<Scalars['Int']['input']>;
 }
 
+export interface Interview {
+  __typename?: 'Interview';
+  categories: Array<Maybe<Category>>;
+  categories_connection?: Maybe<CategoryRelationResponseCollection>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  documentId: Scalars['ID']['output'];
+  featureImage?: Maybe<UploadFile>;
+  mainSection?: Maybe<Array<Maybe<InterviewMainSectionDynamicZone>>>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  tags: Array<Maybe<Tag>>;
+  tags_connection?: Maybe<TagRelationResponseCollection>;
+  title?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+}
+
+
+export interface InterviewCategoriesArgs {
+  filters?: InputMaybe<CategoryFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface InterviewCategories_ConnectionArgs {
+  filters?: InputMaybe<CategoryFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface InterviewTagsArgs {
+  filters?: InputMaybe<TagFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface InterviewTags_ConnectionArgs {
+  filters?: InputMaybe<TagFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface InterviewEntityResponseCollection {
+  __typename?: 'InterviewEntityResponseCollection';
+  nodes: Array<Interview>;
+  pageInfo: Pagination;
+}
+
+export interface InterviewFiltersInput {
+  and?: InputMaybe<Array<InputMaybe<InterviewFiltersInput>>>;
+  categories?: InputMaybe<CategoryFiltersInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  description?: InputMaybe<StringFilterInput>;
+  documentId?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<InterviewFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<InterviewFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  slug?: InputMaybe<StringFilterInput>;
+  tags?: InputMaybe<TagFiltersInput>;
+  title?: InputMaybe<StringFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+}
+
+export interface InterviewInput {
+  categories?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  featureImage?: InputMaybe<Scalars['ID']['input']>;
+  mainSection?: InputMaybe<Array<Scalars['InterviewMainSectionDynamicZoneInput']['input']>>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  title?: InputMaybe<Scalars['String']['input']>;
+}
+
+export type InterviewMainSectionDynamicZone = ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | Error;
+
+export interface InterviewRelationResponseCollection {
+  __typename?: 'InterviewRelationResponseCollection';
+  nodes: Array<Interview>;
+}
+
 export interface JsonFilterInput {
   and?: InputMaybe<Array<InputMaybe<Scalars['JSON']['input']>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars['JSON']['input']>>>;
@@ -2178,7 +2505,10 @@ export interface Mutation {
   createCaseStudy?: Maybe<CaseStudy>;
   createCategory?: Maybe<Category>;
   createClientContact?: Maybe<ClientContact>;
+  createEvent?: Maybe<Event>;
   createFaq?: Maybe<Faq>;
+  createInterview?: Maybe<Interview>;
+  createPodcast?: Maybe<Podcast>;
   createReviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>;
   createReviewWorkflowsWorkflowStage?: Maybe<ReviewWorkflowsWorkflowStage>;
   createTag?: Maybe<Tag>;
@@ -2190,18 +2520,22 @@ export interface Mutation {
   deleteAbout?: Maybe<DeleteMutationResponse>;
   deleteAuthor?: Maybe<DeleteMutationResponse>;
   deleteBlog?: Maybe<DeleteMutationResponse>;
+  deleteCapablity?: Maybe<DeleteMutationResponse>;
   deleteCaseStudy?: Maybe<DeleteMutationResponse>;
   deleteCaseStudyLandingPage?: Maybe<DeleteMutationResponse>;
   deleteCategory?: Maybe<DeleteMutationResponse>;
   deleteClientContact?: Maybe<DeleteMutationResponse>;
   deleteContactUs?: Maybe<DeleteMutationResponse>;
+  deleteEvent?: Maybe<DeleteMutationResponse>;
   deleteFaq?: Maybe<DeleteMutationResponse>;
   deleteGlobal?: Maybe<DeleteMutationResponse>;
   deleteHomepage?: Maybe<DeleteMutationResponse>;
   deleteHowWeWork?: Maybe<DeleteMutationResponse>;
+  deleteInterview?: Maybe<DeleteMutationResponse>;
   deleteLabSingleType?: Maybe<DeleteMutationResponse>;
   deleteLabsFilLandingPage?: Maybe<DeleteMutationResponse>;
   deleteNavbar?: Maybe<DeleteMutationResponse>;
+  deletePodcast?: Maybe<DeleteMutationResponse>;
   deletePrivacyPolicy?: Maybe<DeleteMutationResponse>;
   deleteReviewWorkflowsWorkflow?: Maybe<DeleteMutationResponse>;
   deleteReviewWorkflowsWorkflowStage?: Maybe<DeleteMutationResponse>;
@@ -2226,18 +2560,22 @@ export interface Mutation {
   updateAbout?: Maybe<About>;
   updateAuthor?: Maybe<Author>;
   updateBlog?: Maybe<Blog>;
+  updateCapablity?: Maybe<Capablity>;
   updateCaseStudy?: Maybe<CaseStudy>;
   updateCaseStudyLandingPage?: Maybe<CaseStudyLandingPage>;
   updateCategory?: Maybe<Category>;
   updateClientContact?: Maybe<ClientContact>;
   updateContactUs?: Maybe<ContactUs>;
+  updateEvent?: Maybe<Event>;
   updateFaq?: Maybe<Faq>;
   updateGlobal?: Maybe<Global>;
   updateHomepage?: Maybe<Homepage>;
   updateHowWeWork?: Maybe<HowWeWork>;
+  updateInterview?: Maybe<Interview>;
   updateLabSingleType?: Maybe<LabSingleType>;
   updateLabsFilLandingPage?: Maybe<LabsFilLandingPage>;
   updateNavbar?: Maybe<Navbar>;
+  updatePodcast?: Maybe<Podcast>;
   updatePrivacyPolicy?: Maybe<PrivacyPolicy>;
   updateReviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>;
   updateReviewWorkflowsWorkflowStage?: Maybe<ReviewWorkflowsWorkflowStage>;
@@ -2290,8 +2628,26 @@ export interface MutationCreateClientContactArgs {
 }
 
 
+export interface MutationCreateEventArgs {
+  data: EventInput;
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
 export interface MutationCreateFaqArgs {
   data: FaqInput;
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface MutationCreateInterviewArgs {
+  data: InterviewInput;
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface MutationCreatePodcastArgs {
+  data: PodcastInput;
   status?: InputMaybe<PublicationStatus>;
 }
 
@@ -2355,7 +2711,22 @@ export interface MutationDeleteClientContactArgs {
 }
 
 
+export interface MutationDeleteEventArgs {
+  documentId: Scalars['ID']['input'];
+}
+
+
 export interface MutationDeleteFaqArgs {
+  documentId: Scalars['ID']['input'];
+}
+
+
+export interface MutationDeleteInterviewArgs {
+  documentId: Scalars['ID']['input'];
+}
+
+
+export interface MutationDeletePodcastArgs {
   documentId: Scalars['ID']['input'];
 }
 
@@ -2442,6 +2813,12 @@ export interface MutationUpdateBlogArgs {
 }
 
 
+export interface MutationUpdateCapablityArgs {
+  data: CapablityInput;
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
 export interface MutationUpdateCaseStudyArgs {
   data: CaseStudyInput;
   documentId: Scalars['ID']['input'];
@@ -2475,6 +2852,13 @@ export interface MutationUpdateContactUsArgs {
 }
 
 
+export interface MutationUpdateEventArgs {
+  data: EventInput;
+  documentId: Scalars['ID']['input'];
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
 export interface MutationUpdateFaqArgs {
   data: FaqInput;
   documentId: Scalars['ID']['input'];
@@ -2500,6 +2884,13 @@ export interface MutationUpdateHowWeWorkArgs {
 }
 
 
+export interface MutationUpdateInterviewArgs {
+  data: InterviewInput;
+  documentId: Scalars['ID']['input'];
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
 export interface MutationUpdateLabSingleTypeArgs {
   data: LabSingleTypeInput;
   status?: InputMaybe<PublicationStatus>;
@@ -2514,6 +2905,13 @@ export interface MutationUpdateLabsFilLandingPageArgs {
 
 export interface MutationUpdateNavbarArgs {
   data: NavbarInput;
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface MutationUpdatePodcastArgs {
+  data: PodcastInput;
+  documentId: Scalars['ID']['input'];
   status?: InputMaybe<PublicationStatus>;
 }
 
@@ -2628,6 +3026,90 @@ export interface PaginationArg {
   start?: InputMaybe<Scalars['Int']['input']>;
 }
 
+export interface Podcast {
+  __typename?: 'Podcast';
+  categories: Array<Maybe<Blog>>;
+  categories_connection?: Maybe<BlogRelationResponseCollection>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  documentId: Scalars['ID']['output'];
+  featureImage?: Maybe<UploadFile>;
+  mainSection?: Maybe<Array<Maybe<PodcastMainSectionDynamicZone>>>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  tags: Array<Maybe<Tag>>;
+  tags_connection?: Maybe<TagRelationResponseCollection>;
+  title?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+}
+
+
+export interface PodcastCategoriesArgs {
+  filters?: InputMaybe<BlogFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface PodcastCategories_ConnectionArgs {
+  filters?: InputMaybe<BlogFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface PodcastTagsArgs {
+  filters?: InputMaybe<TagFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface PodcastTags_ConnectionArgs {
+  filters?: InputMaybe<TagFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface PodcastEntityResponseCollection {
+  __typename?: 'PodcastEntityResponseCollection';
+  nodes: Array<Podcast>;
+  pageInfo: Pagination;
+}
+
+export interface PodcastFiltersInput {
+  and?: InputMaybe<Array<InputMaybe<PodcastFiltersInput>>>;
+  categories?: InputMaybe<BlogFiltersInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  description?: InputMaybe<StringFilterInput>;
+  documentId?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<PodcastFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<PodcastFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  slug?: InputMaybe<StringFilterInput>;
+  tags?: InputMaybe<TagFiltersInput>;
+  title?: InputMaybe<StringFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+}
+
+export interface PodcastInput {
+  categories?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  featureImage?: InputMaybe<Scalars['ID']['input']>;
+  mainSection?: InputMaybe<Array<Scalars['PodcastMainSectionDynamicZoneInput']['input']>>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  tags?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  title?: InputMaybe<Scalars['String']['input']>;
+}
+
+export type PodcastMainSectionDynamicZone = ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | Error;
+
+export interface PodcastRelationResponseCollection {
+  __typename?: 'PodcastRelationResponseCollection';
+  nodes: Array<Podcast>;
+}
+
 export interface PrivacyPolicy {
   __typename?: 'PrivacyPolicy';
   createdAt?: Maybe<Scalars['DateTime']['output']>;
@@ -2661,6 +3143,7 @@ export interface Query {
   blog?: Maybe<Blog>;
   blogs: Array<Maybe<Blog>>;
   blogs_connection?: Maybe<BlogEntityResponseCollection>;
+  capablity?: Maybe<Capablity>;
   caseStudies: Array<Maybe<CaseStudy>>;
   caseStudies_connection?: Maybe<CaseStudyEntityResponseCollection>;
   caseStudy?: Maybe<CaseStudy>;
@@ -2672,6 +3155,9 @@ export interface Query {
   clientContacts: Array<Maybe<ClientContact>>;
   clientContacts_connection?: Maybe<ClientContactEntityResponseCollection>;
   contactUs?: Maybe<ContactUs>;
+  event?: Maybe<Event>;
+  events: Array<Maybe<Event>>;
+  events_connection?: Maybe<EventEntityResponseCollection>;
   faq?: Maybe<Faq>;
   faqs: Array<Maybe<Faq>>;
   faqs_connection?: Maybe<FaqEntityResponseCollection>;
@@ -2681,10 +3167,16 @@ export interface Query {
   i18NLocale?: Maybe<I18NLocale>;
   i18NLocales: Array<Maybe<I18NLocale>>;
   i18NLocales_connection?: Maybe<I18NLocaleEntityResponseCollection>;
+  interview?: Maybe<Interview>;
+  interviews: Array<Maybe<Interview>>;
+  interviews_connection?: Maybe<InterviewEntityResponseCollection>;
   labSingleType?: Maybe<LabSingleType>;
   labsFilLandingPage?: Maybe<LabsFilLandingPage>;
   me?: Maybe<UsersPermissionsMe>;
   navbar?: Maybe<Navbar>;
+  podcast?: Maybe<Podcast>;
+  podcasts: Array<Maybe<Podcast>>;
+  podcasts_connection?: Maybe<PodcastEntityResponseCollection>;
   privacyPolicy?: Maybe<PrivacyPolicy>;
   reviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>;
   reviewWorkflowsWorkflowStage?: Maybe<ReviewWorkflowsWorkflowStage>;
@@ -2757,6 +3249,11 @@ export interface QueryBlogs_ConnectionArgs {
   filters?: InputMaybe<BlogFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface QueryCapablityArgs {
   status?: InputMaybe<PublicationStatus>;
 }
 
@@ -2837,6 +3334,28 @@ export interface QueryContactUsArgs {
 }
 
 
+export interface QueryEventArgs {
+  documentId: Scalars['ID']['input'];
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface QueryEventsArgs {
+  filters?: InputMaybe<EventFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface QueryEvents_ConnectionArgs {
+  filters?: InputMaybe<EventFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
 export interface QueryFaqArgs {
   documentId: Scalars['ID']['input'];
   status?: InputMaybe<PublicationStatus>;
@@ -2896,6 +3415,28 @@ export interface QueryI18NLocales_ConnectionArgs {
 }
 
 
+export interface QueryInterviewArgs {
+  documentId: Scalars['ID']['input'];
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface QueryInterviewsArgs {
+  filters?: InputMaybe<InterviewFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface QueryInterviews_ConnectionArgs {
+  filters?: InputMaybe<InterviewFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
 export interface QueryLabSingleTypeArgs {
   status?: InputMaybe<PublicationStatus>;
 }
@@ -2907,6 +3448,28 @@ export interface QueryLabsFilLandingPageArgs {
 
 
 export interface QueryNavbarArgs {
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface QueryPodcastArgs {
+  documentId: Scalars['ID']['input'];
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface QueryPodcastsArgs {
+  filters?: InputMaybe<PodcastFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface QueryPodcasts_ConnectionArgs {
+  filters?: InputMaybe<PodcastFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   status?: InputMaybe<PublicationStatus>;
 }
 
@@ -3236,7 +3799,13 @@ export interface Tag {
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   documentId: Scalars['ID']['output'];
+  events: Array<Maybe<Event>>;
+  events_connection?: Maybe<EventRelationResponseCollection>;
+  interviews: Array<Maybe<Interview>>;
+  interviews_connection?: Maybe<InterviewRelationResponseCollection>;
   name?: Maybe<Scalars['String']['output']>;
+  podcasts: Array<Maybe<Podcast>>;
+  podcasts_connection?: Maybe<PodcastRelationResponseCollection>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
 }
@@ -3269,6 +3838,48 @@ export interface TagCase_Studies_ConnectionArgs {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 }
 
+
+export interface TagEventsArgs {
+  filters?: InputMaybe<EventFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface TagEvents_ConnectionArgs {
+  filters?: InputMaybe<EventFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface TagInterviewsArgs {
+  filters?: InputMaybe<InterviewFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface TagInterviews_ConnectionArgs {
+  filters?: InputMaybe<InterviewFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface TagPodcastsArgs {
+  filters?: InputMaybe<PodcastFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface TagPodcasts_ConnectionArgs {
+  filters?: InputMaybe<PodcastFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
 export interface TagEntityResponseCollection {
   __typename?: 'TagEntityResponseCollection';
   nodes: Array<Tag>;
@@ -3282,9 +3893,12 @@ export interface TagFiltersInput {
   createdAt?: InputMaybe<DateTimeFilterInput>;
   description?: InputMaybe<StringFilterInput>;
   documentId?: InputMaybe<IdFilterInput>;
+  events?: InputMaybe<EventFiltersInput>;
+  interviews?: InputMaybe<InterviewFiltersInput>;
   name?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<TagFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<TagFiltersInput>>>;
+  podcasts?: InputMaybe<PodcastFiltersInput>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 }
@@ -3293,7 +3907,10 @@ export interface TagInput {
   blogs?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   case_studies?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   description?: InputMaybe<Scalars['String']['input']>;
+  events?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  interviews?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   name?: InputMaybe<Scalars['String']['input']>;
+  podcasts?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
 }
 
@@ -3635,6 +4252,16 @@ export interface UsersPermissionsUserRelationResponseCollection {
   __typename?: 'UsersPermissionsUserRelationResponseCollection';
   nodes: Array<UsersPermissionsUser>;
 }
+
+export type CapablityQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type CapablityQuery = { __typename?: 'Query', capablity?: { __typename?: 'Capablity', capablitiesSingleType?: Array<
+      | { __typename: 'ComponentCapablitiesCapablitiesCardSection', id: string, heading?: string | null, description?: string | null, serviceName?: Enum_Componentcapablitiescapablitiescardsection_Servicename | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, sectionCards?: Array<{ __typename?: 'ComponentCapablitiesCapablitiesCards', id: string, heading?: string | null, description?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null, cardPoints?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null, link?: { __typename?: 'ComponentElementsLink', href?: string | null, name?: string | null } | null } | null> | null, subRouteLink?: { __typename?: 'ComponentElementsLink', href?: string | null, name?: string | null } | null }
+      | { __typename: 'ComponentServiceHeroSection', heading?: string | null, description?: string | null, descriptionTwo?: string | null, heroSectionButton?: Array<{ __typename?: 'ComponentElementsButtons', id: string, name?: string | null, href?: string | null } | null> | null, label?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null }
+      | { __typename?: 'ComponentSharedSeo', metaTitle: string, metaDescription: string, shareImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null }
+      | { __typename?: 'Error' }
+     | null> | null } | null };
 
 export type ContactUsQueryVariables = Exact<{ [key: string]: never; }>;
 
