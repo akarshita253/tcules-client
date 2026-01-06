@@ -93,7 +93,7 @@ useEffect(() => {
     );
   };
   return (
-    <div className={cn("text-display-lg sm:text-center", className)}>
+    <div className={cn("text-display-lg md:text-center", className)}>
       {renderWords()}
       <motion.span
         initial={{

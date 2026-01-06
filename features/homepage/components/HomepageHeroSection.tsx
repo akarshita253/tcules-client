@@ -14,7 +14,7 @@ const HomepageHeroSection = ({
     <>
       <Section className="sm:py-[146px] my-6 sm:my-12">
         <div className="mb-4 sm:mb-6">
-          <h1 className="sm:flex sm:w-xl mx-auto">
+          <h1 className="md:flex md:w-xl md:mx-auto">
             <span className="text-heading-xl text-neutral-900">
               {heroSectionData?.headingOne?.split("|")[0]}
             </span>{" "}
@@ -31,7 +31,7 @@ const HomepageHeroSection = ({
               )}
             </span>
           </h1>
-          <h1 className="sm:flex sm:w-xl mx-auto">
+          <h1 className="md:flex md:w-xl md:mx-auto">
             <span className="text-heading-xl text-neutral-900">
               {heroSectionData?.headingTwo?.split("|")[0]}
             </span>{" "}

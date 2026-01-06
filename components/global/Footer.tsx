@@ -45,8 +45,8 @@ const Footer = () => {
                 />
               )}
             </div>
-            <div id="footer-links" className="grid grid-cols-12 gap-6">
-              <div className="col-span-6">
+            <div id="footer-links" className="grid grid-cols-12 gap-6 mb-8 md:mb-0">
+              <div className="col-span-12 md:col-span-6">
                 <h2 className="text-heading-sm">
                   {footerLinks?.heading?.split("|").at(0)}
                 </h2>
@@ -63,15 +63,20 @@ const Footer = () => {
                   {footerLinks?.link?.name}
                 </Link>
               </div>
-              <div className="col-span-6 grid grid-cols-4 gap-6">
+              <div className="col-span-12 md:col-span-6 grid grid-cols-2 sm:grid-cols-4 gap-6">
                 {footerLinks?.links &&
-                  footerLinks?.links?.map((singleLink,index) => {
+                  footerLinks?.links?.map((singleLink, index) => {
                     return (
                       <div key={singleLink?.id}>
                         <h4 className="text-lg font-semibold mb-4">
                           {singleLink?.heading}
                         </h4>
-                        <ul className={cn(index===0 ?" font-semibold":null,"flex flex-col gap-5 text-lg")}>
+                        <ul
+                          className={cn(
+                            index === 0 ? " font-semibold" : null,
+                            "flex flex-col gap-5 text-lg"
+                          )}
+                        >
                           {singleLink?.pageLinks &&
                             singleLink?.pageLinks?.map((pageLink, index) => {
                               return (
@@ -90,9 +95,9 @@ const Footer = () => {
             </div>
             <div
               id="social-media"
-              className="grid grid-cols-12 gap-6 items-center"
+              className="grid grid-cols-12 md:gap-6 items-center"
             >
-              <div className="col-span-6">
+              <div className="col-span-12 md:col-span-4 lg:col-span-6">
                 <p className="text-neutral-900 text-label-sm mb-4">
                   {footerSocial?.label}
                 </p>
@@ -120,7 +125,7 @@ const Footer = () => {
                     })}
                 </div>
               </div>
-              <div className="col-span-6 bg-neutral-50 rounded-xl flex justify-between items-center gap-4  px-4 py-3 z-10">
+              <div className="col-span-12 md:col-span-8 lg:col-span-6 bg-neutral-50 rounded-xl flex justify-between items-center gap-4  px-4 py-3 z-10">
                 <div>
                   <p className="font-semibold text-display mb-2">
                     {footerSocial?.rightSection?.heading}
@@ -137,7 +142,7 @@ const Footer = () => {
                           <Link
                             href={singleLink?.href || "#"}
                             key={index}
-                            className="flex items-center gap-2"
+                            className="flex items-center flex-wrap gap-2"
                           >
                             {singleLink?.icon?.url && (
                               <Image
@@ -174,7 +179,6 @@ const Footer = () => {
                       </Link>
                     );
                   })}
-                <span>© Tcules 2025</span>
               </div>
             </div>
           </div>
