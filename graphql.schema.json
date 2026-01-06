@@ -1540,6 +1540,16 @@ export interface ComponentNavbarNavbarLevel2GroupInput {
   name?: InputMaybe<Scalars['String']['input']>;
 }
 
+export interface ComponentPodcasteEventsInterviewsShadowCard {
+  __typename?: 'ComponentPodcasteEventsInterviewsShadowCard';
+  description?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  isBackgroundAvailable?: Maybe<Scalars['Boolean']['output']>;
+  isShadowVisible?: Maybe<Scalars['Boolean']['output']>;
+  link?: Maybe<ComponentElementsLink>;
+}
+
 export interface ComponentServiceExploreRecentWork {
   __typename?: 'ComponentServiceExploreRecentWork';
   exploreCards?: Maybe<Array<Maybe<ComponentSharedCard>>>;
@@ -2112,7 +2122,7 @@ export interface EventInput {
   title?: InputMaybe<Scalars['String']['input']>;
 }
 
-export type EventMainSectionDynamicZone = ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | Error;
+export type EventMainSectionDynamicZone = ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentPodcasteEventsInterviewsShadowCard | Error;
 
 export interface EventRelationResponseCollection {
   __typename?: 'EventRelationResponseCollection';
@@ -2195,7 +2205,7 @@ export interface FloatFilterInput {
   startsWith?: InputMaybe<Scalars['Float']['input']>;
 }
 
-export type GenericMorph = About | Author | Blog | Capablity | CaseStudy | CaseStudyLandingPage | Category | ClientContact | ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCaseStudyPositioning | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesCompanyProfile | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesProblemAndSolution | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentCapablitiesCapablitiesCardSection | ComponentCapablitiesCapablitiesCards | ComponentContactUsContactUsBottomCards | ComponentContactUsSocialMediaLinks | ComponentElementsButtons | ComponentElementsElements | ComponentElementsLink | ComponentElementsPoints | ComponentEventsEventDetails | ComponentHomepageBranchCards | ComponentHomepageFourthSectionCards | ComponentHomepageHomepageContactAndTestimonials | ComponentHomepageHomepageFifthSection | ComponentHomepageHomepageFourthSection | ComponentHomepageHomepageHeroSection | ComponentHomepageHomepageSecondSection | ComponentHomepageHomepageSecondSectionPoints | ComponentHomepageHomepageThirdSection | ComponentHowWeWorkCardDetails | ComponentHowWeWorkCards | ComponentHowWeWorkHowWeWorkHeroSection | ComponentHowWeWorkLowFrictionWays | ComponentHowWeWorkRightDetails | ComponentHowWeWorkRightStartingPoint | ComponentLabsCardSection | ComponentLabsFilCardDetails | ComponentLabsFilLabsFilEighthSection | ComponentLabsFilLabsFilFifthSection | ComponentLabsFilLabsFilFourthSection | ComponentLabsFilLabsFilHeroSection | ComponentLabsFilLabsFilSecondSection | ComponentLabsFilLabsFilSeventhSection | ComponentLabsFilLabsFilSixthSection | ComponentLabsFilLabsFilThirdSection | ComponentLabsFilSixthSectionLeftCard | ComponentLabsFilSixthSectionRightCard | ComponentLabsFilThirdSectionCards | ComponentLegalDetails | ComponentNavbarNavbarLevel1Group | ComponentNavbarNavbarLevel2Group | ComponentServiceExploreRecentWork | ComponentServiceHeroSection | ComponentServiceHowWeWork | ComponentServiceOurOperatingPhilosophy | ComponentServiceServiceMisc | ComponentServiceWhatWeDesign | ComponentServiceWhyTeamHireUs | ComponentSharedCard | ComponentSharedHeroSection | ComponentSharedMedia | ComponentSharedProfile | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | ComponentSharedSlider | ComponentSharedTiles | ComponentSingleTypeCaseStudyPageHeroSection | ComponentSingleTypeCaseStudyPageMiscellaneous | ContactUs | Event | Faq | Global | Homepage | HowWeWork | I18NLocale | Interview | LabSingleType | LabsFilLandingPage | Navbar | Podcast | PrivacyPolicy | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Service | Tag | TermsOfUse | Testimonial | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = About | Author | Blog | Capablity | CaseStudy | CaseStudyLandingPage | Category | ClientContact | ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCaseStudyPositioning | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesCompanyProfile | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesProblemAndSolution | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentCapablitiesCapablitiesCardSection | ComponentCapablitiesCapablitiesCards | ComponentContactUsContactUsBottomCards | ComponentContactUsSocialMediaLinks | ComponentElementsButtons | ComponentElementsElements | ComponentElementsLink | ComponentElementsPoints | ComponentEventsEventDetails | ComponentHomepageBranchCards | ComponentHomepageFourthSectionCards | ComponentHomepageHomepageContactAndTestimonials | ComponentHomepageHomepageFifthSection | ComponentHomepageHomepageFourthSection | ComponentHomepageHomepageHeroSection | ComponentHomepageHomepageSecondSection | ComponentHomepageHomepageSecondSectionPoints | ComponentHomepageHomepageThirdSection | ComponentHowWeWorkCardDetails | ComponentHowWeWorkCards | ComponentHowWeWorkHowWeWorkHeroSection | ComponentHowWeWorkLowFrictionWays | ComponentHowWeWorkRightDetails | ComponentHowWeWorkRightStartingPoint | ComponentLabsCardSection | ComponentLabsFilCardDetails | ComponentLabsFilLabsFilEighthSection | ComponentLabsFilLabsFilFifthSection | ComponentLabsFilLabsFilFourthSection | ComponentLabsFilLabsFilHeroSection | ComponentLabsFilLabsFilSecondSection | ComponentLabsFilLabsFilSeventhSection | ComponentLabsFilLabsFilSixthSection | ComponentLabsFilLabsFilThirdSection | ComponentLabsFilSixthSectionLeftCard | ComponentLabsFilSixthSectionRightCard | ComponentLabsFilThirdSectionCards | ComponentLegalDetails | ComponentNavbarNavbarLevel1Group | ComponentNavbarNavbarLevel2Group | ComponentPodcasteEventsInterviewsShadowCard | ComponentServiceExploreRecentWork | ComponentServiceHeroSection | ComponentServiceHowWeWork | ComponentServiceOurOperatingPhilosophy | ComponentServiceServiceMisc | ComponentServiceWhatWeDesign | ComponentServiceWhyTeamHireUs | ComponentSharedCard | ComponentSharedHeroSection | ComponentSharedMedia | ComponentSharedProfile | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | ComponentSharedSlider | ComponentSharedTiles | ComponentSingleTypeCaseStudyPageHeroSection | ComponentSingleTypeCaseStudyPageMiscellaneous | ContactUs | Event | Faq | Global | Homepage | HowWeWork | I18NLocale | Interview | LabSingleType | LabsFilLandingPage | Navbar | Podcast | PrivacyPolicy | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Service | Tag | TermsOfUse | Testimonial | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export interface Global {
   __typename?: 'Global';
@@ -2416,7 +2426,7 @@ export interface InterviewInput {
   title?: InputMaybe<Scalars['String']['input']>;
 }
 
-export type InterviewMainSectionDynamicZone = ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | Error;
+export type InterviewMainSectionDynamicZone = ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentPodcasteEventsInterviewsShadowCard | Error;
 
 export interface InterviewRelationResponseCollection {
   __typename?: 'InterviewRelationResponseCollection';
@@ -3103,7 +3113,7 @@ export interface PodcastInput {
   title?: InputMaybe<Scalars['String']['input']>;
 }
 
-export type PodcastMainSectionDynamicZone = ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | Error;
+export type PodcastMainSectionDynamicZone = ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentPodcasteEventsInterviewsShadowCard | Error;
 
 export interface PodcastRelationResponseCollection {
   __typename?: 'PodcastRelationResponseCollection';
@@ -4326,10 +4336,40 @@ export type CategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type CategoriesQuery = { __typename?: 'Query', categories: Array<{ __typename?: 'Category', documentId: string, name?: string | null, description?: string | null, slug?: string | null } | null> };
 
+export type EventsQueryVariables = Exact<{
+  filters?: InputMaybe<EventFiltersInput>;
+}>;
+
+
+export type EventsQuery = { __typename?: 'Query', events: Array<{ __typename: 'Event', title?: string | null, description?: string | null, updatedAt?: any | null, slug?: string | null, featureImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, eventWhereAbout?: Array<{ __typename?: 'ComponentEventsEventDetails', id: string, descOne?: string | null, descTwo?: string | null } | null> | null, tags: Array<{ __typename?: 'Tag', documentId: string, name?: string | null, description?: string | null } | null>, mainSection?: Array<
+      | { __typename: 'ComponentBlogAndCasestudiesBlogOrCasestudyText', id: string, blogContent?: string | null }
+      | { __typename: 'ComponentBlogAndCasestudiesSectionImage', layout?: Enum_Componentblogandcasestudiessectionimage_Layout | null, imageSection: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null> }
+      | { __typename: 'ComponentBlogAndCasestudiesSepration', color?: string | null, styles?: Enum_Componentblogandcasestudiessepration_Styles | null }
+      | { __typename: 'ComponentBlogAndCasestudiesTldrSection', id: string, heading?: string | null, tdlrDescription?: string | null }
+      | { __typename: 'ComponentBlogAndCasestudiesVideo', autoplay?: boolean | null, id: string, loop?: boolean | null, title?: string | null, videoFile: Array<{ __typename?: 'UploadFile', url: string, alternativeText?: string | null, width?: number | null, height?: number | null } | null>, thumbnail?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null }
+      | { __typename: 'ComponentPodcasteEventsInterviewsShadowCard', id: string, heading?: string | null, description?: string | null, isShadowVisible?: boolean | null, isBackgroundAvailable?: boolean | null, link?: { __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null } | null }
+      | { __typename?: 'Error' }
+     | null> | null } | null> };
+
 export type HomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type HomepageQuery = { __typename?: 'Query', homepage?: { __typename?: 'Homepage', heroSection?: { __typename?: 'ComponentHomepageHomepageHeroSection', headingOne?: string | null, headingTwo?: string | null, descriptionOne?: string | null, descriptionTwo?: string | null, button?: Array<{ __typename?: 'ComponentElementsLink', id: string, name?: string | null, href?: string | null } | null> | null, bottomTags?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null } | null, secondSection?: { __typename?: 'ComponentHomepageHomepageSecondSection', bgImage?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null, secondSection?: Array<{ __typename?: 'ComponentHomepageHomepageSecondSectionPoints', id: string, heading?: string | null, description?: string | null, topDescription?: string | null, image?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null } | null> | null } | null, thirdSection?: { __typename?: 'ComponentHomepageHomepageThirdSection', heading?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, cards?: Array<{ __typename?: 'ComponentHomepageBranchCards', id: string, heading?: string | null, description?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null } | null> | null } | null, fourthSection?: { __typename?: 'ComponentHomepageHomepageFourthSection', heading?: string | null, description?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, button?: { __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null } | null, cards?: Array<{ __typename?: 'ComponentHomepageFourthSectionCards', id: string, heading?: string | null, cardImage?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null } | null> | null } | null, fifthSection?: { __typename?: 'ComponentHomepageHomepageFifthSection', heading?: string | null, description?: string | null, case_studies: Array<{ __typename?: 'CaseStudy', title?: string | null, tags: Array<{ __typename?: 'Tag', name?: string | null } | null> } | null> } | null, contactSection?: { __typename?: 'ComponentHomepageHomepageContactAndTestimonials', heading?: string | null, testimonial?: { __typename?: 'Testimonial', clientComments?: string | null, clientCompany?: string | null, clientName?: string | null, clientPosition?: string | null } | null } | null } | null };
+
+export type InterviewsQueryVariables = Exact<{
+  filters?: InputMaybe<InterviewFiltersInput>;
+}>;
+
+
+export type InterviewsQuery = { __typename?: 'Query', interviews: Array<{ __typename: 'Interview', title?: string | null, updatedAt?: any | null, createdAt?: any | null, description?: string | null, slug?: string | null, documentId: string, tags: Array<{ __typename?: 'Tag', name?: string | null } | null>, featureImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, mainSection?: Array<
+      | { __typename: 'ComponentBlogAndCasestudiesBlogOrCasestudyText', id: string, blogContent?: string | null }
+      | { __typename: 'ComponentBlogAndCasestudiesSectionImage', layout?: Enum_Componentblogandcasestudiessectionimage_Layout | null, imageSection: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null> }
+      | { __typename: 'ComponentBlogAndCasestudiesSepration', color?: string | null, styles?: Enum_Componentblogandcasestudiessepration_Styles | null }
+      | { __typename: 'ComponentBlogAndCasestudiesTldrSection', id: string, heading?: string | null, tdlrDescription?: string | null }
+      | { __typename: 'ComponentBlogAndCasestudiesVideo', autoplay?: boolean | null, id: string, loop?: boolean | null, title?: string | null, videoFile: Array<{ __typename?: 'UploadFile', url: string, alternativeText?: string | null, width?: number | null, height?: number | null } | null>, thumbnail?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null }
+      | { __typename: 'ComponentPodcasteEventsInterviewsShadowCard', id: string, heading?: string | null, description?: string | null, isShadowVisible?: boolean | null, isBackgroundAvailable?: boolean | null, link?: { __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null } | null }
+      | { __typename?: 'Error' }
+     | null> | null } | null> };
 
 export type LabSingleTypeQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -4338,6 +4378,21 @@ export type LabSingleTypeQuery = { __typename?: 'Query', labSingleType?: { __typ
       | { __typename: 'ComponentLabsCardSection', id: string, heading?: string | null, cards?: Array<{ __typename?: 'ComponentSharedCard', id: string, heading?: string | null, description?: any | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, url: string, height?: number | null } | null, list?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null, cardImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, cardTiles?: Array<{ __typename?: 'ComponentSharedTiles', id: string, heading?: string | null, description?: string | null } | null> | null } | null> | null }
       | { __typename?: 'Error' }
      | null> | null, miscSection?: { __typename?: 'ComponentServiceServiceMisc', label?: string | null, heading?: string | null, description?: string | null, button?: { __typename?: 'ComponentElementsButtons', name?: string | null, href?: string | null } | null } | null } | null };
+
+export type PodcastsQueryVariables = Exact<{
+  filters?: InputMaybe<PodcastFiltersInput>;
+}>;
+
+
+export type PodcastsQuery = { __typename?: 'Query', podcasts: Array<{ __typename: 'Podcast', title?: string | null, description?: string | null, createdAt?: any | null, documentId: string, slug?: string | null, updatedAt?: any | null, featureImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, tags: Array<{ __typename?: 'Tag', name?: string | null, documentId: string } | null>, mainSection?: Array<
+      | { __typename: 'ComponentBlogAndCasestudiesBlogOrCasestudyText', id: string, blogContent?: string | null }
+      | { __typename: 'ComponentBlogAndCasestudiesSectionImage', layout?: Enum_Componentblogandcasestudiessectionimage_Layout | null, imageSection: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null> }
+      | { __typename: 'ComponentBlogAndCasestudiesSepration', color?: string | null, styles?: Enum_Componentblogandcasestudiessepration_Styles | null }
+      | { __typename: 'ComponentBlogAndCasestudiesTldrSection', id: string, heading?: string | null, tdlrDescription?: string | null }
+      | { __typename: 'ComponentBlogAndCasestudiesVideo', autoplay?: boolean | null, id: string, loop?: boolean | null, title?: string | null, videoFile: Array<{ __typename?: 'UploadFile', url: string, alternativeText?: string | null, width?: number | null, height?: number | null } | null>, thumbnail?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null }
+      | { __typename: 'ComponentPodcasteEventsInterviewsShadowCard', id: string, heading?: string | null, description?: string | null, isShadowVisible?: boolean | null, isBackgroundAvailable?: boolean | null, link?: { __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null } | null }
+      | { __typename?: 'Error' }
+     | null> | null } | null> };
 
 export type ServiceQueryVariables = Exact<{ [key: string]: never; }>;
 

@@ -14,7 +14,7 @@ interface VideoBlockProps {
   description?: string | null;
   autoplay?: boolean | null;
   loop?: boolean | null;
-//   videoFile: VideoFile;
+  //   videoFile: VideoFile;
   thumbnail?: VideoFile | null;
 }
 
@@ -23,13 +23,11 @@ export default function VideoBlock({
   description,
   autoplay = false,
   loop = false,
-//   videoFile,
+  //   videoFile,
   thumbnail,
 }: VideoBlockProps) {
   const videoUrl = "";
-  const posterUrl = thumbnail
-    ? `${thumbnail.url}`
-    : undefined;
+  const posterUrl = thumbnail ? `${thumbnail.url}` : undefined;
 
   return (
     <div className="my-12 max-w-5xl mx-auto px-4">
@@ -64,16 +62,21 @@ export default function VideoBlock({
 
         <video
           className="w-full aspect-video"
-          controls={!autoplay} 
-          autoPlay={autoplay||true}
+          controls={!autoplay}
+          autoPlay={autoplay || true}
           loop={loop || true}
           muted={autoplay || true}
           playsInline
           poster={posterUrl}
           preload={autoplay ? "auto" : "metadata"}
         >
-          <source src={videoUrl} type="video/mp4" />
-          <source src={videoUrl.replace(".mp4", ".webm")} type="video/webm" />
+          {videoUrl && <source src={videoUrl} type="video/mp4" />}
+          {videoUrl && (
+            <source
+              src={videoUrl || ""?.replace(".mp4", ".webm")}
+              type="video/webm"
+            />
+          )}
           Your browser does not support the video tag.
         </video>
       </div>

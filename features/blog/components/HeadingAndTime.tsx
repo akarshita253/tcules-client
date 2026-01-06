@@ -25,7 +25,6 @@ const HeadingAndTime = ({
             <div className="flex gap-2 items-center text-label-xs text-neutral-600">
               <span>{formatDate(createdAt)}</span>
               <span>.</span>
-              <span>11 mins</span>
             </div>
             <p className="text-neutral-500 text-label-3xs">
               <small>Last updated on {formatDate(updatedAt)}</small>
