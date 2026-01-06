@@ -1,12 +1,30 @@
-import { Button } from "../ui/button";
+"use client";
+
+import { buttonVariants } from "../ui/button";
 import FooterSubstract from "../../public/Subtract.png";
-import Podcast from "../../public/podcast.png";
 import Image from "next/image";
+import Section from "./Section";
+import { Container } from "./Container";
+import logoDark from "@/public/logoDark.svg";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { useQuery } from "@apollo/client/react";
+import { FooterQuery } from "@/lib/codegen/graphql";
+import { FOOTER_QUERY } from "@/lib/queries/footer";
 
 const Footer = () => {
+  const { loading, error, data } = useQuery<FooterQuery>(FOOTER_QUERY);
+  const logo = data?.footer?.logo;
+  const footerLinks = data?.footer?.footer;
+  const footerLegal = data?.footer?.legal;
+  const footerSocial = data?.footer?.socialMedia;
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
   return (
-    <div className="">
-      <div className="bg-[#04EC50] m-3 rounded-xl pt-[120px] pb-60  relative">
+    <div className="p-1">
+      <Section className="bg-[#04EC50] rounded-xl relative">
         <div>
           <Image
             src={FooterSubstract}
@@ -14,90 +32,154 @@ const Footer = () => {
             className="absolute bottom-0 right-0 "
           />
         </div>
-        <footer className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-12 gap-8">
-            <div className="col-span-4 flex flex-col gap-8">
-              <h2 className="text-3xl">
-                Make your product{" "}
-                <span className="text-3xl italic">truly stand out</span>
-              </h2>
 
-              <Button className="bg-neutral-900 text-neutral-50">
-                Connect now
-              </Button>
+        <Container className="md:grid grid-cols-12 gap-6">
+          <div className="col-span-12 flex flex-col justify-between gap-6 sm:gap-12">
+            <div id="logo">
+              {logo?.url && (
+                <Image
+                  src={logo?.url || logoDark}
+                  width={logo?.width || 151}
+                  height={logo?.height || 40}
+                  alt={logo?.alternativeText || "logo"}
+                />
+              )}
             </div>
-            <div className="col-span-2">
-              <ul>
-                <li className="mb-4 font-semibold">Home</li>
-                <li className="mb-2 font-semibold">Case studies</li>
-                <li className="mb-2 font-semibold">About us</li>
-                <li className="mb-2 font-semibold">Work with us</li>
-                <li className="mb-2 font-semibold">Contact us</li>
-              </ul>
-            </div>
-            <div className="col-span-2">
-              <ul>
-                <li className="mb-4 font-semibold">Service</li>
-                <li className="mb-2">Discover</li>
-                <li className="mb-2">Design</li>
-                <li className="mb-2">Code</li>
-                <li className="mb-2">Optimize</li>
-              </ul>
-            </div>
-            <div className="col-span-2">
-              <ul>
-                <li className="mb-4 font-semibold">Industries</li>
-                <li className="mb-2">Saas</li>
-                <li className="mb-2">eCommerce</li>
-                <li className="mb-2">Fintech</li>
-                <li className="mb-2">eLearning</li>
-                <li className="mb-2">Webflow</li>
-              </ul>
-            </div>
-            <div className="col-span-2">
-              <ul>
-                <li className="mb-4 font-semibold">Resources</li>
-                <li className="mb-2">Blogs</li>
-                <li className="mb-2">Events</li>
-                <li className="mb-2">Videos</li>
-                <li className="mb-2">Matter design</li>
-                <li className="mb-2">System</li>
-              </ul>
-            </div>
-          </div>
-          <div className="my-12 flex justify-between items-center gap-8">
-            <div>
-              <p>Follow us on</p>
-              <div className="flex items-center gap-2">
-                <span>Twitter</span>
-                <span>LinkedIn</span>
-                <span>Dribbble</span>
-                <span>Instagram</span>
+            <div id="footer-links" className="grid grid-cols-12 gap-6">
+              <div className="col-span-6">
+                <h2 className="text-heading-sm">
+                  {footerLinks?.heading?.split("|").at(0)}
+                </h2>
+                <h2 className="text-display-xs mb-9">
+                  {footerLinks?.heading?.split("|").at(1)}
+                </h2>
+                <Link
+                  href={footerLinks?.link?.href || "/contact-us"}
+                  className={cn(
+                    buttonVariants({ variant: "default" }),
+                    "bg-neutral-900 text-neutral-50 uppercase"
+                  )}
+                >
+                  {footerLinks?.link?.name}
+                </Link>
+              </div>
+              <div className="col-span-6 grid grid-cols-4 gap-6">
+                {footerLinks?.links &&
+                  footerLinks?.links?.map((singleLink) => {
+                    return (
+                      <div key={singleLink?.id}>
+                        <h4 className="text-lg font-semibold mb-4">
+                          {singleLink?.heading}
+                        </h4>
+                        <ul className="flex flex-col gap-5 text-lg font-semibold">
+                          {singleLink?.pageLinks &&
+                            singleLink?.pageLinks?.map((pageLink, index) => {
+                              return (
+                                <li key={index}>
+                                  <Link href={pageLink?.href || "/"}>
+                                    {pageLink?.name}
+                                  </Link>
+                                </li>
+                              );
+                            })}
+                        </ul>
+                      </div>
+                    );
+                  })}
               </div>
             </div>
-            <div className="bg-white rounded-xl p-2.5 flex justify-between items-center gap-8">
-              <div>
-                <p className="flex gap-2 items-center"><Image src={Podcast}  alt="Podcast" /><span>Beyond Interfaces</span></p>
-                <small className="leading-[140%]">A deep dive into the intersection of design, strategy, and product innovation.</small>
+            <div
+              id="social-media"
+              className="grid grid-cols-12 gap-6 items-center"
+            >
+              <div className="col-span-6">
+                <p className="text-neutral-900 text-label-sm mb-4">
+                  {footerSocial?.label}
+                </p>
+                <div className="flex items-center gap-4 mb-6 sm:mb-12">
+                  {footerSocial?.socialMedia &&
+                    footerSocial?.socialMedia.map((singleLink) => {
+                      return (
+                        <Link
+                          href={singleLink?.href || "#"}
+                          key={singleLink?.id}
+                        >
+                          {singleLink?.icon?.url && (
+                            <Image
+                              src={singleLink?.icon?.url}
+                              width={20}
+                              height={20}
+                              alt={
+                                singleLink?.icon?.alternativeText ||
+                                "icon-social-media"
+                              }
+                            />
+                          )}
+                        </Link>
+                      );
+                    })}
+                </div>
               </div>
-              <div className="font-medium text-lg">
-                SUBSCRIBE
+              <div className="col-span-6 bg-neutral-50 rounded-xl flex justify-between items-center gap-4  px-4 py-3 z-10">
+                <div>
+                  <p className="font-semibold text-display mb-2">
+                    {footerSocial?.rightSection?.heading}
+                  </p>
+                  <p className="text-md text-display font-normal text-neutral-700 w-4/5">
+                    {footerSocial?.rightSection?.description}
+                  </p>
+                </div>
+                <div>
+                  {footerSocial?.rightSection?.links &&
+                    footerSocial?.rightSection?.links.map(
+                      (singleLink, index) => {
+                        return (
+                          <Link
+                            href={singleLink?.href || "#"}
+                            key={index}
+                            className="flex items-center gap-2"
+                          >
+                            {singleLink?.icon?.url && (
+                              <Image
+                                src={singleLink?.icon?.url}
+                                width={40}
+                                height={40}
+                                alt={
+                                  singleLink?.icon?.alternativeText ||
+                                  "icon-social-media"
+                                }
+                              />
+                            )}
+                            {singleLink?.name}
+                          </Link>
+                        );
+                      }
+                    )}
+                </div>
+              </div>
+            </div>
+            <div
+              id="footer-legal"
+              className="pt-4 border-t border-neutral-900 flex flex-col md:flex-row justify-between gap-4 items-center"
+            >
+              <p className="text-center md:text-left text-label-xs font-normal">
+                {footerLegal?.address}
+              </p>
+              <div className="flex justify-center gap-x-4 gap-y-0 flex-wrap font-normal text-label-xs">
+                {footerLegal?.legalLinks &&
+                  footerLegal?.legalLinks.map((singleLink) => {
+                    return (
+                      <Link href={singleLink?.href || "#"} key={singleLink?.id}>
+                        {singleLink?.name}
+                      </Link>
+                    );
+                  })}
+                <span>© Tcules 2025</span>
               </div>
             </div>
           </div>
-          <div className="border-t border-neutral-800 flex justify-between items-center pt-2">
-            <small>
-              614, Silver Radiance 2, Science City Road, Sola, Ahmedabad -
-              380060, Gujarat
-            </small>
-            <div className="flex gap-4">
-              <small>Privacy policy</small>
-              <small>Terms of use</small>
-              <small>@ Tcules 2024</small>
-            </div>
-          </div>
-        </footer>
-      </div>
+        </Container>
+      </Section>
     </div>
   );
 };

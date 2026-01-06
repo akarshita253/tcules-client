@@ -843,6 +843,120 @@ export interface ComponentEventsEventDetailsInput {
   id?: InputMaybe<Scalars['ID']['input']>;
 }
 
+export interface ComponentFooterFooterLegalSection {
+  __typename?: 'ComponentFooterFooterLegalSection';
+  address?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  legalLinks?: Maybe<Array<Maybe<ComponentElementsLink>>>;
+}
+
+
+export interface ComponentFooterFooterLegalSectionLegalLinksArgs {
+  filters?: InputMaybe<ComponentElementsLinkFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface ComponentFooterFooterLegalSectionInput {
+  address?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  legalLinks?: InputMaybe<Array<InputMaybe<ComponentElementsLinkInput>>>;
+}
+
+export interface ComponentFooterFooterLinks {
+  __typename?: 'ComponentFooterFooterLinks';
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  link?: Maybe<ComponentElementsLink>;
+  links?: Maybe<Array<Maybe<ComponentFooterPagesLinks>>>;
+}
+
+
+export interface ComponentFooterFooterLinksLinksArgs {
+  filters?: InputMaybe<ComponentFooterPagesLinksFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface ComponentFooterFooterLinksInput {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  link?: InputMaybe<ComponentElementsLinkInput>;
+  links?: InputMaybe<Array<InputMaybe<ComponentFooterPagesLinksInput>>>;
+}
+
+export interface ComponentFooterFooterSocialMediaLinks {
+  __typename?: 'ComponentFooterFooterSocialMediaLinks';
+  id: Scalars['ID']['output'];
+  label?: Maybe<Scalars['String']['output']>;
+  rightSection?: Maybe<ComponentFooterFooterSocialMediaRightSection>;
+  socialMedia?: Maybe<Array<Maybe<ComponentElementsLink>>>;
+}
+
+
+export interface ComponentFooterFooterSocialMediaLinksSocialMediaArgs {
+  filters?: InputMaybe<ComponentElementsLinkFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface ComponentFooterFooterSocialMediaLinksInput {
+  id?: InputMaybe<Scalars['ID']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  rightSection?: InputMaybe<ComponentFooterFooterSocialMediaRightSectionInput>;
+  socialMedia?: InputMaybe<Array<InputMaybe<ComponentElementsLinkInput>>>;
+}
+
+export interface ComponentFooterFooterSocialMediaRightSection {
+  __typename?: 'ComponentFooterFooterSocialMediaRightSection';
+  description?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  links?: Maybe<Array<Maybe<ComponentElementsLink>>>;
+}
+
+
+export interface ComponentFooterFooterSocialMediaRightSectionLinksArgs {
+  filters?: InputMaybe<ComponentElementsLinkFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface ComponentFooterFooterSocialMediaRightSectionInput {
+  description?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  links?: InputMaybe<Array<InputMaybe<ComponentElementsLinkInput>>>;
+}
+
+export interface ComponentFooterPagesLinks {
+  __typename?: 'ComponentFooterPagesLinks';
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  pageLinks?: Maybe<Array<Maybe<ComponentElementsLink>>>;
+}
+
+
+export interface ComponentFooterPagesLinksPageLinksArgs {
+  filters?: InputMaybe<ComponentElementsLinkFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface ComponentFooterPagesLinksFiltersInput {
+  and?: InputMaybe<Array<InputMaybe<ComponentFooterPagesLinksFiltersInput>>>;
+  heading?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentFooterPagesLinksFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentFooterPagesLinksFiltersInput>>>;
+  pageLinks?: InputMaybe<ComponentElementsLinkFiltersInput>;
+}
+
+export interface ComponentFooterPagesLinksInput {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  pageLinks?: InputMaybe<Array<InputMaybe<ComponentElementsLinkInput>>>;
+}
+
 export interface ComponentHomepageBranchCards {
   __typename?: 'ComponentHomepageBranchCards';
   description?: Maybe<Scalars['String']['output']>;
@@ -2205,7 +2319,27 @@ export interface FloatFilterInput {
   startsWith?: InputMaybe<Scalars['Float']['input']>;
 }
 
-export type GenericMorph = About | Author | Blog | Capablity | CaseStudy | CaseStudyLandingPage | Category | ClientContact | ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCaseStudyPositioning | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesCompanyProfile | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesProblemAndSolution | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentCapablitiesCapablitiesCardSection | ComponentCapablitiesCapablitiesCards | ComponentContactUsContactUsBottomCards | ComponentContactUsSocialMediaLinks | ComponentElementsButtons | ComponentElementsElements | ComponentElementsLink | ComponentElementsPoints | ComponentEventsEventDetails | ComponentHomepageBranchCards | ComponentHomepageFourthSectionCards | ComponentHomepageHomepageContactAndTestimonials | ComponentHomepageHomepageFifthSection | ComponentHomepageHomepageFourthSection | ComponentHomepageHomepageHeroSection | ComponentHomepageHomepageSecondSection | ComponentHomepageHomepageSecondSectionPoints | ComponentHomepageHomepageThirdSection | ComponentHowWeWorkCardDetails | ComponentHowWeWorkCards | ComponentHowWeWorkHowWeWorkHeroSection | ComponentHowWeWorkLowFrictionWays | ComponentHowWeWorkRightDetails | ComponentHowWeWorkRightStartingPoint | ComponentLabsCardSection | ComponentLabsFilCardDetails | ComponentLabsFilLabsFilEighthSection | ComponentLabsFilLabsFilFifthSection | ComponentLabsFilLabsFilFourthSection | ComponentLabsFilLabsFilHeroSection | ComponentLabsFilLabsFilSecondSection | ComponentLabsFilLabsFilSeventhSection | ComponentLabsFilLabsFilSixthSection | ComponentLabsFilLabsFilThirdSection | ComponentLabsFilSixthSectionLeftCard | ComponentLabsFilSixthSectionRightCard | ComponentLabsFilThirdSectionCards | ComponentLegalDetails | ComponentNavbarNavbarLevel1Group | ComponentNavbarNavbarLevel2Group | ComponentPodcasteEventsInterviewsShadowCard | ComponentServiceExploreRecentWork | ComponentServiceHeroSection | ComponentServiceHowWeWork | ComponentServiceOurOperatingPhilosophy | ComponentServiceServiceMisc | ComponentServiceWhatWeDesign | ComponentServiceWhyTeamHireUs | ComponentSharedCard | ComponentSharedHeroSection | ComponentSharedMedia | ComponentSharedProfile | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | ComponentSharedSlider | ComponentSharedTiles | ComponentSingleTypeCaseStudyPageHeroSection | ComponentSingleTypeCaseStudyPageMiscellaneous | ContactUs | Event | Faq | Global | Homepage | HowWeWork | I18NLocale | Interview | LabSingleType | LabsFilLandingPage | Navbar | Podcast | PrivacyPolicy | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Service | Tag | TermsOfUse | Testimonial | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export interface Footer {
+  __typename?: 'Footer';
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  documentId: Scalars['ID']['output'];
+  footer?: Maybe<ComponentFooterFooterLinks>;
+  legal?: Maybe<ComponentFooterFooterLegalSection>;
+  logo?: Maybe<UploadFile>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  socialMedia?: Maybe<ComponentFooterFooterSocialMediaLinks>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+}
+
+export interface FooterInput {
+  footer?: InputMaybe<ComponentFooterFooterLinksInput>;
+  legal?: InputMaybe<ComponentFooterFooterLegalSectionInput>;
+  logo?: InputMaybe<Scalars['ID']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  socialMedia?: InputMaybe<ComponentFooterFooterSocialMediaLinksInput>;
+}
+
+export type GenericMorph = About | Author | Blog | Capablity | CaseStudy | CaseStudyLandingPage | Category | ClientContact | ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCaseStudyPositioning | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesCompanyProfile | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesProblemAndSolution | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentCapablitiesCapablitiesCardSection | ComponentCapablitiesCapablitiesCards | ComponentContactUsContactUsBottomCards | ComponentContactUsSocialMediaLinks | ComponentElementsButtons | ComponentElementsElements | ComponentElementsLink | ComponentElementsPoints | ComponentEventsEventDetails | ComponentFooterFooterLegalSection | ComponentFooterFooterLinks | ComponentFooterFooterSocialMediaLinks | ComponentFooterFooterSocialMediaRightSection | ComponentFooterPagesLinks | ComponentHomepageBranchCards | ComponentHomepageFourthSectionCards | ComponentHomepageHomepageContactAndTestimonials | ComponentHomepageHomepageFifthSection | ComponentHomepageHomepageFourthSection | ComponentHomepageHomepageHeroSection | ComponentHomepageHomepageSecondSection | ComponentHomepageHomepageSecondSectionPoints | ComponentHomepageHomepageThirdSection | ComponentHowWeWorkCardDetails | ComponentHowWeWorkCards | ComponentHowWeWorkHowWeWorkHeroSection | ComponentHowWeWorkLowFrictionWays | ComponentHowWeWorkRightDetails | ComponentHowWeWorkRightStartingPoint | ComponentLabsCardSection | ComponentLabsFilCardDetails | ComponentLabsFilLabsFilEighthSection | ComponentLabsFilLabsFilFifthSection | ComponentLabsFilLabsFilFourthSection | ComponentLabsFilLabsFilHeroSection | ComponentLabsFilLabsFilSecondSection | ComponentLabsFilLabsFilSeventhSection | ComponentLabsFilLabsFilSixthSection | ComponentLabsFilLabsFilThirdSection | ComponentLabsFilSixthSectionLeftCard | ComponentLabsFilSixthSectionRightCard | ComponentLabsFilThirdSectionCards | ComponentLegalDetails | ComponentNavbarNavbarLevel1Group | ComponentNavbarNavbarLevel2Group | ComponentPodcasteEventsInterviewsShadowCard | ComponentServiceExploreRecentWork | ComponentServiceHeroSection | ComponentServiceHowWeWork | ComponentServiceOurOperatingPhilosophy | ComponentServiceServiceMisc | ComponentServiceWhatWeDesign | ComponentServiceWhyTeamHireUs | ComponentSharedCard | ComponentSharedHeroSection | ComponentSharedMedia | ComponentSharedProfile | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | ComponentSharedSlider | ComponentSharedTiles | ComponentSingleTypeCaseStudyPageHeroSection | ComponentSingleTypeCaseStudyPageMiscellaneous | ContactUs | Event | Faq | Footer | Global | Homepage | HowWeWork | I18NLocale | Interview | LabSingleType | LabsFilLandingPage | Navbar | Podcast | PrivacyPolicy | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Service | Tag | TermsOfUse | Testimonial | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export interface Global {
   __typename?: 'Global';
@@ -2538,6 +2672,7 @@ export interface Mutation {
   deleteContactUs?: Maybe<DeleteMutationResponse>;
   deleteEvent?: Maybe<DeleteMutationResponse>;
   deleteFaq?: Maybe<DeleteMutationResponse>;
+  deleteFooter?: Maybe<DeleteMutationResponse>;
   deleteGlobal?: Maybe<DeleteMutationResponse>;
   deleteHomepage?: Maybe<DeleteMutationResponse>;
   deleteHowWeWork?: Maybe<DeleteMutationResponse>;
@@ -2578,6 +2713,7 @@ export interface Mutation {
   updateContactUs?: Maybe<ContactUs>;
   updateEvent?: Maybe<Event>;
   updateFaq?: Maybe<Faq>;
+  updateFooter?: Maybe<Footer>;
   updateGlobal?: Maybe<Global>;
   updateHomepage?: Maybe<Homepage>;
   updateHowWeWork?: Maybe<HowWeWork>;
@@ -2872,6 +3008,12 @@ export interface MutationUpdateEventArgs {
 export interface MutationUpdateFaqArgs {
   data: FaqInput;
   documentId: Scalars['ID']['input'];
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface MutationUpdateFooterArgs {
+  data: FooterInput;
   status?: InputMaybe<PublicationStatus>;
 }
 
@@ -3171,6 +3313,7 @@ export interface Query {
   faq?: Maybe<Faq>;
   faqs: Array<Maybe<Faq>>;
   faqs_connection?: Maybe<FaqEntityResponseCollection>;
+  footer?: Maybe<Footer>;
   global?: Maybe<Global>;
   homepage?: Maybe<Homepage>;
   howWeWork?: Maybe<HowWeWork>;
@@ -3384,6 +3527,11 @@ export interface QueryFaqs_ConnectionArgs {
   filters?: InputMaybe<FaqFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface QueryFooterArgs {
   status?: InputMaybe<PublicationStatus>;
 }
 
@@ -4277,6 +4425,11 @@ export type ContactUsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type ContactUsQuery = { __typename?: 'Query', contactUs?: { __typename?: 'ContactUs', heading?: string | null, description?: string | null, cards?: Array<{ __typename?: 'ComponentContactUsContactUsBottomCards', id: string, heading?: string | null, link?: { __typename?: 'ComponentElementsLink', href?: string | null, name?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null } | null } | null> | null, socialMedia?: Array<{ __typename?: 'ComponentElementsLink', href?: string | null, name?: string | null, id: string, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null } | null> | null } | null };
+
+export type FooterQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type FooterQuery = { __typename?: 'Query', footer?: { __typename?: 'Footer', logo?: { __typename?: 'UploadFile', alternativeText?: string | null, height?: number | null, width?: number | null, url: string } | null, footer?: { __typename?: 'ComponentFooterFooterLinks', heading?: string | null, link?: { __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null } | null, links?: Array<{ __typename?: 'ComponentFooterPagesLinks', id: string, heading?: string | null, pageLinks?: Array<{ __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null, isExternal?: boolean | null } | null> | null } | null> | null } | null, socialMedia?: { __typename?: 'ComponentFooterFooterSocialMediaLinks', label?: string | null, socialMedia?: Array<{ __typename?: 'ComponentElementsLink', id: string, href?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null } | null> | null, rightSection?: { __typename?: 'ComponentFooterFooterSocialMediaRightSection', id: string, heading?: string | null, description?: string | null, links?: Array<{ __typename?: 'ComponentElementsLink', isExternal?: boolean | null, name?: string | null, href?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null } | null> | null } | null } | null, legal?: { __typename?: 'ComponentFooterFooterLegalSection', address?: string | null, legalLinks?: Array<{ __typename?: 'ComponentElementsLink', id: string, name?: string | null, href?: string | null } | null> | null } | null } | null };
 
 export type BlogsQueryVariables = Exact<{
   slug: Scalars['String']['input'];
