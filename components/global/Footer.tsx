@@ -65,13 +65,13 @@ const Footer = () => {
               </div>
               <div className="col-span-6 grid grid-cols-4 gap-6">
                 {footerLinks?.links &&
-                  footerLinks?.links?.map((singleLink) => {
+                  footerLinks?.links?.map((singleLink,index) => {
                     return (
                       <div key={singleLink?.id}>
                         <h4 className="text-lg font-semibold mb-4">
                           {singleLink?.heading}
                         </h4>
-                        <ul className="flex flex-col gap-5 text-lg font-semibold">
+                        <ul className={cn(index===0 ?" font-semibold":null,"flex flex-col gap-5 text-lg")}>
                           {singleLink?.pageLinks &&
                             singleLink?.pageLinks?.map((pageLink, index) => {
                               return (
