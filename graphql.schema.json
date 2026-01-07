@@ -12,7 +12,6 @@ export interface Scalars {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
-  AboutBlocksDynamicZoneInput: { input: any; output: any; }
   BlogMainSectionDynamicZoneInput: { input: any; output: any; }
   CapablityCapablitiesSingleTypeDynamicZoneInput: { input: any; output: any; }
   CaseStudyCaseStudyContentsDynamicZoneInput: { input: any; output: any; }
@@ -28,20 +27,36 @@ export interface Scalars {
 
 export interface About {
   __typename?: 'About';
-  blocks?: Maybe<Array<Maybe<AboutBlocksDynamicZone>>>;
+  bgImage?: Maybe<UploadFile>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  descriptionTwo?: Maybe<Scalars['String']['output']>;
   documentId: Scalars['ID']['output'];
+  fifthSection?: Maybe<ComponentAboutAboutFifthSection>;
+  fourthSection?: Maybe<ComponentAboutAboutFourthSection>;
+  heading?: Maybe<Scalars['String']['output']>;
+  headingTwo?: Maybe<Scalars['String']['output']>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
-  title?: Maybe<Scalars['String']['output']>;
+  secondSection?: Maybe<ComponentAboutAboutSecondSection>;
+  seventhSection?: Maybe<ComponentAboutAboutSeventhSection>;
+  sixthSection?: Maybe<ComponentAboutAboutSixthSection>;
+  thirdSection?: Maybe<ComponentAboutAboutSecondSection>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
 }
 
-export type AboutBlocksDynamicZone = ComponentSharedMedia | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSlider | Error;
-
 export interface AboutInput {
-  blocks?: InputMaybe<Array<Scalars['AboutBlocksDynamicZoneInput']['input']>>;
+  bgImage?: InputMaybe<Scalars['ID']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  descriptionTwo?: InputMaybe<Scalars['String']['input']>;
+  fifthSection?: InputMaybe<ComponentAboutAboutFifthSectionInput>;
+  fourthSection?: InputMaybe<ComponentAboutAboutFourthSectionInput>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  headingTwo?: InputMaybe<Scalars['String']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
-  title?: InputMaybe<Scalars['String']['input']>;
+  secondSection?: InputMaybe<ComponentAboutAboutSecondSectionInput>;
+  seventhSection?: InputMaybe<ComponentAboutAboutSeventhSectionInput>;
+  sixthSection?: InputMaybe<ComponentAboutAboutSixthSectionInput>;
+  thirdSection?: InputMaybe<ComponentAboutAboutSecondSectionInput>;
 }
 
 export interface Author {
@@ -531,6 +546,194 @@ export interface ClientContactInput {
   clientName?: InputMaybe<Scalars['String']['input']>;
   clientProfilePicture?: InputMaybe<Scalars['ID']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+}
+
+export interface ComponentAboutAboutFifthSection {
+  __typename?: 'ComponentAboutAboutFifthSection';
+  cardDetails?: Maybe<Array<Maybe<ComponentAboutAboutFifthSectionCards>>>;
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+}
+
+
+export interface ComponentAboutAboutFifthSectionCardDetailsArgs {
+  filters?: InputMaybe<ComponentAboutAboutFifthSectionCardsFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface ComponentAboutAboutFifthSectionCards {
+  __typename?: 'ComponentAboutAboutFifthSectionCards';
+  description?: Maybe<Scalars['String']['output']>;
+  designation?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  isImageVisible?: Maybe<Scalars['Boolean']['output']>;
+  profilePicture?: Maybe<UploadFile>;
+}
+
+export interface ComponentAboutAboutFifthSectionCardsFiltersInput {
+  and?: InputMaybe<Array<InputMaybe<ComponentAboutAboutFifthSectionCardsFiltersInput>>>;
+  description?: InputMaybe<StringFilterInput>;
+  designation?: InputMaybe<StringFilterInput>;
+  heading?: InputMaybe<StringFilterInput>;
+  isImageVisible?: InputMaybe<BooleanFilterInput>;
+  not?: InputMaybe<ComponentAboutAboutFifthSectionCardsFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentAboutAboutFifthSectionCardsFiltersInput>>>;
+}
+
+export interface ComponentAboutAboutFifthSectionCardsInput {
+  description?: InputMaybe<Scalars['String']['input']>;
+  designation?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  isImageVisible?: InputMaybe<Scalars['Boolean']['input']>;
+  profilePicture?: InputMaybe<Scalars['ID']['input']>;
+}
+
+export interface ComponentAboutAboutFifthSectionInput {
+  cardDetails?: InputMaybe<Array<InputMaybe<ComponentAboutAboutFifthSectionCardsInput>>>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+}
+
+export interface ComponentAboutAboutFourthSection {
+  __typename?: 'ComponentAboutAboutFourthSection';
+  accordianDetails?: Maybe<Array<Maybe<ComponentAboutAboutFourthSectionDetails>>>;
+  id: Scalars['ID']['output'];
+  label?: Maybe<Scalars['String']['output']>;
+}
+
+
+export interface ComponentAboutAboutFourthSectionAccordianDetailsArgs {
+  filters?: InputMaybe<ComponentAboutAboutFourthSectionDetailsFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface ComponentAboutAboutFourthSectionDetails {
+  __typename?: 'ComponentAboutAboutFourthSectionDetails';
+  description?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+}
+
+export interface ComponentAboutAboutFourthSectionDetailsFiltersInput {
+  and?: InputMaybe<Array<InputMaybe<ComponentAboutAboutFourthSectionDetailsFiltersInput>>>;
+  description?: InputMaybe<StringFilterInput>;
+  heading?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentAboutAboutFourthSectionDetailsFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentAboutAboutFourthSectionDetailsFiltersInput>>>;
+}
+
+export interface ComponentAboutAboutFourthSectionDetailsInput {
+  description?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+}
+
+export interface ComponentAboutAboutFourthSectionInput {
+  accordianDetails?: InputMaybe<Array<InputMaybe<ComponentAboutAboutFourthSectionDetailsInput>>>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+}
+
+export interface ComponentAboutAboutSecondSection {
+  __typename?: 'ComponentAboutAboutSecondSection';
+  description?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  images: Array<Maybe<UploadFile>>;
+  images_connection?: Maybe<UploadFileRelationResponseCollection>;
+}
+
+
+export interface ComponentAboutAboutSecondSectionImagesArgs {
+  filters?: InputMaybe<UploadFileFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface ComponentAboutAboutSecondSectionImages_ConnectionArgs {
+  filters?: InputMaybe<UploadFileFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface ComponentAboutAboutSecondSectionInput {
+  description?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  images?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+}
+
+export interface ComponentAboutAboutSeventhSection {
+  __typename?: 'ComponentAboutAboutSeventhSection';
+  cardDetails?: Maybe<Array<Maybe<ComponentAboutSeventhSectionCards>>>;
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  link?: Maybe<ComponentElementsLink>;
+}
+
+
+export interface ComponentAboutAboutSeventhSectionCardDetailsArgs {
+  filters?: InputMaybe<ComponentAboutSeventhSectionCardsFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface ComponentAboutAboutSeventhSectionInput {
+  cardDetails?: InputMaybe<Array<InputMaybe<ComponentAboutSeventhSectionCardsInput>>>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  link?: InputMaybe<ComponentElementsLinkInput>;
+}
+
+export interface ComponentAboutAboutSixthSection {
+  __typename?: 'ComponentAboutAboutSixthSection';
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  sixthSectionCards?: Maybe<Array<Maybe<ComponentAboutAboutFifthSectionCards>>>;
+}
+
+
+export interface ComponentAboutAboutSixthSectionSixthSectionCardsArgs {
+  filters?: InputMaybe<ComponentAboutAboutFifthSectionCardsFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface ComponentAboutAboutSixthSectionInput {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  sixthSectionCards?: InputMaybe<Array<InputMaybe<ComponentAboutAboutFifthSectionCardsInput>>>;
+}
+
+export interface ComponentAboutSeventhSectionCards {
+  __typename?: 'ComponentAboutSeventhSectionCards';
+  bgColor?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  icon?: Maybe<UploadFile>;
+  id: Scalars['ID']['output'];
+}
+
+export interface ComponentAboutSeventhSectionCardsFiltersInput {
+  and?: InputMaybe<Array<InputMaybe<ComponentAboutSeventhSectionCardsFiltersInput>>>;
+  bgColor?: InputMaybe<StringFilterInput>;
+  description?: InputMaybe<StringFilterInput>;
+  heading?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentAboutSeventhSectionCardsFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentAboutSeventhSectionCardsFiltersInput>>>;
+}
+
+export interface ComponentAboutSeventhSectionCardsInput {
+  bgColor?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['ID']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
 }
 
 export interface ComponentBlogAndCasestudiesBlogOrCasestudyText {
@@ -1583,6 +1786,216 @@ export interface ComponentLegalDetails {
   id: Scalars['ID']['output'];
 }
 
+export interface ComponentMatterDesignMatterDesignCards {
+  __typename?: 'ComponentMatterDesignMatterDesignCards';
+  cardImage?: Maybe<UploadFile>;
+  description?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  icon?: Maybe<UploadFile>;
+  id: Scalars['ID']['output'];
+  link?: Maybe<Array<Maybe<ComponentElementsLink>>>;
+}
+
+
+export interface ComponentMatterDesignMatterDesignCardsLinkArgs {
+  filters?: InputMaybe<ComponentElementsLinkFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface ComponentMatterDesignMatterDesignCardsFiltersInput {
+  and?: InputMaybe<Array<InputMaybe<ComponentMatterDesignMatterDesignCardsFiltersInput>>>;
+  description?: InputMaybe<StringFilterInput>;
+  heading?: InputMaybe<StringFilterInput>;
+  link?: InputMaybe<ComponentElementsLinkFiltersInput>;
+  not?: InputMaybe<ComponentMatterDesignMatterDesignCardsFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentMatterDesignMatterDesignCardsFiltersInput>>>;
+}
+
+export interface ComponentMatterDesignMatterDesignCardsInput {
+  cardImage?: InputMaybe<Scalars['ID']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['ID']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  link?: InputMaybe<Array<InputMaybe<ComponentElementsLinkInput>>>;
+}
+
+export interface ComponentMatterDesignMatterDesignContactUs {
+  __typename?: 'ComponentMatterDesignMatterDesignContactUs';
+  description?: Maybe<Scalars['String']['output']>;
+  headingOne?: Maybe<Scalars['String']['output']>;
+  headingTwo?: Maybe<Scalars['String']['output']>;
+  icon?: Maybe<UploadFile>;
+  id: Scalars['ID']['output'];
+}
+
+export interface ComponentMatterDesignMatterDesignContactUsInput {
+  description?: InputMaybe<Scalars['String']['input']>;
+  headingOne?: InputMaybe<Scalars['String']['input']>;
+  headingTwo?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['ID']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+}
+
+export interface ComponentMatterDesignMatterDesignDisplayCards {
+  __typename?: 'ComponentMatterDesignMatterDesignDisplayCards';
+  d?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  icon?: Maybe<UploadFile>;
+  id: Scalars['ID']['output'];
+  images: Array<Maybe<UploadFile>>;
+  images_connection?: Maybe<UploadFileRelationResponseCollection>;
+}
+
+
+export interface ComponentMatterDesignMatterDesignDisplayCardsImagesArgs {
+  filters?: InputMaybe<UploadFileFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface ComponentMatterDesignMatterDesignDisplayCardsImages_ConnectionArgs {
+  filters?: InputMaybe<UploadFileFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface ComponentMatterDesignMatterDesignDisplayCardsFiltersInput {
+  and?: InputMaybe<Array<InputMaybe<ComponentMatterDesignMatterDesignDisplayCardsFiltersInput>>>;
+  d?: InputMaybe<StringFilterInput>;
+  heading?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentMatterDesignMatterDesignDisplayCardsFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentMatterDesignMatterDesignDisplayCardsFiltersInput>>>;
+}
+
+export interface ComponentMatterDesignMatterDesignDisplayCardsInput {
+  d?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['ID']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  images?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+}
+
+export interface ComponentMatterDesignMatterDesignFifthSection {
+  __typename?: 'ComponentMatterDesignMatterDesignFifthSection';
+  cards?: Maybe<Array<Maybe<ComponentMatterDesignMatterDesignCards>>>;
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+}
+
+
+export interface ComponentMatterDesignMatterDesignFifthSectionCardsArgs {
+  filters?: InputMaybe<ComponentMatterDesignMatterDesignCardsFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface ComponentMatterDesignMatterDesignFifthSectionInput {
+  cards?: InputMaybe<Array<InputMaybe<ComponentMatterDesignMatterDesignCardsInput>>>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+}
+
+export interface ComponentMatterDesignMatterDesignFourthSection {
+  __typename?: 'ComponentMatterDesignMatterDesignFourthSection';
+  displayCards?: Maybe<Array<Maybe<ComponentMatterDesignMatterDesignDisplayCards>>>;
+  id: Scalars['ID']['output'];
+}
+
+
+export interface ComponentMatterDesignMatterDesignFourthSectionDisplayCardsArgs {
+  filters?: InputMaybe<ComponentMatterDesignMatterDesignDisplayCardsFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface ComponentMatterDesignMatterDesignFourthSectionInput {
+  displayCards?: InputMaybe<Array<InputMaybe<ComponentMatterDesignMatterDesignDisplayCardsInput>>>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+}
+
+export interface ComponentMatterDesignMatterDesignHeroSection {
+  __typename?: 'ComponentMatterDesignMatterDesignHeroSection';
+  description?: Maybe<Scalars['String']['output']>;
+  featureImage?: Maybe<UploadFile>;
+  headingOne?: Maybe<Scalars['String']['output']>;
+  headingTwo?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  label?: Maybe<Scalars['String']['output']>;
+  link?: Maybe<ComponentElementsLink>;
+}
+
+export interface ComponentMatterDesignMatterDesignHeroSectionInput {
+  description?: InputMaybe<Scalars['String']['input']>;
+  featureImage?: InputMaybe<Scalars['ID']['input']>;
+  headingOne?: InputMaybe<Scalars['String']['input']>;
+  headingTwo?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  link?: InputMaybe<ComponentElementsLinkInput>;
+}
+
+export interface ComponentMatterDesignMatterDesignSecondSection {
+  __typename?: 'ComponentMatterDesignMatterDesignSecondSection';
+  cardDetails?: Maybe<Array<Maybe<ComponentMatterDesignMatterDesignCards>>>;
+  heading?: Maybe<Scalars['String']['output']>;
+  icon?: Maybe<UploadFile>;
+  id: Scalars['ID']['output'];
+}
+
+
+export interface ComponentMatterDesignMatterDesignSecondSectionCardDetailsArgs {
+  filters?: InputMaybe<ComponentMatterDesignMatterDesignCardsFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface ComponentMatterDesignMatterDesignSecondSectionInput {
+  cardDetails?: InputMaybe<Array<InputMaybe<ComponentMatterDesignMatterDesignCardsInput>>>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['ID']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+}
+
+export interface ComponentMatterDesignMatterDesignStripOne {
+  __typename?: 'ComponentMatterDesignMatterDesignStripOne';
+  bgIcon?: Maybe<UploadFile>;
+  description?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  link?: Maybe<ComponentElementsLink>;
+}
+
+export interface ComponentMatterDesignMatterDesignStripOneInput {
+  bgIcon?: InputMaybe<Scalars['ID']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  link?: InputMaybe<ComponentElementsLinkInput>;
+}
+
+export interface ComponentMatterDesignMatterDesignThirdSection {
+  __typename?: 'ComponentMatterDesignMatterDesignThirdSection';
+  cards?: Maybe<Array<Maybe<ComponentMatterDesignMatterDesignCards>>>;
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+}
+
+
+export interface ComponentMatterDesignMatterDesignThirdSectionCardsArgs {
+  filters?: InputMaybe<ComponentMatterDesignMatterDesignCardsFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface ComponentMatterDesignMatterDesignThirdSectionInput {
+  cards?: InputMaybe<Array<InputMaybe<ComponentMatterDesignMatterDesignCardsInput>>>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+}
+
 export interface ComponentNavbarNavbarLevel1Group {
   __typename?: 'ComponentNavbarNavbarLevel1Group';
   description?: Maybe<Scalars['String']['output']>;
@@ -2339,7 +2752,7 @@ export interface FooterInput {
   socialMedia?: InputMaybe<ComponentFooterFooterSocialMediaLinksInput>;
 }
 
-export type GenericMorph = About | Author | Blog | Capablity | CaseStudy | CaseStudyLandingPage | Category | ClientContact | ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCaseStudyPositioning | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesCompanyProfile | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesProblemAndSolution | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentCapablitiesCapablitiesCardSection | ComponentCapablitiesCapablitiesCards | ComponentContactUsContactUsBottomCards | ComponentContactUsSocialMediaLinks | ComponentElementsButtons | ComponentElementsElements | ComponentElementsLink | ComponentElementsPoints | ComponentEventsEventDetails | ComponentFooterFooterLegalSection | ComponentFooterFooterLinks | ComponentFooterFooterSocialMediaLinks | ComponentFooterFooterSocialMediaRightSection | ComponentFooterPagesLinks | ComponentHomepageBranchCards | ComponentHomepageFourthSectionCards | ComponentHomepageHomepageContactAndTestimonials | ComponentHomepageHomepageFifthSection | ComponentHomepageHomepageFourthSection | ComponentHomepageHomepageHeroSection | ComponentHomepageHomepageSecondSection | ComponentHomepageHomepageSecondSectionPoints | ComponentHomepageHomepageThirdSection | ComponentHowWeWorkCardDetails | ComponentHowWeWorkCards | ComponentHowWeWorkHowWeWorkHeroSection | ComponentHowWeWorkLowFrictionWays | ComponentHowWeWorkRightDetails | ComponentHowWeWorkRightStartingPoint | ComponentLabsCardSection | ComponentLabsFilCardDetails | ComponentLabsFilLabsFilEighthSection | ComponentLabsFilLabsFilFifthSection | ComponentLabsFilLabsFilFourthSection | ComponentLabsFilLabsFilHeroSection | ComponentLabsFilLabsFilSecondSection | ComponentLabsFilLabsFilSeventhSection | ComponentLabsFilLabsFilSixthSection | ComponentLabsFilLabsFilThirdSection | ComponentLabsFilSixthSectionLeftCard | ComponentLabsFilSixthSectionRightCard | ComponentLabsFilThirdSectionCards | ComponentLegalDetails | ComponentNavbarNavbarLevel1Group | ComponentNavbarNavbarLevel2Group | ComponentPodcasteEventsInterviewsShadowCard | ComponentServiceExploreRecentWork | ComponentServiceHeroSection | ComponentServiceHowWeWork | ComponentServiceOurOperatingPhilosophy | ComponentServiceServiceMisc | ComponentServiceWhatWeDesign | ComponentServiceWhyTeamHireUs | ComponentSharedCard | ComponentSharedHeroSection | ComponentSharedMedia | ComponentSharedProfile | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | ComponentSharedSlider | ComponentSharedTiles | ComponentSingleTypeCaseStudyPageHeroSection | ComponentSingleTypeCaseStudyPageMiscellaneous | ContactUs | Event | Faq | Footer | Global | Homepage | HowWeWork | I18NLocale | Interview | LabSingleType | LabsFilLandingPage | Navbar | Podcast | PrivacyPolicy | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Service | Tag | TermsOfUse | Testimonial | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = About | Author | Blog | Capablity | CaseStudy | CaseStudyLandingPage | Category | ClientContact | ComponentAboutAboutFifthSection | ComponentAboutAboutFifthSectionCards | ComponentAboutAboutFourthSection | ComponentAboutAboutFourthSectionDetails | ComponentAboutAboutSecondSection | ComponentAboutAboutSeventhSection | ComponentAboutAboutSixthSection | ComponentAboutSeventhSectionCards | ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCaseStudyPositioning | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesCompanyProfile | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesProblemAndSolution | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentCapablitiesCapablitiesCardSection | ComponentCapablitiesCapablitiesCards | ComponentContactUsContactUsBottomCards | ComponentContactUsSocialMediaLinks | ComponentElementsButtons | ComponentElementsElements | ComponentElementsLink | ComponentElementsPoints | ComponentEventsEventDetails | ComponentFooterFooterLegalSection | ComponentFooterFooterLinks | ComponentFooterFooterSocialMediaLinks | ComponentFooterFooterSocialMediaRightSection | ComponentFooterPagesLinks | ComponentHomepageBranchCards | ComponentHomepageFourthSectionCards | ComponentHomepageHomepageContactAndTestimonials | ComponentHomepageHomepageFifthSection | ComponentHomepageHomepageFourthSection | ComponentHomepageHomepageHeroSection | ComponentHomepageHomepageSecondSection | ComponentHomepageHomepageSecondSectionPoints | ComponentHomepageHomepageThirdSection | ComponentHowWeWorkCardDetails | ComponentHowWeWorkCards | ComponentHowWeWorkHowWeWorkHeroSection | ComponentHowWeWorkLowFrictionWays | ComponentHowWeWorkRightDetails | ComponentHowWeWorkRightStartingPoint | ComponentLabsCardSection | ComponentLabsFilCardDetails | ComponentLabsFilLabsFilEighthSection | ComponentLabsFilLabsFilFifthSection | ComponentLabsFilLabsFilFourthSection | ComponentLabsFilLabsFilHeroSection | ComponentLabsFilLabsFilSecondSection | ComponentLabsFilLabsFilSeventhSection | ComponentLabsFilLabsFilSixthSection | ComponentLabsFilLabsFilThirdSection | ComponentLabsFilSixthSectionLeftCard | ComponentLabsFilSixthSectionRightCard | ComponentLabsFilThirdSectionCards | ComponentLegalDetails | ComponentMatterDesignMatterDesignCards | ComponentMatterDesignMatterDesignContactUs | ComponentMatterDesignMatterDesignDisplayCards | ComponentMatterDesignMatterDesignFifthSection | ComponentMatterDesignMatterDesignFourthSection | ComponentMatterDesignMatterDesignHeroSection | ComponentMatterDesignMatterDesignSecondSection | ComponentMatterDesignMatterDesignStripOne | ComponentMatterDesignMatterDesignThirdSection | ComponentNavbarNavbarLevel1Group | ComponentNavbarNavbarLevel2Group | ComponentPodcasteEventsInterviewsShadowCard | ComponentServiceExploreRecentWork | ComponentServiceHeroSection | ComponentServiceHowWeWork | ComponentServiceOurOperatingPhilosophy | ComponentServiceServiceMisc | ComponentServiceWhatWeDesign | ComponentServiceWhyTeamHireUs | ComponentSharedCard | ComponentSharedHeroSection | ComponentSharedMedia | ComponentSharedProfile | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | ComponentSharedSlider | ComponentSharedTiles | ComponentSingleTypeCaseStudyPageHeroSection | ComponentSingleTypeCaseStudyPageMiscellaneous | ContactUs | Event | Faq | Footer | Global | Homepage | HowWeWork | I18NLocale | Interview | LabSingleType | LabsFilLandingPage | MatterDesignSystem | Navbar | Podcast | PrivacyPolicy | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Service | Tag | TermsOfUse | Testimonial | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export interface Global {
   __typename?: 'Global';
@@ -2640,6 +3053,34 @@ export interface LabsFilLandingPageInput {
   thirdSection?: InputMaybe<ComponentLabsFilLabsFilThirdSectionInput>;
 }
 
+export interface MatterDesignSystem {
+  __typename?: 'MatterDesignSystem';
+  contactUs?: Maybe<ComponentMatterDesignMatterDesignContactUs>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  documentId: Scalars['ID']['output'];
+  fifthSection?: Maybe<ComponentMatterDesignMatterDesignFifthSection>;
+  fourthSection?: Maybe<ComponentMatterDesignMatterDesignFourthSection>;
+  heroSection?: Maybe<ComponentMatterDesignMatterDesignHeroSection>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  secondSection?: Maybe<ComponentMatterDesignMatterDesignSecondSection>;
+  stripOne?: Maybe<ComponentMatterDesignMatterDesignStripOne>;
+  stripTwo?: Maybe<ComponentMatterDesignMatterDesignStripOne>;
+  thirdSection?: Maybe<ComponentMatterDesignMatterDesignThirdSection>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+}
+
+export interface MatterDesignSystemInput {
+  contactUs?: InputMaybe<ComponentMatterDesignMatterDesignContactUsInput>;
+  fifthSection?: InputMaybe<ComponentMatterDesignMatterDesignFifthSectionInput>;
+  fourthSection?: InputMaybe<ComponentMatterDesignMatterDesignFourthSectionInput>;
+  heroSection?: InputMaybe<ComponentMatterDesignMatterDesignHeroSectionInput>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  secondSection?: InputMaybe<ComponentMatterDesignMatterDesignSecondSectionInput>;
+  stripOne?: InputMaybe<ComponentMatterDesignMatterDesignStripOneInput>;
+  stripTwo?: InputMaybe<ComponentMatterDesignMatterDesignStripOneInput>;
+  thirdSection?: InputMaybe<ComponentMatterDesignMatterDesignThirdSectionInput>;
+}
+
 export interface Mutation {
   __typename?: 'Mutation';
   /** Change user password. Confirm with the current password. */
@@ -2679,6 +3120,7 @@ export interface Mutation {
   deleteInterview?: Maybe<DeleteMutationResponse>;
   deleteLabSingleType?: Maybe<DeleteMutationResponse>;
   deleteLabsFilLandingPage?: Maybe<DeleteMutationResponse>;
+  deleteMatterDesignSystem?: Maybe<DeleteMutationResponse>;
   deleteNavbar?: Maybe<DeleteMutationResponse>;
   deletePodcast?: Maybe<DeleteMutationResponse>;
   deletePrivacyPolicy?: Maybe<DeleteMutationResponse>;
@@ -2720,6 +3162,7 @@ export interface Mutation {
   updateInterview?: Maybe<Interview>;
   updateLabSingleType?: Maybe<LabSingleType>;
   updateLabsFilLandingPage?: Maybe<LabsFilLandingPage>;
+  updateMatterDesignSystem?: Maybe<MatterDesignSystem>;
   updateNavbar?: Maybe<Navbar>;
   updatePodcast?: Maybe<Podcast>;
   updatePrivacyPolicy?: Maybe<PrivacyPolicy>;
@@ -3055,6 +3498,12 @@ export interface MutationUpdateLabsFilLandingPageArgs {
 }
 
 
+export interface MutationUpdateMatterDesignSystemArgs {
+  data: MatterDesignSystemInput;
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
 export interface MutationUpdateNavbarArgs {
   data: NavbarInput;
   status?: InputMaybe<PublicationStatus>;
@@ -3325,6 +3774,7 @@ export interface Query {
   interviews_connection?: Maybe<InterviewEntityResponseCollection>;
   labSingleType?: Maybe<LabSingleType>;
   labsFilLandingPage?: Maybe<LabsFilLandingPage>;
+  matterDesignSystem?: Maybe<MatterDesignSystem>;
   me?: Maybe<UsersPermissionsMe>;
   navbar?: Maybe<Navbar>;
   podcast?: Maybe<Podcast>;
@@ -3601,6 +4051,11 @@ export interface QueryLabSingleTypeArgs {
 
 
 export interface QueryLabsFilLandingPageArgs {
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface QueryMatterDesignSystemArgs {
   status?: InputMaybe<PublicationStatus>;
 }
 
@@ -4411,6 +4866,11 @@ export interface UsersPermissionsUserRelationResponseCollection {
   nodes: Array<UsersPermissionsUser>;
 }
 
+export type AboutQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AboutQuery = { __typename?: 'Query', about?: { __typename?: 'About', heading?: string | null, headingTwo?: string | null, description?: string | null, descriptionTwo?: string | null, bgImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, secondSection?: { __typename?: 'ComponentAboutAboutSecondSection', heading?: string | null, description?: string | null, images: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null> } | null, thirdSection?: { __typename?: 'ComponentAboutAboutSecondSection', heading?: string | null, description?: string | null, images: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null> } | null, fourthSection?: { __typename?: 'ComponentAboutAboutFourthSection', label?: string | null, accordianDetails?: Array<{ __typename?: 'ComponentAboutAboutFourthSectionDetails', id: string, heading?: string | null, description?: string | null } | null> | null } | null, fifthSection?: { __typename?: 'ComponentAboutAboutFifthSection', heading?: string | null, cardDetails?: Array<{ __typename?: 'ComponentAboutAboutFifthSectionCards', id: string, description?: string | null, designation?: string | null, isImageVisible?: boolean | null, profilePicture?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null } | null> | null } | null, sixthSection?: { __typename?: 'ComponentAboutAboutSixthSection', heading?: string | null, sixthSectionCards?: Array<{ __typename?: 'ComponentAboutAboutFifthSectionCards', id: string, heading?: string | null, description?: string | null } | null> | null } | null, seventhSection?: { __typename?: 'ComponentAboutAboutSeventhSection', heading?: string | null, link?: { __typename?: 'ComponentElementsLink', href?: string | null, name?: string | null, isExternal?: boolean | null } | null, cardDetails?: Array<{ __typename?: 'ComponentAboutSeventhSectionCards', id: string, heading?: string | null, description?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null } | null> | null } | null } | null };
+
 export type CapablityQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -4582,3 +5042,8 @@ export type TermsOfUseQuery = { __typename?: 'Query', termsOfUse?: { __typename?
       | { __typename: 'ComponentLegalDetails', id: string, heading?: string | null, description?: string | null }
       | { __typename?: 'Error' }
      | null> | null } | null };
+
+export type MatterDesignSystemQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type MatterDesignSystemQuery = { __typename?: 'Query', matterDesignSystem?: { __typename?: 'MatterDesignSystem', heroSection?: { __typename?: 'ComponentMatterDesignMatterDesignHeroSection', label?: string | null, headingOne?: string | null, headingTwo?: string | null, description?: string | null, link?: { __typename?: 'ComponentElementsLink', href?: string | null, name?: string | null } | null, featureImage?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null } | null, secondSection?: { __typename?: 'ComponentMatterDesignMatterDesignSecondSection', heading?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null, cardDetails?: Array<{ __typename?: 'ComponentMatterDesignMatterDesignCards', id: string, heading?: string | null, description?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null, link?: Array<{ __typename?: 'ComponentElementsLink', href?: string | null, name?: string | null } | null> | null } | null> | null } | null, thirdSection?: { __typename?: 'ComponentMatterDesignMatterDesignThirdSection', heading?: string | null, cards?: Array<{ __typename?: 'ComponentMatterDesignMatterDesignCards', id: string, heading?: string | null, description?: string | null, cardImage?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null } | null> | null } | null, stripOne?: { __typename?: 'ComponentMatterDesignMatterDesignStripOne', heading?: string | null, description?: string | null, link?: { __typename?: 'ComponentElementsLink', href?: string | null, name?: string | null } | null, bgIcon?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null } | null, fourthSection?: { __typename?: 'ComponentMatterDesignMatterDesignFourthSection', displayCards?: Array<{ __typename?: 'ComponentMatterDesignMatterDesignDisplayCards', id: string, heading?: string | null, d?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null, images: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null> } | null> | null } | null, fifthSection?: { __typename?: 'ComponentMatterDesignMatterDesignFifthSection', heading?: string | null, cards?: Array<{ __typename?: 'ComponentMatterDesignMatterDesignCards', heading?: string | null, description?: string | null, id: string, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null } | null> | null } | null, stripTwo?: { __typename?: 'ComponentMatterDesignMatterDesignStripOne', heading?: string | null, description?: string | null, bgIcon?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null, link?: { __typename?: 'ComponentElementsLink', href?: string | null, name?: string | null } | null } | null, contactUs?: { __typename?: 'ComponentMatterDesignMatterDesignContactUs', headingOne?: string | null, headingTwo?: string | null, description?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null } | null } | null };

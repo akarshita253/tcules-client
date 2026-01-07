@@ -1,12 +1,7 @@
-import ResourceContainer from '@/features/resource/ResourceContainer'
+import ResourceContainer from "@/features/resource/ResourceContainer";
 
 const Resource = () => {
-  return (
-    // <ResourceContainer />
-    <>
-    Resouc
-    </>
-  )
-}
+  return <ResourceContainer />;
+};
 
-export default Resource
+export default Resource;
