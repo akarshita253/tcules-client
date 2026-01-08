@@ -7,6 +7,7 @@ import {
 } from "next/font/google";
 import Footer from "@/components/global/Footer";
 import ApolloWrapper from "@/lib/providers/ApolloWrapper";
+import Navbar from "@/components/global/Navbar";
 
 const figtree = Figtree({ subsets: ["latin"], variable: "--font-label" });
 const playfair = Playfair_Display({
@@ -33,6 +34,7 @@ export default function RootLayout({
       <body
         className={`${figtree.variable} ${playfair.variable} ${bricolageGrotesque.variable} antialiased`}
       >
+        <Navbar />
         {children}
         <ApolloWrapper>
           <Footer />

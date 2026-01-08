@@ -25,7 +25,7 @@ const Footer = () => {
 
   return (
     <div className="p-1">
-      <Section className="bg-[#04EC50] rounded-xl relative">
+      <Section className="bg-accent-500 rounded-xl relative">
         <div>
           <Image
             src={FooterSubstract}

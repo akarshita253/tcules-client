@@ -2209,6 +2209,7 @@ export interface ComponentNavbarNavbarLevel1GroupInput {
 
 export interface ComponentNavbarNavbarLevel2Group {
   __typename?: 'ComponentNavbarNavbarLevel2Group';
+  description?: Maybe<Scalars['String']['output']>;
   hasSubMenu?: Maybe<Scalars['Boolean']['output']>;
   href?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
@@ -2225,6 +2226,7 @@ export interface ComponentNavbarNavbarLevel2GroupLevelTwoLinksArgs {
 
 export interface ComponentNavbarNavbarLevel2GroupFiltersInput {
   and?: InputMaybe<Array<InputMaybe<ComponentNavbarNavbarLevel2GroupFiltersInput>>>;
+  description?: InputMaybe<StringFilterInput>;
   hasSubMenu?: InputMaybe<BooleanFilterInput>;
   href?: InputMaybe<StringFilterInput>;
   levelTwoLinks?: InputMaybe<ComponentElementsLinkFiltersInput>;
@@ -2234,6 +2236,7 @@ export interface ComponentNavbarNavbarLevel2GroupFiltersInput {
 }
 
 export interface ComponentNavbarNavbarLevel2GroupInput {
+  description?: InputMaybe<Scalars['String']['input']>;
   hasSubMenu?: InputMaybe<Scalars['Boolean']['input']>;
   href?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['ID']['input']>;
@@ -5334,3 +5337,8 @@ export type MatterDesignSystemQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type MatterDesignSystemQuery = { __typename?: 'Query', matterDesignSystem?: { __typename?: 'MatterDesignSystem', heroSection?: { __typename?: 'ComponentMatterDesignMatterDesignHeroSection', label?: string | null, headingOne?: string | null, headingTwo?: string | null, description?: string | null, link?: { __typename?: 'ComponentElementsLink', href?: string | null, name?: string | null } | null, featureImage?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null } | null, secondSection?: { __typename?: 'ComponentMatterDesignMatterDesignSecondSection', heading?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null, cardDetails?: Array<{ __typename?: 'ComponentMatterDesignMatterDesignCards', id: string, heading?: string | null, description?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null, link?: Array<{ __typename?: 'ComponentElementsLink', href?: string | null, name?: string | null } | null> | null } | null> | null } | null, thirdSection?: { __typename?: 'ComponentMatterDesignMatterDesignThirdSection', heading?: string | null, cards?: Array<{ __typename?: 'ComponentMatterDesignMatterDesignCards', id: string, heading?: string | null, description?: string | null, cardImage?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null } | null> | null } | null, stripOne?: { __typename?: 'ComponentMatterDesignMatterDesignStripOne', heading?: string | null, description?: string | null, link?: { __typename?: 'ComponentElementsLink', href?: string | null, name?: string | null } | null, bgIcon?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null } | null, fourthSection?: { __typename?: 'ComponentMatterDesignMatterDesignFourthSection', displayCards?: Array<{ __typename?: 'ComponentMatterDesignMatterDesignDisplayCards', id: string, heading?: string | null, d?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null, images: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null> } | null> | null } | null, fifthSection?: { __typename?: 'ComponentMatterDesignMatterDesignFifthSection', heading?: string | null, cards?: Array<{ __typename?: 'ComponentMatterDesignMatterDesignCards', heading?: string | null, description?: string | null, id: string, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null } | null> | null } | null, stripTwo?: { __typename?: 'ComponentMatterDesignMatterDesignStripOne', heading?: string | null, description?: string | null, bgIcon?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null, link?: { __typename?: 'ComponentElementsLink', href?: string | null, name?: string | null } | null } | null, contactUs?: { __typename?: 'ComponentMatterDesignMatterDesignContactUs', headingOne?: string | null, headingTwo?: string | null, description?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null } | null } | null };
+
+export type NavbarQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type NavbarQuery = { __typename?: 'Query', navbar?: { __typename?: 'Navbar', navbarLogo?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, navButton?: Array<{ __typename?: 'ComponentElementsButtons', href?: string | null, name?: string | null } | null> | null, navLevelOneGroup?: Array<{ __typename?: 'ComponentNavbarNavbarLevel1Group', id: string, name?: string | null, href?: string | null, isSubMenuAvailable?: boolean | null, navLevelTwoGroup?: Array<{ __typename?: 'ComponentNavbarNavbarLevel2Group', id: string, name?: string | null, description?: string | null, hasSubMenu?: boolean | null, href?: string | null, levelTwoLinks?: Array<{ __typename?: 'ComponentElementsLink', id: string, name?: string | null, href?: string | null, description?: string | null, isExternal?: boolean | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, url: string, height?: number | null } | null } | null> | null } | null> | null } | null> | null } | null };
