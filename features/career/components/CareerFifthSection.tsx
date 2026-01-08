@@ -12,7 +12,7 @@ const CareerFifthSection = ({
 }) => {
   return (
     <Section className="col-span-12">
-      <div className="p-2 rounded-xl bg-neutral-50 grid grid-cols-1 sm:grid-cols-2 gap-2">
+      <div className="p-2 rounded-xl bg-neutral-50 grid grid-cols-1 md:grid-cols-2 gap-2">
         <div className="p-8 rounded-xl bg-neutral-100 flex flex-col justify-between gap-4">
           <h3 className="text-heading-sm text-neutral-900">
             {fifthSectionData?.heading}
@@ -44,7 +44,7 @@ const CareerFifthSection = ({
                   return (
                     <div key={point?.id} className="flex items-center gap-2">
                       {point?.icon?.url && (
-                        <div>
+                        <div className="shrink-0">
                           <Image
                             src={point?.icon?.url ?? ""}
                             width={16}

@@ -30,7 +30,7 @@ const Footer = () => {
           <Image
             src={FooterSubstract}
             alt="Footer Substract"
-            className="absolute bottom-0 right-0 "
+            className="absolute bottom-0 right-0 hidden lg:block"
           />
         </div>
         <div>
