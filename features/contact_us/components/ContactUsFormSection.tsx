@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -20,6 +21,7 @@ const formSchema = z.object({
   fullName: z.string().min(2).max(50),
   clientCompany: z.string().min(2).max(50),
   email: z.string().email(),
+  contactNumber: z.string().min(6).max(12),
   ideaAboutProject: z.string().min(6).max(400),
 });
 
@@ -30,6 +32,7 @@ const ContactUsFormSection = () => {
       fullName: "",
       clientCompany: "",
       email: "",
+      contactNumber: "",
       ideaAboutProject: "",
     },
   });
@@ -45,81 +48,104 @@ const ContactUsFormSection = () => {
           clientName: values.fullName,
           clientEmail: values.email,
           clientCompany: values.clientCompany,
+          clientContact: values.contactNumber,
           clientComments: values.ideaAboutProject,
         },
       },
     });
   }
   return (
-    <div className="p-8 bg-neutral-100 rounded-xl md:w-5/7 mx-auto mb-6 sm:mb-11">
-      {error && <p className="text-red-500">{error.message}</p>}
+    <div className="p-8 bg-neutral-100 rounded-xl mx-auto mb-6 sm:mb-11">
+        {error && <p className="text-red-500">{error.message}</p>}
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <FormField
-            control={form.control}
-            name="fullName"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-caption-lg text-neutral-900">
-                  Your Name
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    className="text-label-sm text-neutral-400 bg-neutral-50"
-                    placeholder="John Doe"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-caption-lg text-neutral-900">
-                  Email Address*
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    className="text-label-sm text-neutral-400 bg-neutral-50"
-                    placeholder="your@email.com"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="clientCompany"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-caption-lg text-neutral-900">
-                  Company Name
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    className="text-label-sm text-neutral-400 bg-neutral-50"
-                    placeholder="Your Company"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          <div className="grid grid-cols-2 sm:grid-cols-2 gap-6">
+            <FormField
+              control={form.control}
+              name="fullName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-caption-lg text-neutral-900">
+                    Your Name
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      className="text-label-sm text-neutral-400 bg-neutral-50"
+                      placeholder="John Doe"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="clientCompany"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-caption-lg text-neutral-900">
+                    Company Name
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      className="text-label-sm text-neutral-400 bg-neutral-50"
+                      placeholder="Your Company"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-2 gap-6">
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-caption-lg text-neutral-900">
+                    Email Address*
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      className="text-label-sm text-neutral-400 bg-neutral-50"
+                      placeholder="your@email.com"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="contactNumber"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-caption-lg text-neutral-900">
+                    Contact Number
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      className="text-label-sm text-neutral-400 bg-neutral-50"
+                      placeholder="+1 (434) 989 98"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
           <FormField
             control={form.control}
             name="ideaAboutProject"
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-caption-lg text-neutral-900">
-                  Message
+                  Let’s talk about your product
                 </FormLabel>
                 <FormControl>
                   <Input
@@ -129,6 +155,9 @@ const ContactUsFormSection = () => {
                     {...field}
                   />
                 </FormControl>
+                <FormDescription>
+                  This is your public display name.
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -137,7 +166,7 @@ const ContactUsFormSection = () => {
             className="uppercase"
             type="submit"
           >
-            {loading ? "Sending..." : data ? "Sent" : "Send Message"}
+            {loading ? "Submitting..." : data ? "Submitted" : "Submit Form"}
           </Button>
         </form>
       </Form>

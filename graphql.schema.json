@@ -267,6 +267,30 @@ export interface CapablityInput {
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
 }
 
+export interface Career {
+  __typename?: 'Career';
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  documentId: Scalars['ID']['output'];
+  fifthSection?: Maybe<ComponentCareerCareerFifthSection>;
+  fourthSection?: Maybe<ComponentCareerCareerFourthSection>;
+  heading?: Maybe<Scalars['String']['output']>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  secondSection?: Maybe<ComponentCareerCareerSecondSection>;
+  thirdSection?: Maybe<ComponentCareerCareerThirdSection>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+}
+
+export interface CareerInput {
+  description?: InputMaybe<Scalars['String']['input']>;
+  fifthSection?: InputMaybe<ComponentCareerCareerFifthSectionInput>;
+  fourthSection?: InputMaybe<ComponentCareerCareerFourthSectionInput>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  secondSection?: InputMaybe<ComponentCareerCareerSecondSectionInput>;
+  thirdSection?: InputMaybe<ComponentCareerCareerThirdSectionInput>;
+}
+
 export interface CaseStudy {
   __typename?: 'CaseStudy';
   caseStudyContents?: Maybe<Array<Maybe<CaseStudyCaseStudyContentsDynamicZone>>>;
@@ -918,9 +942,158 @@ export interface ComponentCapablitiesCapablitiesCardsFiltersInput {
   or?: InputMaybe<Array<InputMaybe<ComponentCapablitiesCapablitiesCardsFiltersInput>>>;
 }
 
+export interface ComponentCareerCareerCards {
+  __typename?: 'ComponentCareerCareerCards';
+  heading?: Maybe<Scalars['String']['output']>;
+  icon?: Maybe<UploadFile>;
+  id: Scalars['ID']['output'];
+}
+
+export interface ComponentCareerCareerCardsFiltersInput {
+  and?: InputMaybe<Array<InputMaybe<ComponentCareerCareerCardsFiltersInput>>>;
+  heading?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentCareerCareerCardsFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentCareerCareerCardsFiltersInput>>>;
+}
+
+export interface ComponentCareerCareerCardsInput {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['ID']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+}
+
+export interface ComponentCareerCareerFifthSection {
+  __typename?: 'ComponentCareerCareerFifthSection';
+  description?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  link?: Maybe<ComponentElementsLink>;
+  rightSection?: Maybe<ComponentCareerThirdRightSection>;
+}
+
+export interface ComponentCareerCareerFifthSectionInput {
+  description?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  link?: InputMaybe<ComponentElementsLinkInput>;
+  rightSection?: InputMaybe<ComponentCareerThirdRightSectionInput>;
+}
+
+export interface ComponentCareerCareerFourthSection {
+  __typename?: 'ComponentCareerCareerFourthSection';
+  description?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  headingTwo?: Maybe<Scalars['String']['output']>;
+  icon?: Maybe<UploadFile>;
+  id: Scalars['ID']['output'];
+  rightSection?: Maybe<ComponentCareerThirdRightSection>;
+}
+
+export interface ComponentCareerCareerFourthSectionInput {
+  description?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  headingTwo?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['ID']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  rightSection?: InputMaybe<ComponentCareerThirdRightSectionInput>;
+}
+
+export interface ComponentCareerCareerIconPoints {
+  __typename?: 'ComponentCareerCareerIconPoints';
+  icon?: Maybe<UploadFile>;
+  id: Scalars['ID']['output'];
+  points?: Maybe<Scalars['String']['output']>;
+}
+
+export interface ComponentCareerCareerIconPointsFiltersInput {
+  and?: InputMaybe<Array<InputMaybe<ComponentCareerCareerIconPointsFiltersInput>>>;
+  not?: InputMaybe<ComponentCareerCareerIconPointsFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentCareerCareerIconPointsFiltersInput>>>;
+  points?: InputMaybe<StringFilterInput>;
+}
+
+export interface ComponentCareerCareerIconPointsInput {
+  icon?: InputMaybe<Scalars['ID']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  points?: InputMaybe<Scalars['String']['input']>;
+}
+
+export interface ComponentCareerCareerSecondSection {
+  __typename?: 'ComponentCareerCareerSecondSection';
+  cardDetails?: Maybe<Array<Maybe<ComponentCareerCareerCards>>>;
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+}
+
+
+export interface ComponentCareerCareerSecondSectionCardDetailsArgs {
+  filters?: InputMaybe<ComponentCareerCareerCardsFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface ComponentCareerCareerSecondSectionInput {
+  cardDetails?: InputMaybe<Array<InputMaybe<ComponentCareerCareerCardsInput>>>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+}
+
+export interface ComponentCareerCareerThirdSection {
+  __typename?: 'ComponentCareerCareerThirdSection';
+  description?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  openings: Array<Maybe<Opening>>;
+  openings_connection?: Maybe<OpeningRelationResponseCollection>;
+}
+
+
+export interface ComponentCareerCareerThirdSectionOpeningsArgs {
+  filters?: InputMaybe<OpeningFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface ComponentCareerCareerThirdSectionOpenings_ConnectionArgs {
+  filters?: InputMaybe<OpeningFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface ComponentCareerCareerThirdSectionInput {
+  description?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  openings?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+}
+
+export interface ComponentCareerThirdRightSection {
+  __typename?: 'ComponentCareerThirdRightSection';
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  link?: Maybe<ComponentElementsLink>;
+  rightSectionPoints?: Maybe<Array<Maybe<ComponentCareerCareerIconPoints>>>;
+}
+
+
+export interface ComponentCareerThirdRightSectionRightSectionPointsArgs {
+  filters?: InputMaybe<ComponentCareerCareerIconPointsFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface ComponentCareerThirdRightSectionInput {
+  heading?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  link?: InputMaybe<ComponentElementsLinkInput>;
+  rightSectionPoints?: InputMaybe<Array<InputMaybe<ComponentCareerCareerIconPointsInput>>>;
+}
+
 export interface ComponentContactUsContactUsBottomCards {
   __typename?: 'ComponentContactUsContactUsBottomCards';
   heading?: Maybe<Scalars['String']['output']>;
+  icon?: Maybe<UploadFile>;
   id: Scalars['ID']['output'];
   link?: Maybe<ComponentElementsLink>;
 }
@@ -935,6 +1108,7 @@ export interface ComponentContactUsContactUsBottomCardsFiltersInput {
 
 export interface ComponentContactUsContactUsBottomCardsInput {
   heading?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['ID']['input']>;
   id?: InputMaybe<Scalars['ID']['input']>;
   link?: InputMaybe<ComponentElementsLinkInput>;
 }
@@ -2752,7 +2926,7 @@ export interface FooterInput {
   socialMedia?: InputMaybe<ComponentFooterFooterSocialMediaLinksInput>;
 }
 
-export type GenericMorph = About | Author | Blog | Capablity | CaseStudy | CaseStudyLandingPage | Category | ClientContact | ComponentAboutAboutFifthSection | ComponentAboutAboutFifthSectionCards | ComponentAboutAboutFourthSection | ComponentAboutAboutFourthSectionDetails | ComponentAboutAboutSecondSection | ComponentAboutAboutSeventhSection | ComponentAboutAboutSixthSection | ComponentAboutSeventhSectionCards | ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCaseStudyPositioning | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesCompanyProfile | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesProblemAndSolution | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentCapablitiesCapablitiesCardSection | ComponentCapablitiesCapablitiesCards | ComponentContactUsContactUsBottomCards | ComponentContactUsSocialMediaLinks | ComponentElementsButtons | ComponentElementsElements | ComponentElementsLink | ComponentElementsPoints | ComponentEventsEventDetails | ComponentFooterFooterLegalSection | ComponentFooterFooterLinks | ComponentFooterFooterSocialMediaLinks | ComponentFooterFooterSocialMediaRightSection | ComponentFooterPagesLinks | ComponentHomepageBranchCards | ComponentHomepageFourthSectionCards | ComponentHomepageHomepageContactAndTestimonials | ComponentHomepageHomepageFifthSection | ComponentHomepageHomepageFourthSection | ComponentHomepageHomepageHeroSection | ComponentHomepageHomepageSecondSection | ComponentHomepageHomepageSecondSectionPoints | ComponentHomepageHomepageThirdSection | ComponentHowWeWorkCardDetails | ComponentHowWeWorkCards | ComponentHowWeWorkHowWeWorkHeroSection | ComponentHowWeWorkLowFrictionWays | ComponentHowWeWorkRightDetails | ComponentHowWeWorkRightStartingPoint | ComponentLabsCardSection | ComponentLabsFilCardDetails | ComponentLabsFilLabsFilEighthSection | ComponentLabsFilLabsFilFifthSection | ComponentLabsFilLabsFilFourthSection | ComponentLabsFilLabsFilHeroSection | ComponentLabsFilLabsFilSecondSection | ComponentLabsFilLabsFilSeventhSection | ComponentLabsFilLabsFilSixthSection | ComponentLabsFilLabsFilThirdSection | ComponentLabsFilSixthSectionLeftCard | ComponentLabsFilSixthSectionRightCard | ComponentLabsFilThirdSectionCards | ComponentLegalDetails | ComponentMatterDesignMatterDesignCards | ComponentMatterDesignMatterDesignContactUs | ComponentMatterDesignMatterDesignDisplayCards | ComponentMatterDesignMatterDesignFifthSection | ComponentMatterDesignMatterDesignFourthSection | ComponentMatterDesignMatterDesignHeroSection | ComponentMatterDesignMatterDesignSecondSection | ComponentMatterDesignMatterDesignStripOne | ComponentMatterDesignMatterDesignThirdSection | ComponentNavbarNavbarLevel1Group | ComponentNavbarNavbarLevel2Group | ComponentPodcasteEventsInterviewsShadowCard | ComponentServiceExploreRecentWork | ComponentServiceHeroSection | ComponentServiceHowWeWork | ComponentServiceOurOperatingPhilosophy | ComponentServiceServiceMisc | ComponentServiceWhatWeDesign | ComponentServiceWhyTeamHireUs | ComponentSharedCard | ComponentSharedHeroSection | ComponentSharedMedia | ComponentSharedProfile | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | ComponentSharedSlider | ComponentSharedTiles | ComponentSingleTypeCaseStudyPageHeroSection | ComponentSingleTypeCaseStudyPageMiscellaneous | ContactUs | Event | Faq | Footer | Global | Homepage | HowWeWork | I18NLocale | Interview | LabSingleType | LabsFilLandingPage | MatterDesignSystem | Navbar | Podcast | PrivacyPolicy | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Service | Tag | TermsOfUse | Testimonial | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = About | Author | Blog | Capablity | Career | CaseStudy | CaseStudyLandingPage | Category | ClientContact | ComponentAboutAboutFifthSection | ComponentAboutAboutFifthSectionCards | ComponentAboutAboutFourthSection | ComponentAboutAboutFourthSectionDetails | ComponentAboutAboutSecondSection | ComponentAboutAboutSeventhSection | ComponentAboutAboutSixthSection | ComponentAboutSeventhSectionCards | ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCaseStudyPositioning | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesCompanyProfile | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesProblemAndSolution | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentCapablitiesCapablitiesCardSection | ComponentCapablitiesCapablitiesCards | ComponentCareerCareerCards | ComponentCareerCareerFifthSection | ComponentCareerCareerFourthSection | ComponentCareerCareerIconPoints | ComponentCareerCareerSecondSection | ComponentCareerCareerThirdSection | ComponentCareerThirdRightSection | ComponentContactUsContactUsBottomCards | ComponentContactUsSocialMediaLinks | ComponentElementsButtons | ComponentElementsElements | ComponentElementsLink | ComponentElementsPoints | ComponentEventsEventDetails | ComponentFooterFooterLegalSection | ComponentFooterFooterLinks | ComponentFooterFooterSocialMediaLinks | ComponentFooterFooterSocialMediaRightSection | ComponentFooterPagesLinks | ComponentHomepageBranchCards | ComponentHomepageFourthSectionCards | ComponentHomepageHomepageContactAndTestimonials | ComponentHomepageHomepageFifthSection | ComponentHomepageHomepageFourthSection | ComponentHomepageHomepageHeroSection | ComponentHomepageHomepageSecondSection | ComponentHomepageHomepageSecondSectionPoints | ComponentHomepageHomepageThirdSection | ComponentHowWeWorkCardDetails | ComponentHowWeWorkCards | ComponentHowWeWorkHowWeWorkHeroSection | ComponentHowWeWorkLowFrictionWays | ComponentHowWeWorkRightDetails | ComponentHowWeWorkRightStartingPoint | ComponentLabsCardSection | ComponentLabsFilCardDetails | ComponentLabsFilLabsFilEighthSection | ComponentLabsFilLabsFilFifthSection | ComponentLabsFilLabsFilFourthSection | ComponentLabsFilLabsFilHeroSection | ComponentLabsFilLabsFilSecondSection | ComponentLabsFilLabsFilSeventhSection | ComponentLabsFilLabsFilSixthSection | ComponentLabsFilLabsFilThirdSection | ComponentLabsFilSixthSectionLeftCard | ComponentLabsFilSixthSectionRightCard | ComponentLabsFilThirdSectionCards | ComponentLegalDetails | ComponentMatterDesignMatterDesignCards | ComponentMatterDesignMatterDesignContactUs | ComponentMatterDesignMatterDesignDisplayCards | ComponentMatterDesignMatterDesignFifthSection | ComponentMatterDesignMatterDesignFourthSection | ComponentMatterDesignMatterDesignHeroSection | ComponentMatterDesignMatterDesignSecondSection | ComponentMatterDesignMatterDesignStripOne | ComponentMatterDesignMatterDesignThirdSection | ComponentNavbarNavbarLevel1Group | ComponentNavbarNavbarLevel2Group | ComponentPodcasteEventsInterviewsShadowCard | ComponentServiceExploreRecentWork | ComponentServiceHeroSection | ComponentServiceHowWeWork | ComponentServiceOurOperatingPhilosophy | ComponentServiceServiceMisc | ComponentServiceWhatWeDesign | ComponentServiceWhyTeamHireUs | ComponentSharedCard | ComponentSharedHeroSection | ComponentSharedMedia | ComponentSharedProfile | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | ComponentSharedSlider | ComponentSharedTiles | ComponentSingleTypeCaseStudyPageHeroSection | ComponentSingleTypeCaseStudyPageMiscellaneous | ContactUs | Event | Faq | Footer | Global | Homepage | HowWeWork | I18NLocale | Interview | LabSingleType | LabsFilLandingPage | MatterDesignSystem | Navbar | Opening | Podcast | PrivacyPolicy | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Service | Tag | TermsOfUse | Testimonial | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export interface Global {
   __typename?: 'Global';
@@ -3093,6 +3267,7 @@ export interface Mutation {
   createEvent?: Maybe<Event>;
   createFaq?: Maybe<Faq>;
   createInterview?: Maybe<Interview>;
+  createOpening?: Maybe<Opening>;
   createPodcast?: Maybe<Podcast>;
   createReviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>;
   createReviewWorkflowsWorkflowStage?: Maybe<ReviewWorkflowsWorkflowStage>;
@@ -3106,6 +3281,7 @@ export interface Mutation {
   deleteAuthor?: Maybe<DeleteMutationResponse>;
   deleteBlog?: Maybe<DeleteMutationResponse>;
   deleteCapablity?: Maybe<DeleteMutationResponse>;
+  deleteCareer?: Maybe<DeleteMutationResponse>;
   deleteCaseStudy?: Maybe<DeleteMutationResponse>;
   deleteCaseStudyLandingPage?: Maybe<DeleteMutationResponse>;
   deleteCategory?: Maybe<DeleteMutationResponse>;
@@ -3122,6 +3298,7 @@ export interface Mutation {
   deleteLabsFilLandingPage?: Maybe<DeleteMutationResponse>;
   deleteMatterDesignSystem?: Maybe<DeleteMutationResponse>;
   deleteNavbar?: Maybe<DeleteMutationResponse>;
+  deleteOpening?: Maybe<DeleteMutationResponse>;
   deletePodcast?: Maybe<DeleteMutationResponse>;
   deletePrivacyPolicy?: Maybe<DeleteMutationResponse>;
   deleteReviewWorkflowsWorkflow?: Maybe<DeleteMutationResponse>;
@@ -3148,6 +3325,7 @@ export interface Mutation {
   updateAuthor?: Maybe<Author>;
   updateBlog?: Maybe<Blog>;
   updateCapablity?: Maybe<Capablity>;
+  updateCareer?: Maybe<Career>;
   updateCaseStudy?: Maybe<CaseStudy>;
   updateCaseStudyLandingPage?: Maybe<CaseStudyLandingPage>;
   updateCategory?: Maybe<Category>;
@@ -3164,6 +3342,7 @@ export interface Mutation {
   updateLabsFilLandingPage?: Maybe<LabsFilLandingPage>;
   updateMatterDesignSystem?: Maybe<MatterDesignSystem>;
   updateNavbar?: Maybe<Navbar>;
+  updateOpening?: Maybe<Opening>;
   updatePodcast?: Maybe<Podcast>;
   updatePrivacyPolicy?: Maybe<PrivacyPolicy>;
   updateReviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>;
@@ -3231,6 +3410,12 @@ export interface MutationCreateFaqArgs {
 
 export interface MutationCreateInterviewArgs {
   data: InterviewInput;
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface MutationCreateOpeningArgs {
+  data: OpeningInput;
   status?: InputMaybe<PublicationStatus>;
 }
 
@@ -3311,6 +3496,11 @@ export interface MutationDeleteFaqArgs {
 
 
 export interface MutationDeleteInterviewArgs {
+  documentId: Scalars['ID']['input'];
+}
+
+
+export interface MutationDeleteOpeningArgs {
   documentId: Scalars['ID']['input'];
 }
 
@@ -3404,6 +3594,12 @@ export interface MutationUpdateBlogArgs {
 
 export interface MutationUpdateCapablityArgs {
   data: CapablityInput;
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface MutationUpdateCareerArgs {
+  data: CareerInput;
   status?: InputMaybe<PublicationStatus>;
 }
 
@@ -3510,6 +3706,13 @@ export interface MutationUpdateNavbarArgs {
 }
 
 
+export interface MutationUpdateOpeningArgs {
+  data: OpeningInput;
+  documentId: Scalars['ID']['input'];
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
 export interface MutationUpdatePodcastArgs {
   data: PodcastInput;
   documentId: Scalars['ID']['input'];
@@ -3610,6 +3813,54 @@ export interface NavbarInput {
   navLevelOneGroup?: InputMaybe<Array<InputMaybe<ComponentNavbarNavbarLevel1GroupInput>>>;
   navbarLogo?: InputMaybe<Scalars['ID']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+}
+
+export interface Opening {
+  __typename?: 'Opening';
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  documentId: Scalars['ID']['output'];
+  link?: Maybe<ComponentElementsLink>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  roleDescription?: Maybe<Scalars['String']['output']>;
+  roleDomain?: Maybe<Scalars['String']['output']>;
+  roleLocation?: Maybe<Scalars['String']['output']>;
+  roleName?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+}
+
+export interface OpeningEntityResponseCollection {
+  __typename?: 'OpeningEntityResponseCollection';
+  nodes: Array<Opening>;
+  pageInfo: Pagination;
+}
+
+export interface OpeningFiltersInput {
+  and?: InputMaybe<Array<InputMaybe<OpeningFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  documentId?: InputMaybe<IdFilterInput>;
+  link?: InputMaybe<ComponentElementsLinkFiltersInput>;
+  not?: InputMaybe<OpeningFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<OpeningFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  roleDescription?: InputMaybe<StringFilterInput>;
+  roleDomain?: InputMaybe<StringFilterInput>;
+  roleLocation?: InputMaybe<StringFilterInput>;
+  roleName?: InputMaybe<StringFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+}
+
+export interface OpeningInput {
+  link?: InputMaybe<ComponentElementsLinkInput>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  roleDescription?: InputMaybe<Scalars['String']['input']>;
+  roleDomain?: InputMaybe<Scalars['String']['input']>;
+  roleLocation?: InputMaybe<Scalars['String']['input']>;
+  roleName?: InputMaybe<Scalars['String']['input']>;
+}
+
+export interface OpeningRelationResponseCollection {
+  __typename?: 'OpeningRelationResponseCollection';
+  nodes: Array<Opening>;
 }
 
 export interface Pagination {
@@ -3745,6 +3996,7 @@ export interface Query {
   blogs: Array<Maybe<Blog>>;
   blogs_connection?: Maybe<BlogEntityResponseCollection>;
   capablity?: Maybe<Capablity>;
+  career?: Maybe<Career>;
   caseStudies: Array<Maybe<CaseStudy>>;
   caseStudies_connection?: Maybe<CaseStudyEntityResponseCollection>;
   caseStudy?: Maybe<CaseStudy>;
@@ -3777,6 +4029,9 @@ export interface Query {
   matterDesignSystem?: Maybe<MatterDesignSystem>;
   me?: Maybe<UsersPermissionsMe>;
   navbar?: Maybe<Navbar>;
+  opening?: Maybe<Opening>;
+  openings: Array<Maybe<Opening>>;
+  openings_connection?: Maybe<OpeningEntityResponseCollection>;
   podcast?: Maybe<Podcast>;
   podcasts: Array<Maybe<Podcast>>;
   podcasts_connection?: Maybe<PodcastEntityResponseCollection>;
@@ -3857,6 +4112,11 @@ export interface QueryBlogs_ConnectionArgs {
 
 
 export interface QueryCapablityArgs {
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface QueryCareerArgs {
   status?: InputMaybe<PublicationStatus>;
 }
 
@@ -4061,6 +4321,28 @@ export interface QueryMatterDesignSystemArgs {
 
 
 export interface QueryNavbarArgs {
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface QueryOpeningArgs {
+  documentId: Scalars['ID']['input'];
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface QueryOpeningsArgs {
+  filters?: InputMaybe<OpeningFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface QueryOpenings_ConnectionArgs {
+  filters?: InputMaybe<OpeningFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   status?: InputMaybe<PublicationStatus>;
 }
 
@@ -4881,10 +5163,15 @@ export type CapablityQuery = { __typename?: 'Query', capablity?: { __typename?: 
       | { __typename?: 'Error' }
      | null> | null } | null };
 
+export type CareerQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type CareerQuery = { __typename?: 'Query', career?: { __typename?: 'Career', heading?: string | null, description?: string | null, secondSection?: { __typename?: 'ComponentCareerCareerSecondSection', heading?: string | null, cardDetails?: Array<{ __typename?: 'ComponentCareerCareerCards', id: string, heading?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null } | null> | null } | null, thirdSection?: { __typename?: 'ComponentCareerCareerThirdSection', heading?: string | null, description?: string | null, openings: Array<{ __typename?: 'Opening', documentId: string, roleName?: string | null, roleLocation?: string | null, roleDomain?: string | null, roleDescription?: string | null, link?: { __typename?: 'ComponentElementsLink', href?: string | null, name?: string | null, isExternal?: boolean | null } | null } | null> } | null, fourthSection?: { __typename?: 'ComponentCareerCareerFourthSection', heading?: string | null, headingTwo?: string | null, description?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, rightSection?: { __typename?: 'ComponentCareerThirdRightSection', heading?: string | null, link?: { __typename?: 'ComponentElementsLink', href?: string | null, name?: string | null } | null, rightSectionPoints?: Array<{ __typename?: 'ComponentCareerCareerIconPoints', id: string, points?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null } | null> | null } | null } | null, fifthSection?: { __typename?: 'ComponentCareerCareerFifthSection', heading?: string | null, description?: string | null, link?: { __typename?: 'ComponentElementsLink', href?: string | null, name?: string | null } | null, rightSection?: { __typename?: 'ComponentCareerThirdRightSection', heading?: string | null, link?: { __typename?: 'ComponentElementsLink', href?: string | null, name?: string | null } | null, rightSectionPoints?: Array<{ __typename?: 'ComponentCareerCareerIconPoints', id: string, points?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null } | null> | null } | null } | null } | null };
+
 export type ContactUsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ContactUsQuery = { __typename?: 'Query', contactUs?: { __typename?: 'ContactUs', heading?: string | null, description?: string | null, cards?: Array<{ __typename?: 'ComponentContactUsContactUsBottomCards', id: string, heading?: string | null, link?: { __typename?: 'ComponentElementsLink', href?: string | null, name?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null } | null } | null> | null, socialMedia?: Array<{ __typename?: 'ComponentElementsLink', href?: string | null, name?: string | null, id: string, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null } | null> | null } | null };
+export type ContactUsQuery = { __typename?: 'Query', contactUs?: { __typename?: 'ContactUs', heading?: string | null, description?: string | null, cards?: Array<{ __typename?: 'ComponentContactUsContactUsBottomCards', id: string, heading?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, link?: { __typename?: 'ComponentElementsLink', href?: string | null, name?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null } | null } | null> | null, socialMedia?: Array<{ __typename?: 'ComponentElementsLink', href?: string | null, name?: string | null, id: string, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null } | null> | null } | null };
 
 export type FooterQueryVariables = Exact<{ [key: string]: never; }>;
 

@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { useQuery } from "@apollo/client/react";
 import { FooterQuery } from "@/lib/codegen/graphql";
 import { FOOTER_QUERY } from "@/lib/queries/footer";
+import LogoGroup from "@/public/Group.png"
 
 const Footer = () => {
   const { loading, error, data } = useQuery<FooterQuery>(FOOTER_QUERY);
@@ -30,6 +31,13 @@ const Footer = () => {
             src={FooterSubstract}
             alt="Footer Substract"
             className="absolute bottom-0 right-0 "
+          />
+        </div>
+        <div>
+          <Image
+            src={LogoGroup}
+            alt="logo group"
+            className="absolute bottom-0 left-0 "
           />
         </div>
 
@@ -125,7 +133,7 @@ const Footer = () => {
                     })}
                 </div>
               </div>
-              <div className="col-span-12 md:col-span-8 lg:col-span-6 bg-neutral-50 rounded-xl flex justify-between items-center gap-4  px-4 py-3 z-10">
+              <div className="col-span-12 md:col-span-8 lg:col-span-6 bg-neutral-50 rounded-xl flex justify-between items-center gap-4  px-4 py-3 z-1010">
                 <div>
                   <p className="font-semibold text-display mb-2">
                     {footerSocial?.rightSection?.heading}
@@ -165,7 +173,7 @@ const Footer = () => {
             </div>
             <div
               id="footer-legal"
-              className="pt-4 border-t border-neutral-900 flex flex-col md:flex-row justify-between gap-4 items-center"
+              className="pt-4 border-t border-neutral-900 flex flex-col md:flex-row justify-between gap-4 items-center z-10"
             >
               <p className="text-center md:text-left text-label-xs font-normal">
                 {footerLegal?.address}

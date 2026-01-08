@@ -8,6 +8,12 @@ export const CONTACT_US_QUERY = gql`
       cards {
         id
         heading
+        icon {
+          alternativeText
+          url
+          width
+          height
+        }
         link {
           icon {
             alternativeText

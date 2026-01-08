@@ -1,7 +1,9 @@
 import Section from "@/components/global/Section";
 import { Button } from "@/components/ui/button";
 import { HowWeWorkQuery } from "@/lib/codegen/graphql";
-import { ArrowRight, CircleDot } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import Image from "next/image";
+import CircleDot from "@/public/CircleInside.svg";
 
 const ChooseRightStartingPointSec = ({
   rightStartingPointData,
@@ -39,9 +41,15 @@ const ChooseRightStartingPointSec = ({
                           );
                         })}
 
-                      <p className="text-label-2xl text-neutral-700 w-fit p-2 rounded-full">
+                      <p className="text-label-2xl text-neutral-700 w-fit p-2 rounded-full mb-9">
                         {singleCard?.description?.[0]?.children?.[0]?.text}
                       </p>
+                      <div className="flex p-2">
+                        <Button className="uppercase bg-neutral-900 text-neutral-50">
+                          {singleCard?.button?.name}
+                          <ArrowRight />
+                        </Button>
+                      </div>
                     </div>
                   </div>
                   <div className="flex flex-col gap-6">
@@ -59,30 +67,34 @@ const ChooseRightStartingPointSec = ({
                             <div>
                               {rightSectionDetails?.description &&
                                 rightSectionDetails?.description.length > 0 &&
-                                rightSectionDetails?.description.map((singleDescription) => {
-                                  return (
-                                    <p
-                                      className="flex gap-2 text-label-xl mb-4 sm:mb-6"
-                                      key={singleDescription?.id}
-                                    >
-                                      <span>
-                                        <CircleDot className="text-accent-600" />
-                                      </span>
-                                      <span>{singleDescription?.listText}</span>
-                                    </p>
-                                  );
-                                })}
+                                rightSectionDetails?.description.map(
+                                  (singleDescription) => {
+                                    return (
+                                      <p
+                                        className="flex gap-2 text-label-xl mb-4 sm:mb-6"
+                                        key={singleDescription?.id}
+                                      >
+                                        <span className="relative top-1.5">
+                                          {/* <CircleDot className="text-accent-600" /> */}
+                                          <Image
+                                            src={CircleDot}
+                                            width={16}
+                                            height={16}
+                                            alt="icon"
+                                          />
+                                        </span>
+                                        <span>
+                                          {singleDescription?.listText}
+                                        </span>
+                                      </p>
+                                    );
+                                  }
+                                )}
                             </div>
                           </div>
                         );
                       })}
                   </div>
-                </div>
-                <div className="flex justify-end">
-                  <Button className="uppercase">
-                    {singleCard?.button?.name}
-                    <ArrowRight />
-                  </Button>
                 </div>
               </div>
             );

@@ -17,7 +17,7 @@ const ContactUsContainer = ({
   const data = contactUsData?.contactUs;
   const cardsData = contactUsData?.contactUs?.cards;
   return (
-    <main>
+    <main className="bg-neutral-100">
       <Container className="md:grid grid-cols-12 gap-6">
         <Block className="lg:col-start-2 col-start-1 lg:col-end-12 col-end-13">
           <Section>
@@ -34,9 +34,12 @@ const ContactUsContainer = ({
             </p>
           </Section>
           <Section>
+            <div className="bg-neutral-50 rounded-xl p-6 mx-auto md:w-5/7">
+
             <ApolloWrapper>
               <ContactUsFormSection />
             </ApolloWrapper>
+            </div>
           </Section>
           {cardsData && <BottomCards cardsData={cardsData} />}
           <div className="py-6">

@@ -23,16 +23,16 @@ const LowFrictionWaysSec = ({
           </h2>
           <div className="flex flex-col justify-between gap-6">
             {lowFrictionWaysData?.details &&
-              lowFrictionWaysData?.details.map((singleDetail) => {
+              lowFrictionWaysData?.details.map((singleDetail,index) => {
                 return (
                   <div
                     className="p-[38px] bg-neutral-50 rounded-xl shadow-[0_4px_45.1px_0_rgba(0,0,0,0.03)] relative"
                     key={singleDetail?.id}
                   >
-                    <div className="absolute bottom-0">
+                    <div className={index%2===0?"absolute bottom-0":"absolute bottom-0 right-0"}>
                       <Image src={Sub} alt="Sub" width={376} height={376} />
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-4 mb-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-4 mb-6 z-10">
                       <h3 className="text-heading-xs text-neutral-800 z-10">
                         {singleDetail?.heading}
                       </h3>
@@ -53,8 +53,8 @@ const LowFrictionWaysSec = ({
                           })}
                       </div>
                     </div>
-                    <div className="flex justify-end">
-                      <Button className="uppercase bg-neutral-900 text-neutral-50 ">
+                    <div className="flex justify-end z-10">
+                      <Button className="uppercase bg-neutral-900 text-neutral-50 z-10">
                         {singleDetail?.button?.name}
                       </Button>
                     </div>
