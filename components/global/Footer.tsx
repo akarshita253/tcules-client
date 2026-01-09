@@ -106,10 +106,10 @@ const Footer = () => {
               className="grid grid-cols-12 md:gap-6 items-center"
             >
               <div className="col-span-12 md:col-span-4 lg:col-span-6">
-                <p className="text-neutral-900 text-label-sm mb-4">
+                <p className="text-neutral-900 text-label-sm mb-4 text-center md:text-left">
                   {footerSocial?.label}
                 </p>
-                <div className="flex items-center gap-4 mb-6 sm:mb-12">
+                <div className="flex justify-center md:justify-normal items-center gap-4 mb-6 sm:mb-12">
                   {footerSocial?.socialMedia &&
                     footerSocial?.socialMedia.map((singleLink) => {
                       return (
@@ -133,12 +133,12 @@ const Footer = () => {
                     })}
                 </div>
               </div>
-              <div className="col-span-12 md:col-span-8 lg:col-span-6 bg-neutral-50 rounded-xl flex justify-between items-center gap-4  px-4 py-3 z-1010">
-                <div>
+              <div className="col-span-12 md:col-span-8 lg:col-span-6 bg-neutral-50 rounded-xl flex flex-col sm:flex-row justify-between items-center gap-4  px-4 py-3 z-1010">
+                <div className="text-center sm:text-left">
                   <p className="font-semibold text-display mb-2">
                     {footerSocial?.rightSection?.heading}
                   </p>
-                  <p className="text-md text-display font-normal text-neutral-700 w-4/5">
+                  <p className="text-md text-display font-normal text-neutral-700 sm:w-4/5">
                     {footerSocial?.rightSection?.description}
                   </p>
                 </div>
