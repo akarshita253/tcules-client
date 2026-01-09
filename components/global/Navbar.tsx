@@ -11,7 +11,7 @@ const Navbar = async () => {
   const response = await strapiRequest<NavbarQuery>(NAVBAR_QUERY);
   const navData = response.navbar;
   return (
-    <Container className="md:flex justify-between items-center gap-6 py-2">
+    <Container className="md:flex justify-between items-center gap-6 py-2 relative">
       {navData?.navbarLogo?.url && (
         <div>
           <Image
