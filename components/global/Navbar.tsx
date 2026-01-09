@@ -14,12 +14,14 @@ const Navbar = async () => {
     <Container className="md:flex justify-between items-center gap-6 py-2 relative">
       {navData?.navbarLogo?.url && (
         <div>
-          <Image
-            src={navData?.navbarLogo?.url}
-            width={navData?.navbarLogo?.width || 94}
-            height={navData?.navbarLogo?.height || 24}
-            alt={navData?.navbarLogo?.alternativeText || "logo"}
-          />
+          <Link href="/">
+            <Image
+              src={navData?.navbarLogo?.url}
+              width={navData?.navbarLogo?.width || 94}
+              height={navData?.navbarLogo?.height || 24}
+              alt={navData?.navbarLogo?.alternativeText || "logo"}
+            />
+          </Link>
         </div>
       )}
       <NavHoverStates navLinks={navData?.navLevelOneGroup} />
