@@ -5,7 +5,6 @@ import { CareerQuery } from "@/lib/codegen/graphql";
 import CareerSecondSection from "./components/CareerSecondSection";
 import CareerThirdSection from "./components/CareerThirdSection";
 import CareerFourthSection from "./components/CareerFourthSection";
-import CareerFifthSection from "./components/CareerFifthSection";
 
 const CareerContainer = ({
   careerData,
@@ -16,7 +15,6 @@ const CareerContainer = ({
   const secondSectionData = careerData?.secondSection;
   const thirdSectionData = careerData?.thirdSection;
   const fourthSectionData = careerData?.fourthSection;
-  const fifthSectionData = careerData?.fifthSection;
   return (
     <main className="bg-neutral-100">
       <Container className="md:grid grid-cols-12 gap-6">
@@ -44,9 +42,6 @@ const CareerContainer = ({
           <CareerThirdSection thirdSectionData={thirdSectionData} />
           <CareerFourthSection fourthSectionData={fourthSectionData} />
         </Block>
-      </Container>
-      <Container className="md:grid grid-cols-12 gap-6">
-        <CareerFifthSection fifthSectionData={fifthSectionData} />
       </Container>
     </main>
   );

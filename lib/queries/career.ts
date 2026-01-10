@@ -36,54 +36,36 @@ query Career {
     }
     fourthSection {
       heading
-      headingTwo
-      description
       icon {
         alternativeText
         url
         width
         height
       }
-      rightSection {
-        heading
-        link {
-          href
-          name
-        }
-        rightSectionPoints {
-          id
-          points
-          icon {
-            alternativeText
-            url
-            width
-            height
-          }
-        }
-      }
-    }
-    fifthSection {
-      heading
-      description
       link {
         href
+        isExternal
         name
       }
-      rightSection {
+      bottomHeading
+      bottomLink {
+        href
+        isExternal
+        name
+      }
+      cards {
+        id
         heading
+        icon {
+          alternativeText
+          url
+          width
+          height
+        }
         link {
           href
+          isExternal
           name
-        }
-        rightSectionPoints {
-          icon {
-            alternativeText
-            url
-            width
-            height
-          }
-          id
-          points
         }
       }
     }

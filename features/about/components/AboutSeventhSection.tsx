@@ -25,34 +25,36 @@ const AboutSeventhSection = ({
                     index === 0 ? "bg-neutral-100" : "bg-neutral-900"
                   )}
                 >
-                  {cardDetail?.icon?.url && (
-                    <div className="flex justify-end mb-16">
-                      <Image
-                        src={cardDetail?.icon?.url}
-                        alt="icon-image"
-                        width={40}
-                        height={40}
-                      />
-                    </div>
-                  )}
-                  <h3
-                    className={
-                      index === 0
-                        ? "text-neutral-900  text-heading-sm mb-6"
-                        : "text-neutral-50 text-heading-sm mb-6"
-                    }
-                  >
-                    {cardDetail?.heading}
-                  </h3>
-                  <p
-                    className={
-                      index === 0
-                        ? "text-neutral-900  text-label-xl"
-                        : "text-neutral-50 text-label-xl"
-                    }
-                  >
-                    {cardDetail?.description}
-                  </p>
+                  <Link href={cardDetail?.link?.href||"#"}>
+                    {cardDetail?.icon?.url && (
+                      <div className="flex justify-end mb-16">
+                        <Image
+                          src={cardDetail?.icon?.url}
+                          alt="icon-image"
+                          width={40}
+                          height={40}
+                        />
+                      </div>
+                    )}
+                    <h3
+                      className={
+                        index === 0
+                          ? "text-neutral-900  text-heading-sm mb-6"
+                          : "text-neutral-50 text-heading-sm mb-6"
+                      }
+                    >
+                      {cardDetail?.heading}
+                    </h3>
+                    <p
+                      className={
+                        index === 0
+                          ? "text-neutral-900  text-label-xl"
+                          : "text-neutral-50 text-label-xl"
+                      }
+                    >
+                      {cardDetail?.description}
+                    </p>
+                  </Link>
                 </div>
               );
             })}

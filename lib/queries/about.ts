@@ -1,89 +1,93 @@
-import {gql} from "@apollo/client";
+import { gql } from "@apollo/client";
 
-export const ABOUT_QUERY = gql `
-query About {
-  about {
-    heading
-    headingTwo
-    description
-    descriptionTwo
-    bgImage {
-      alternativeText
-      url
-      width
-      height
-    }
-    secondSection {
+export const ABOUT_QUERY = gql`
+  query About {
+    about {
       heading
+      headingTwo
       description
-      images {
+      descriptionTwo
+      bgImage {
         alternativeText
         url
         width
         height
       }
-    }
-    thirdSection {
-      heading
-      description
-      images {
-        alternativeText
-        url
-        width
-        height
-      }
-    }
-    fourthSection {
-      label
-      accordianDetails {
-        id
+      secondSection {
         heading
         description
-      }
-    }
-    fifthSection {
-      heading
-      cardDetails {
-        id
-        description
-        designation
-        isImageVisible
-        profilePicture {
+        images {
           alternativeText
           url
           width
           height
         }
       }
-    }
-    sixthSection {
-      heading
-      sixthSectionCards {
-        id
+      thirdSection {
         heading
         description
-      }
-    }
-    seventhSection {
-      heading
-      link {
-        href
-        name
-        isExternal
-      }
-      cardDetails {
-        id
-        heading
-        description
-        icon {
+        images {
           alternativeText
           url
           width
           height
+        }
+      }
+      fourthSection {
+        label
+        accordianDetails {
+          id
+          heading
+          description
+        }
+      }
+      fifthSection {
+        heading
+        cardDetails {
+          id
+          description
+          designation
+          isImageVisible
+          profilePicture {
+            alternativeText
+            url
+            width
+            height
+          }
+        }
+      }
+      sixthSection {
+        heading
+        sixthSectionCards {
+          id
+          heading
+          description
+        }
+      }
+      seventhSection {
+        heading
+        link {
+          href
+          name
+          isExternal
+        }
+        cardDetails {
+          id
+          heading
+          link {
+            href
+            name
+            isExternal
+          }
+          description
+          icon {
+            alternativeText
+            url
+            width
+            height
+          }
         }
       }
     }
   }
-}
-
-`
+`;

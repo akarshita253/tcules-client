@@ -29,18 +29,18 @@ const CareerThirdSection = ({
           thirdSectionData?.openings?.map((opening, index) => (
             <div
               key={index}
-              className="grid grid-cols-4 gap-2 items-center py-6 border-b border-neutral-200 px-1"
+              className="grid grid-cols-2 sm:grid-cols-4 gap-2 items-center py-6 border-b border-neutral-200 px-1"
             >
               <h4 className="text-heading-2xs text-neutral-800">
                 {opening?.roleName}
               </h4>
-              <p className="text-label-md text-neutral-800 text-center">
+              <p className="text-label-md text-neutral-800 sm:text-center">
                 {opening?.roleDomain}
               </p>
-              <p className="text-label-md text-neutral-800 text-center">
+              <p className="text-label-md text-neutral-800 sm:text-center">
                 {opening?.roleLocation}
               </p>
-              <div className="flex justify-end">
+              <div className="flex sm:justify-end">
                 <Link
                   target={opening?.link?.isExternal ? "_blank" : undefined}
                   href={opening?.link?.href || "#"}
