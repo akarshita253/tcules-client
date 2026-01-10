@@ -1,4 +1,5 @@
 import Section from "@/components/global/Section";
+import ScrollReveal from "@/components/ui/scroll-change";
 import { LabsFilLandingPageQuery } from "@/lib/codegen/graphql";
 import Image from "next/image";
 
@@ -13,13 +14,13 @@ const LabsFilThirdSection = ({
     <>
       <Section>
         <div className="relative">
-          <h2 className="text-heading-lg">
+          <h2 className="text-heading-lg max-w-full">
             <span className="text-accent-500">
               {thirdSectionData?.description?.split("|")[0]}
             </span>
-            <span className="text-neutral-500">
-              {thirdSectionData?.description?.split("|")[1]}
-            </span>
+              <ScrollReveal
+                value={thirdSectionData?.description?.split("|")[1] || ""}
+              />
           </h2>
           <div className="absolute bottom-0 right-0">
             {thirdSectionData?.icon?.url && (
