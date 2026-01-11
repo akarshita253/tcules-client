@@ -20,6 +20,8 @@ const LabsFilThirdSection = ({
             </span>
               <ScrollReveal
                 value={thirdSectionData?.description?.split("|")[1] || ""}
+                initialColor="#909090"
+                finalColor="#fff"
               />
           </h2>
           <div className="absolute bottom-0 right-0">
