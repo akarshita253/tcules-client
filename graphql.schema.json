@@ -1476,15 +1476,10 @@ export interface ComponentHomepageHomepageHeroSection {
   button?: Maybe<Array<Maybe<ComponentElementsLink>>>;
   descriptionOne?: Maybe<Scalars['String']['output']>;
   descriptionTwo?: Maybe<Scalars['String']['output']>;
-  firstRowImages: Array<Maybe<UploadFile>>;
-  firstRowImages_connection?: Maybe<UploadFileRelationResponseCollection>;
   headingOne?: Maybe<Scalars['String']['output']>;
   headingTwo?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
-  secondRowImages: Array<Maybe<UploadFile>>;
-  secondRowImages_connection?: Maybe<UploadFileRelationResponseCollection>;
-  thirdRowImages: Array<Maybe<UploadFile>>;
-  thirdRowImages_connection?: Maybe<UploadFileRelationResponseCollection>;
+  rightSectionImage?: Maybe<UploadFile>;
 }
 
 
@@ -1501,59 +1496,15 @@ export interface ComponentHomepageHomepageHeroSectionButtonArgs {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 }
 
-
-export interface ComponentHomepageHomepageHeroSectionFirstRowImagesArgs {
-  filters?: InputMaybe<UploadFileFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-}
-
-
-export interface ComponentHomepageHomepageHeroSectionFirstRowImages_ConnectionArgs {
-  filters?: InputMaybe<UploadFileFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-}
-
-
-export interface ComponentHomepageHomepageHeroSectionSecondRowImagesArgs {
-  filters?: InputMaybe<UploadFileFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-}
-
-
-export interface ComponentHomepageHomepageHeroSectionSecondRowImages_ConnectionArgs {
-  filters?: InputMaybe<UploadFileFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-}
-
-
-export interface ComponentHomepageHomepageHeroSectionThirdRowImagesArgs {
-  filters?: InputMaybe<UploadFileFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-}
-
-
-export interface ComponentHomepageHomepageHeroSectionThirdRowImages_ConnectionArgs {
-  filters?: InputMaybe<UploadFileFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-}
-
 export interface ComponentHomepageHomepageHeroSectionInput {
   bottomTags?: InputMaybe<Array<InputMaybe<ComponentElementsPointsInput>>>;
   button?: InputMaybe<Array<InputMaybe<ComponentElementsLinkInput>>>;
   descriptionOne?: InputMaybe<Scalars['String']['input']>;
   descriptionTwo?: InputMaybe<Scalars['String']['input']>;
-  firstRowImages?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   headingOne?: InputMaybe<Scalars['String']['input']>;
   headingTwo?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['ID']['input']>;
-  secondRowImages?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  thirdRowImages?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  rightSectionImage?: InputMaybe<Scalars['ID']['input']>;
 }
 
 export interface ComponentHomepageHomepageSecondSection {
@@ -5330,7 +5281,7 @@ export type EventsQuery = { __typename?: 'Query', events: Array<{ __typename: 'E
 export type HomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type HomepageQuery = { __typename?: 'Query', homepage?: { __typename?: 'Homepage', heroSection?: { __typename?: 'ComponentHomepageHomepageHeroSection', headingOne?: string | null, headingTwo?: string | null, descriptionOne?: string | null, descriptionTwo?: string | null, button?: Array<{ __typename?: 'ComponentElementsLink', id: string, name?: string | null, href?: string | null } | null> | null, bottomTags?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null } | null, secondSection?: { __typename?: 'ComponentHomepageHomepageSecondSection', bgImage?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null, secondSection?: Array<{ __typename?: 'ComponentHomepageHomepageSecondSectionPoints', id: string, heading?: string | null, description?: string | null, topDescription?: string | null, image?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null } | null> | null } | null, thirdSection?: { __typename?: 'ComponentHomepageHomepageThirdSection', heading?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, cards?: Array<{ __typename?: 'ComponentHomepageBranchCards', id: string, heading?: string | null, description?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null } | null> | null } | null, fourthSection?: { __typename?: 'ComponentHomepageHomepageFourthSection', heading?: string | null, description?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, button?: { __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null } | null, cards?: Array<{ __typename?: 'ComponentHomepageFourthSectionCards', id: string, heading?: string | null, cardImage?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null } | null> | null } | null, fifthSection?: { __typename?: 'ComponentHomepageHomepageFifthSection', heading?: string | null, description?: string | null, case_studies: Array<{ __typename?: 'CaseStudy', title?: string | null, tags: Array<{ __typename?: 'Tag', name?: string | null } | null> } | null> } | null, contactSection?: { __typename?: 'ComponentHomepageHomepageContactAndTestimonials', heading?: string | null, testimonial?: { __typename?: 'Testimonial', clientComments?: string | null, clientCompany?: string | null, clientName?: string | null, clientPosition?: string | null } | null } | null } | null };
+export type HomepageQuery = { __typename?: 'Query', homepage?: { __typename?: 'Homepage', heroSection?: { __typename?: 'ComponentHomepageHomepageHeroSection', headingOne?: string | null, headingTwo?: string | null, descriptionOne?: string | null, descriptionTwo?: string | null, rightSectionImage?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null, button?: Array<{ __typename?: 'ComponentElementsLink', id: string, name?: string | null, href?: string | null } | null> | null, bottomTags?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null } | null, secondSection?: { __typename?: 'ComponentHomepageHomepageSecondSection', bgImage?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null, secondSection?: Array<{ __typename?: 'ComponentHomepageHomepageSecondSectionPoints', id: string, heading?: string | null, description?: string | null, topDescription?: string | null, image?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null } | null> | null } | null, thirdSection?: { __typename?: 'ComponentHomepageHomepageThirdSection', heading?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, cards?: Array<{ __typename?: 'ComponentHomepageBranchCards', id: string, heading?: string | null, description?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null } | null> | null } | null, fourthSection?: { __typename?: 'ComponentHomepageHomepageFourthSection', heading?: string | null, description?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, button?: { __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null } | null, cards?: Array<{ __typename?: 'ComponentHomepageFourthSectionCards', id: string, heading?: string | null, cardImage?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null } | null> | null } | null, fifthSection?: { __typename?: 'ComponentHomepageHomepageFifthSection', heading?: string | null, description?: string | null, case_studies: Array<{ __typename?: 'CaseStudy', title?: string | null, tags: Array<{ __typename?: 'Tag', name?: string | null } | null> } | null> } | null, contactSection?: { __typename?: 'ComponentHomepageHomepageContactAndTestimonials', heading?: string | null, testimonial?: { __typename?: 'Testimonial', clientComments?: string | null, clientCompany?: string | null, clientName?: string | null, clientPosition?: string | null } | null } | null } | null };
 
 export type InterviewsQueryVariables = Exact<{
   filters?: InputMaybe<InterviewFiltersInput>;
