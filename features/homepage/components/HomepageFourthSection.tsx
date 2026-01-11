@@ -1,5 +1,5 @@
 import Section from "@/components/global/Section";
-import { Button, buttonVariants } from "@/components/ui/button";
+import {  buttonVariants } from "@/components/ui/button";
 import { HomepageQuery } from "@/lib/codegen/graphql";
 import { cn } from "@/lib/utils";
 import Image from "next/image";

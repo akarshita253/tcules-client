@@ -13,7 +13,7 @@ const HomepageHeroSection = ({
 }) => {
   return (
     <>
-      <Section className="sm:py-[146px] my-6 sm:my-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <Section className="sm:py-0 my-6 sm:my-12 grid grid-cols-1 md:grid-cols-2 items-center gap-6">
         <div>
           <div className="mb-4 sm:mb-6">
             <h1 className="md:flex">
@@ -67,24 +67,27 @@ const HomepageHeroSection = ({
             ))}
           </div>
         </div>
-
-        {heroSectionData?.rightSectionImage?.url && (
-          <div className="w-full">
-            <Image
-              alt={
-                heroSectionData?.rightSectionImage?.alternativeText ||
-                "hero section image"
-              }
-              src={heroSectionData?.rightSectionImage?.url}
-              fill
-              className="object-cover"
-            />
-          </div>
-        )}
+          {heroSectionData?.rightSectionImage?.url && (
+            <div className="w-full h-[650px]">
+              <Image
+                alt={
+                  heroSectionData?.rightSectionImage?.alternativeText ||
+                  "hero section image"
+                }
+                src={heroSectionData?.rightSectionImage?.url}
+                fill
+                className="object-cover"
+              />
+            </div>
+          )}
       </Section>
       <Section>
         <h2 className="text-heading-xs mx-auto mb-4 sm:mb-6">
-          <ScrollReveal initialColor="#b1b1b1" finalColor="#000000" value={heroSectionData?.descriptionTwo || ""} />
+          <ScrollReveal
+            initialColor="#b1b1b1"
+            finalColor="#000000"
+            value={heroSectionData?.descriptionTwo || ""}
+          />
         </h2>
         <div className="flex items-center flex-col sm:flex-row gap-4">
           {heroSectionData?.bottomTags &&
@@ -98,15 +101,6 @@ const HomepageHeroSection = ({
                 </span>
               </p>
             ))}
-
-          {/* <h2 className="text-heading-lg max-w-full">
-                        <span className="text-accent-500">
-                          {thirdSectionData?.description?.split("|")[0]}
-                        </span>
-                          <ScrollReveal
-                            value={thirdSectionData?.description?.split("|")[1] || ""}
-                          />
-                      </h2> */}
         </div>
       </Section>
     </>

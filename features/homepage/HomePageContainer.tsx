@@ -7,6 +7,7 @@ import HomepageThirdSection from "./components/HomepageThirdSection";
 import HomepageFourthSection from "./components/HomepageFourthSection";
 import HomepageFifthSection from "./components/HomepageFifthSection";
 import ContactAndTestimonials from "./components/ContactAndTestimonials";
+import Section from "@/components/global/Section";
 
 const HomePageContainer = ({
   homepageData,
@@ -25,11 +26,11 @@ const HomePageContainer = ({
       <Container className="md:grid grid-cols-12 gap-6">
         <Block className="lg:col-start-2 col-start-1 lg:col-end-12 col-end-13">
           <HomepageHeroSection heroSectionData={heroSectionData} />
+          <Section>
+            <HomepageSecondSection secondSectionData={secondSectionData} />
+          </Section>
         </Block>
       </Container>
-      <div className="px-3 sm:py-[84px] py-14">
-        <HomepageSecondSection secondSectionData={secondSectionData} />
-      </div>
       <Container className="md:grid grid-cols-12 gap-6">
         <Block className="lg:col-start-2 col-start-1 lg:col-end-12 col-end-13">
           <HomepageThirdSection thirdSectionData={thirdSectionData} />

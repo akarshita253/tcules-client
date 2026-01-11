@@ -1,6 +1,6 @@
-import Section from "@/components/global/Section";
+"use client"
+
 import { HomepageQuery } from "@/lib/codegen/graphql";
-import Image from "next/image";
 import SecondSectionDynamicContent from "./SecondSectionDynamicContent";
 
 const HomepageSecondSection = ({
@@ -9,18 +9,12 @@ const HomepageSecondSection = ({
   secondSectionData: NonNullable<HomepageQuery["homepage"]>["secondSection"];
 }) => {
   return (
-    <Section className="relative rounded-xl h-[800px] overflow-hidden">
-      <div className="bg-neutral-900 opacity-70 inset-0 absolute z-10"></div>
-      {secondSectionData?.bgImage?.url && (
-        <Image
-          src={secondSectionData?.bgImage?.url}
-          fill
-          className="object-cover"
-          alt="Hero section image"
-        />
-      )}
+    <div className=" p-2 bg-neutral-50 rounded-xl">
+
+    <div className="relative rounded-xl h-[800px] overflow-hidden">
         <SecondSectionDynamicContent secondSectionData={secondSectionData} />
-    </Section>
+    </div>
+    </div>
   );
 };
 

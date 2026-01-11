@@ -1509,7 +1509,6 @@ export interface ComponentHomepageHomepageHeroSectionInput {
 
 export interface ComponentHomepageHomepageSecondSection {
   __typename?: 'ComponentHomepageHomepageSecondSection';
-  bgImage?: Maybe<UploadFile>;
   id: Scalars['ID']['output'];
   secondSection?: Maybe<Array<Maybe<ComponentHomepageHomepageSecondSectionPoints>>>;
 }
@@ -1522,35 +1521,36 @@ export interface ComponentHomepageHomepageSecondSectionSecondSectionArgs {
 }
 
 export interface ComponentHomepageHomepageSecondSectionInput {
-  bgImage?: InputMaybe<Scalars['ID']['input']>;
   id?: InputMaybe<Scalars['ID']['input']>;
   secondSection?: InputMaybe<Array<InputMaybe<ComponentHomepageHomepageSecondSectionPointsInput>>>;
 }
 
 export interface ComponentHomepageHomepageSecondSectionPoints {
   __typename?: 'ComponentHomepageHomepageSecondSectionPoints';
+  bgImage?: Maybe<UploadFile>;
   description?: Maybe<Scalars['String']['output']>;
   heading?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   image?: Maybe<UploadFile>;
-  topDescription?: Maybe<Scalars['String']['output']>;
+  link?: Maybe<ComponentHomepageSecondSectionCaseStudyRelation>;
 }
 
 export interface ComponentHomepageHomepageSecondSectionPointsFiltersInput {
   and?: InputMaybe<Array<InputMaybe<ComponentHomepageHomepageSecondSectionPointsFiltersInput>>>;
   description?: InputMaybe<StringFilterInput>;
   heading?: InputMaybe<StringFilterInput>;
+  link?: InputMaybe<ComponentHomepageSecondSectionCaseStudyRelationFiltersInput>;
   not?: InputMaybe<ComponentHomepageHomepageSecondSectionPointsFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<ComponentHomepageHomepageSecondSectionPointsFiltersInput>>>;
-  topDescription?: InputMaybe<StringFilterInput>;
 }
 
 export interface ComponentHomepageHomepageSecondSectionPointsInput {
+  bgImage?: InputMaybe<Scalars['ID']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
   heading?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['ID']['input']>;
   image?: InputMaybe<Scalars['ID']['input']>;
-  topDescription?: InputMaybe<Scalars['String']['input']>;
+  link?: InputMaybe<ComponentHomepageSecondSectionCaseStudyRelationInput>;
 }
 
 export interface ComponentHomepageHomepageThirdSection {
@@ -1572,6 +1572,26 @@ export interface ComponentHomepageHomepageThirdSectionInput {
   cards?: InputMaybe<Array<InputMaybe<ComponentHomepageBranchCardsInput>>>;
   heading?: InputMaybe<Scalars['String']['input']>;
   icon?: InputMaybe<Scalars['ID']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+}
+
+export interface ComponentHomepageSecondSectionCaseStudyRelation {
+  __typename?: 'ComponentHomepageSecondSectionCaseStudyRelation';
+  botomImage?: Maybe<UploadFile>;
+  case_study?: Maybe<CaseStudy>;
+  id: Scalars['ID']['output'];
+}
+
+export interface ComponentHomepageSecondSectionCaseStudyRelationFiltersInput {
+  and?: InputMaybe<Array<InputMaybe<ComponentHomepageSecondSectionCaseStudyRelationFiltersInput>>>;
+  case_study?: InputMaybe<CaseStudyFiltersInput>;
+  not?: InputMaybe<ComponentHomepageSecondSectionCaseStudyRelationFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentHomepageSecondSectionCaseStudyRelationFiltersInput>>>;
+}
+
+export interface ComponentHomepageSecondSectionCaseStudyRelationInput {
+  botomImage?: InputMaybe<Scalars['ID']['input']>;
+  case_study?: InputMaybe<Scalars['ID']['input']>;
   id?: InputMaybe<Scalars['ID']['input']>;
 }
 
@@ -2953,7 +2973,7 @@ export interface FooterInput {
   socialMedia?: InputMaybe<ComponentFooterFooterSocialMediaLinksInput>;
 }
 
-export type GenericMorph = About | Author | Blog | Capablity | Career | CaseStudy | CaseStudyLandingPage | Category | ClientContact | ComponentAboutAboutFifthSection | ComponentAboutAboutFifthSectionCards | ComponentAboutAboutFourthSection | ComponentAboutAboutFourthSectionDetails | ComponentAboutAboutSecondSection | ComponentAboutAboutSeventhSection | ComponentAboutAboutSixthSection | ComponentAboutSeventhSectionCards | ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCaseStudyPositioning | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesCompanyProfile | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesProblemAndSolution | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentCapablitiesCapablitiesCardSection | ComponentCapablitiesCapablitiesCards | ComponentCareerCareerCards | ComponentCareerCareerFifthSection | ComponentCareerCareerFourthSection | ComponentCareerCareerFourthSectionNew | ComponentCareerCareerIconPoints | ComponentCareerCareerNewCards | ComponentCareerCareerSecondSection | ComponentCareerCareerThirdSection | ComponentCareerThirdRightSection | ComponentContactUsContactUsBottomCards | ComponentContactUsSocialMediaLinks | ComponentElementsButtons | ComponentElementsElements | ComponentElementsLink | ComponentElementsPoints | ComponentEventsEventDetails | ComponentFooterFooterLegalSection | ComponentFooterFooterLinks | ComponentFooterFooterSocialMediaLinks | ComponentFooterFooterSocialMediaRightSection | ComponentFooterPagesLinks | ComponentHomepageBranchCards | ComponentHomepageFourthSectionCards | ComponentHomepageHomepageContactAndTestimonials | ComponentHomepageHomepageFifthSection | ComponentHomepageHomepageFourthSection | ComponentHomepageHomepageHeroSection | ComponentHomepageHomepageSecondSection | ComponentHomepageHomepageSecondSectionPoints | ComponentHomepageHomepageThirdSection | ComponentHowWeWorkCardDetails | ComponentHowWeWorkCards | ComponentHowWeWorkHowWeWorkHeroSection | ComponentHowWeWorkLowFrictionWays | ComponentHowWeWorkRightDetails | ComponentHowWeWorkRightStartingPoint | ComponentLabsCardSection | ComponentLabsFilCardDetails | ComponentLabsFilLabsFilEighthSection | ComponentLabsFilLabsFilFifthSection | ComponentLabsFilLabsFilFourthSection | ComponentLabsFilLabsFilHeroSection | ComponentLabsFilLabsFilSecondSection | ComponentLabsFilLabsFilSeventhSection | ComponentLabsFilLabsFilSixthSection | ComponentLabsFilLabsFilThirdSection | ComponentLabsFilSixthSectionLeftCard | ComponentLabsFilSixthSectionRightCard | ComponentLabsFilThirdSectionCards | ComponentLegalDetails | ComponentMatterDesignMatterDesignCards | ComponentMatterDesignMatterDesignContactUs | ComponentMatterDesignMatterDesignDisplayCards | ComponentMatterDesignMatterDesignFifthSection | ComponentMatterDesignMatterDesignFourthSection | ComponentMatterDesignMatterDesignHeroSection | ComponentMatterDesignMatterDesignSecondSection | ComponentMatterDesignMatterDesignStripOne | ComponentMatterDesignMatterDesignThirdSection | ComponentNavbarNavbarLevel1Group | ComponentNavbarNavbarLevel2Group | ComponentPodcasteEventsInterviewsShadowCard | ComponentServiceExploreRecentWork | ComponentServiceHeroSection | ComponentServiceHowWeWork | ComponentServiceOurOperatingPhilosophy | ComponentServiceServiceMisc | ComponentServiceWhatWeDesign | ComponentServiceWhyTeamHireUs | ComponentSharedCard | ComponentSharedHeroSection | ComponentSharedMedia | ComponentSharedProfile | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | ComponentSharedSlider | ComponentSharedTiles | ComponentSingleTypeCaseStudyPageHeroSection | ComponentSingleTypeCaseStudyPageMiscellaneous | ContactUs | Event | Faq | Footer | Global | Homepage | HowWeWork | I18NLocale | Interview | LabSingleType | LabsFilLandingPage | MatterDesignSystem | Navbar | Opening | Podcast | PrivacyPolicy | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Service | Tag | TermsOfUse | Testimonial | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = About | Author | Blog | Capablity | Career | CaseStudy | CaseStudyLandingPage | Category | ClientContact | ComponentAboutAboutFifthSection | ComponentAboutAboutFifthSectionCards | ComponentAboutAboutFourthSection | ComponentAboutAboutFourthSectionDetails | ComponentAboutAboutSecondSection | ComponentAboutAboutSeventhSection | ComponentAboutAboutSixthSection | ComponentAboutSeventhSectionCards | ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCaseStudyPositioning | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesCompanyProfile | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesProblemAndSolution | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentCapablitiesCapablitiesCardSection | ComponentCapablitiesCapablitiesCards | ComponentCareerCareerCards | ComponentCareerCareerFifthSection | ComponentCareerCareerFourthSection | ComponentCareerCareerFourthSectionNew | ComponentCareerCareerIconPoints | ComponentCareerCareerNewCards | ComponentCareerCareerSecondSection | ComponentCareerCareerThirdSection | ComponentCareerThirdRightSection | ComponentContactUsContactUsBottomCards | ComponentContactUsSocialMediaLinks | ComponentElementsButtons | ComponentElementsElements | ComponentElementsLink | ComponentElementsPoints | ComponentEventsEventDetails | ComponentFooterFooterLegalSection | ComponentFooterFooterLinks | ComponentFooterFooterSocialMediaLinks | ComponentFooterFooterSocialMediaRightSection | ComponentFooterPagesLinks | ComponentHomepageBranchCards | ComponentHomepageFourthSectionCards | ComponentHomepageHomepageContactAndTestimonials | ComponentHomepageHomepageFifthSection | ComponentHomepageHomepageFourthSection | ComponentHomepageHomepageHeroSection | ComponentHomepageHomepageSecondSection | ComponentHomepageHomepageSecondSectionPoints | ComponentHomepageHomepageThirdSection | ComponentHomepageSecondSectionCaseStudyRelation | ComponentHowWeWorkCardDetails | ComponentHowWeWorkCards | ComponentHowWeWorkHowWeWorkHeroSection | ComponentHowWeWorkLowFrictionWays | ComponentHowWeWorkRightDetails | ComponentHowWeWorkRightStartingPoint | ComponentLabsCardSection | ComponentLabsFilCardDetails | ComponentLabsFilLabsFilEighthSection | ComponentLabsFilLabsFilFifthSection | ComponentLabsFilLabsFilFourthSection | ComponentLabsFilLabsFilHeroSection | ComponentLabsFilLabsFilSecondSection | ComponentLabsFilLabsFilSeventhSection | ComponentLabsFilLabsFilSixthSection | ComponentLabsFilLabsFilThirdSection | ComponentLabsFilSixthSectionLeftCard | ComponentLabsFilSixthSectionRightCard | ComponentLabsFilThirdSectionCards | ComponentLegalDetails | ComponentMatterDesignMatterDesignCards | ComponentMatterDesignMatterDesignContactUs | ComponentMatterDesignMatterDesignDisplayCards | ComponentMatterDesignMatterDesignFifthSection | ComponentMatterDesignMatterDesignFourthSection | ComponentMatterDesignMatterDesignHeroSection | ComponentMatterDesignMatterDesignSecondSection | ComponentMatterDesignMatterDesignStripOne | ComponentMatterDesignMatterDesignThirdSection | ComponentNavbarNavbarLevel1Group | ComponentNavbarNavbarLevel2Group | ComponentPodcasteEventsInterviewsShadowCard | ComponentServiceExploreRecentWork | ComponentServiceHeroSection | ComponentServiceHowWeWork | ComponentServiceOurOperatingPhilosophy | ComponentServiceServiceMisc | ComponentServiceWhatWeDesign | ComponentServiceWhyTeamHireUs | ComponentSharedCard | ComponentSharedHeroSection | ComponentSharedMedia | ComponentSharedProfile | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | ComponentSharedSlider | ComponentSharedTiles | ComponentSingleTypeCaseStudyPageHeroSection | ComponentSingleTypeCaseStudyPageMiscellaneous | ContactUs | Event | Faq | Footer | Global | Homepage | HowWeWork | I18NLocale | Interview | LabSingleType | LabsFilLandingPage | MatterDesignSystem | Navbar | Opening | Podcast | PrivacyPolicy | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Service | Tag | TermsOfUse | Testimonial | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export interface Global {
   __typename?: 'Global';
@@ -5281,7 +5301,7 @@ export type EventsQuery = { __typename?: 'Query', events: Array<{ __typename: 'E
 export type HomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type HomepageQuery = { __typename?: 'Query', homepage?: { __typename?: 'Homepage', heroSection?: { __typename?: 'ComponentHomepageHomepageHeroSection', headingOne?: string | null, headingTwo?: string | null, descriptionOne?: string | null, descriptionTwo?: string | null, rightSectionImage?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null, button?: Array<{ __typename?: 'ComponentElementsLink', id: string, name?: string | null, href?: string | null } | null> | null, bottomTags?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null } | null, secondSection?: { __typename?: 'ComponentHomepageHomepageSecondSection', bgImage?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null, secondSection?: Array<{ __typename?: 'ComponentHomepageHomepageSecondSectionPoints', id: string, heading?: string | null, description?: string | null, topDescription?: string | null, image?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null } | null> | null } | null, thirdSection?: { __typename?: 'ComponentHomepageHomepageThirdSection', heading?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, cards?: Array<{ __typename?: 'ComponentHomepageBranchCards', id: string, heading?: string | null, description?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null } | null> | null } | null, fourthSection?: { __typename?: 'ComponentHomepageHomepageFourthSection', heading?: string | null, description?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, button?: { __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null } | null, cards?: Array<{ __typename?: 'ComponentHomepageFourthSectionCards', id: string, heading?: string | null, cardImage?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null } | null> | null } | null, fifthSection?: { __typename?: 'ComponentHomepageHomepageFifthSection', heading?: string | null, description?: string | null, case_studies: Array<{ __typename?: 'CaseStudy', title?: string | null, tags: Array<{ __typename?: 'Tag', name?: string | null } | null> } | null> } | null, contactSection?: { __typename?: 'ComponentHomepageHomepageContactAndTestimonials', heading?: string | null, testimonial?: { __typename?: 'Testimonial', clientComments?: string | null, clientCompany?: string | null, clientName?: string | null, clientPosition?: string | null } | null } | null } | null };
+export type HomepageQuery = { __typename?: 'Query', homepage?: { __typename?: 'Homepage', heroSection?: { __typename?: 'ComponentHomepageHomepageHeroSection', headingOne?: string | null, headingTwo?: string | null, descriptionOne?: string | null, descriptionTwo?: string | null, rightSectionImage?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null, button?: Array<{ __typename?: 'ComponentElementsLink', id: string, name?: string | null, href?: string | null } | null> | null, bottomTags?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null } | null, secondSection?: { __typename?: 'ComponentHomepageHomepageSecondSection', secondSection?: Array<{ __typename?: 'ComponentHomepageHomepageSecondSectionPoints', id: string, heading?: string | null, description?: string | null, image?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null, bgImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null, link?: { __typename?: 'ComponentHomepageSecondSectionCaseStudyRelation', botomImage?: { __typename?: 'UploadFile', alternativeText?: string | null, height?: number | null, url: string, width?: number | null } | null, case_study?: { __typename?: 'CaseStudy', slug?: string | null, title?: string | null } | null } | null } | null> | null } | null, thirdSection?: { __typename?: 'ComponentHomepageHomepageThirdSection', heading?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, cards?: Array<{ __typename?: 'ComponentHomepageBranchCards', id: string, heading?: string | null, description?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null } | null> | null } | null, fourthSection?: { __typename?: 'ComponentHomepageHomepageFourthSection', heading?: string | null, description?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, button?: { __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null } | null, cards?: Array<{ __typename?: 'ComponentHomepageFourthSectionCards', id: string, heading?: string | null, cardImage?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null } | null> | null } | null, fifthSection?: { __typename?: 'ComponentHomepageHomepageFifthSection', heading?: string | null, description?: string | null, case_studies: Array<{ __typename?: 'CaseStudy', title?: string | null, tags: Array<{ __typename?: 'Tag', name?: string | null } | null> } | null> } | null, contactSection?: { __typename?: 'ComponentHomepageHomepageContactAndTestimonials', heading?: string | null, testimonial?: { __typename?: 'Testimonial', clientComments?: string | null, clientCompany?: string | null, clientName?: string | null, clientPosition?: string | null } | null } | null } | null };
 
 export type InterviewsQueryVariables = Exact<{
   filters?: InputMaybe<InterviewFiltersInput>;

@@ -25,22 +25,33 @@ export const HOME_PAGE_QUERY = gql`
         }
       }
       secondSection {
-        bgImage {
-          url
-          width
-          height
-          alternativeText
-        }
         secondSection {
           id
           heading
           description
-          topDescription
           image {
             alternativeText
             url
             height
             width
+          }
+          bgImage {
+            alternativeText
+            url
+            height
+            width
+          }
+          link {
+            botomImage {
+              alternativeText
+              height
+              url
+              width
+            }
+            case_study {
+              slug
+              title
+            }
           }
         }
       }
