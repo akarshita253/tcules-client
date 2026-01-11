@@ -55,11 +55,11 @@ const ContactForm = () => {
     });
   }
   return (
-    <div className="p-8 bg-neutral-100 rounded-xl md:w-5/7 mx-auto mb-6 sm:mb-11">
+    <div className="p-8 bg-neutral-50 rounded-xl lg:w-5/7 mx-auto mb-6 sm:mb-11">
         {error && <p className="text-red-500">{error.message}</p>}
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <div className="grid grid-cols-2 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <FormField
               control={form.control}
               name="fullName"
@@ -70,7 +70,7 @@ const ContactForm = () => {
                   </FormLabel>
                   <FormControl>
                     <Input
-                      className="text-label-sm text-neutral-400 bg-neutral-50"
+                      className="text-label-sm text-neutral-400 bg-neutral-100"
                       placeholder="John Doe"
                       {...field}
                     />
@@ -89,7 +89,7 @@ const ContactForm = () => {
                   </FormLabel>
                   <FormControl>
                     <Input
-                      className="text-label-sm text-neutral-400 bg-neutral-50"
+                      className="text-label-sm text-neutral-400 bg-neutral-100"
                       placeholder="Your Company"
                       {...field}
                     />
@@ -99,7 +99,7 @@ const ContactForm = () => {
               )}
             />
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <FormField
               control={form.control}
               name="email"
@@ -110,7 +110,7 @@ const ContactForm = () => {
                   </FormLabel>
                   <FormControl>
                     <Input
-                      className="text-label-sm text-neutral-400 bg-neutral-50"
+                      className="text-label-sm text-neutral-400 bg-neutral-100"
                       placeholder="your@email.com"
                       {...field}
                     />
@@ -129,7 +129,7 @@ const ContactForm = () => {
                   </FormLabel>
                   <FormControl>
                     <Input
-                      className="text-label-sm text-neutral-400 bg-neutral-50"
+                      className="text-label-sm text-neutral-400 bg-neutral-100"
                       placeholder="+1 (434) 989 98"
                       {...field}
                     />
@@ -150,7 +150,7 @@ const ContactForm = () => {
                 <FormControl>
                   <Input
                     type="text-area"
-                    className="text-label-sm text-neutral-400 bg-neutral-50"
+                    className="text-label-sm text-neutral-400 bg-neutral-100"
                     placeholder="shadcn"
                     {...field}
                   />

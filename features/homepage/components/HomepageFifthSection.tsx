@@ -23,12 +23,12 @@ const HomepageFifthSection = ({
           {fifthSectionData?.description}
         </p>
       </div>
-      <div className="flex flex-col justify-between gap-2">
+      <div className="flex flex-col justify-between gap-2 bg-neutral-50 rounded-xl p-2">
         {fifthSectionData?.case_studies &&
           fifthSectionData?.case_studies.length > 0 &&
           fifthSectionData?.case_studies.map((item) => (
             <div
-              className="bg-neutral-50 flex flex-col sm:flex-row justify-between items-center py-6 px-8 rounded-xl gap-12"
+              className="bg-neutral-100 flex flex-col sm:flex-row justify-between items-center py-6 px-8 rounded-xl gap-12"
               key={item?.title}
             >
               <div className="flex items-center gap-4 flex-wrap flex-col md:flex-row">
@@ -40,7 +40,7 @@ const HomepageFifthSection = ({
                     item?.tags.length > 0 &&
                     item?.tags.map((tag, index) => (
                       <p
-                        className="text-label-2xs  text-neutral-800 bg-neutral-100 py-1.5 px-3 rounded-full"
+                        className="text-label-2xs  text-neutral-800 bg-neutral-50 py-1.5 px-3 rounded-full"
                         key={index}
                       >
                         {tag?.name}

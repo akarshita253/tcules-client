@@ -9,20 +9,20 @@ const HomepageThirdSection = ({
 }) => {
   return (
     <Section>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 bg-neutral-50 rounded-xl p-2">
         <div className="p-8">
-          <div className="flex justify-end">
-            {thirdSectionData?.icon?.url && (
+          <div className="flex justify-center items-center">
+            {/* {thirdSectionData?.icon?.url && (
               <Image
                 src={thirdSectionData?.icon?.url}
                 alt="Third section icon"
                 width={40}
                 height={40}
               />
-            )}
+            )} */}
           </div>
           <h3>
-            <span className="text-display-sm text-accent-600">
+            <span className="text-display-xs text-accent-600">
               {thirdSectionData?.heading?.split("|").at(0)}
             </span>
             <span className="text-heading-sm text-neutral-900">
@@ -33,8 +33,8 @@ const HomepageThirdSection = ({
         {
           thirdSectionData?.cards && thirdSectionData?.cards.length>0 && thirdSectionData?.cards?.map((card) => {
             return (
-              <div className="p-8 flex flex-col justify-between gap-4 bg-neutral-50 rounded-xl" key={card?.id}>
-                <div>
+              <div className="p-8 flex flex-col justify-between gap-4 bg-neutral-100 rounded-xl" key={card?.id}>
+                <div className="flex justify-end">
                   {card?.icon&& <Image src={card?.icon?.url} alt={card?.icon?.alternativeText||"card-icon"} width={40} height={40}/>}
                 </div>
                 <div>
