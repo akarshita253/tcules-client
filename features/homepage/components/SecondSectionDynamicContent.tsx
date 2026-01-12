@@ -19,7 +19,7 @@ const SecondSectionDynamicContent = ({
 
   return (
     <>
-      <div className="pl-4 flex flex-col gap-4 justify-center h-full">
+      <div className="pl-4 flex flex-col justify-center h-full">
         {secondSectionData?.secondSection &&
           secondSectionData?.secondSection.map((singleSection, index) => {
             return (

@@ -17,7 +17,6 @@ const NavHoverStates = ({
   const handleMegaMenu = (index: number) => {
     setActive(index);
   };
-  // const gridColumn = `grid gap-4 grid-cols-${lengthOfLevelTwo}`;
 
   const handleMegaMenuClose = () => {
     setActive(null);
@@ -40,14 +39,12 @@ const NavHoverStates = ({
                 {singleNavLink?.name}
               </Link>
               
-              {/* 2. Wrap the conditional logic in AnimatePresence */}
               <AnimatePresence>
                 {active === index && levelTwo.length > 0 && (
-                  /* 3. Change div to motion.div and add animation props */
                   <motion.div
-                    initial={{ opacity: 0, y: 10 }} // Starts invisible and 10px lower
-                    animate={{ opacity: 1, y: 0 }}  // Fades in and moves up
-                    exit={{ opacity: 0, y: 10 }}    // Fades out and moves down
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
                     transition={{ duration: 0.2 }}
                     onMouseLeave={handleMegaMenuClose}
                     className="absolute top-[calc(100%+0.5rem)] left-0 right-0 shadow-lg max-w-6xl w-auto mx-auto bg-neutral-50 z-100"
@@ -84,7 +81,7 @@ const NavHoverStates = ({
                                   >
                                     <Link
                                       href={secondLevel?.href || "#"}
-                                      className="flex items-start gap-1 text-heading-2xs text-neutral-900"
+                                      className="flex items-start justify-between gap-1 text-heading-2xs text-neutral-900"
                                     >
                                       {secondLevel?.name}
                                       <ArrowRight
@@ -137,7 +134,7 @@ const NavHoverStates = ({
                           href={
                             singleNavLink?.navLevelTwoGroup?.at(-1)?.href || "#"
                           }
-                          className="flex items-center gap-1 text-heading-2xs text-neutral-900"
+                          className="flex items-center justify-between  gap-1 text-heading-2xs text-neutral-900"
                         >
                           {singleNavLink?.navLevelTwoGroup?.at(-1)?.name}
                           <ArrowRight className="shrink-0" size={20} />
@@ -152,7 +149,7 @@ const NavHoverStates = ({
                               >
                                 <Link
                                   href={singleLevelTwoLink?.href || "#"}
-                                  className="text-caption-md text-neutral-800 flex flex-col"
+                                  className="text-caption-md text-neutral-800 hover:underline flex flex-col"
                                 >
                                   <small className="text-label-2xs text-neutral-800">
                                     {singleLevelTwoLink?.name}
