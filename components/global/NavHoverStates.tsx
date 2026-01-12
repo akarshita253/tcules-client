@@ -47,7 +47,7 @@ const NavHoverStates = ({
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ duration: 0.2 }}
                     onMouseLeave={handleMegaMenuClose}
-                    className="absolute top-[calc(100%+0.5rem)] left-0 right-0 shadow-lg max-w-6xl w-auto mx-auto bg-neutral-50 z-100"
+                    className="absolute top-[calc(100%+0.5rem)] min-h-[400px] left-0 right-0 shadow-lg max-w-6xl w-auto mx-auto bg-neutral-50 z-100"
                   >
                     <div
                       className={
@@ -77,7 +77,7 @@ const NavHoverStates = ({
                                 return (
                                   <div
                                     key={secondLevel?.id}
-                                    className="bg-neutral-100 hover:bg-linear-to-tr from-neutral-50 to-green-300 transition-all duration-300 flex flex-col justify-between gap-4 rounded-xl p-6"
+                                    className="bg-neutral-100 hover:bg-linear-to-tr min-h-[358px] from-neutral-50 to-green-300 transition-all duration-300 flex flex-col justify-between gap-4 rounded-xl p-6"
                                   >
                                     <Link
                                       href={secondLevel?.href || "#"}
@@ -102,7 +102,7 @@ const NavHoverStates = ({
                                                   singleLevelTwoLink?.href ||
                                                   "#"
                                                 }
-                                                className="text-caption-md text-neutral-800 flex flex-col"
+                                                className="text-caption-md hover:underline text-neutral-800 flex flex-col"
                                               >
                                                 <small className="text-label-2xs text-neutral-800">
                                                   {singleLevelTwoLink?.name}

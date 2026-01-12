@@ -1,59 +1,33 @@
+"use client";
 import { Block } from "@/components/global/Block";
 import { Container } from "@/components/global/Container";
 import Section from "@/components/global/Section";
 import { buttonVariants } from "@/components/ui/button";
 import ScrollReveal from "@/components/ui/scroll-change";
-import { TypewriterEffect } from "@/components/ui/typewriter-effect";
 import { HomepageQuery } from "@/lib/codegen/graphql";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import HomePageHeroSecHeading from "./HomePageHeroSecHeading";
 
 const HomepageHeroSection = ({
   heroSectionData,
 }: {
   heroSectionData: NonNullable<HomepageQuery["homepage"]>["heroSection"];
 }) => {
+ 
   return (
     <>
       <Section className="sm:py-0 grid lg:grid-cols-2 gap-2">
         <div className="lg:flex-1 flex lg:justify-end items-center">
           <div className="lg:w-[550px] w-full pl-2 lg:pt-0 pt-20">
-            <div className="mb-4 sm:mb-6">
-              <h1 className="sm:flex flex-wrap">
-                <span className="text-heading-xl text-neutral-900">
-                  {heroSectionData?.headingOne?.split("|")[0]}
-                </span>{" "}
-                <span className="">
-                  {heroSectionData?.headingOne?.split("|")[1] && (
-                    <TypewriterEffect
-                      words={[
-                        {
-                          text: heroSectionData?.headingOne?.split("|")[1],
-                          className: " text-accent-600",
-                        },
-                      ]}
-                    />
-                  )}
-                </span>
-              </h1>
-              <h1 className="sm:flex flex-wrap">
-                <span className="text-heading-xl text-neutral-900">
-                  {heroSectionData?.headingTwo?.split("|")[0]}
-                </span>{" "}
-                <span>
-                  {heroSectionData?.headingTwo?.split("|")[1] && (
-                    <TypewriterEffect
-                      words={[
-                        {
-                          text: heroSectionData?.headingTwo?.split("|")[1],
-                          className: " text-accent-600",
-                        },
-                      ]}
-                    />
-                  )}
-                </span>
-              </h1>
-            </div>
+            {heroSectionData?.headingOne && heroSectionData?.headingTwo && (
+              <div className="mb-4 sm:mb-6">
+                <HomePageHeroSecHeading
+                  headingOne={heroSectionData?.headingOne}
+                  headingTwo={heroSectionData?.headingTwo}
+                />
+              </div>
+            )}
             <p className="text-label-xl text-neutral-800 mb-6 sm:mb-11">
               {heroSectionData?.descriptionOne}
             </p>
@@ -80,8 +54,8 @@ const HomepageHeroSection = ({
                   "hero section image"
                 }
                 src={heroSectionData?.rightSectionImage?.url}
-                width={heroSectionData?.rightSectionImage?.width||600}
-                height={heroSectionData?.rightSectionImage?.height||800}
+                width={heroSectionData?.rightSectionImage?.width || 600}
+                height={heroSectionData?.rightSectionImage?.height || 800}
               />
             </div>
           )}

@@ -3,6 +3,7 @@ import { CapablitiesCardSection } from "../CapablityContainer";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 type AIServiceSectionProps = {
   aiServiceSectionData: CapablitiesCardSection;
@@ -32,10 +33,15 @@ const AIServiceSection = ({ aiServiceSectionData }: AIServiceSectionProps) => {
             </span>
           </h2>
         </div>
-        {aiServiceSectionData?.sectionCards?.map((singleCard) => {
+        {aiServiceSectionData?.sectionCards?.map((singleCard, index, arr) => {
           return (
             <div
-              className="p-4 min-h-[350px] sm:p-6 flex flex-col gap-6 justify-between bg-neutral-100 shadow-[0_4px_45.1px_0_rgb(0_0_0/0.03)] rounded-xl relative"
+              className={cn(
+                "p-4 min-h-[350px] sm:p-6 flex flex-col gap-6 justify-between  rounded-xl relative",
+                index === arr?.length - 1
+                  ? "bg-neutral-50"
+                  : "bg-neutral-100 shadow-[0_4px_45.1px_0_rgb(0_0_0/0.03)]"
+              )}
               key={singleCard?.id}
             >
               {singleCard?.icon?.url && (
