@@ -22,10 +22,10 @@ const HomePageContainer = ({
   const contactSectionData = homepageData?.contactSection;
 
   return (
-    <main className="bg-neutral-100">
+    <main className="bg-neutral-100 overflow-hidden">
+      <HomepageHeroSection heroSectionData={heroSectionData} />
       <Container className="md:grid grid-cols-12 gap-6">
         <Block className="lg:col-start-2 col-start-1 lg:col-end-12 col-end-13">
-          <HomepageHeroSection heroSectionData={heroSectionData} />
           <Section>
             <HomepageSecondSection secondSectionData={secondSectionData} />
           </Section>

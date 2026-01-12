@@ -11,7 +11,7 @@ type AIServiceSectionProps = {
 const AIServiceSection = ({ aiServiceSectionData }: AIServiceSectionProps) => {
   return (
     <Section>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:mb-6 mb-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:mb-6 mb-4">
         <div className="p-8 relative flex flex-col justify-between gap-6">
           {aiServiceSectionData?.icon?.url && (
             <div className="flex justify-end">
@@ -35,7 +35,7 @@ const AIServiceSection = ({ aiServiceSectionData }: AIServiceSectionProps) => {
         {aiServiceSectionData?.sectionCards?.map((singleCard) => {
           return (
             <div
-              className="p-4 sm:p-6 flex flex-col gap-6 justify-between bg-neutral-100 shadow-[0_4px_45.1px_0_rgb(0_0_0/0.03)] rounded-xl relative"
+              className="p-4 min-h-[350px] sm:p-6 flex flex-col gap-6 justify-between bg-neutral-100 shadow-[0_4px_45.1px_0_rgb(0_0_0/0.03)] rounded-xl relative"
               key={singleCard?.id}
             >
               {singleCard?.icon?.url && (

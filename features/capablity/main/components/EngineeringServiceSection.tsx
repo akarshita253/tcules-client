@@ -10,7 +10,7 @@ type EngineeringServiceSectionProps = {
 const EngineeringServiceSection = ({engineeringServiceSectionData}:EngineeringServiceSectionProps) => {
   return (
     <Section>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:mb-12 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:mb-12 mb-6">
         <h2 className="p-8">
             <span className="text-heading-sm text-neutral-800">{engineeringServiceSectionData?.heading?.split("|").at(0)}</span>
             <span className="text-display-xs text-accent-600">{engineeringServiceSectionData?.heading?.split("|").at(1)}</span>

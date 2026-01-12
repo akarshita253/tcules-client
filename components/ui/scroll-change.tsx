@@ -4,14 +4,14 @@ import { useRef } from "react";
 
 interface ScrollRevealProps {
   value: string;
-  initialColor: string; // e.g. "#737373" or "rgb(115,115,115)"
-  finalColor: string;   // e.g. "#fafafa"
+  initialColor: string;
+  finalColor: string;
 }
 
-interface WordProps {
+interface CharProps {
   children: string;
-  range: [number, number];
   progress: MotionValue<number>;
+  range: [number, number];
   initialColor: string;
   finalColor: string;
 }
@@ -29,52 +29,59 @@ export default function ScrollReveal({
   });
 
   const words = value.split(" ");
+  const totalChars = value.length;
+  
+  let globalCharIndex = 0;
 
   return (
-    <span ref={element} className="inline text-heading-lg">
+    <span
+      ref={element}
+      className="inline-block text-heading-lg leading-tight text-justify"
+    >
       {words.map((word, i) => {
-        const start = i / words.length;
-        const end = start + 1 / words.length;
-
+        const chars = word.split("");
+        
         return (
-          <Word
-            key={i}
-            range={[start, end]}
-            progress={scrollYProgress}
-            initialColor={initialColor}
-            finalColor={finalColor}
-          >
-            {word}
-          </Word>
+          <span key={i} className="inline-block whitespace-nowrap mr-[0.35em]">
+            {chars.map((char, charIndex) => {
+              
+              const start = globalCharIndex / totalChars;
+              const end = start + (1 / totalChars);
+              
+              globalCharIndex++;
+
+              return (
+                <Char
+                  key={charIndex}
+                  range={[start, end]}
+                  progress={scrollYProgress}
+                  initialColor={initialColor}
+                  finalColor={finalColor}
+                >
+                  {char}
+                </Char>
+              );
+            })}
+            <span className="hidden">{globalCharIndex++}</span>
+          </span>
         );
       })}
     </span>
   );
 }
-const Word = ({
+
+const Char = ({
   children,
-  range,
   progress,
+  range,
   initialColor,
   finalColor,
-}: WordProps) => {
-  // Controls reveal timing
-  const opacity = useTransform(progress, range, [0, 1]);
+}: CharProps) => {
+const color = useTransform(progress, range, [initialColor, finalColor]);
 
   return (
-    <span className="relative inline-block mr-[0.35em]">
-      {/* Base text (initial color) */}
-      <span style={{ color: initialColor }}>
-        {children}
-      </span>
-
-      {/* Revealed text (final color) */}
-      <motion.span
-        className="absolute left-0 top-0"
-        style={{ color: finalColor, opacity }}
-      >
-        {children}
-      </motion.span>
-    </span>
+    <motion.span style={{ color }}>
+      {children}
+    </motion.span>
   );
 };
