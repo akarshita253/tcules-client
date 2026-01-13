@@ -155,6 +155,8 @@ export const GET_ALL_CASE_STUDIES = gql`
     documentId
     title
     description
+    createdAt
+    updatedAt
     thumbnail {
       url
       width

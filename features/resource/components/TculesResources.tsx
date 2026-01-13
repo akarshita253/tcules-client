@@ -1,21 +1,13 @@
 "use client";
 import Section from "@/components/global/Section";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { ChevronDown } from "lucide-react";
-import Image from "next/image";
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { CgClose } from "react-icons/cg";
 import { ResourceQuery } from "@/lib/codegen/graphql";
-import { formatDate } from "@/lib/utils";
-import Link from "next/link";
+import ResourcesCaseStudies from "./ResourcesCaseStudies";
+import ApolloWrapper from "@/lib/providers/ApolloWrapper";
 
 const TculesResources = ({
   thirdSectionData,
@@ -24,7 +16,7 @@ const TculesResources = ({
 }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [dropdownState, setDropdownState] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const activeFilters = searchParams.getAll("filter");
 
   const handleFilterChange = (value: string) => {
@@ -41,7 +33,7 @@ const TculesResources = ({
     }
 
     router.push(`?${params.toString()}`, { scroll: false });
-    setDropdownState(false);
+    setActiveDropdown(null);
   };
 
   const handleDeleteFilter = () => {
@@ -49,7 +41,7 @@ const TculesResources = ({
     params.delete("filter");
     router.push(`?${params.toString()}`, { scroll: false });
   };
-
+  console.log(activeFilters, "this is the third section data");
   return (
     <Section>
       <h2 className="text-heading-xs text-neutral-800 mb-6">
@@ -57,39 +49,55 @@ const TculesResources = ({
       </h2>
       <div className="sm:mb-12 mb-6">
         <p className="text-caption-xs text-neutral-500">Filter by :</p>
-        <div>
-          <Button
-            variant={"link"}
-            className="text-neutral-700 text-label-lg px-0 no-underline"
-            onClick={() => setDropdownState((prev) => !prev)}
-          >
-            All
-            <ChevronDown />
-          </Button>
-          {dropdownState && (
-            <div className="absolute z-10 mt-2 w-40 rounded-lg bg-neutral-50 border border-neutral-200">
-              <ul>
-                <li
-                  className="py-2 px-4 hover:bg-neutral-100 cursor-pointer"
-                  onClick={() => handleFilterChange("all")}
-                >
-                  All
-                </li>
-                <li
-                  className="py-2 px-4 hover:bg-neutral-100 cursor-pointer"
-                  onClick={() => handleFilterChange("blog")}
-                >
-                  Blog
-                </li>
-                <li
-                  className="py-2 px-4 hover:bg-neutral-100 cursor-pointer"
-                  onClick={() => handleFilterChange("case-studies")}
-                >
-                  Case Studies
-                </li>
-              </ul>
-            </div>
-          )}
+        <div className="flex gap-4">
+          {thirdSectionData?.filterResource &&
+            thirdSectionData?.filterResource.length > 0 &&
+            thirdSectionData?.filterResource?.map((singleFilter) => {
+              return (
+                <div key={singleFilter?.id}>
+                  <Button
+                    variant={"link"}
+                    className="text-neutral-700 text-label-lg px-0 no-underline"
+                    onClick={() => {
+                      if (!singleFilter?.id) return;
+
+                      setActiveDropdown(
+                        activeDropdown === singleFilter.id
+                          ? null
+                          : singleFilter.id
+                      );
+                    }}
+                  >
+                    {singleFilter?.label}
+                    <ChevronDown />
+                  </Button>
+
+                  {activeDropdown === singleFilter?.id && (
+                    <div className="absolute z-10 mt-2 w-56 p-4 rounded-lg bg-neutral-50 border border-neutral-200 overflow-hidden">
+                      <ul className=" flex flex-col gap-2">
+                        {singleFilter?.tags &&
+                          singleFilter?.tags.length > 0 &&
+                          singleFilter?.tags.map((tag, index) => {
+                            if (tag) {
+                              return (
+                                <li
+                                  key={index}
+                                  className="py-2 px-4 hover:bg-neutral-100 cursor-pointer border rounded-full"
+                                  onClick={() =>
+                                    handleFilterChange(tag?.name || "Null")
+                                  }
+                                >
+                                  {tag?.name}
+                                </li>
+                              );
+                            }
+                          })}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
         </div>
         <div className="flex items-center gap-2">
           {activeFilters !== undefined &&
@@ -119,47 +127,9 @@ const TculesResources = ({
           )}
         </div>
       </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 md:gap-y-12 gap-x-4 md:gap-x-6">
-        {thirdSectionData?.case_studies &&
-          thirdSectionData?.case_studies.length > 0 &&
-          thirdSectionData?.case_studies?.map((singleCaseStudy) => {
-            return (
-              <Card
-                className="relative w-full overflow-hidden gap-0 pb-0"
-                key={singleCaseStudy?.documentId}
-              >
-                <Link href={`/case-studies/${singleCaseStudy?.slug}`}>
-                  {singleCaseStudy?.thumbnail?.url && (
-                    <CardHeader className="h-[344px] relative rounded-xl overflow-hidden mb-4">
-                      <Image
-                        src={singleCaseStudy?.thumbnail?.url}
-                        alt="Service"
-                        fill
-                        objectFit="cover"
-                      />
-                      <small className="bg-neutral-50 rounded-full text-neutral-800 absolute top-4 left-4 text-caption-lg py-1.5 px-3.5">
-                        Blog
-                      </small>
-                    </CardHeader>
-                  )}
-                  <CardContent className="mb-6">
-                    <CardTitle>
-                      <h3 className="text-heading-2xs">
-                        {singleCaseStudy?.title}
-                      </h3>
-                    </CardTitle>
-                  </CardContent>
-                  <CardFooter className="flex-col text-neutral-600 gap-2">
-                    <span className="text-label-md">
-                      {formatDate(singleCaseStudy?.createdAt)}
-                    </span>
-                  </CardFooter>
-                </Link>
-              </Card>
-            );
-          })}
-      </div>
+      <ApolloWrapper>
+        <ResourcesCaseStudies activeFilters={activeFilters} />
+      </ApolloWrapper>
     </Section>
   );
 };

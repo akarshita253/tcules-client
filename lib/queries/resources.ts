@@ -26,9 +26,16 @@ export const RESOURCES_QUERY = gql`
       }
       thirdSection {
         heading
-        industry
-        product
-        topic
+        filterResource {
+        id
+        label
+        categories {
+          name
+        }
+        tags {
+          name
+        }
+       }
         case_studies {
           documentId
           title
