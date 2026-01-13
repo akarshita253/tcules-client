@@ -3,11 +3,12 @@
 import Section from "@/components/global/Section"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { ResourceQuery } from "@/lib/codegen/graphql"
 import { useRef, useState } from "react"
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-const TculesSubscription = () => {
+const TculesSubscription = ({fourthSectionData}:{fourthSectionData: NonNullable<ResourceQuery["resource"]>["fourthSection"]}) => {
   const emailRef = useRef<HTMLInputElement>(null)
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
@@ -15,7 +16,6 @@ const TculesSubscription = () => {
   const handleSubscribe = async () => {
     const email = emailRef.current?.value?.trim()
 
-    // 1️⃣ Validate
     if (!email || !EMAIL_REGEX.test(email)) {
       setError("Please enter a valid email address")
       return
@@ -25,7 +25,6 @@ const TculesSubscription = () => {
     setLoading(true)
 
     // try {
-    //   // 2️⃣ Call GraphQL mutation
     //   const res = await fetch(
     //     process.env.NEXT_PUBLIC_STRAPI_GRAPHQL_URL!,
     //     {
@@ -70,15 +69,15 @@ const TculesSubscription = () => {
     <Section>
       <h1 className="text-center mb-6">
         <span className="text-display-sm text-accent-600 inline-block md:inline">
-          Level up
+          {fourthSectionData?.heading?.split("|").at(0)}
         </span>
         <span className="text-heading-sm text-neutral-800 ml-4 inline-block md:inline">
-          Your UX knowledge
+          {fourthSectionData?.heading?.split("|").at(1)}
         </span>
       </h1>
 
       <p className="text-label-xl text-center text-neutral-700 mb-8">
-        Subscribe to receive practical UX insights for your product
+        {fourthSectionData?.description}
       </p>
 
       <div className="flex flex-col items-center gap-2">

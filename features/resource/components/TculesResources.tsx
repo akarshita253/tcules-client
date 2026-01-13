@@ -8,14 +8,20 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-// import Service from "@/public/service.svg";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { CgClose } from "react-icons/cg";
+import { ResourceQuery } from "@/lib/codegen/graphql";
+import { formatDate } from "@/lib/utils";
+import Link from "next/link";
 
-const TculesResources = () => {
+const TculesResources = ({
+  thirdSectionData,
+}: {
+  thirdSectionData: NonNullable<ResourceQuery["resource"]>["thirdSection"];
+}) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [dropdownState, setDropdownState] = useState(false);
@@ -47,7 +53,7 @@ const TculesResources = () => {
   return (
     <Section>
       <h2 className="text-heading-xs text-neutral-800 mb-6">
-        Tcules resources
+        {thirdSectionData?.heading}
       </h2>
       <div className="sm:mb-12 mb-6">
         <p className="text-caption-xs text-neutral-500">Filter by :</p>
@@ -94,102 +100,65 @@ const TculesResources = () => {
                   key={filterItem}
                   className="flex items-center justify-center gap-2 bg-neutral-50 border border-neutral-200  text-neutral-800 text-caption-md rounded-full py-1.5 px-3.5 mr-2"
                 >
-                  <span className="text-neutral-700 capitalize">{filterItem}</span>
+                  <span className="text-neutral-700 capitalize">
+                    {filterItem}
+                  </span>
                   <span>
-                    <CgClose className="text-neutral-400"/>
+                    <CgClose className="text-neutral-400" />
                   </span>
                 </span>
               );
             })}
-            {activeFilters.length > 0 && activeFilters !== undefined && <span className="text-neutral-700 capitalize cursor-pointer" onClick={handleDeleteFilter}>Clear all</span>}
+          {activeFilters.length > 0 && activeFilters !== undefined && (
+            <span
+              className="text-neutral-700 capitalize cursor-pointer"
+              onClick={handleDeleteFilter}
+            >
+              Clear all
+            </span>
+          )}
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 md:gap-y-12 gap-x-4 md:gap-x-6">
-        {/* <Card className="relative w-full overflow-hidden gap-0 pb-0">
-          <CardHeader className="h-[344px] relative rounded-xl overflow-hidden mb-4">
-            <Image src={Service} alt="Service" fill objectFit="cover" />
-            <small className="bg-neutral-50 rounded-full text-neutral-800 absolute top-4 left-4 text-caption-lg py-1.5 px-3.5">
-              Blog
-            </small>
-          </CardHeader>
-          <CardContent className="mb-6">
-            <CardTitle>
-              <h3 className="text-heading-2xs">
-                Do AI Not For AIs Sake But For Your User: Insights from Eden AIs
-                CTPO
-              </h3>
-            </CardTitle>
-          </CardContent>
-          <CardFooter className="flex-col text-neutral-600 gap-2">
-            <span className="text-label-md">1 Mar ‘24</span>
-            <span>{" . "}</span>
-            <span className="text-label-md">11 mins</span>
-          </CardFooter>
-        </Card>
-        <Card className="relative w-full overflow-hidden gap-0 pb-0">
-          <CardHeader className="h-[344px] relative rounded-xl overflow-hidden mb-4">
-            <Image src={Service} alt="Service" fill objectFit="cover" />
-            <small className="bg-neutral-50 rounded-full text-neutral-800 absolute top-4 left-4 text-caption-lg py-1.5 px-3.5">
-              Blog
-            </small>
-          </CardHeader>
-          <CardContent className="mb-6">
-            <CardTitle>
-              <h3 className="text-heading-2xs">
-                Do AI Not For AIs Sake But For Your User: Insights from Eden AIs
-                CTPO
-              </h3>
-            </CardTitle>
-          </CardContent>
-          <CardFooter className="flex-col text-neutral-600 gap-2">
-            <span className="text-label-md">1 Mar ‘24</span>
-            <span>{" . "}</span>
-            <span className="text-label-md">11 mins</span>
-          </CardFooter>
-        </Card>
-        <Card className="relative w-full overflow-hidden gap-0 pb-0">
-          <CardHeader className="h-[344px] relative rounded-xl overflow-hidden mb-4">
-            <Image src={Service} alt="Service" fill objectFit="cover" />
-            <small className="bg-neutral-50 rounded-full text-neutral-800 absolute top-4 left-4 text-caption-lg py-1.5 px-3.5">
-              Blog
-            </small>
-          </CardHeader>
-          <CardContent className="mb-6">
-            <CardTitle>
-              <h3 className="text-heading-2xs">
-                Do AI Not For AIs Sake But For Your User: Insights from Eden AIs
-                CTPO
-              </h3>
-            </CardTitle>
-          </CardContent>
-          <CardFooter className="flex-col text-neutral-600 gap-2">
-            <span className="text-label-md">1 Mar ‘24</span>
-            <span>{" . "}</span>
-            <span className="text-label-md">11 mins</span>
-          </CardFooter>
-        </Card>
-        <Card className="relative w-full overflow-hidden gap-0 pb-0">
-          <CardHeader className="h-[344px] relative rounded-xl overflow-hidden mb-4">
-            <Image src={Service} alt="Service" fill objectFit="cover" />
-            <small className="bg-neutral-50 rounded-full text-neutral-800 absolute top-4 left-4 text-caption-lg py-1.5 px-3.5">
-              Blog
-            </small>
-          </CardHeader>
-          <CardContent className="mb-6">
-            <CardTitle>
-              <h3 className="text-heading-2xs">
-                Do AI Not For AIs Sake But For Your User: Insights from Eden AIs
-                CTPO
-              </h3>
-            </CardTitle>
-          </CardContent>
-          <CardFooter className="flex-col text-neutral-600 gap-2">
-            <span className="text-label-md">1 Mar ‘24</span>
-            <span>{" . "}</span>
-            <span className="text-label-md">11 mins</span>
-          </CardFooter>
-        </Card> */}
+        {thirdSectionData?.case_studies &&
+          thirdSectionData?.case_studies.length > 0 &&
+          thirdSectionData?.case_studies?.map((singleCaseStudy) => {
+            return (
+              <Card
+                className="relative w-full overflow-hidden gap-0 pb-0"
+                key={singleCaseStudy?.documentId}
+              >
+                <Link href={`/case-studies/${singleCaseStudy?.slug}`}>
+                  {singleCaseStudy?.thumbnail?.url && (
+                    <CardHeader className="h-[344px] relative rounded-xl overflow-hidden mb-4">
+                      <Image
+                        src={singleCaseStudy?.thumbnail?.url}
+                        alt="Service"
+                        fill
+                        objectFit="cover"
+                      />
+                      <small className="bg-neutral-50 rounded-full text-neutral-800 absolute top-4 left-4 text-caption-lg py-1.5 px-3.5">
+                        Blog
+                      </small>
+                    </CardHeader>
+                  )}
+                  <CardContent className="mb-6">
+                    <CardTitle>
+                      <h3 className="text-heading-2xs">
+                        {singleCaseStudy?.title}
+                      </h3>
+                    </CardTitle>
+                  </CardContent>
+                  <CardFooter className="flex-col text-neutral-600 gap-2">
+                    <span className="text-label-md">
+                      {formatDate(singleCaseStudy?.createdAt)}
+                    </span>
+                  </CardFooter>
+                </Link>
+              </Card>
+            );
+          })}
       </div>
     </Section>
   );
