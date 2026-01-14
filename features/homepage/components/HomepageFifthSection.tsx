@@ -23,7 +23,7 @@ const HomepageFifthSection = ({
           {fifthSectionData?.description}
         </p>
       </div>
-      <div className="flex flex-col justify-between gap-2 bg-neutral-50 rounded-[8px] p-2">
+      <div className="flex flex-col justify-between gap-2 bg-neutral-50 rounded-lg p-2">
         {fifthSectionData?.case_studies &&
           fifthSectionData?.case_studies.length > 0 &&
           fifthSectionData?.case_studies.map((item) => (
