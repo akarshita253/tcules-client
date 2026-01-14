@@ -10,7 +10,7 @@ const HomepageFifthSection = ({
 }) => {
   return (
     <Section>
-      <div className="mb-6 sm:mb-12">
+      <div className="mb-6 sm:mb-12 pl-10">
         <h2 className="mb-2">
           <span className="text-heading-sm text-neutral-900">
             {fifthSectionData?.heading?.split("|").at(0)}
@@ -23,7 +23,7 @@ const HomepageFifthSection = ({
           {fifthSectionData?.description}
         </p>
       </div>
-      <div className="flex flex-col justify-between gap-2 bg-neutral-50 rounded-xl p-2">
+      <div className="flex flex-col justify-between gap-2 bg-neutral-50 rounded-[8px] p-2">
         {fifthSectionData?.case_studies &&
           fifthSectionData?.case_studies.length > 0 &&
           fifthSectionData?.case_studies.map((item) => (

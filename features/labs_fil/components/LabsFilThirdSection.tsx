@@ -40,7 +40,7 @@ const LabsFilThirdSection = ({
         <h2 className="text-heading-xs text-neutral-100 mb-6 sm:mb-12">
           {thirdSectionData?.heading}
         </h2>
-        <div className="grid grid-cols-1  md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1  md:grid-cols-3 gap-3">
           {thirdSectionData?.cards &&
             thirdSectionData?.cards.length > 0 &&
             thirdSectionData?.cards?.map((singleCard) => {
@@ -59,10 +59,10 @@ const LabsFilThirdSection = ({
                       />
                     )}
                   </div>
-                  <h3 className="p-4 sm:p-6 text-heading-2xs  text-neutral-50 w-4/5">
+                  <h3 className="p-6 text-heading-2xs  text-neutral-50 w-4/5">
                     {singleCard?.heading}
                   </h3>
-                  <p className="p-4 sm:p-6 text-label-md text-neutral-200">
+                  <p className="p-6 text-label-md text-neutral-200">
                     {singleCard?.heading}
                   </p>
                 </div>

@@ -16,12 +16,12 @@ const HomePageHeroSecHeading = ({
     ?.split("|")
     .slice(1)
     .map((item) => item.trim())
-    .filter(Boolean) || ["Designers", "Engineers"];
+    .filter(Boolean) || [];
   const wordsTwo = headingTwo
     ?.split("|")
     .slice(1)
     .map((item) => item.trim())
-    .filter(Boolean) || ["Code", "Design"];
+    .filter(Boolean) || [];
 
   const controllerOne = useTypewriterController(wordsOne);
   const controllerTwo = useTypewriterController(wordsOne);

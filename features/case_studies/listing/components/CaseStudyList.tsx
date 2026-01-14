@@ -123,7 +123,7 @@ const CaseStudyList = () => {
               return (
                 <span
                   key={filterItem}
-                  className="flex items-center justify-center gap-2 bg-neutral-50 border border-neutral-200  text-neutral-800 text-caption-md rounded-full py-1.5 px-3.5 mr-2"
+                  className="flex items-center justify-center gap-2 bg-neutral-100  text-neutral-800 text-caption-md rounded-full py-1.5 px-3.5 mr-2"
                 >
                   <span className="text-neutral-700 capitalize">
                     {filterItem}

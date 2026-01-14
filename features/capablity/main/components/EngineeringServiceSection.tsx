@@ -2,6 +2,8 @@ import Section from "@/components/global/Section";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { CapablitiesCardSection } from "../CapablityContainer";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 type EngineeringServiceSectionProps = {
   engineeringServiceSectionData: CapablitiesCardSection;
@@ -18,13 +20,13 @@ const EngineeringServiceSection = ({engineeringServiceSectionData}:EngineeringSe
         {engineeringServiceSectionData?.sectionCards?.map((singleCard) => {
           return (
             <div
-              className="p-4 sm:p-6 bg-neutral-100 rounded-xl"
+              className="p-4 sm:p-6 bg-neutral-100 rounded-xl flex flex-col justify-between gap-4 min-h-[300px]"
               key={singleCard?.id}
             >
-              <h3 className="text-heading-2xs text-neutral-900 mb-8 md:mb-12 w-4/5">
+              <h3 className="text-heading-2xs text-neutral-900">
                 {singleCard?.heading}
               </h3>
-              <div>
+              <div className="flex flex-col justify-between gap-6">
                 {singleCard?.cardPoints?.map((singleTile) => {
                   return (
                     <div
@@ -39,7 +41,7 @@ const EngineeringServiceSection = ({engineeringServiceSectionData}:EngineeringSe
                         />
                       </span>
 
-                      <p className="sm:mb-6 mb-4">
+                      <p className="">
                         <span className="text-label-md text-neutral-700">
                           {singleTile?.listText}
                         </span>
@@ -52,13 +54,14 @@ const EngineeringServiceSection = ({engineeringServiceSectionData}:EngineeringSe
           );
         })}
       </div>
-      <div>
-        <p className="text-label-3xs text-neutral-900 text-center uppercase flex items-center gap-3 justify-center">
-          <Link href={engineeringServiceSectionData?.subRouteLink?.href || "#"}>
-            {engineeringServiceSectionData?.subRouteLink?.name}
-          </Link>
-          <ArrowRight size={16} />
-        </p>
+            <div className="flex justify-center items-center">
+        <Link
+          href={engineeringServiceSectionData?.subRouteLink?.href || "#"}
+          className={cn(buttonVariants({ variant: "default" }),"hover:bg-neutral-100 bg-neutral-50")}
+        >
+          {engineeringServiceSectionData?.subRouteLink?.name}
+        <ArrowRight size={16} />
+        </Link>
       </div>
     </Section>
   );

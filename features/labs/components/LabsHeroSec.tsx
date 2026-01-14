@@ -3,9 +3,10 @@ import { buttonVariants } from "@/components/ui/button";
 import { LabSingleTypeQuery } from "@/lib/codegen/graphql";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import Sub1Blur from "@/public/Sub1.png"
-import Sub2Small from "@/public/Sub2Small.png"
+import Sub1Blur from "@/public/Sub1.png";
+import Sub2Small from "@/public/Sub2Small.png";
 import Image from "next/image";
+import ScrollReveal from "@/components/ui/scroll-change";
 
 const LabsHeroSec = ({
   heroSectionData,
@@ -43,12 +44,24 @@ const LabsHeroSec = ({
         </div>
       </Section>
       <Section className="flex items-center justify-center relative">
-        <h2 className="p-4 sm:p-6 text-heading-xs sm:w-5/7 z-10">
-          <span>{heroSectionData?.highlightedDescription?.split("|").at(0)}</span>
-          <span className="text-neutral-500">{heroSectionData?.highlightedDescription?.split("|").at(1)}</span>
+        <h2 className="p-4 sm:p-6  sm:w-5/7 z-10">
+          <ScrollReveal
+            initialColor="#b1b1b1"
+            finalColor="#000000"
+            value={heroSectionData?.highlightedDescription || ""}
+            className="text-heading-xs"
+          />
         </h2>
-        <Image src={Sub1Blur} alt="Hero section image" className="absolute top-0 -right-8"/>
-        <Image src={Sub2Small} alt="Hero section small image" className="absolute top-0 left-8"/>
+        <Image
+          src={Sub1Blur}
+          alt="Hero section image"
+          className="absolute top-0 -right-8"
+        />
+        <Image
+          src={Sub2Small}
+          alt="Hero section small image"
+          className="absolute top-0 left-8"
+        />
       </Section>
     </>
   );

@@ -18,7 +18,7 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-        link: "",
+        link: "text-label-3xs",
       },
       size: {
         default: "px-4 py-[13px] has-[>svg]:px-3 rounded-sm w-fit",

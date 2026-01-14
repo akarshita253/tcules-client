@@ -22,29 +22,33 @@ const HomePageContainer = ({
   const contactSectionData = homepageData?.contactSection;
 
   return (
-    <main className="bg-neutral-100 overflow-hidden">
-      <HomepageHeroSection heroSectionData={heroSectionData} />
+    <main className="bg-neutral-100 overflow-hidden relative">
       <Container className="md:grid grid-cols-12 gap-6">
-        <Block className="lg:col-start-2 col-start-1 lg:col-end-12 col-end-13">
+        <Block className="col-span-12">
+          <HomepageHeroSection heroSectionData={heroSectionData} />
+        </Block>
+      </Container>
+      <Container className="md:grid grid-cols-12 gap-6">
+        <Block className="col-span-12">
           <Section>
             <HomepageSecondSection secondSectionData={secondSectionData} />
           </Section>
         </Block>
       </Container>
       <Container className="md:grid grid-cols-12 gap-6">
-        <Block className="lg:col-start-2 col-start-1 lg:col-end-12 col-end-13">
+        <Block className="col-span-12">
           <HomepageThirdSection thirdSectionData={thirdSectionData} />
         </Block>
       </Container>
       <div className="bg-neutral-900">
         <Container className="md:grid grid-cols-12 gap-6">
-          <Block className="lg:col-start-2 col-start-1 lg:col-end-12 col-end-13">
+          <Block className="col-span-12">
             <HomepageFourthSection fourthSectionData={fourthSectionData} />
           </Block>
         </Container>
       </div>
       <Container className="md:grid grid-cols-12 gap-6">
-        <Block className="lg:col-start-2 col-start-1 lg:col-end-12 col-end-13">
+        <Block className="col-span-12">
           <HomepageFifthSection fifthSectionData={fifthSectionData} />
         </Block>
       </Container>

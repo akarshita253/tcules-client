@@ -1,6 +1,4 @@
 "use client";
-import { Block } from "@/components/global/Block";
-import { Container } from "@/components/global/Container";
 import Section from "@/components/global/Section";
 import { buttonVariants } from "@/components/ui/button";
 import ScrollReveal from "@/components/ui/scroll-change";
@@ -8,18 +6,18 @@ import { HomepageQuery } from "@/lib/codegen/graphql";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import HomePageHeroSecHeading from "./HomePageHeroSecHeading";
+import Link from "next/link";
 
 const HomepageHeroSection = ({
   heroSectionData,
 }: {
   heroSectionData: NonNullable<HomepageQuery["homepage"]>["heroSection"];
 }) => {
- 
   return (
     <>
-      <Section className="sm:py-0 grid lg:grid-cols-2 gap-2">
-        <div className="lg:flex-1 flex lg:justify-end items-center">
-          <div className="lg:w-[550px] w-full pl-2 lg:pt-0 pt-20">
+      <Section className="sm:py-[120px] lg:flex items-center min-h-screen ">
+        <div className="h-fit my-auto relative bottom-8">
+          <div>
             {heroSectionData?.headingOne && heroSectionData?.headingTwo && (
               <div className="mb-4 sm:mb-6">
                 <HomePageHeroSecHeading
@@ -33,19 +31,20 @@ const HomepageHeroSection = ({
             </p>
             <div className="flex  gap-4">
               {heroSectionData?.button?.map((singleButton, index) => (
-                <button
+                <Link
                   key={index}
-                  className={`flex items-center gap-1 uppercase bg-neutral-50 hover:bg-neutral-900 hover:text-neutral-50 transition-all ${buttonVariants(
-                    { variant: "default" }
+                  className={`flex items-center gap-1 uppercase bg-none hover:bg-neutral-900 hover:text-neutral-50 transition-all ${buttonVariants(
+                    { variant: "link" }
                   )}`}
+                  href={singleButton?.href || "#"}
                 >
                   {singleButton?.name} {index === 1 ? <ArrowRight /> : null}
-                </button>
+                </Link>
               ))}
             </div>
           </div>
         </div>
-        <div className="flex flex-1 justify-center items-center">
+        <div className="lg:absolute lg:-right-40 xl:right-0 top-0 flex flex-1 justify-center items-center">
           {heroSectionData?.rightSectionImage?.url && (
             <div>
               <Image
@@ -61,37 +60,30 @@ const HomepageHeroSection = ({
           )}
         </div>
       </Section>
-      <Container className="md:grid grid-cols-12 gap-6">
-        <Block className="lg:col-start-2 col-start-1 lg:col-end-12 col-end-13">
-          <Section>
-            <div className="p-10">
-              <h2 className="text-heading-xs mx-auto mb-4 sm:mb-6">
-                <ScrollReveal
-                  initialColor="#b1b1b1"
-                  finalColor="#000000"
-                  value={heroSectionData?.descriptionTwo || ""}
-                />
-              </h2>
-              <div className="flex items-center flex-col sm:flex-row gap-4">
-                {heroSectionData?.bottomTags &&
-                  heroSectionData?.bottomTags?.map((singleTag) => (
-                    <p
-                      className="text-label-sm text-neutral-700 text-center sm:text-left"
-                      key={singleTag?.id}
-                    >
-                      <span className="text-neutral-900 font-semibold">
-                        {singleTag?.listText?.split("|")[0]}
-                      </span>
-                      <span className="text-neutral-700">
-                        {singleTag?.listText?.split("|")[1]}
-                      </span>
-                    </p>
-                  ))}
-              </div>
-            </div>
-          </Section>
-        </Block>
-      </Container>
+      <Section>
+        <div className="p-10">
+          <h2 className="text-heading-sm mx-auto mb-4 sm:mb-6">
+            <ScrollReveal
+              initialColor="#b1b1b1"
+              finalColor="#000000"
+              value={heroSectionData?.descriptionTwo || ""}
+            />
+          </h2>
+          <div className="flex items-center flex-col sm:flex-row gap-4">
+            {heroSectionData?.bottomTags &&
+              heroSectionData?.bottomTags?.map((singleTag) => (
+                <p className="text-left" key={singleTag?.id}>
+                  <span className="text-neutral-900 font-semibold text-label-lg">
+                    {singleTag?.listText?.split("|")[0]}
+                  </span>
+                  <span className="text-neutral-700 text-label-3xs">
+                    {singleTag?.listText?.split("|")[1]}
+                  </span>
+                </p>
+              ))}
+          </div>
+        </div>
+      </Section>
     </>
   );
 };

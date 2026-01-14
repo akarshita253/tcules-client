@@ -13,10 +13,10 @@ const LabsMiscSection = ({ labsMiscData }: LabsMiscSectionProps) => {
   return (
     <Section>
       <div className="space-y-3 mb-9">
-        <p className="text-label-2xs text-neutral-600">
+        <p className="text-label-2xs text-neutral-600 text-center">
           {labsMiscData?.label}
         </p>
-        <h1 className="">
+        <h1 className=" text-center">
           <span className="text-heading-sm text-neutral-800 ">
             {labsMiscData?.heading?.split(",")[0]}
           </span>
@@ -24,11 +24,11 @@ const LabsMiscSection = ({ labsMiscData }: LabsMiscSectionProps) => {
             {labsMiscData?.heading?.split(",")[1]}
           </span>
         </h1>
-        <p className="text-neutral-800 text-label-xl">
+        <p className="text-neutral-800 text-label-xl text-center">
           {labsMiscData?.description}
         </p>
       </div>
-      <div className="">
+      <div className="flex justify-center items-center">
         <Link
           className={`uppercase  ${buttonVariants(
             { variant: "default" }

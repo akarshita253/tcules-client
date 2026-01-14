@@ -66,8 +66,8 @@ const CapablityContainer = ({ capablityData }: CapabilityContainerProps) => {
       <Container className="md:grid grid-cols-12 gap-6">
         <Block className="lg:col-start-2 col-start-1 lg:col-end-12 col-end-13">
           <CapablitySharedIntroSec introSectionData={heroSectionData} />
-          {designServiceSectionData && <DesignServiceSection designServiceSectionData={designServiceSectionData} />}
           {howWeWorkSectionData && <HowWeWorkSection howWeWorkSectionData={howWeWorkSectionData} />}
+          {designServiceSectionData && <DesignServiceSection designServiceSectionData={designServiceSectionData} />}
           {engineeringServiceSectionData && <EngineeringServiceSection engineeringServiceSectionData={engineeringServiceSectionData} />}
           {aiServiceSectionData&& <AIServiceSection aiServiceSectionData={aiServiceSectionData}/>}
           {commonEntryPointSectionData && <CommonEntryPoint commonEntryPointSectionData={commonEntryPointSectionData}/>}

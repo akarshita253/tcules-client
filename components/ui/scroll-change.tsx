@@ -1,4 +1,5 @@
 "use client";
+import { cn } from "@/lib/utils";
 import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
 import { useRef } from "react";
 
@@ -6,6 +7,7 @@ interface ScrollRevealProps {
   value: string;
   initialColor: string;
   finalColor: string;
+  className?: string
 }
 
 interface CharProps {
@@ -20,6 +22,7 @@ export default function ScrollReveal({
   value,
   initialColor,
   finalColor,
+  className
 }: ScrollRevealProps) {
   const element = useRef<HTMLSpanElement>(null);
 
@@ -36,7 +39,7 @@ export default function ScrollReveal({
   return (
     <span
       ref={element}
-      className="inline-block text-heading-lg leading-tight text-justify"
+      className={cn("text-heading-lg leading-tight text-justify",className)}
     >
       {words.map((word, i) => {
         const chars = word.split("");

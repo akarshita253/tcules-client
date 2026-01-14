@@ -196,11 +196,6 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
 }
 
 /* -----------------------------------------------------------
@@ -304,13 +299,13 @@
   @apply font-label text-3xl font-normal;
 }
 .text-label-xl {
-  @apply font-label text-2xl font-normal;
+  @apply font-label text-2xl;
 }
 .text-label-lg {
   @apply font-label text-2xl font-semibold;
 }
 .text-label-md {
-  @apply font-label text-xl font-normal;
+  @apply font-label text-xl;
 }
 .text-label-sm {
   @apply font-label text-lg font-normal;

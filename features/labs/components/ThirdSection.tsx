@@ -74,7 +74,7 @@ const ThirdSection = ({ cardsData }: { cardsData?: LabsCardSection[] }) => {
                     href="#"
                     className={cn(
                       buttonVariants({ variant: "default" }),
-                      "bg-neutral-50 transition-all group-hover:bg-accent-600 text-label-3xs"
+                      "bg-neutral-50 transition-all group-hover:bg-neutral-900 group-hover:text-neutral-50 text-label-3xs"
                     )}
                   >
                     View Case Study

@@ -39,7 +39,7 @@ const HomepageThirdSection = ({
                 </div>
                 <div>
                   <h3 className="text-heading-xs text-neutral-900 mb-4 sm:mb-6">{card?.heading}</h3>
-                  <p className="text-label-2xl text-neutral-900">{card?.description}</p>
+                  <p className="text-label-xl text-neutral-900">{card?.description}</p>
                 </div>
               </div>
             )

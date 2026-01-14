@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 
 type AIServiceSectionProps = {
   aiServiceSectionData: CapablitiesCardSection;
@@ -54,17 +55,15 @@ const AIServiceSection = ({ aiServiceSectionData }: AIServiceSectionProps) => {
                   />
                 </div>
               )}
-              <div>
                 <h3 className="text-heading-2xs text-neutral-900 mb-6 w-4/5">
                   {singleCard?.heading}
                 </h3>
                 <p className="text-label-md text-neutral-700">
                   {singleCard?.description}
                 </p>
-              </div>
               {singleCard?.link?.name && (
                 <Link
-                  className="text-label-3xs flex justify-end gap-2 items-center"
+                  className={cn(buttonVariants({variant:"default"}),"text-label-3xs flex justify-end gap-2 items-center ml-auto hover:bg-neutral-100 bg-neutral-50")}
                   href={singleCard?.link?.href || "#"}
                 >
                   {singleCard?.link?.name}

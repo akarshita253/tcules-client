@@ -1,5 +1,5 @@
 import Section from "@/components/global/Section";
-import {buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { ResourceQuery } from "@/lib/codegen/graphql";
 import { cn } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
@@ -59,7 +59,13 @@ const ResourceHeroSec = ({
       </Section>
       <div className="p-8 shadow-[0_4px_48px_0_rgba(0,0,0,0.04)] relative">
         <div>
-          <Image src={Substract} className="absolute right-0 bottom-0" alt="subtract-icon" width={185} height={185}/>
+          <Image
+            src={Substract}
+            className="absolute right-0 bottom-0"
+            alt="subtract-icon"
+            width={185}
+            height={185}
+          />
         </div>
         <h3 className="text-heading-xs text-neutral-800 mb-3">
           {secondSectionData?.heading}
@@ -67,9 +73,14 @@ const ResourceHeroSec = ({
         <p className="text-label-xl text-neutral-700 mb-8 lg:w-4/5">
           {secondSectionData?.description}
         </p>
-        <Link href={secondSectionData?.link?.href||"#"} className={cn(buttonVariants({variant:"default"}))}>
-          <span>{secondSectionData?.link?.name}</span>
-          <ChevronRight size={20} />
+        <Link
+          href={secondSectionData?.link?.href || "#"}
+          className={cn(
+            buttonVariants({ variant: "default" }),
+            "bg-neutral-900 text-neutral-50"
+          )}
+        >
+          {secondSectionData?.link?.name}
         </Link>
       </div>
     </>

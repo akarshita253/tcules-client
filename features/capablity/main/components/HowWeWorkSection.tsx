@@ -3,6 +3,8 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { CapablitiesCardSection } from "../CapablityContainer";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 
 type HowWeWorkSectionProps = {
   howWeWorkSectionData: CapablitiesCardSection;
@@ -18,10 +20,10 @@ const HowWeWorkSection = ({ howWeWorkSectionData }: HowWeWorkSectionProps) => {
         {howWeWorkSectionData?.sectionCards?.map((singleCard) => {
           return (
             <div
-              className="p-4 sm:p-6 bg-neutral-100 rounded-xl"
+              className="p-4 sm:p-6 bg-neutral-100 rounded-[12px] flex flex-col justify-between gap-4 min-h-[307px]"
               key={singleCard?.id}
             >
-              <div className="flex justify-end">
+              <div className="flex">
                 {singleCard?.icon?.url && (
                   <Image
                     src={singleCard?.icon?.url}
@@ -31,36 +33,39 @@ const HowWeWorkSection = ({ howWeWorkSectionData }: HowWeWorkSectionProps) => {
                   />
                 )}
               </div>
-              <h3 className="text-heading-2xs text-neutral-900 mb-8 md:mb-12 w-4/5">
-                {singleCard?.heading}
-              </h3>
               <div>
-                {singleCard?.cardPoints?.map((singleTile) => {
-                  return (
-                    <div
-                      key={singleTile?.id}
-                      className="flex items-start  gap-2"
-                    >
-                      <p className="sm:mb-6 mb-4">
-                        <span className="text-label-md text-neutral-700">
-                          {singleTile?.listText}
-                        </span>
-                      </p>
-                    </div>
-                  );
-                })}
+                <h3 className="text-heading-2xs text-neutral-900  mb-6 w-4/5">
+                  {singleCard?.heading}
+                </h3>
+                <div className="flex flex-col gap-6">
+                  {singleCard?.cardPoints?.map((singleTile) => {
+                    return (
+                      <div
+                        key={singleTile?.id}
+                        className="flex items-start  gap-2"
+                      >
+                        <p className="">
+                          <span className="text-label-md text-neutral-700">
+                            {singleTile?.listText}
+                          </span>
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           );
         })}
       </div>
-      <div>
-        <p className="text-label-3xs text-neutral-900 text-center uppercase flex items-center gap-3 justify-center">
-          <Link href={howWeWorkSectionData?.subRouteLink?.href || "#"}>
-            {howWeWorkSectionData?.subRouteLink?.name}
-          </Link>
-          <ArrowRight size={16} />
-        </p>
+      <div className="flex justify-center items-center">
+        <Link
+          href={howWeWorkSectionData?.subRouteLink?.href || "#"}
+          className={cn(buttonVariants({ variant: "default" }),"hover:bg-neutral-100 bg-neutral-50")}
+        >
+          {howWeWorkSectionData?.subRouteLink?.name}
+        <ArrowRight size={16} />
+        </Link>
       </div>
     </Section>
   );

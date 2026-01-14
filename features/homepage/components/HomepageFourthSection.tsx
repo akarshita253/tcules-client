@@ -19,8 +19,8 @@ const HomepageFourthSection = ({
               <Image
                 src={fourthSectionData?.icon?.url}
                 alt="Third section icon"
-                width={60}
-                height={60}
+                width={96}
+                height={96}
                 className="scale-125"
               />
             )}
@@ -48,7 +48,7 @@ const HomepageFourthSection = ({
               return (
                 <div
                   className={cn(
-                    "p-8 sm:col-span-6 flex flex-col justify-between gap-4 bg-neutral-800 rounded-xl relative overflow-hidden  min-h-[234px]",
+                    "p-8 sm:col-span-6 flex flex-col justify-between gap-4 bg-neutral-800 rounded-lg relative overflow-hidden  min-h-[234px]",
                     index === 2 && "sm:col-span-12"
                   )}
                   key={card?.id}

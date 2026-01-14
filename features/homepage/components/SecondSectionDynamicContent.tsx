@@ -25,7 +25,7 @@ const SecondSectionDynamicContent = ({
             return (
               <div
                 key={singleSection?.id}
-                className="w-3xs flex justify-between items-center z-20 group gap-8 hover:bg-neutral-900/70 cursor-pointer  rounded-lg px-4 py-2 transition-all"
+                className="w-3xs flex justify-between items-center z-20 group gap-8 hover:bg-neutral-900/70 cursor-pointer  rounded-sm px-4 py-2 transition-all"
               >
                 <h3
                   className="text-label-3xs text-neutral-500 group-hover:text-neutral-50 uppercase "
@@ -58,7 +58,7 @@ const SecondSectionDynamicContent = ({
       {secondSectionData?.secondSection &&
         secondSectionData?.secondSection[index]?.image?.url && (
           <div className="absolute top-8 right-8 lg:block hidden">
-            <div className="relative w-[324px] h-[196px]  rounded-xl overflow-hidden">
+            <div className="relative w-[324px] h-[196px]  rounded-lg overflow-hidden">
               <Image
                 src={secondSectionData?.secondSection[index]?.image?.url}
                 alt={

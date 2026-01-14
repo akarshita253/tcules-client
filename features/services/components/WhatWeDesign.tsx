@@ -21,7 +21,7 @@ const WhatWeDesign = ({
       <h2 className="text-heading-xs text-neutral-800 mb-6 sm:mb-12">
         {whatWeDesignSectionData?.heading}
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-4 sm:mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 min-h-40 mb-6">
         {whatWeDesignSectionData?.whatWeDesignCards?.map(
           (singleCard, index) => {
             const isActive = index === activeIndex;

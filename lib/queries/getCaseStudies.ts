@@ -186,3 +186,12 @@ export const GET_CASESTUDY_CATEGORIES = gql`
     }
   }
 `;
+export const GET_CASESTUDY_TAGS = gql`
+  query Tags {
+    tags {
+      documentId
+      name
+      description
+    }
+  }
+`;

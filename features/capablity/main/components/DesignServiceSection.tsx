@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import CircleInside from "@/public/bulletcir.png";
 import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 
 type DesignServiceSectionProps = {
   designServiceSectionData: CapablitiesCardSection;
@@ -62,13 +63,17 @@ const DesignServiceSection = ({
           );
         })}
       </div>
-      <div>
-        <p className="text-label-3xs text-neutral-900 text-center uppercase flex items-center gap-3 justify-center">
-          <Link href={designServiceSectionData?.subRouteLink?.href || "#"}>
-            {designServiceSectionData?.subRouteLink?.name}
-          </Link>
+      <div className="flex justify-center items-center">
+        <Link
+          href={designServiceSectionData?.subRouteLink?.href || "#"}
+          className={cn(
+            buttonVariants({ variant: "default" }),
+            "hover:bg-neutral-100 bg-neutral-50"
+          )}
+        >
+          {designServiceSectionData?.subRouteLink?.name}
           <ArrowRight size={16} />
-        </p>
+        </Link>
       </div>
     </Section>
   );

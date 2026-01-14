@@ -11,7 +11,7 @@ const HomepageSecondSection = ({
   return (
     <div className=" p-2 bg-neutral-50 rounded-xl">
 
-    <div className="relative rounded-xl h-[800px] overflow-hidden">
+    <div className="relative rounded-lg h-[800px] overflow-hidden">
         <SecondSectionDynamicContent secondSectionData={secondSectionData} />
     </div>
     </div>

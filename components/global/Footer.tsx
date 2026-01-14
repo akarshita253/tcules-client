@@ -11,9 +11,11 @@ import { cn } from "@/lib/utils";
 import { useQuery } from "@apollo/client/react";
 import { FooterQuery } from "@/lib/codegen/graphql";
 import { FOOTER_QUERY } from "@/lib/queries/footer";
-import LogoGroup from "@/public/Group.png"
+import LogoGroup from "@/public/Group.png";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
+  const pathname = usePathname();
   const { loading, error, data } = useQuery<FooterQuery>(FOOTER_QUERY);
   const logo = data?.footer?.logo;
   const footerLinks = data?.footer?.footer;
@@ -22,9 +24,26 @@ const Footer = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
+  const bgBlackLandingRoutes = ["/labs-fil", "/matter-design-systems"];
+  const bgGrayLandingRoutes = ["/"];
+  const isLandingPagePathBgBlack = bgBlackLandingRoutes.some((route) =>
+    pathname.startsWith(route)
+  );
+  const isLandingPagePathBgGrey = bgGrayLandingRoutes.some((route) =>
+    pathname.startsWith(route)
+  );
 
   return (
-    <div className="p-1">
+    <div
+      className={cn(
+        isLandingPagePathBgBlack
+          ? "bg-neutral-900"
+          : isLandingPagePathBgGrey
+          ? "bg-neutral-100"
+          : "bg-neutral-50",
+        "p-1"
+      )}
+    >
       <Section className="bg-accent-500 rounded-xl relative">
         <div>
           <Image
@@ -53,7 +72,10 @@ const Footer = () => {
                 />
               )}
             </div>
-            <div id="footer-links" className="grid grid-cols-12 gap-6 mb-8 md:mb-0">
+            <div
+              id="footer-links"
+              className="grid grid-cols-12 gap-6 mb-8 md:mb-0"
+            >
               <div className="col-span-12 md:col-span-6">
                 <h2 className="text-heading-sm">
                   {footerLinks?.heading?.split("|").at(0)}

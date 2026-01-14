@@ -46,7 +46,7 @@ const autoplay = useRef(
   }, [carouselApi]);
 
   return (
-    <div className="shadow-[0_4px_45.1px_0_rgba(0,0,0,0.05)] lg:w-5/7 rounded-xl mx-auto bg-neutral-50 p-2">
+    <div className="shadow-[0_4px_45.1px_0_rgba(0,0,0,0.05)] rounded-xl mx-auto bg-neutral-50 p-2">
       <Carousel
         setApi={setCarouselApi}
         plugins={[autoplay.current]}

@@ -1,5 +1,6 @@
 import Section from "@/components/global/Section";
 import { ServiceQuery } from "@/lib/codegen/graphql";
+import Image from "next/image";
 
 const WhyTeamHireUs = ({
   whyTeamHireSectionData,
@@ -18,16 +19,26 @@ const WhyTeamHireUs = ({
           if (!singleCard) return null;
           return (
             <div
-              className="p-4 sm:p-6 bg-neutral-100 rounded-xl"
+              className="p-4 sm:p-6 bg-neutral-100 rounded-xl min-h-[370px] relative"
               key={singleCard.id}
             >
-              <h3 className="text-heading-2xs text-neutral-900 mb-8 md:mb-12 w-4/5">
+              <div className="absolute top-6 right-6">
+                {singleCard?.icon?.url && (
+                  <Image
+                    src={singleCard?.icon?.url}
+                    width={singleCard?.icon?.width || 40}
+                    height={singleCard?.icon?.height || 40}
+                    alt={singleCard?.icon?.alternativeText || "icon"}
+                  />
+                )}
+              </div>
+              <h3 className="text-heading-2xs text-neutral-900 mb-8 md:mb-12 w-4/6">
                 {singleCard.heading}
               </h3>
               <p className="text-label-md text-neutral-700 mb-4 sm:mb-6">
                 {singleCard.description?.[0]?.children?.[0]?.text}
               </p>
-              <p className="text-caption-lg uppercase bg-neutral-50 w-fit p-2 rounded-xl mx-auto">
+              <p className="text-caption-lg uppercase bg-neutral-50 w-fit p-2 rounded-xl">
                 {singleCard?.list?.at(0)?.listText}
               </p>
             </div>

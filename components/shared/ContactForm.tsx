@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -16,6 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { CLIENT_CONTACT_MUTATION } from "@/lib/mutations/clientContact";
 import { useMutation } from "@apollo/client/react";
+import { Textarea } from "../ui/textarea";
 
 const formSchema = z.object({
   fullName: z.string().min(2).max(50),
@@ -55,8 +55,8 @@ const ContactForm = () => {
     });
   }
   return (
-    <div className="p-8 bg-neutral-50 rounded-xl lg:w-5/7 mx-auto mb-6 sm:mb-11">
-        {error && <p className="text-red-500">{error.message}</p>}
+    <div className="p-8 bg-neutral-50 rounded-xl mx-auto mb-6 sm:mb-11">
+      {error && <p className="text-red-500">{error.message}</p>}
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -65,12 +65,12 @@ const ContactForm = () => {
               name="fullName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-caption-lg text-neutral-900">
+                  <FormLabel className="text-caption-lg text-neutral-900 mb-3 uppercase">
                     Your Name
                   </FormLabel>
                   <FormControl>
                     <Input
-                      className="text-label-sm text-neutral-400 bg-neutral-100"
+                      className="border-none text-label-sm placeholder:text-neutral-400 bg-neutral-100"
                       placeholder="John Doe"
                       {...field}
                     />
@@ -84,12 +84,12 @@ const ContactForm = () => {
               name="clientCompany"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-caption-lg text-neutral-900">
+                  <FormLabel className="text-caption-lg text-neutral-900 mb-3 uppercase">
                     Company Name
                   </FormLabel>
                   <FormControl>
                     <Input
-                      className="text-label-sm text-neutral-400 bg-neutral-100"
+                      className="border-none text-label-sm placeholder:placeholder:text-neutral-400 bg-neutral-100"
                       placeholder="Your Company"
                       {...field}
                     />
@@ -105,12 +105,12 @@ const ContactForm = () => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-caption-lg text-neutral-900">
+                  <FormLabel className="text-caption-lg text-neutral-900 mb-3 uppercase">
                     Email Address*
                   </FormLabel>
                   <FormControl>
                     <Input
-                      className="text-label-sm text-neutral-400 bg-neutral-100"
+                      className="border-none text-label-sm placeholder:text-neutral-400 bg-neutral-100"
                       placeholder="your@email.com"
                       {...field}
                     />
@@ -124,12 +124,12 @@ const ContactForm = () => {
               name="contactNumber"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-caption-lg text-neutral-900">
+                  <FormLabel className="text-caption-lg text-neutral-900 mb-3 uppercase">
                     Contact Number
                   </FormLabel>
                   <FormControl>
                     <Input
-                      className="text-label-sm text-neutral-400 bg-neutral-100"
+                      className="border-none text-label-sm placeholder:text-neutral-400 bg-neutral-100"
                       placeholder="+1 (434) 989 98"
                       {...field}
                     />
@@ -144,20 +144,23 @@ const ContactForm = () => {
             name="ideaAboutProject"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-caption-lg text-neutral-900">
+                <FormLabel className="text-caption-lg text-neutral-900 mb-3 uppercase">
                   Let’s talk about your product
                 </FormLabel>
                 <FormControl>
-                  <Input
-                    type="text-area"
-                    className="text-label-sm text-neutral-400 bg-neutral-100"
-                    placeholder="shadcn"
+                  {/* <Input
+                    type="text-areaborder-none "
+                    className="text-label-sm placeholder:text-neutral-400 bg-neutral-100"
+                    placeholder="Tell us about your product and we will take it from there...."
                     {...field}
+                  /> */}
+                  <Textarea
+                    className="text-label-sm placeholder:text-neutral-400 bg-neutral-100"
+                    placeholder="Tell us about your product and we will take it from there...."
+                    {...field}
+                    rows={10}
                   />
                 </FormControl>
-                <FormDescription>
-                  This is your public display name.
-                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}

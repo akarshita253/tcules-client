@@ -19,7 +19,7 @@ const HowWeWork = ({
         {howWeWorkSectionData?.labels?.map((label) => {
           return (
             <p
-              className="bg-neutral-100 p-3 rounded-xl uppercase text-caption-lg"
+              className="bg-neutral-100 p-3 rounded-full uppercase text-caption-lg"
               key={label?.id}
             >
               {label?.listText}
