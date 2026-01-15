@@ -4,10 +4,10 @@ import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
 const client = new ApolloClient({
   link: new HttpLink({
     uri: process.env.NEXT_PUBLIC_GRAPHQL_URL || process.env.GRAPHQL_URL,
-    // credentials: 'include', // if you need cookies/auth
+
   }),
   cache: new InMemoryCache(),
-  // ssrMode: typeof window === 'undefined', // optional, good for App Router
+  ssrMode: typeof window === 'undefined', 
 });
 
 
