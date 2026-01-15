@@ -4,8 +4,8 @@ import { NavbarQuery } from "@/lib/codegen/graphql";
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-// 1. Import Framer Motion
 import { AnimatePresence, motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 const NavHoverStates = ({
   navLinks,
@@ -28,7 +28,7 @@ const NavHoverStates = ({
         {navLinks?.map((singleNavLink, index) => {
           const levelTwo = singleNavLink?.navLevelTwoGroup ?? [];
           const lengthOfLevelTwo = levelTwo.length - 1;
-          const gridColumn = `grid gap-4 grid-cols-${lengthOfLevelTwo}`;
+          const gridColumn = `grid gap-3 grid-cols-${lengthOfLevelTwo}`;
           return (
             <div key={singleNavLink?.id} className="">
               <Link
@@ -38,7 +38,7 @@ const NavHoverStates = ({
               >
                 {singleNavLink?.name}
               </Link>
-              
+
               <AnimatePresence>
                 {active === index && levelTwo.length > 0 && (
                   <motion.div
@@ -47,13 +47,16 @@ const NavHoverStates = ({
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ duration: 0.2 }}
                     onMouseLeave={handleMegaMenuClose}
-                    className="absolute top-[calc(100%+0.5rem)] min-h-[400px] left-0 right-0 shadow-lg max-w-6xl w-auto mx-auto bg-neutral-50 z-100"
+                    className={cn(
+                      index === 2 ? "xl:max-w-[926px]" : "xl:max-w-[1207px]",
+                      "absolute top-[calc(100%+0.5rem)] min-h-[400px] left-0 right-0 shadow-lg w-full lg:max-w-5xl  mx-auto bg-neutral-50 z-100"
+                    )}
                   >
                     <div
                       className={
                         index === 3
-                          ? "grid grid-cols-8 gap-6 p-6 rounded-xl"
-                          : "grid grid-cols-9 gap-6 p-6 rounded-xl"
+                          ? "grid grid-cols-8 gap-3 p-3 rounded-xl"
+                          : "grid grid-cols-9 gap-3 p-3 rounded-xl"
                       }
                     >
                       <div className="col-span-6">
@@ -61,13 +64,15 @@ const NavHoverStates = ({
                           <p className="text-caption-lg text-neutral-800">
                             {singleNavLink?.name}
                           </p>
-                          <Link
-                            className="text-caption-md uppercase flex items-center gap-1 text-blue-600"
-                            href={singleNavLink?.href || "#"}
-                          >
-                            View All
-                            <ArrowRight className="shrink-0" size={10} />
-                          </Link>
+                          {index !== 3 && (
+                            <Link
+                              className="text-caption-md uppercase flex items-center gap-1 text-blue-600"
+                              href={singleNavLink?.href || "#"}
+                            >
+                              View All
+                              <ArrowRight className="shrink-0" size={10} />
+                            </Link>
+                          )}
                         </div>
                         <div className={gridColumn}>
                           {singleNavLink?.isSubMenuAvailable &&
@@ -77,7 +82,9 @@ const NavHoverStates = ({
                                 return (
                                   <div
                                     key={secondLevel?.id}
-                                    className="bg-neutral-100 hover:bg-linear-to-tr min-h-[358px] from-neutral-50 to-green-300 transition-all duration-300 flex flex-col justify-between gap-4 rounded-xl p-6"
+                                    className={cn(
+                                      "bg-noise hover:bg-linear-to-tr min-h-[358px] from-neutral-50 to-green-300 transition-all duration-300 flex flex-col justify-between gap-4 overflow-hidden rounded-lg p-6"
+                                    )}
                                   >
                                     <Link
                                       href={secondLevel?.href || "#"}
@@ -95,7 +102,7 @@ const NavHoverStates = ({
                                           (singleLevelTwoLink) => (
                                             <div
                                               key={singleLevelTwoLink?.id}
-                                              className="py-3 border-b border-neutral-300"
+                                              className="py-3 border-b border-neutral-300 last:border-b-0"
                                             >
                                               <Link
                                                 href={
@@ -108,7 +115,9 @@ const NavHoverStates = ({
                                                   {singleLevelTwoLink?.name}
                                                 </small>
                                                 <small className="text-label-3xs text-neutral-500">
-                                                  {singleLevelTwoLink?.description}
+                                                  {
+                                                    singleLevelTwoLink?.description
+                                                  }
                                                 </small>
                                               </Link>
                                             </div>
@@ -126,8 +135,8 @@ const NavHoverStates = ({
                       <div
                         className={
                           index === 3
-                            ? "col-span-2 p-6 flex flex-col justify-between gap-6 bg-neutral-100 hover:bg-linear-to-tr from-neutral-50 to-green-300 transition-all duration-300 rounded-xl"
-                            : "col-span-3 p-6 flex flex-col justify-between gap-6 "
+                            ? "col-span-2 p-6  flex flex-col justify-between h-[358px] mt-auto gap-6 bg-noise hover:bg-linear-to-tr overflow-hidden from-neutral-50 to-green-300 transition-all duration-300 rounded-lg"
+                            : "col-span-3 p-3 flex flex-col justify-between gap-6 "
                         }
                       >
                         <Link
@@ -137,7 +146,9 @@ const NavHoverStates = ({
                           className="flex items-center justify-between  gap-1 text-heading-2xs text-neutral-900"
                         >
                           {singleNavLink?.navLevelTwoGroup?.at(-1)?.name}
-                          <ArrowRight className="shrink-0" size={20} />
+                          <div className="flex items-center justify-center p-1 hover:bg-neutral-100 rounded">
+                            <ArrowRight className="shrink-0 " size={20} />
+                          </div>
                         </Link>
                         <div className="flex flex-col gap-2">
                           {singleNavLink?.navLevelTwoGroup
@@ -145,7 +156,7 @@ const NavHoverStates = ({
                             ?.levelTwoLinks?.map((singleLevelTwoLink) => (
                               <div
                                 key={singleLevelTwoLink?.id}
-                                className="py-3 border-b border-neutral-300"
+                                className="py-3 border-b border-neutral-300 last:border-b-0 flex items-center justify-between gap-2"
                               >
                                 <Link
                                   href={singleLevelTwoLink?.href || "#"}
@@ -158,6 +169,10 @@ const NavHoverStates = ({
                                     {singleLevelTwoLink?.description}
                                   </small>
                                 </Link>
+                                <ArrowRight
+                                  className="shrink-0 relative top-2"
+                                  size={14}
+                                />
                               </div>
                             ))}
                         </div>
