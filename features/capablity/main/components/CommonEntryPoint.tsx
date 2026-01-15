@@ -2,6 +2,7 @@ import Section from "@/components/global/Section";
 import { CapablitiesCardSection } from "../CapablityContainer";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import noise from "@/public/noise.png";
 import Image from "next/image";
 
 type CommonEntryPointProps = {
@@ -20,9 +21,13 @@ const CommonEntryPoint = ({
           commonEntryPointSectionData?.sectionCards?.map((singleCard) => {
             return (
               <div
-                className="p-8 shadow-[0_4px_45.1px_0_rgb(0_0_0/0.05)] hover:bg-neutral-100 cursor-pointer flex justify-between gap-6  rounded-xl"
+                className="p-8 shadow-[0_4px_45.1px_0_rgb(0_0_0/0.05)] relative overflow-hidden
+                group hover:bg-neutral-50 cursor-pointer flex justify-between gap-6  rounded-xl"
                 key={singleCard?.id}
               >
+                <div className="absolute hidden group-hover:block inset-0 opacity-10">
+                  <Image src={noise} alt="noise" className="bg-cover" />
+                </div>
                 <div className="flex flex-col gap-4">
                   <h3 className="text-heading-xs text-neutral-800 font-medium">
                     {singleCard?.heading}

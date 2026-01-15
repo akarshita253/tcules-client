@@ -20,7 +20,7 @@ const HowWeWorkSection = ({ howWeWorkSectionData }: HowWeWorkSectionProps) => {
         {howWeWorkSectionData?.sectionCards?.map((singleCard) => {
           return (
             <div
-              className="p-4 sm:p-6 bg-neutral-100 rounded-[12px] flex flex-col justify-between gap-4 min-h-[307px]"
+              className="p-4 sm:p-6 bg-neutral-100 rounded-xl flex flex-col justify-between gap-4 min-h-[307px]"
               key={singleCard?.id}
             >
               <div className="flex">

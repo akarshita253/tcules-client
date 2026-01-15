@@ -384,10 +384,23 @@
 }
 
 @layer utilities {
-  .bg-noise {
+  .bg-noise-hover {
+    position: relative;
+    background-color: var(--color-neutral-50); /* neutral-50 */
+  }
+
+  .bg-noise-hover::before {
+    content: "";
+    position: absolute;
+    inset: 0;
     background:
-      url("../public/noise.png") lightgray 0% 0% /
-        17.91204810142517px 17.91204810142517px repeat,
-      var(--color-neutral-50, #fff);
+      url("../public/noise.png") 0 0 / 18px 18px repeat;
+    opacity: 0;
+    transition: opacity 700ms ease;
+    pointer-events: none;
+  }
+
+  .bg-noise-hover:hover::before {
+    opacity: 0.12;
   }
 }
