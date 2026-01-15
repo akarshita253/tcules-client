@@ -382,3 +382,12 @@
 .animate-blink {
   animation: blink 2s infinite;
 }
+
+@layer utilities {
+  .bg-noise {
+    background:
+      url("../public/noise.png") lightgray 0% 0% /
+        17.91204810142517px 17.91204810142517px repeat,
+      var(--color-neutral-50, #fff);
+  }
+}

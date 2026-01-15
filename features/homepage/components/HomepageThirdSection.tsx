@@ -1,6 +1,7 @@
 import Section from "@/components/global/Section";
 import { HomepageQuery } from "@/lib/codegen/graphql";
 import Image from "next/image";
+import noise from "@/public/noise.png";
 
 const HomepageThirdSection = ({
   thirdSectionData,
@@ -33,7 +34,14 @@ const HomepageThirdSection = ({
         {
           thirdSectionData?.cards && thirdSectionData?.cards.length>0 && thirdSectionData?.cards?.map((card) => {
             return (
-              <div className="p-8 flex flex-col justify-between gap-4 bg-neutral-100 rounded-xl" key={card?.id}>
+              <div className="relative p-8 flex flex-col justify-between gap-4 overflow-hidden bg-neutral-100 rounded-xl" key={card?.id}>
+                <div className="absolute inset-0 opacity-10">
+                  <Image
+                  src={noise}
+                  alt="noise"
+                  className="bg-cover"
+                  />
+                </div>
                 <div className="flex justify-end">
                   {card?.icon&& <Image src={card?.icon?.url} alt={card?.icon?.alternativeText||"card-icon"} width={40} height={40}/>}
                 </div>

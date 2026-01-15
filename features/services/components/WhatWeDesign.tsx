@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ServiceQuery } from "@/lib/codegen/graphql";
 import { useState } from "react";
 import { BsBoundingBox } from "react-icons/bs";
+import noise from "@/public/noise.png";
 
 const WhatWeDesign = ({
   whatWeDesignSectionData,
@@ -30,7 +31,7 @@ const WhatWeDesign = ({
                 key={singleCard?.heading}
                 onClick={() => setActiveIndex(index)}
                 className={`
-                p-6 rounded-xl cursor-pointer transition-all duration-300
+                p-6 rounded-xl cursor-pointer transition-all duration-300 relative overflow-hidden
                 ${
                   isActive
                     ? "bg-linear-to-tr from-accent-50 via-accent-200 to-accent-300"
@@ -38,6 +39,9 @@ const WhatWeDesign = ({
                 }
               `}
               >
+                <div className="absolute inset-0 opacity-10">
+                  <Image src={noise} alt="noise" className="bg-cover" />
+                </div>
                 <BsBoundingBox className="w-fit ml-auto mb-2" />
                 <h3 className="text-heading-2xs text-neutral-900">
                   {singleCard?.heading}
