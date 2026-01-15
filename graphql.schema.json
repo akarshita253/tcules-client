@@ -251,6 +251,61 @@ export interface BooleanFilterInput {
   startsWith?: InputMaybe<Scalars['Boolean']['input']>;
 }
 
+export interface CapablitiesSubPage {
+  __typename?: 'CapablitiesSubPage';
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  documentId: Scalars['ID']['output'];
+  hero?: Maybe<ComponentServiceHeroSection>;
+  howWeWorkSection?: Maybe<ComponentServiceHowWeWork>;
+  miscSection?: Maybe<ComponentServiceServiceMisc>;
+  operatingPhilosophySection?: Maybe<ComponentServiceOurOperatingPhilosophy>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  recentWorkSection?: Maybe<ComponentServiceExploreRecentWork>;
+  slug?: Maybe<Scalars['String']['output']>;
+  subPageName?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+  whatWeDesignSection?: Maybe<ComponentServiceWhatWeDesign>;
+  whyTeamHireSection?: Maybe<ComponentServiceWhyTeamHireUs>;
+}
+
+export interface CapablitiesSubPageEntityResponseCollection {
+  __typename?: 'CapablitiesSubPageEntityResponseCollection';
+  nodes: Array<CapablitiesSubPage>;
+  pageInfo: Pagination;
+}
+
+export interface CapablitiesSubPageFiltersInput {
+  and?: InputMaybe<Array<InputMaybe<CapablitiesSubPageFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  documentId?: InputMaybe<IdFilterInput>;
+  hero?: InputMaybe<ComponentServiceHeroSectionFiltersInput>;
+  howWeWorkSection?: InputMaybe<ComponentServiceHowWeWorkFiltersInput>;
+  miscSection?: InputMaybe<ComponentServiceServiceMiscFiltersInput>;
+  not?: InputMaybe<CapablitiesSubPageFiltersInput>;
+  operatingPhilosophySection?: InputMaybe<ComponentServiceOurOperatingPhilosophyFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<CapablitiesSubPageFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  recentWorkSection?: InputMaybe<ComponentServiceExploreRecentWorkFiltersInput>;
+  slug?: InputMaybe<StringFilterInput>;
+  subPageName?: InputMaybe<StringFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+  whatWeDesignSection?: InputMaybe<ComponentServiceWhatWeDesignFiltersInput>;
+  whyTeamHireSection?: InputMaybe<ComponentServiceWhyTeamHireUsFiltersInput>;
+}
+
+export interface CapablitiesSubPageInput {
+  hero?: InputMaybe<ComponentServiceHeroSectionInput>;
+  howWeWorkSection?: InputMaybe<ComponentServiceHowWeWorkInput>;
+  miscSection?: InputMaybe<ComponentServiceServiceMiscInput>;
+  operatingPhilosophySection?: InputMaybe<ComponentServiceOurOperatingPhilosophyInput>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  recentWorkSection?: InputMaybe<ComponentServiceExploreRecentWorkInput>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  subPageName?: InputMaybe<Scalars['String']['input']>;
+  whatWeDesignSection?: InputMaybe<ComponentServiceWhatWeDesignInput>;
+  whyTeamHireSection?: InputMaybe<ComponentServiceWhyTeamHireUsInput>;
+}
+
 export interface Capablity {
   __typename?: 'Capablity';
   capablitiesSingleType?: Maybe<Array<Maybe<CapablityCapablitiesSingleTypeDynamicZone>>>;
@@ -2452,6 +2507,15 @@ export interface ComponentServiceExploreRecentWorkExploreCardsArgs {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 }
 
+export interface ComponentServiceExploreRecentWorkFiltersInput {
+  and?: InputMaybe<Array<InputMaybe<ComponentServiceExploreRecentWorkFiltersInput>>>;
+  exploreCards?: InputMaybe<ComponentSharedCardFiltersInput>;
+  exploreLink?: InputMaybe<ComponentElementsLinkFiltersInput>;
+  heading?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentServiceExploreRecentWorkFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentServiceExploreRecentWorkFiltersInput>>>;
+}
+
 export interface ComponentServiceExploreRecentWorkInput {
   exploreCards?: InputMaybe<Array<InputMaybe<ComponentSharedCardInput>>>;
   exploreLink?: InputMaybe<ComponentElementsLinkInput>;
@@ -2481,6 +2545,17 @@ export interface ComponentServiceHeroSectionLabelArgs {
   filters?: InputMaybe<ComponentElementsPointsFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface ComponentServiceHeroSectionFiltersInput {
+  and?: InputMaybe<Array<InputMaybe<ComponentServiceHeroSectionFiltersInput>>>;
+  description?: InputMaybe<StringFilterInput>;
+  descriptionTwo?: InputMaybe<StringFilterInput>;
+  heading?: InputMaybe<StringFilterInput>;
+  heroSectionButton?: InputMaybe<ComponentElementsButtonsFiltersInput>;
+  label?: InputMaybe<ComponentElementsPointsFiltersInput>;
+  not?: InputMaybe<ComponentServiceHeroSectionFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentServiceHeroSectionFiltersInput>>>;
 }
 
 export interface ComponentServiceHeroSectionInput {
@@ -2515,6 +2590,16 @@ export interface ComponentServiceHowWeWorkLabelsArgs {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 }
 
+export interface ComponentServiceHowWeWorkFiltersInput {
+  and?: InputMaybe<Array<InputMaybe<ComponentServiceHowWeWorkFiltersInput>>>;
+  heading?: InputMaybe<StringFilterInput>;
+  howWeWorkCards?: InputMaybe<ComponentSharedCardFiltersInput>;
+  labels?: InputMaybe<ComponentElementsPointsFiltersInput>;
+  link?: InputMaybe<ComponentElementsLinkFiltersInput>;
+  not?: InputMaybe<ComponentServiceHowWeWorkFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentServiceHowWeWorkFiltersInput>>>;
+}
+
 export interface ComponentServiceHowWeWorkInput {
   heading?: InputMaybe<Scalars['String']['input']>;
   howWeWorkCards?: InputMaybe<Array<InputMaybe<ComponentSharedCardInput>>>;
@@ -2537,6 +2622,14 @@ export interface ComponentServiceOurOperatingPhilosophyOperatingPhilosophyCardsA
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 }
 
+export interface ComponentServiceOurOperatingPhilosophyFiltersInput {
+  and?: InputMaybe<Array<InputMaybe<ComponentServiceOurOperatingPhilosophyFiltersInput>>>;
+  heading?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentServiceOurOperatingPhilosophyFiltersInput>;
+  operatingPhilosophyCards?: InputMaybe<ComponentSharedCardFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentServiceOurOperatingPhilosophyFiltersInput>>>;
+}
+
 export interface ComponentServiceOurOperatingPhilosophyInput {
   heading?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['ID']['input']>;
@@ -2550,6 +2643,16 @@ export interface ComponentServiceServiceMisc {
   heading?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   label?: Maybe<Scalars['String']['output']>;
+}
+
+export interface ComponentServiceServiceMiscFiltersInput {
+  and?: InputMaybe<Array<InputMaybe<ComponentServiceServiceMiscFiltersInput>>>;
+  button?: InputMaybe<ComponentElementsButtonsFiltersInput>;
+  description?: InputMaybe<StringFilterInput>;
+  heading?: InputMaybe<StringFilterInput>;
+  label?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentServiceServiceMiscFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentServiceServiceMiscFiltersInput>>>;
 }
 
 export interface ComponentServiceServiceMiscInput {
@@ -2575,6 +2678,15 @@ export interface ComponentServiceWhatWeDesignWhatWeDesignCardsArgs {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 }
 
+export interface ComponentServiceWhatWeDesignFiltersInput {
+  and?: InputMaybe<Array<InputMaybe<ComponentServiceWhatWeDesignFiltersInput>>>;
+  bottomDetails?: InputMaybe<ComponentSharedCardFiltersInput>;
+  heading?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentServiceWhatWeDesignFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentServiceWhatWeDesignFiltersInput>>>;
+  whatWeDesignCards?: InputMaybe<ComponentSharedCardFiltersInput>;
+}
+
 export interface ComponentServiceWhatWeDesignInput {
   bottomDetails?: InputMaybe<ComponentSharedCardInput>;
   heading?: InputMaybe<Scalars['String']['input']>;
@@ -2594,6 +2706,14 @@ export interface ComponentServiceWhyTeamHireUsWhyHireUsCardsArgs {
   filters?: InputMaybe<ComponentSharedCardFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+export interface ComponentServiceWhyTeamHireUsFiltersInput {
+  and?: InputMaybe<Array<InputMaybe<ComponentServiceWhyTeamHireUsFiltersInput>>>;
+  heading?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentServiceWhyTeamHireUsFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentServiceWhyTeamHireUsFiltersInput>>>;
+  whyHireUsCards?: InputMaybe<ComponentSharedCardFiltersInput>;
 }
 
 export interface ComponentServiceWhyTeamHireUsInput {
@@ -3119,7 +3239,7 @@ export interface FooterInput {
   socialMedia?: InputMaybe<ComponentFooterFooterSocialMediaLinksInput>;
 }
 
-export type GenericMorph = About | Author | Blog | Capablity | Career | CaseStudy | CaseStudyLandingPage | Category | ClientContact | ComponentAboutAboutFifthSection | ComponentAboutAboutFifthSectionCards | ComponentAboutAboutFourthSection | ComponentAboutAboutFourthSectionDetails | ComponentAboutAboutSecondSection | ComponentAboutAboutSeventhSection | ComponentAboutAboutSixthSection | ComponentAboutSeventhSectionCards | ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCaseStudyPositioning | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesCompanyProfile | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesProblemAndSolution | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentCapablitiesCapablitiesCardSection | ComponentCapablitiesCapablitiesCards | ComponentCareerCareerCards | ComponentCareerCareerFifthSection | ComponentCareerCareerFourthSection | ComponentCareerCareerFourthSectionNew | ComponentCareerCareerIconPoints | ComponentCareerCareerNewCards | ComponentCareerCareerSecondSection | ComponentCareerCareerThirdSection | ComponentCareerThirdRightSection | ComponentContactUsContactUsBottomCards | ComponentContactUsSocialMediaLinks | ComponentElementsButtons | ComponentElementsElements | ComponentElementsLink | ComponentElementsPoints | ComponentEventsEventDetails | ComponentFooterFooterLegalSection | ComponentFooterFooterLinks | ComponentFooterFooterSocialMediaLinks | ComponentFooterFooterSocialMediaRightSection | ComponentFooterPagesLinks | ComponentHomepageBranchCards | ComponentHomepageFourthSectionCards | ComponentHomepageHomepageContactAndTestimonials | ComponentHomepageHomepageFifthSection | ComponentHomepageHomepageFourthSection | ComponentHomepageHomepageHeroSection | ComponentHomepageHomepageSecondSection | ComponentHomepageHomepageSecondSectionPoints | ComponentHomepageHomepageThirdSection | ComponentHomepageSecondSectionCaseStudyRelation | ComponentHowWeWorkCardDetails | ComponentHowWeWorkCards | ComponentHowWeWorkHowWeWorkHeroSection | ComponentHowWeWorkLowFrictionWays | ComponentHowWeWorkRightDetails | ComponentHowWeWorkRightStartingPoint | ComponentLabsCardSection | ComponentLabsFilCardDetails | ComponentLabsFilLabsFilEighthSection | ComponentLabsFilLabsFilFifthSection | ComponentLabsFilLabsFilFourthSection | ComponentLabsFilLabsFilHeroSection | ComponentLabsFilLabsFilSecondSection | ComponentLabsFilLabsFilSeventhSection | ComponentLabsFilLabsFilSixthSection | ComponentLabsFilLabsFilThirdSection | ComponentLabsFilSixthSectionLeftCard | ComponentLabsFilSixthSectionRightCard | ComponentLabsFilThirdSectionCards | ComponentLegalDetails | ComponentMatterDesignMatterDesignCards | ComponentMatterDesignMatterDesignContactUs | ComponentMatterDesignMatterDesignDisplayCards | ComponentMatterDesignMatterDesignFifthSection | ComponentMatterDesignMatterDesignFourthSection | ComponentMatterDesignMatterDesignHeroSection | ComponentMatterDesignMatterDesignSecondSection | ComponentMatterDesignMatterDesignStripOne | ComponentMatterDesignMatterDesignThirdSection | ComponentNavbarNavbarLevel1Group | ComponentNavbarNavbarLevel2Group | ComponentPodcasteEventsInterviewsShadowCard | ComponentResourcesCards | ComponentResourcesFilterSection | ComponentResourcesResourceFourthSection | ComponentResourcesResourceThirdSection | ComponentResourcesSecondSection | ComponentServiceExploreRecentWork | ComponentServiceHeroSection | ComponentServiceHowWeWork | ComponentServiceOurOperatingPhilosophy | ComponentServiceServiceMisc | ComponentServiceWhatWeDesign | ComponentServiceWhyTeamHireUs | ComponentSharedCard | ComponentSharedHeroSection | ComponentSharedMedia | ComponentSharedProfile | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | ComponentSharedSlider | ComponentSharedTiles | ComponentSingleTypeCaseStudyPageHeroSection | ComponentSingleTypeCaseStudyPageMiscellaneous | ContactUs | Event | Faq | Footer | Global | Homepage | HowWeWork | I18NLocale | Interview | LabSingleType | LabsFilLandingPage | MatterDesignSystem | Navbar | Opening | Podcast | PrivacyPolicy | Resource | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Service | Subscription | Tag | TermsOfUse | Testimonial | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = About | Author | Blog | CapablitiesSubPage | Capablity | Career | CaseStudy | CaseStudyLandingPage | Category | ClientContact | ComponentAboutAboutFifthSection | ComponentAboutAboutFifthSectionCards | ComponentAboutAboutFourthSection | ComponentAboutAboutFourthSectionDetails | ComponentAboutAboutSecondSection | ComponentAboutAboutSeventhSection | ComponentAboutAboutSixthSection | ComponentAboutSeventhSectionCards | ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCaseStudyPositioning | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesCompanyProfile | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesProblemAndSolution | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentCapablitiesCapablitiesCardSection | ComponentCapablitiesCapablitiesCards | ComponentCareerCareerCards | ComponentCareerCareerFifthSection | ComponentCareerCareerFourthSection | ComponentCareerCareerFourthSectionNew | ComponentCareerCareerIconPoints | ComponentCareerCareerNewCards | ComponentCareerCareerSecondSection | ComponentCareerCareerThirdSection | ComponentCareerThirdRightSection | ComponentContactUsContactUsBottomCards | ComponentContactUsSocialMediaLinks | ComponentElementsButtons | ComponentElementsElements | ComponentElementsLink | ComponentElementsPoints | ComponentEventsEventDetails | ComponentFooterFooterLegalSection | ComponentFooterFooterLinks | ComponentFooterFooterSocialMediaLinks | ComponentFooterFooterSocialMediaRightSection | ComponentFooterPagesLinks | ComponentHomepageBranchCards | ComponentHomepageFourthSectionCards | ComponentHomepageHomepageContactAndTestimonials | ComponentHomepageHomepageFifthSection | ComponentHomepageHomepageFourthSection | ComponentHomepageHomepageHeroSection | ComponentHomepageHomepageSecondSection | ComponentHomepageHomepageSecondSectionPoints | ComponentHomepageHomepageThirdSection | ComponentHomepageSecondSectionCaseStudyRelation | ComponentHowWeWorkCardDetails | ComponentHowWeWorkCards | ComponentHowWeWorkHowWeWorkHeroSection | ComponentHowWeWorkLowFrictionWays | ComponentHowWeWorkRightDetails | ComponentHowWeWorkRightStartingPoint | ComponentLabsCardSection | ComponentLabsFilCardDetails | ComponentLabsFilLabsFilEighthSection | ComponentLabsFilLabsFilFifthSection | ComponentLabsFilLabsFilFourthSection | ComponentLabsFilLabsFilHeroSection | ComponentLabsFilLabsFilSecondSection | ComponentLabsFilLabsFilSeventhSection | ComponentLabsFilLabsFilSixthSection | ComponentLabsFilLabsFilThirdSection | ComponentLabsFilSixthSectionLeftCard | ComponentLabsFilSixthSectionRightCard | ComponentLabsFilThirdSectionCards | ComponentLegalDetails | ComponentMatterDesignMatterDesignCards | ComponentMatterDesignMatterDesignContactUs | ComponentMatterDesignMatterDesignDisplayCards | ComponentMatterDesignMatterDesignFifthSection | ComponentMatterDesignMatterDesignFourthSection | ComponentMatterDesignMatterDesignHeroSection | ComponentMatterDesignMatterDesignSecondSection | ComponentMatterDesignMatterDesignStripOne | ComponentMatterDesignMatterDesignThirdSection | ComponentNavbarNavbarLevel1Group | ComponentNavbarNavbarLevel2Group | ComponentPodcasteEventsInterviewsShadowCard | ComponentResourcesCards | ComponentResourcesFilterSection | ComponentResourcesResourceFourthSection | ComponentResourcesResourceThirdSection | ComponentResourcesSecondSection | ComponentServiceExploreRecentWork | ComponentServiceHeroSection | ComponentServiceHowWeWork | ComponentServiceOurOperatingPhilosophy | ComponentServiceServiceMisc | ComponentServiceWhatWeDesign | ComponentServiceWhyTeamHireUs | ComponentSharedCard | ComponentSharedHeroSection | ComponentSharedMedia | ComponentSharedProfile | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | ComponentSharedSlider | ComponentSharedTiles | ComponentSingleTypeCaseStudyPageHeroSection | ComponentSingleTypeCaseStudyPageMiscellaneous | ContactUs | Event | Faq | Footer | Global | Homepage | HowWeWork | I18NLocale | Interview | LabSingleType | LabsFilLandingPage | MatterDesignSystem | Navbar | Opening | Podcast | PrivacyPolicy | Resource | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Service | Subscription | Tag | TermsOfUse | Testimonial | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export interface Global {
   __typename?: 'Global';
@@ -3454,6 +3574,7 @@ export interface Mutation {
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
   createAuthor?: Maybe<Author>;
   createBlog?: Maybe<Blog>;
+  createCapablitiesSubPage?: Maybe<CapablitiesSubPage>;
   createCaseStudy?: Maybe<CaseStudy>;
   createCategory?: Maybe<Category>;
   createClientContact?: Maybe<ClientContact>;
@@ -3474,6 +3595,7 @@ export interface Mutation {
   deleteAbout?: Maybe<DeleteMutationResponse>;
   deleteAuthor?: Maybe<DeleteMutationResponse>;
   deleteBlog?: Maybe<DeleteMutationResponse>;
+  deleteCapablitiesSubPage?: Maybe<DeleteMutationResponse>;
   deleteCapablity?: Maybe<DeleteMutationResponse>;
   deleteCareer?: Maybe<DeleteMutationResponse>;
   deleteCaseStudy?: Maybe<DeleteMutationResponse>;
@@ -3520,6 +3642,7 @@ export interface Mutation {
   updateAbout?: Maybe<About>;
   updateAuthor?: Maybe<Author>;
   updateBlog?: Maybe<Blog>;
+  updateCapablitiesSubPage?: Maybe<CapablitiesSubPage>;
   updateCapablity?: Maybe<Capablity>;
   updateCareer?: Maybe<Career>;
   updateCaseStudy?: Maybe<CaseStudy>;
@@ -3572,6 +3695,12 @@ export interface MutationCreateAuthorArgs {
 
 export interface MutationCreateBlogArgs {
   data: BlogInput;
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface MutationCreateCapablitiesSubPageArgs {
+  data: CapablitiesSubPageInput;
   status?: InputMaybe<PublicationStatus>;
 }
 
@@ -3670,6 +3799,11 @@ export interface MutationDeleteAuthorArgs {
 
 
 export interface MutationDeleteBlogArgs {
+  documentId: Scalars['ID']['input'];
+}
+
+
+export interface MutationDeleteCapablitiesSubPageArgs {
   documentId: Scalars['ID']['input'];
 }
 
@@ -3796,6 +3930,13 @@ export interface MutationUpdateAuthorArgs {
 
 export interface MutationUpdateBlogArgs {
   data: BlogInput;
+  documentId: Scalars['ID']['input'];
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface MutationUpdateCapablitiesSubPageArgs {
+  data: CapablitiesSubPageInput;
   documentId: Scalars['ID']['input'];
   status?: InputMaybe<PublicationStatus>;
 }
@@ -4217,6 +4358,9 @@ export interface Query {
   blog?: Maybe<Blog>;
   blogs: Array<Maybe<Blog>>;
   blogs_connection?: Maybe<BlogEntityResponseCollection>;
+  capablitiesSubPage?: Maybe<CapablitiesSubPage>;
+  capablitiesSubPages: Array<Maybe<CapablitiesSubPage>>;
+  capablitiesSubPages_connection?: Maybe<CapablitiesSubPageEntityResponseCollection>;
   capablity?: Maybe<Capablity>;
   career?: Maybe<Career>;
   caseStudies: Array<Maybe<CaseStudy>>;
@@ -4331,6 +4475,28 @@ export interface QueryBlogsArgs {
 
 export interface QueryBlogs_ConnectionArgs {
   filters?: InputMaybe<BlogFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface QueryCapablitiesSubPageArgs {
+  documentId: Scalars['ID']['input'];
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface QueryCapablitiesSubPagesArgs {
+  filters?: InputMaybe<CapablitiesSubPageFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  status?: InputMaybe<PublicationStatus>;
+}
+
+
+export interface QueryCapablitiesSubPages_ConnectionArgs {
+  filters?: InputMaybe<CapablitiesSubPageFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   status?: InputMaybe<PublicationStatus>;
@@ -5524,6 +5690,13 @@ export type AllBlogsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type AllBlogsQuery = { __typename?: 'Query', blogs: Array<{ __typename?: 'Blog', title?: string | null, slug?: string | null, publishedAt?: any | null, createdAt?: any | null, featureImage: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null> } | null> };
+
+export type CapablitiesSubPagesQueryVariables = Exact<{
+  filters?: InputMaybe<CapablitiesSubPageFiltersInput>;
+}>;
+
+
+export type CapablitiesSubPagesQuery = { __typename?: 'Query', capablitiesSubPages: Array<{ __typename?: 'CapablitiesSubPage', subPageName?: string | null, slug?: string | null, hero?: { __typename: 'ComponentServiceHeroSection', heading?: string | null, description?: string | null, label?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null, heroSectionButton?: Array<{ __typename?: 'ComponentElementsButtons', name?: string | null, href?: string | null } | null> | null } | null, whyTeamHireSection?: { __typename: 'ComponentServiceWhyTeamHireUs', heading?: string | null, whyHireUsCards?: Array<{ __typename?: 'ComponentSharedCard', id: string, heading?: string | null, description?: any | null, icon?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null, list?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null } | null> | null } | null, whatWeDesignSection?: { __typename: 'ComponentServiceWhatWeDesign', heading?: string | null, whatWeDesignCards?: Array<{ __typename?: 'ComponentSharedCard', heading?: string | null, icon?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null, cardTiles?: Array<{ __typename?: 'ComponentSharedTiles', id: string, heading?: string | null, description?: string | null } | null> | null } | null> | null, bottomDetails?: { __typename?: 'ComponentSharedCard', heading?: string | null, description?: any | null, cardImage?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null } | null } | null, operatingPhilosophySection?: { __typename: 'ComponentServiceOurOperatingPhilosophy', heading?: string | null, operatingPhilosophyCards?: Array<{ __typename?: 'ComponentSharedCard', id: string, heading?: string | null, description?: any | null, cardImage?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null } | null> | null } | null, howWeWorkSection?: { __typename: 'ComponentServiceHowWeWork', heading?: string | null, labels?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null, link?: { __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null } | null, howWeWorkCards?: Array<{ __typename?: 'ComponentSharedCard', id: string, heading?: string | null, cardTiles?: Array<{ __typename?: 'ComponentSharedTiles', id: string, heading?: string | null, description?: string | null } | null> | null } | null> | null } | null, recentWorkSection?: { __typename: 'ComponentServiceExploreRecentWork', heading?: string | null, exploreLink?: { __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null } | null, exploreCards?: Array<{ __typename?: 'ComponentSharedCard', id: string, heading?: string | null, description?: any | null, cardImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, cardTiles?: Array<{ __typename?: 'ComponentSharedTiles', id: string, heading?: string | null, description?: string | null } | null> | null, list?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null } | null> | null } | null, miscSection?: { __typename: 'ComponentServiceServiceMisc', heading?: string | null, description?: string | null, label?: string | null, button?: { __typename?: 'ComponentElementsButtons', id: string, name?: string | null, href?: string | null } | null } | null } | null> };
 
 export type CaseStudiesQueryVariables = Exact<{
   slug: Scalars['String']['input'];

@@ -6,10 +6,10 @@ import WhatWeDesign from "./components/WhatWeDesign";
 import HowWeWork from "./components/HowWeWork";
 import OperatingPhilosophy from "./components/OperatingPhilosophy";
 import ExploreRecentWork from "./components/ExploreRecentWork";
-import { ServiceQuery } from "@/lib/codegen/graphql";
+import { CapablitiesSubPagesQuery } from "@/lib/codegen/graphql";
 import Miscellaneous from "../../components/shared/Miscellaneous";
 
-const ServiceContainer = ({service}:{service: NonNullable<ServiceQuery["service"]>}) => {
+const ServiceContainer = ({service}:{service: NonNullable<CapablitiesSubPagesQuery["capablitiesSubPages"][0]>}) => {
 
   const HERO_SECTION = service.hero;
   const WHY_TEAM_HIRE_SECTION = service.whyTeamHireSection;

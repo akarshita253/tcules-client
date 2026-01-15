@@ -81,14 +81,16 @@ const WhatWeDesign = ({
             }
           </p>
         </div>
-        <div className="relative ">
-          <Image
-            src={whatWeDesignSectionData?.bottomDetails?.cardImage?.url || ""}
-            alt="AI Fluent Process"
-            width={100}
-            height={100}
-          />
-        </div>
+        {whatWeDesignSectionData?.bottomDetails?.cardImage?.url && (
+          <div className="relative ">
+            <Image
+              src={whatWeDesignSectionData?.bottomDetails?.cardImage?.url || ""}
+              alt="AI Fluent Process"
+              width={100}
+              height={100}
+            />
+          </div>
+        )}
       </div>
     </Section>
   );
