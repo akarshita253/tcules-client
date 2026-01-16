@@ -55,9 +55,7 @@ const BurgerMenu = ({
   const { isMenuOpen, activeIndex } = state;
 
   const levelTwoNavItems =
-    activeIndex !== null
-      ? navLinks?.[activeIndex]?.navLevelTwoGroup ?? []
-      : [];
+    activeIndex !== null ? navLinks?.[activeIndex]?.navLevelTwoGroup ?? [] : [];
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "";
@@ -103,7 +101,7 @@ const BurgerMenu = ({
         role="dialog"
         aria-modal="true"
         className={cn(
-          "fixed top-12 right-0 z-50 h-[calc(100vh-40px)] w-full bg-neutral-50 lg:hidden",
+          "fixed top-16 right-0 z-50 h-[calc(100vh-60px)] w-full bg-neutral-50 lg:hidden",
           "transform transition-transform duration-300 ease-in-out p-5",
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         )}
@@ -132,9 +130,7 @@ const BurgerMenu = ({
                   role="menuitem"
                   aria-expanded={activeIndex === index}
                   className="text-label-3xs text-neutral-800 p-3 hover:bg-neutral-100 rounded-sm uppercase cursor-pointer text-left"
-                  onClick={() =>
-                    dispatch({ type: "OPEN_SUBMENU", index })
-                  }
+                  onClick={() => dispatch({ type: "OPEN_SUBMENU", index })}
                 >
                   {link?.name}
                 </button>
@@ -206,23 +202,24 @@ const BurgerMenu = ({
                     <ArrowRight size={14} />
                   </Link>
                 </div>
-
-                {item?.levelTwoLinks?.map((link) => (
-                  <Link
-                    key={link?.id}
-                    href={link?.href || "#"}
-                    className="py-3 border-b border-neutral-300 last:border-0 flex flex-col gap-1"
-                  >
-                    <span className="text-label-2xs text-neutral-800">
-                      {link?.name}
-                    </span>
-                    {link?.description && (
-                      <span className="text-label-3xs text-neutral-500">
-                        {link?.description}
+                <div>
+                  {item?.levelTwoLinks?.map((link) => (
+                    <Link
+                      key={link?.id}
+                      href={link?.href || "#"}
+                      className="py-3 border-b border-neutral-300 last:border-0 flex flex-col gap-1"
+                    >
+                      <span className="text-label-2xs text-neutral-800">
+                        {link?.name}
                       </span>
-                    )}
-                  </Link>
-                ))}
+                      {link?.description && (
+                        <span className="text-label-3xs text-neutral-500">
+                          {link?.description}
+                        </span>
+                      )}
+                    </Link>
+                  ))}
+                </div>
 
                 {item?.description && (
                   <p className="text-label-2xs text-neutral-800 py-3">
