@@ -3,7 +3,6 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-
   --font-label: "Figtree", sans-serif;
   --font-display: "Playfair Display", serif;
   --font-heading: "Bricolage Grotesque", sans-serif;
@@ -371,10 +370,13 @@
 }
 
 @keyframes blink {
-  0%, 50%, 100% {
+  0%,
+  50%,
+  100% {
     opacity: 1;
   }
-  25%, 75% {
+  25%,
+  75% {
     opacity: 0;
   }
 }
@@ -383,11 +385,19 @@
   animation: blink 2s infinite;
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}
 @layer utilities {
   .bg-noise {
     position: relative;
-    background-color: var(--color-neutral-100); 
-    isolation: isolate; 
+    background-color: var(--color-neutral-100);
+    isolation: isolate;
   }
 
   .bg-noise::before {
@@ -401,15 +411,14 @@
   }
   .bg-noise-hover {
     position: relative;
-    background-color: var(--color-neutral-50); 
+    background-color: var(--color-neutral-50);
   }
 
   .bg-noise-hover::before {
     content: "";
     position: absolute;
     inset: 0;
-    background:
-      url("../public/noise.png") 0 0 / 18px 18px repeat;
+    background: url("../public/noise.png") 0 0 / 18px 18px repeat;
     opacity: 0;
     transition: opacity 700ms ease;
     pointer-events: none;

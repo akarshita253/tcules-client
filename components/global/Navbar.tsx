@@ -6,12 +6,13 @@ import { cn, strapiRequest } from "@/lib/utils";
 import { Container } from "./Container";
 import Image from "next/image";
 import NavHoverStates from "./NavHoverStates";
+import BurgerMenu from "./BurgerMenu";
 
 const Navbar = async () => {
   const response = await strapiRequest<NavbarQuery>(NAVBAR_QUERY);
   const navData = response.navbar;
   return (
-    <Container className="md:flex justify-between items-center gap-6 py-2 relative">
+    <Container className="flex justify-between items-center gap-6 py-2 lg:relative">
       {navData?.navbarLogo?.url && (
         <div>
           <Link href="/">
@@ -20,12 +21,14 @@ const Navbar = async () => {
               width={navData?.navbarLogo?.width || 94}
               height={navData?.navbarLogo?.height || 24}
               alt={navData?.navbarLogo?.alternativeText || "logo"}
+              className="shrink-0"
             />
           </Link>
         </div>
       )}
       <NavHoverStates navLinks={navData?.navLevelOneGroup} />
-      <div>
+      <BurgerMenu  navLinks={navData?.navLevelOneGroup}/>
+      <div className="lg:inline-block hidden">
         {navData?.navButton &&
           navData?.navButton?.map((button, index) => (
             <Link

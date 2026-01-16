@@ -34,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${figtree.variable} ${playfair.variable} ${bricolageGrotesque.variable} antialiased`}
+        className={`${figtree.variable} ${playfair.variable} ${bricolageGrotesque.variable} antialiased relative`}
       >
         <Navbar />
         {children}

@@ -23,7 +23,7 @@ const NavHoverStates = ({
   };
 
   return (
-    <div className="">
+    <div className="lg:inline-block hidden">
       <div className="flex items-center justify-center gap-6">
         {navLinks?.map((singleNavLink, index) => {
           const levelTwo = singleNavLink?.navLevelTwoGroup ?? [];
