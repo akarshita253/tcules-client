@@ -25,7 +25,7 @@ const SecondSectionDynamicContent = ({
             return (
               <div
                 key={singleSection?.id}
-                className="w-3xs flex justify-between items-center z-20 group gap-8 hover:bg-neutral-900/70 cursor-pointer  rounded-sm px-4 py-2 transition-all"
+                className="w-[300px] flex justify-between items-center z-20 group gap-8 hover:bg-neutral-900/70 cursor-pointer  rounded-sm px-4 py-2 transition-all"
               >
                 <h3
                   className="text-label-3xs text-neutral-500 group-hover:text-neutral-50 uppercase "
