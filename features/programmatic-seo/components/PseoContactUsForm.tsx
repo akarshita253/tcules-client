@@ -149,8 +149,8 @@ const PseoContactUsForm = () => {
                 </FormLabel>
                 <FormControl>
                   <Textarea
-                    rows={14}
-                    className="text-label-sm text-neutral-800 bg-neutral-100 placeholder:text-neutral-400 placeholder:text-label-sm "
+                    rows={10}
+                    className="text-label-sm text-neutral-800 h-[100px] md:h-[186px] bg-neutral-100 placeholder:text-neutral-400 placeholder:text-label-sm "
                     placeholder="Tell us about your product and we will take it from there...."
                     {...field}
                   />
