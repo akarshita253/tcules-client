@@ -104,12 +104,6 @@ export const GET_BLOG = gql`
           __typename
           metaTitle
           metaDescription
-          shareImage {
-            alternativeText
-            url
-            width
-            height
-          }
         }
       }
     }

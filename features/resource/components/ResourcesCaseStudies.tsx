@@ -38,7 +38,7 @@ const CaseStudyList = () => {
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
       ) {
-        setDropdownState(false); // close dropdown
+        setDropdownState(false);
       }
     }
 
