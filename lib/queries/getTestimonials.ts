@@ -6,7 +6,13 @@ query Testimonials {
     clientName
     clientPosition
     clientCompany
-    clientComments  
+    clientComments
+    clientProfilePicture{
+      alternativeText
+      url
+      height
+      width
+    }  
   }
 }
 `

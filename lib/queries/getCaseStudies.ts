@@ -107,12 +107,6 @@ export const CASE_STUDY_QUERY = gql`
           __typename
           metaTitle
           metaDescription
-          shareImage {
-            alternativeText
-            url
-            width
-            height
-          }
         }
         ... on Error {
           __typename

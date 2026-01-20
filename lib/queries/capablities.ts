@@ -58,12 +58,6 @@ query Capablity {
       ...on ComponentSharedSeo{
         metaTitle
         metaDescription
-        shareImage {
-          alternativeText
-          url
-          width
-          height
-        }
       }
     } 
   }
