@@ -8,11 +8,18 @@ export const GET_SINGLE_EVENT_QUERY = gql`
       description
       updatedAt
       slug
+      createdAt
       featureImage {
         alternativeText
         url
         width
         height
+      }
+      thumbnail {
+        url
+        width
+        height
+        alternativeText
       }
       eventWhereAbout {
         id
@@ -23,6 +30,10 @@ export const GET_SINGLE_EVENT_QUERY = gql`
         documentId
         name
         description
+      }
+      categories {
+        documentId
+        name
       }
       mainSection {
         ... on ComponentBlogAndCasestudiesTldrSection {
@@ -82,6 +93,40 @@ export const GET_SINGLE_EVENT_QUERY = gql`
             href
           }
         }
+      }
+    }
+  }
+`;
+
+export const GET_EVENT_THUMBNAIL = gql`
+  query GetSingleEvent($filters: EventFiltersInput) {
+    events(filters: $filters) {
+      __typename
+      title
+      updatedAt
+      createdAt
+      description
+      slug
+      documentId
+      featureImage {
+        alternativeText
+        url
+        width
+        height
+      }
+      thumbnail {
+        url
+        width
+        height
+        alternativeText
+      }
+      categories {
+        documentId
+        name
+      }
+      tags {
+        documentId
+        name
       }
     }
   }

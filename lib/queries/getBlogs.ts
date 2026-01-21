@@ -116,7 +116,23 @@ export const GET_BLOGS = gql`
       title
       slug
       publishedAt
+      updatedAt
       createdAt
+      documentId
+      categories {
+        documentId
+        name
+      }
+      thumbnail {
+        url
+        width
+        height
+        alternativeText
+      }
+      tags {
+        documentId
+        name
+      }
       featureImage {
         alternativeText
         url

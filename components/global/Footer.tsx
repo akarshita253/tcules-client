@@ -183,6 +183,7 @@ const Footer = () => {
                                   singleLink?.icon?.alternativeText ||
                                   "icon-social-media"
                                 }
+                                className="w-auto h-auto"
                               />
                             )}
                             {singleLink?.name}

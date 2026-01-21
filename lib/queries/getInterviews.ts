@@ -1,84 +1,131 @@
-import {gql} from "@apollo/client";
+import { gql } from "@apollo/client";
 
 export const GET_SINGLE_INTERVIEW = gql`
-query Interviews($filters: InterviewFiltersInput) {
-  interviews(filters: $filters) {
-    __typename
-    title
-    updatedAt
-    createdAt
-    description
-    slug
-    documentId
-    tags {
-      name
-    }
-    featureImage {
-      alternativeText
-      url
-      width
-      height
-    }
-    mainSection {
-      ... on ComponentBlogAndCasestudiesTldrSection {
-        __typename
-        id
-        heading
-        tdlrDescription
+  query Interviews($filters: InterviewFiltersInput) {
+    interviews(filters: $filters) {
+      __typename
+      title
+      updatedAt
+      createdAt
+      description
+      slug
+      documentId
+      tags {
+        name
       }
-      ... on ComponentBlogAndCasestudiesSectionImage {
-        __typename
-        layout
-        imageSection {
-          alternativeText
-          url
-          width
-          height
+      featureImage {
+        alternativeText
+        url
+        width
+        height
+      }
+      thumbnail {
+        url
+        width
+        height
+        alternativeText
+      }
+      categories {
+        documentId
+        name
+      }
+      tags {
+        documentId
+        name
+      }
+      mainSection {
+        ... on ComponentBlogAndCasestudiesTldrSection {
+          __typename
+          id
+          heading
+          tdlrDescription
         }
-      }
-      ... on ComponentBlogAndCasestudiesSepration {
-        __typename
-        color
-        styles
-      }
-      ... on ComponentBlogAndCasestudiesBlogOrCasestudyText {
-        __typename
-        id
-        blogContent
-      }
-      ... on ComponentBlogAndCasestudiesVideo {
-        __typename
-        autoplay
-        videoFile {
-          url
-          alternativeText
-          width
-          height
+        ... on ComponentBlogAndCasestudiesSectionImage {
+          __typename
+          layout
+          imageSection {
+            alternativeText
+            url
+            width
+            height
+          }
         }
-        id
-        loop
-        thumbnail {
-          alternativeText
-          url
-          width
-          height
+        ... on ComponentBlogAndCasestudiesSepration {
+          __typename
+          color
+          styles
         }
-        title
-      }
-      ... on ComponentPodcasteEventsInterviewsShadowCard {
-        __typename
-        id
-        heading
-        description
-        isShadowVisible
-        isBackgroundAvailable
-        link {
-          name
-          href
+        ... on ComponentBlogAndCasestudiesBlogOrCasestudyText {
+          __typename
+          id
+          blogContent
+        }
+        ... on ComponentBlogAndCasestudiesVideo {
+          __typename
+          autoplay
+          videoFile {
+            url
+            alternativeText
+            width
+            height
+          }
+          id
+          loop
+          thumbnail {
+            alternativeText
+            url
+            width
+            height
+          }
+          title
+        }
+        ... on ComponentPodcasteEventsInterviewsShadowCard {
+          __typename
+          id
+          heading
+          description
+          isShadowVisible
+          isBackgroundAvailable
+          link {
+            name
+            href
+          }
         }
       }
     }
   }
-}
+`;
 
-`
+export const GET_INTERVIEW_THUMBNAIL = gql`
+  query GetSingleInterview($filters: InterviewFiltersInput) {
+    interviews(filters: $filters) {
+      __typename
+      title
+      updatedAt
+      createdAt
+      description
+      slug
+      documentId
+      featureImage {
+        alternativeText
+        url
+        width
+        height
+      }
+      thumbnail {
+        url
+        width
+        height
+        alternativeText
+      }
+      categories {
+        documentId
+        name
+      }
+      tags {
+        documentId
+        name
+      }
+    }
+  }
+`;

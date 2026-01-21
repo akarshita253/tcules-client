@@ -46,6 +46,7 @@ const ResourceHeroSec = ({
                       fill
                       className="object-cover"
                       alt="Hero section image"
+                      sizes="(max-width: 400px) ,50vw"
                     />
                   )}
                   <h3 className="p-4 absolute bottom-0 left-0 text-neutral-50 text-heading-2xs">
@@ -60,7 +61,7 @@ const ResourceHeroSec = ({
         <div>
           <Image
             src={secondSectionData?.link?.icon?.url || Substract}
-            className="absolute right-0 bottom-0"
+            className="absolute right-0 bottom-0 w-auto h-auto"
             alt="subtract-icon"
             width={secondSectionData?.link?.icon?.width || 185}
             height={secondSectionData?.link?.icon?.height || 185}

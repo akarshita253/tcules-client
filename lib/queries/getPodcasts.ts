@@ -9,6 +9,12 @@ export const GET_SINGLE_PODCAST = gql`
       createdAt
       documentId
       slug
+      thumbnail {
+        url
+        width
+        height
+        alternativeText
+      }
       featureImage {
         alternativeText
         url
@@ -20,6 +26,7 @@ export const GET_SINGLE_PODCAST = gql`
         name
         documentId
       }
+
       mainSection {
         ... on ComponentBlogAndCasestudiesTldrSection {
           __typename
@@ -78,6 +85,40 @@ export const GET_SINGLE_PODCAST = gql`
             href
           }
         }
+      }
+    }
+  }
+`;
+
+export const GET_PODCAST_THUMBNAIL = gql`
+  query GetSinglePodcast($filters: PodcastFiltersInput) {
+    podcasts(filters: $filters) {
+      __typename
+      title
+      updatedAt
+      createdAt
+      description
+      slug
+      documentId
+      featureImage {
+        alternativeText
+        url
+        width
+        height
+      }
+      thumbnail {
+        url
+        width
+        height
+        alternativeText
+      }
+      categories {
+        documentId
+        name
+      }
+      tags {
+        documentId
+        name
       }
     }
   }

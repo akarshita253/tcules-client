@@ -114,13 +114,12 @@ export interface Blog {
   featureImage: Array<Maybe<UploadFile>>;
   featureImage_connection?: Maybe<UploadFileRelationResponseCollection>;
   mainSection?: Maybe<Array<Maybe<BlogMainSectionDynamicZone>>>;
-  podcasts: Array<Maybe<Podcast>>;
-  podcasts_connection?: Maybe<PodcastRelationResponseCollection>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   seo?: Maybe<ComponentSharedSeo>;
   slug?: Maybe<Scalars['String']['output']>;
   tags: Array<Maybe<Tag>>;
   tags_connection?: Maybe<TagRelationResponseCollection>;
+  thumbnail?: Maybe<UploadFile>;
   title?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
 }
@@ -161,20 +160,6 @@ export interface BlogFeatureImage_ConnectionArgs {
 }
 
 
-export interface BlogPodcastsArgs {
-  filters?: InputMaybe<PodcastFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-}
-
-
-export interface BlogPodcasts_ConnectionArgs {
-  filters?: InputMaybe<PodcastFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-}
-
-
 export interface BlogTagsArgs {
   filters?: InputMaybe<TagFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
@@ -202,7 +187,6 @@ export interface BlogFiltersInput {
   documentId?: InputMaybe<IdFilterInput>;
   not?: InputMaybe<BlogFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<BlogFiltersInput>>>;
-  podcasts?: InputMaybe<PodcastFiltersInput>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
   seo?: InputMaybe<ComponentSharedSeoFiltersInput>;
   slug?: InputMaybe<StringFilterInput>;
@@ -216,11 +200,11 @@ export interface BlogInput {
   categories?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   featureImage?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   mainSection?: InputMaybe<Array<Scalars['BlogMainSectionDynamicZoneInput']['input']>>;
-  podcasts?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   seo?: InputMaybe<ComponentSharedSeoInput>;
   slug?: InputMaybe<Scalars['String']['input']>;
   tags?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  thumbnail?: InputMaybe<Scalars['ID']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
 }
 
@@ -497,6 +481,8 @@ export interface Category {
   interviews: Array<Maybe<Interview>>;
   interviews_connection?: Maybe<InterviewRelationResponseCollection>;
   name?: Maybe<Scalars['String']['output']>;
+  podcasts: Array<Maybe<Podcast>>;
+  podcasts_connection?: Maybe<PodcastRelationResponseCollection>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   slug?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
@@ -558,6 +544,20 @@ export interface CategoryInterviews_ConnectionArgs {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 }
 
+
+export interface CategoryPodcastsArgs {
+  filters?: InputMaybe<PodcastFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface CategoryPodcasts_ConnectionArgs {
+  filters?: InputMaybe<PodcastFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
 export interface CategoryEntityResponseCollection {
   __typename?: 'CategoryEntityResponseCollection';
   nodes: Array<Category>;
@@ -576,6 +576,7 @@ export interface CategoryFiltersInput {
   name?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<CategoryFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<CategoryFiltersInput>>>;
+  podcasts?: InputMaybe<PodcastFiltersInput>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
   slug?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
@@ -588,6 +589,7 @@ export interface CategoryInput {
   events?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   interviews?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   name?: InputMaybe<Scalars['String']['input']>;
+  podcasts?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;
 }
@@ -3510,6 +3512,7 @@ export interface Event {
   slug?: Maybe<Scalars['String']['output']>;
   tags: Array<Maybe<Tag>>;
   tags_connection?: Maybe<TagRelationResponseCollection>;
+  thumbnail?: Maybe<UploadFile>;
   title?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
 }
@@ -3582,6 +3585,7 @@ export interface EventInput {
   seo?: InputMaybe<ComponentSharedSeoInput>;
   slug?: InputMaybe<Scalars['String']['input']>;
   tags?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  thumbnail?: InputMaybe<Scalars['ID']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
 }
 
@@ -3850,6 +3854,7 @@ export interface Interview {
   slug?: Maybe<Scalars['String']['output']>;
   tags: Array<Maybe<Tag>>;
   tags_connection?: Maybe<TagRelationResponseCollection>;
+  thumbnail?: Maybe<UploadFile>;
   title?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
 }
@@ -3913,6 +3918,7 @@ export interface InterviewInput {
   seo?: InputMaybe<ComponentSharedSeoInput>;
   slug?: InputMaybe<Scalars['String']['input']>;
   tags?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  thumbnail?: InputMaybe<Scalars['ID']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
 }
 
@@ -4728,8 +4734,8 @@ export interface PaginationArg {
 
 export interface Podcast {
   __typename?: 'Podcast';
-  categories: Array<Maybe<Blog>>;
-  categories_connection?: Maybe<BlogRelationResponseCollection>;
+  categories: Array<Maybe<Category>>;
+  categories_connection?: Maybe<CategoryRelationResponseCollection>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   documentId: Scalars['ID']['output'];
@@ -4740,20 +4746,21 @@ export interface Podcast {
   slug?: Maybe<Scalars['String']['output']>;
   tags: Array<Maybe<Tag>>;
   tags_connection?: Maybe<TagRelationResponseCollection>;
+  thumbnail?: Maybe<UploadFile>;
   title?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
 }
 
 
 export interface PodcastCategoriesArgs {
-  filters?: InputMaybe<BlogFiltersInput>;
+  filters?: InputMaybe<CategoryFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 }
 
 
 export interface PodcastCategories_ConnectionArgs {
-  filters?: InputMaybe<BlogFiltersInput>;
+  filters?: InputMaybe<CategoryFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 }
@@ -4780,7 +4787,7 @@ export interface PodcastEntityResponseCollection {
 
 export interface PodcastFiltersInput {
   and?: InputMaybe<Array<InputMaybe<PodcastFiltersInput>>>;
-  categories?: InputMaybe<BlogFiltersInput>;
+  categories?: InputMaybe<CategoryFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   description?: InputMaybe<StringFilterInput>;
   documentId?: InputMaybe<IdFilterInput>;
@@ -4803,6 +4810,7 @@ export interface PodcastInput {
   seo?: InputMaybe<ComponentSharedSeoInput>;
   slug?: InputMaybe<Scalars['String']['input']>;
   tags?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  thumbnail?: InputMaybe<Scalars['ID']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
 }
 
@@ -6280,7 +6288,7 @@ export type BlogsQuery = { __typename?: 'Query', blogs: Array<{ __typename: 'Blo
 export type AllBlogsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AllBlogsQuery = { __typename?: 'Query', blogs: Array<{ __typename?: 'Blog', title?: string | null, slug?: string | null, publishedAt?: any | null, createdAt?: any | null, featureImage: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null> } | null> };
+export type AllBlogsQuery = { __typename?: 'Query', blogs: Array<{ __typename?: 'Blog', title?: string | null, slug?: string | null, publishedAt?: any | null, updatedAt?: any | null, createdAt?: any | null, documentId: string, categories: Array<{ __typename?: 'Category', documentId: string, name?: string | null } | null>, thumbnail?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null, tags: Array<{ __typename?: 'Tag', documentId: string, name?: string | null } | null>, featureImage: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null> } | null> };
 
 export type CapablitiesSubPagesQueryVariables = Exact<{
   filters?: InputMaybe<CapablitiesSubPageFiltersInput>;
@@ -6334,7 +6342,7 @@ export type EventsQueryVariables = Exact<{
 }>;
 
 
-export type EventsQuery = { __typename?: 'Query', events: Array<{ __typename: 'Event', title?: string | null, description?: string | null, updatedAt?: any | null, slug?: string | null, featureImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, eventWhereAbout?: Array<{ __typename?: 'ComponentEventsEventDetails', id: string, descOne?: string | null, descTwo?: string | null } | null> | null, tags: Array<{ __typename?: 'Tag', documentId: string, name?: string | null, description?: string | null } | null>, mainSection?: Array<
+export type EventsQuery = { __typename?: 'Query', events: Array<{ __typename: 'Event', title?: string | null, description?: string | null, updatedAt?: any | null, slug?: string | null, createdAt?: any | null, featureImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, thumbnail?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null, eventWhereAbout?: Array<{ __typename?: 'ComponentEventsEventDetails', id: string, descOne?: string | null, descTwo?: string | null } | null> | null, tags: Array<{ __typename?: 'Tag', documentId: string, name?: string | null, description?: string | null } | null>, categories: Array<{ __typename?: 'Category', documentId: string, name?: string | null } | null>, mainSection?: Array<
       | { __typename: 'ComponentBlogAndCasestudiesBlogOrCasestudyText', id: string, blogContent?: string | null }
       | { __typename: 'ComponentBlogAndCasestudiesSectionImage', layout?: Enum_Componentblogandcasestudiessectionimage_Layout | null, imageSection: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null> }
       | { __typename: 'ComponentBlogAndCasestudiesSepration', color?: string | null, styles?: Enum_Componentblogandcasestudiessepration_Styles | null }
@@ -6343,6 +6351,13 @@ export type EventsQuery = { __typename?: 'Query', events: Array<{ __typename: 'E
       | { __typename: 'ComponentPodcasteEventsInterviewsShadowCard', id: string, heading?: string | null, description?: string | null, isShadowVisible?: boolean | null, isBackgroundAvailable?: boolean | null, link?: { __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null } | null }
       | { __typename?: 'Error' }
      | null> | null } | null> };
+
+export type GetSingleEventQueryVariables = Exact<{
+  filters?: InputMaybe<EventFiltersInput>;
+}>;
+
+
+export type GetSingleEventQuery = { __typename?: 'Query', events: Array<{ __typename: 'Event', title?: string | null, updatedAt?: any | null, createdAt?: any | null, description?: string | null, slug?: string | null, documentId: string, featureImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, thumbnail?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null, categories: Array<{ __typename?: 'Category', documentId: string, name?: string | null } | null>, tags: Array<{ __typename?: 'Tag', documentId: string, name?: string | null } | null> } | null> };
 
 export type HomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -6354,7 +6369,7 @@ export type InterviewsQueryVariables = Exact<{
 }>;
 
 
-export type InterviewsQuery = { __typename?: 'Query', interviews: Array<{ __typename: 'Interview', title?: string | null, updatedAt?: any | null, createdAt?: any | null, description?: string | null, slug?: string | null, documentId: string, tags: Array<{ __typename?: 'Tag', name?: string | null } | null>, featureImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, mainSection?: Array<
+export type InterviewsQuery = { __typename?: 'Query', interviews: Array<{ __typename: 'Interview', title?: string | null, updatedAt?: any | null, createdAt?: any | null, description?: string | null, slug?: string | null, documentId: string, tags: Array<{ __typename?: 'Tag', name?: string | null, documentId: string } | null>, featureImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, thumbnail?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null, categories: Array<{ __typename?: 'Category', documentId: string, name?: string | null } | null>, mainSection?: Array<
       | { __typename: 'ComponentBlogAndCasestudiesBlogOrCasestudyText', id: string, blogContent?: string | null }
       | { __typename: 'ComponentBlogAndCasestudiesSectionImage', layout?: Enum_Componentblogandcasestudiessectionimage_Layout | null, imageSection: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null> }
       | { __typename: 'ComponentBlogAndCasestudiesSepration', color?: string | null, styles?: Enum_Componentblogandcasestudiessepration_Styles | null }
@@ -6363,6 +6378,13 @@ export type InterviewsQuery = { __typename?: 'Query', interviews: Array<{ __type
       | { __typename: 'ComponentPodcasteEventsInterviewsShadowCard', id: string, heading?: string | null, description?: string | null, isShadowVisible?: boolean | null, isBackgroundAvailable?: boolean | null, link?: { __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null } | null }
       | { __typename?: 'Error' }
      | null> | null } | null> };
+
+export type GetSingleInterviewQueryVariables = Exact<{
+  filters?: InputMaybe<InterviewFiltersInput>;
+}>;
+
+
+export type GetSingleInterviewQuery = { __typename?: 'Query', interviews: Array<{ __typename: 'Interview', title?: string | null, updatedAt?: any | null, createdAt?: any | null, description?: string | null, slug?: string | null, documentId: string, featureImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, thumbnail?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null, categories: Array<{ __typename?: 'Category', documentId: string, name?: string | null } | null>, tags: Array<{ __typename?: 'Tag', documentId: string, name?: string | null } | null> } | null> };
 
 export type LabSingleTypeQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -6377,7 +6399,7 @@ export type PodcastsQueryVariables = Exact<{
 }>;
 
 
-export type PodcastsQuery = { __typename?: 'Query', podcasts: Array<{ __typename: 'Podcast', title?: string | null, description?: string | null, createdAt?: any | null, documentId: string, slug?: string | null, updatedAt?: any | null, featureImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, tags: Array<{ __typename?: 'Tag', name?: string | null, documentId: string } | null>, mainSection?: Array<
+export type PodcastsQuery = { __typename?: 'Query', podcasts: Array<{ __typename: 'Podcast', title?: string | null, description?: string | null, createdAt?: any | null, documentId: string, slug?: string | null, updatedAt?: any | null, thumbnail?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null, featureImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, tags: Array<{ __typename?: 'Tag', name?: string | null, documentId: string } | null>, mainSection?: Array<
       | { __typename: 'ComponentBlogAndCasestudiesBlogOrCasestudyText', id: string, blogContent?: string | null }
       | { __typename: 'ComponentBlogAndCasestudiesSectionImage', layout?: Enum_Componentblogandcasestudiessectionimage_Layout | null, imageSection: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null> }
       | { __typename: 'ComponentBlogAndCasestudiesSepration', color?: string | null, styles?: Enum_Componentblogandcasestudiessepration_Styles | null }
@@ -6386,6 +6408,13 @@ export type PodcastsQuery = { __typename?: 'Query', podcasts: Array<{ __typename
       | { __typename: 'ComponentPodcasteEventsInterviewsShadowCard', id: string, heading?: string | null, description?: string | null, isShadowVisible?: boolean | null, isBackgroundAvailable?: boolean | null, link?: { __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null } | null }
       | { __typename?: 'Error' }
      | null> | null } | null> };
+
+export type GetSinglePodcastQueryVariables = Exact<{
+  filters?: InputMaybe<PodcastFiltersInput>;
+}>;
+
+
+export type GetSinglePodcastQuery = { __typename?: 'Query', podcasts: Array<{ __typename: 'Podcast', title?: string | null, updatedAt?: any | null, createdAt?: any | null, description?: string | null, slug?: string | null, documentId: string, featureImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, thumbnail?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null, categories: Array<{ __typename?: 'Category', documentId: string, name?: string | null } | null>, tags: Array<{ __typename?: 'Tag', documentId: string, name?: string | null } | null> } | null> };
 
 export type ProgrammaticSeoPagesQueryVariables = Exact<{
   filters?: InputMaybe<ProgrammaticSeoPageFiltersInput>;
