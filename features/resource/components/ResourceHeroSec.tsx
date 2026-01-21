@@ -2,7 +2,6 @@ import Section from "@/components/global/Section";
 import { buttonVariants } from "@/components/ui/button";
 import { ResourceQuery } from "@/lib/codegen/graphql";
 import { cn } from "@/lib/utils";
-import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import Substract from "@/public/Subtract.png";
@@ -57,28 +56,25 @@ const ResourceHeroSec = ({
             })}
         </div>
       </Section>
-      <div className="p-8 shadow-[0_4px_48px_0_rgba(0,0,0,0.04)] relative">
+      <div className="p-8 shadow-[0_4px_48px_0_rgba(0,0,0,0.04)] relative bg-neutral-800 rounded-xl">
         <div>
           <Image
-            src={Substract}
+            src={secondSectionData?.link?.icon?.url || Substract}
             className="absolute right-0 bottom-0"
             alt="subtract-icon"
-            width={185}
-            height={185}
+            width={secondSectionData?.link?.icon?.width || 185}
+            height={secondSectionData?.link?.icon?.height || 185}
           />
         </div>
-        <h3 className="text-heading-xs text-neutral-800 mb-3">
+        <h3 className="text-heading-xs text-neutral-100 mb-3">
           {secondSectionData?.heading}
         </h3>
-        <p className="text-label-xl text-neutral-700 mb-8 lg:w-4/5">
+        <p className="text-label-xl text-neutral-200 mb-8 lg:w-4/6">
           {secondSectionData?.description}
         </p>
         <Link
           href={secondSectionData?.link?.href || "#"}
-          className={cn(
-            buttonVariants({ variant: "default" }),
-            "bg-neutral-900 text-neutral-50"
-          )}
+          className={cn(buttonVariants({ variant: "default" }))}
         >
           {secondSectionData?.link?.name}
         </Link>

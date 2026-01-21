@@ -17,14 +17,14 @@ const ThirdSection = ({ cardsData }: { cardsData?: LabsCardSection[] }) => {
   const thirdSectionData = cardsData?.[1];
   return (
     <Section className="flex flex-col justify-between gap-4 sm:gap-6">
-      <h2 className="text-heading-xs  text-neutral-800 mb-6 sm:mb-12">
+      <h2 className="text-heading-xs  text-neutral-100 mb-6 sm:mb-12">
         {thirdSectionData?.heading}
       </h2>
       {thirdSectionData?.cards &&
         thirdSectionData?.cards?.map((singleCard) => {
           return (
             <div
-              className="p-6 hover:bg-neutral-100 group rounded-xl transition-all grid grid-cols-12 gap-6"
+              className="p-6 hover:bg-neutral-800 group rounded-xl transition-all grid grid-cols-12 gap-6"
               key={singleCard?.id}
             >
               <div className="relative h-[210px] rounded-xl overflow-hidden col-span-3">
@@ -38,10 +38,10 @@ const ThirdSection = ({ cardsData }: { cardsData?: LabsCardSection[] }) => {
               </div>
               <div className="flex flex-col justify-between gap-6 col-span-6">
                 <div>
-                  <h3 className="text-heading-xs text-heading-800 mb-2">
+                  <h3 className="text-heading-xs text-neutral-100 mb-2">
                     {singleCard?.heading}
                   </h3>
-                  <p className="text-label-md text-neutral-600">
+                  <p className="text-label-md text-neutral-400">
                     {singleCard?.description?.[0]?.children?.[0]?.text}
                   </p>
                 </div>
@@ -59,13 +59,13 @@ const ThirdSection = ({ cardsData }: { cardsData?: LabsCardSection[] }) => {
               </div>
               <div className="flex flex-col justify-between gap-6 col-span-3">
                 <div>
-                  <p className="py-2 px-3 text-caption-lg uppercase text-neutral-700 rounded-full bg-neutral-100 group-hover:bg-neutral-50  w-fit ml-auto mb-2">
+                  <p className="py-2 px-3 text-caption-lg uppercase text-neutral-200 rounded-full bg-neutral-800 w-fit ml-auto mb-2">
                     Shopify API
                   </p>
-                  <p className="py-2 px-3 text-caption-lg uppercase text-neutral-700 rounded-full bg-neutral-100 group-hover:bg-neutral-50  w-fit ml-auto mb-2">
+                  <p className="py-2 px-3 text-caption-lg uppercase text-neutral-200 rounded-full bg-neutral-800 w-fit ml-auto mb-2">
                     tool calls
                   </p>
-                  <p className="py-2 px-3 text-caption-lg uppercase text-neutral-700 rounded-full bg-neutral-100 group-hover:bg-neutral-50  w-fit ml-auto mb-2">
+                  <p className="py-2 px-3 text-caption-lg uppercase text-neutral-200 rounded-full bg-neutral-800 w-fit ml-auto mb-2">
                    recommendation logic
                   </p>
                 </div>
@@ -74,7 +74,7 @@ const ThirdSection = ({ cardsData }: { cardsData?: LabsCardSection[] }) => {
                     href="#"
                     className={cn(
                       buttonVariants({ variant: "default" }),
-                      "bg-neutral-50 transition-all group-hover:bg-neutral-900 group-hover:text-neutral-50 text-label-3xs"
+                      "transition-all bg-neutral-900 text-white! group-hover:bg-accent-500 text-label-3xs"
                     )}
                   >
                     View Case Study

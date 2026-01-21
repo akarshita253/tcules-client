@@ -22,11 +22,11 @@ const LabsHeroSec = ({
           <span className="text-display-sm text-accent-600">
             {heroSectionData?.heading?.split(",")[0]}
           </span>
-          <span className="text-heading-sm text-neutral-800">
+          <span className="text-heading-sm text-neutral-100">
             {heroSectionData?.heading?.split(",")[1]}
           </span>
         </h1>
-        <p className="text-label-xl mt-6 lg:w-4/5 mx-auto text-center text-neutral-700">
+        <p className="text-label-xl mt-6 lg:w-4/5 mx-auto text-center text-neutral-400">
           {heroSectionData?.description}
         </p>
         <div className="mt-12 flex justify-center items-center gap-4 flex-wrap">
@@ -34,7 +34,7 @@ const LabsHeroSec = ({
             <Link
               key={index}
               href={button?.href || "#"}
-              className={`flex items-center gap-1 uppercase bg-neutral-50 hover:bg-neutral-100  ${buttonVariants(
+              className={`flex items-center gap-1 uppercase text-neutral-50 hover:bg-neutral-800 bg-neutral-900 ${buttonVariants(
                 { variant: "default" }
               )}`}
             >
@@ -46,8 +46,8 @@ const LabsHeroSec = ({
       <Section className="flex items-center justify-center relative">
         <h2 className="p-4 sm:p-6  sm:w-5/7 z-10">
           <ScrollReveal
-            initialColor="#b1b1b1"
-            finalColor="#000000"
+            initialColor="#909090"
+            finalColor="#f2f2f2"
             value={heroSectionData?.highlightedDescription || ""}
             className="text-heading-xs"
           />

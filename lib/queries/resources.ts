@@ -22,20 +22,26 @@ export const RESOURCES_QUERY = gql`
           href
           isExternal
           name
+          icon {
+            alternativeText
+            url
+            height
+            width
+          }
         }
       }
       thirdSection {
         heading
         filterResource {
-        id
-        label
-        categories {
-          name
+          id
+          label
+          categories {
+            name
+          }
+          tags {
+            name
+          }
         }
-        tags {
-          name
-        }
-       }
         case_studies {
           documentId
           title

@@ -1,63 +1,79 @@
 import { gql } from "@apollo/client";
 
 export const LABS_SINGLE_TYPE = gql`
-query LabSingleType {
-  labSingleType {
-    heroSection {
-      heading
-      description
-      highlightedDescription
-      button {
-        name
-        href
-      }
-    }
-    detailSection{
-      ... on ComponentLabsCardSection{
-        __typename
-        id
+  query LabSingleType {
+    labSingleType {
+      heroSection {
         heading
-        cards {
+        description
+        highlightedDescription
+        button {
+          name
+          href
+        }
+      }
+      detailSection {
+        ... on ComponentLabsCardSection {
+          __typename
           id
           heading
-          description
-          icon {
-            alternativeText
-            width
-            url
-            height
-          }
-          list {
-            id
-            listText
-          }
-          cardImage {
-            alternativeText
-            url
-            width
-            height
-          }
-          list {
-            id
-            listText
-          }
-          cardTiles {
+          cards {
             id
             heading
             description
+            icon {
+              alternativeText
+              width
+              url
+              height
+            }
+            list {
+              id
+              listText
+            }
+            cardImage {
+              alternativeText
+              url
+              width
+              height
+            }
+            list {
+              id
+              listText
+            }
+            cardTiles {
+              id
+              heading
+              description
+            }
+          }
+        }
+      }
+      miscSection {
+        label
+        heading
+        description
+        button {
+          name
+          href
+        }
+      }
+      interfaceLabs {
+        labsInterfaceCards {
+          id
+          heading
+          icon {
+            alternativeText
+            height
+            url
+            width
+          }
+          link {
+            href
+            name
           }
         }
       }
     }
-    miscSection {
-      label
-      heading
-      description
-      button {
-        name
-        href
-      }
-    }
   }
-}
-`
+`;

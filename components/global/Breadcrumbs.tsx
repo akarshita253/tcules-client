@@ -1,9 +1,10 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const Breadcrumbs = () => {
+const Breadcrumbs = ({ className }: { className?: string }) => {
   const pathname = usePathname();
 
   const pathSegments = pathname.split("/").filter((seg) => seg.length > 0);
@@ -16,7 +17,7 @@ const Breadcrumbs = () => {
   ];
 
   return (
-    <div className="md:mb-12 mb-9 text-label-2xs text-neutral-500">
+    <div className={cn("md:mb-12 mb-9 text-label-2xs text-neutral-500",className)}>
       {crumbs.map((crumb, index) => {
         const isLast = index === crumbs.length - 1;
 

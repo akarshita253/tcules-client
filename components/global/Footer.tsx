@@ -24,7 +24,7 @@ const Footer = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
-  const bgBlackLandingRoutes = ["/labs-fil", "/matter-design-systems"];
+  const bgBlackLandingRoutes = ["/labs-fil", "/matter-design-systems","/labs"];
   const bgGrayLandingRoutes = ["/"];
   const isLandingPagePathBgBlack = bgBlackLandingRoutes.some((route) =>
     pathname.startsWith(route)

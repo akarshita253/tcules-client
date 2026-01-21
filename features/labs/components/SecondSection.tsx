@@ -15,7 +15,7 @@ const SecondSection = ({ cardsData }: { cardsData?: LabsCardSection[] }) => {
   const secondSectionData = cardsData?.[0];
   return (
     <Section>
-      <h2 className="text-heading-xs  text-neutral-800 mb-6 sm:mb-12">
+      <h2 className="text-heading-xs  text-neutral-100 mb-6 sm:mb-12">
         {secondSectionData?.heading}
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -23,11 +23,11 @@ const SecondSection = ({ cardsData }: { cardsData?: LabsCardSection[] }) => {
           secondSectionData?.cards?.map((singleCard) => {
             return (
               <div
-                className="p-2 bg-neutral-100 rounded-xl flex justify-between flex-col gap-4"
+                className="p-2 bg-neutral-800 rounded-xl flex justify-between flex-col gap-4"
                 key={singleCard?.id}
               >
                 <div className="p-6 relative">
-                  <h3 className="text-heading-2xs text-neutral-800 w-4/5">{singleCard?.heading}</h3>
+                  <h3 className="text-heading-2xs text-neutral-50 w-4/5">{singleCard?.heading}</h3>
                   {singleCard?.icon?.url && (
                     <Image
                       src={singleCard?.icon?.url}
