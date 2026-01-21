@@ -37,7 +37,7 @@ export default function RootLayout({
         className={`${figtree.variable} ${playfair.variable} ${bricolageGrotesque.variable} antialiased relative`}
       >
         <Navbar />
-        {children}
+          {children}
         <ApolloWrapper>
           <Footer />
         </ApolloWrapper>
