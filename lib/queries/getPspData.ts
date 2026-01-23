@@ -99,17 +99,7 @@ query ProgrammaticSeoPages($filters: ProgrammaticSeoPageFiltersInput) {
       robots
       slug
       structuredData
-      og_graph {
-        og_title
-        og_description
-        og_image {
-          alternativeText
-          url
-          width
-          height
-        }
-        twitter_card_type
-      }
+      graphCode
     }
   }
 }

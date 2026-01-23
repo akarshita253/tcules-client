@@ -16,7 +16,9 @@ const SecondSectionDynamicContent = ({
   const handleHoverState = (index: number) => () => {
     setIndex(index);
   };
-
+  const isLastItem =
+    secondSectionData?.secondSection &&
+    index === secondSectionData?.secondSection?.length - 1;
   return (
     <>
       <div className="pl-4 flex flex-col justify-center h-full">
@@ -44,15 +46,15 @@ const SecondSectionDynamicContent = ({
       {secondSectionData?.secondSection &&
         secondSectionData?.secondSection[index]?.bgImage?.url && (
           <div className="absolute inset-0">
-              <Image
-                src={secondSectionData?.secondSection[index]?.bgImage?.url}
-                alt={
-                  secondSectionData?.secondSection[index]?.bgImage
-                    ?.alternativeText || "text"
-                }
-                fill
-                className="object-cover"
-              />
+            <Image
+              src={secondSectionData?.secondSection[index]?.bgImage?.url}
+              alt={
+                secondSectionData?.secondSection[index]?.bgImage
+                  ?.alternativeText || "text"
+              }
+              fill
+              className="object-cover"
+            />
           </div>
         )}
       {secondSectionData?.secondSection &&
@@ -80,7 +82,10 @@ const SecondSectionDynamicContent = ({
             }
             className="text-heading-xs text-neutral-900"
           >
-            {secondSectionData?.secondSection[index]?.link?.case_study?.title}
+            {isLastItem
+              ? "Take a look at all our curated case studies"
+              : secondSectionData?.secondSection[index]?.link?.case_study
+                  ?.title}
             {secondSectionData?.secondSection[index]?.link?.botomImage?.url && (
               <div className="mt-6 flex justify-between items-center">
                 <Image

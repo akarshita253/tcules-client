@@ -67,6 +67,7 @@ export const HOME_PAGE_QUERY = gql`
           id
           heading
           description
+          href
           icon {
             alternativeText
             url
