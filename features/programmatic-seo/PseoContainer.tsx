@@ -55,7 +55,6 @@ const PseoContainer = ({
   const faqData = programaticLandingPageData.faqSection;
   const contactUsData = programaticLandingPageData.contactUs;
 
-  console.log(programaticLandingPageData, "this this this");
   return (
     <main>
       <Container className="md:grid grid-cols-12 gap-6">

@@ -15,7 +15,6 @@ const AboutContainer = ({
 }: {
   aboutData: NonNullable<AboutQuery["about"]>;
 }) => {
-  console.log(aboutData, "this is about data");
   const { bgImage, heading, description, descriptionTwo, headingTwo } =
     aboutData;
   const secondSectionData = aboutData?.secondSection;

@@ -1,6 +1,5 @@
 "use client";
 
-import { buttonVariants } from "../ui/button";
 import FooterSubstract from "../../public/Subtract.png";
 import Image from "next/image";
 import Section from "./Section";
@@ -13,6 +12,7 @@ import { FooterQuery } from "@/lib/codegen/graphql";
 import { FOOTER_QUERY } from "@/lib/queries/footer";
 import LogoGroup from "@/public/Group.png";
 import { usePathname } from "next/navigation";
+import ButtonTag from "../shared/ButtonTag";
 
 const Footer = () => {
   const pathname = usePathname();
@@ -24,13 +24,13 @@ const Footer = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
-  const bgBlackLandingRoutes = ["/labs-fil", "/matter-design-systems","/labs"];
+  const bgBlackLandingRoutes = ["/labs-fil", "/matter-design-systems", "/labs"];
   const bgGrayLandingRoutes = ["/"];
   const isLandingPagePathBgBlack = bgBlackLandingRoutes.some((route) =>
-    pathname.startsWith(route)
+    pathname.startsWith(route),
   );
   const isLandingPagePathBgGrey = bgGrayLandingRoutes.some((route) =>
-    pathname.startsWith(route)
+    pathname.startsWith(route),
   );
 
   return (
@@ -39,9 +39,9 @@ const Footer = () => {
         isLandingPagePathBgBlack
           ? "bg-neutral-900"
           : isLandingPagePathBgGrey
-          ? "bg-neutral-100"
-          : "bg-neutral-50",
-        "p-1"
+            ? "bg-neutral-100"
+            : "bg-neutral-50",
+        "p-1",
       )}
     >
       <Section className="bg-accent-500 rounded-xl relative">
@@ -83,15 +83,11 @@ const Footer = () => {
                 <h2 className="text-display-xs mb-9">
                   {footerLinks?.heading?.split("|").at(1)}
                 </h2>
-                <Link
+                <ButtonTag
+                  label={footerLinks?.link?.name || "Contact Us"}
                   href={footerLinks?.link?.href || "/contact-us"}
-                  className={cn(
-                    buttonVariants({ variant: "default" }),
-                    "bg-neutral-900 text-neutral-50 uppercase"
-                  )}
-                >
-                  {footerLinks?.link?.name}
-                </Link>
+                  variant="secondary"
+                />
               </div>
               <div className="col-span-12 md:col-span-6 grid grid-cols-2 sm:grid-cols-4 gap-6">
                 {footerLinks?.links &&
@@ -104,7 +100,7 @@ const Footer = () => {
                         <ul
                           className={cn(
                             index === 0 ? " font-semibold" : null,
-                            "flex flex-col gap-5 text-lg"
+                            "flex flex-col gap-5 text-lg",
                           )}
                         >
                           {singleLink?.pageLinks &&
@@ -189,7 +185,7 @@ const Footer = () => {
                             {singleLink?.name}
                           </Link>
                         );
-                      }
+                      },
                     )}
                 </div>
               </div>

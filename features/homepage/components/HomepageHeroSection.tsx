@@ -1,12 +1,11 @@
 "use client";
 import Section from "@/components/global/Section";
-import { buttonVariants } from "@/components/ui/button";
 import ScrollReveal from "@/components/ui/scroll-change";
 import { HomepageQuery } from "@/lib/codegen/graphql";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import HomePageHeroSecHeading from "./HomePageHeroSecHeading";
-import Link from "next/link";
+import ButtonTag from "@/components/shared/ButtonTag";
 
 const HomepageHeroSection = ({
   heroSectionData,
@@ -31,15 +30,13 @@ const HomepageHeroSection = ({
             </p>
             <div className="flex  gap-4">
               {heroSectionData?.button?.map((singleButton, index) => (
-                <Link
+                <ButtonTag
                   key={index}
-                  className={`flex items-center gap-1 uppercase bg-none hover:bg-neutral-900 hover:text-neutral-50 transition-all ${buttonVariants(
-                    { variant: "link" }
-                  )}`}
+                  label={singleButton?.name || "Button"}
+                  variant={index != 0 ? "ghost" : "secondary"}
                   href={singleButton?.href || "#"}
-                >
-                  {singleButton?.name} {index === 1 ? <ArrowRight /> : null}
-                </Link>
+                  icon={index === 1 ? <ArrowRight /> : null}
+                />
               ))}
             </div>
           </div>

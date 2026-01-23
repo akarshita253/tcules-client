@@ -15,7 +15,6 @@ const BlogContainer = ({
 }: {
   blog: NonNullable<BlogsQuery["blogs"][0]>;
 }) => {
-  console.log("BlogContainer blog:", blog);
   const { title, createdAt, updatedAt, featureImage } = blog;
   const profiles = blog.blogProfileSection;
 

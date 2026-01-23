@@ -6,8 +6,8 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import logo from "@/public/Logo.svg";
 import Link from "next/link";
-import { buttonVariants } from "../ui/button";
 import { NavbarQuery } from "@/lib/codegen/graphql";
+import ButtonTag from "../shared/ButtonTag";
 
 type State = {
   isMenuOpen: boolean;
@@ -55,7 +55,9 @@ const BurgerMenu = ({
   const { isMenuOpen, activeIndex } = state;
 
   const levelTwoNavItems =
-    activeIndex !== null ? navLinks?.[activeIndex]?.navLevelTwoGroup ?? [] : [];
+    activeIndex !== null
+      ? (navLinks?.[activeIndex]?.navLevelTwoGroup ?? [])
+      : [];
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "";
@@ -91,7 +93,7 @@ const BurgerMenu = ({
       <div
         className={cn(
           "fixed inset-0 z-40 transition-opacity duration-300",
-          isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+          isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible",
         )}
         onClick={() => dispatch({ type: "CLOSE_MENU" })}
       />
@@ -103,7 +105,7 @@ const BurgerMenu = ({
         className={cn(
           "fixed top-16 right-0 z-50 h-[calc(100vh-60px)] w-full bg-neutral-50 lg:hidden",
           "transform transition-transform duration-300 ease-in-out p-5",
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
+          isMenuOpen ? "translate-x-0" : "translate-x-full",
         )}
       >
         <div className="flex justify-between items-center mb-6 z-50">
@@ -120,7 +122,7 @@ const BurgerMenu = ({
           <div
             className={cn(
               "sm:col-span-5 flex flex-col gap-6",
-              activeIndex !== null && "hidden sm:flex"
+              activeIndex !== null && "hidden sm:flex",
             )}
           >
             <div className="flex flex-col">
@@ -136,16 +138,11 @@ const BurgerMenu = ({
                 </button>
               ))}
             </div>
-
-            <Link
-              href="#"
-              className={cn(
-                buttonVariants({ variant: "default" }),
-                "bg-neutral-900 text-neutral-50 uppercase"
-              )}
-            >
-              Start a project
-            </Link>
+            <ButtonTag
+              label="Start a project"
+              href="/contact-us"
+              variant="secondary"
+            />
           </div>
 
           <div
@@ -154,7 +151,7 @@ const BurgerMenu = ({
               "sm:h-[calc(100vh-100px)] pb-10 overflow-y-auto no-scrollbar transform transition-transform duration-300 ease-in-out",
               activeIndex !== null
                 ? "translate-x-0 bg-neutral-50 p-3"
-                : "translate-x-full"
+                : "translate-x-full",
             )}
           >
             <button
@@ -186,13 +183,13 @@ const BurgerMenu = ({
                   "p-3 min-h-[358px]",
                   index === arr.length - 1
                     ? "bg-neutral-50"
-                    : "bg-noise rounded-lg flex flex-col justify-between gap-2"
+                    : "bg-noise rounded-lg flex flex-col justify-between gap-2",
                 )}
               >
                 <div
                   className={cn(
                     "flex justify-between items-center",
-                    index === arr.length - 1 ? "mb-7" : "mb-0"
+                    index === arr.length - 1 ? "mb-7" : "mb-0",
                   )}
                 >
                   <h3 className="text-heading-2xs text-neutral-800">

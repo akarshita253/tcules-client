@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { buttonVariants } from "../ui/button";
 import { NAVBAR_QUERY } from "@/lib/queries/navbar";
 import { NavbarQuery } from "@/lib/codegen/graphql";
-import { cn, strapiRequest } from "@/lib/utils";
+import { strapiRequest } from "@/lib/utils";
 import { Container } from "./Container";
 import Image from "next/image";
 import NavHoverStates from "./NavHoverStates";
 import BurgerMenu from "./BurgerMenu";
+import ButtonTag from "../shared/ButtonTag";
 
 const Navbar = async () => {
   const response = await strapiRequest<NavbarQuery>(NAVBAR_QUERY);
@@ -27,20 +27,16 @@ const Navbar = async () => {
         </div>
       )}
       <NavHoverStates navLinks={navData?.navLevelOneGroup} />
-      <BurgerMenu  navLinks={navData?.navLevelOneGroup}/>
+      <BurgerMenu navLinks={navData?.navLevelOneGroup} />
       <div className="lg:inline-block hidden">
         {navData?.navButton &&
           navData?.navButton?.map((button, index) => (
-            <Link
+            <ButtonTag
               key={index}
-              href={button?.href || ""}
-              className={cn(
-                buttonVariants({ variant: "default" }),
-                "bg-neutral-900 text-neutral-50"
-              )}
-            >
-              {button?.name}
-            </Link>
+              label={button?.name || ""}
+              href={button?.href || "#"}
+              variant="secondary"
+            />
           ))}
       </div>
     </Container>

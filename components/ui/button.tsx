@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         secondary:
-          "bg-neutral-900 text-neutral-50 text-label-3xs rounded-sm uppercase hover:bg-neutral-800 focus-visible:ring-neutral-900/20 disabled:bg-neutral-800/30",
+          "bg-neutral-900 text-neutral-50! text-label-3xs rounded-sm uppercase hover:bg-neutral-800 focus-visible:ring-neutral-900/20 disabled:bg-neutral-800/30",
         default:
           "bg-accent-500 text-neutral-900 text-label-3xs rounded-sm uppercase hover:bg-accent-400 focus-visible:ring-accent-500/20 disabled:bg-accent-500/30",
         destructive:

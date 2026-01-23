@@ -11,7 +11,6 @@ const CareerContainer = ({
 }: {
   careerData: NonNullable<CareerQuery["career"]>;
 }) => {
-  console.log(careerData, "this is the career data");
   const secondSectionData = careerData?.secondSection;
   const thirdSectionData = careerData?.thirdSection;
   const fourthSectionData = careerData?.fourthSection;

@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { CLIENT_CONTACT_MUTATION } from "@/lib/mutations/clientContact";
 import { useMutation } from "@apollo/client/react";
 import { Textarea } from "../ui/textarea";
+import { cn } from "@/lib/utils";
 
 const formSchema = z.object({
   fullName: z.string().min(2).max(50),
@@ -25,7 +26,7 @@ const formSchema = z.object({
   ideaAboutProject: z.string().min(6).max(400),
 });
 
-const ContactForm = () => {
+const ContactForm = ({className}:{className?:string}) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -55,7 +56,7 @@ const ContactForm = () => {
     });
   }
   return (
-    <div className="p-8 bg-neutral-50 rounded-xl mx-auto mb-6 sm:mb-11">
+    <div className={cn("p-8 bg-neutral-50 rounded-xl mx-auto mb-6 sm:mb-11",className)}>
       {error && <p className="text-red-500">{error.message}</p>}
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -148,14 +149,8 @@ const ContactForm = () => {
                   Let’s talk about your product
                 </FormLabel>
                 <FormControl>
-                  {/* <Input
-                    type="text-areaborder-none "
-                    className="text-label-sm placeholder:text-neutral-400 bg-neutral-100"
-                    placeholder="Tell us about your product and we will take it from there...."
-                    {...field}
-                  /> */}
                   <Textarea
-                    className="text-label-sm placeholder:text-neutral-400 bg-neutral-100"
+                    className="text-label-sm placeholder:text-neutral-400 bg-neutral-100 min-h-[186px] resize-none"
                     placeholder="Tell us about your product and we will take it from there...."
                     {...field}
                     rows={10}
@@ -166,8 +161,8 @@ const ContactForm = () => {
             )}
           />
           <Button
-            className="uppercase bg-neutral-900 text-neutral-50"
             type="submit"
+            variant={"secondary"}
           >
             {loading ? "Submitting..." : data ? "Submitted" : "Submit Form"}
           </Button>

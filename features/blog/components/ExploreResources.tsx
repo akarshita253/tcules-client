@@ -16,7 +16,6 @@ const ExploreResources = () => {
     error: blogsError,
   } = useQuery<AllBlogsQuery>(GET_BLOGS, {});
 
-  console.log("ExploreResources blogsListData:", blogsListData);
   if (blogsLoading) return <p>Loading...</p>;
   if (blogsError) return <p>Error loading blogs.</p>;
 

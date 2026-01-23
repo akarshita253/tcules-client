@@ -8,7 +8,6 @@ const HomepageFifthSection = ({
 }: {
   fifthSectionData: NonNullable<HomepageQuery["homepage"]>["fifthSection"];
 }) => {
-  console.log(fifthSectionData, "fifthSectionData");
   return (
     <Section>
       <div className="mb-6 sm:mb-12 pl-10">
