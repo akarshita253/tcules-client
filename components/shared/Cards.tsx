@@ -3,7 +3,7 @@ import { formatDate } from "@/lib/utils";
 import Image from "next/image";
 
 interface CardProps {
-  imageUrl: {
+  imageUrl?: {
     url: string;
     alternativeText: string;
     width?: number;
@@ -26,12 +26,10 @@ export function Cards({
       <CardHeader className="p-0 relative h-64">
         {imageUrl?.url && (
           <Image
-            src={imageUrl?.url}
-            alt={imageUrl?.alternativeText || "image"}
+            src={imageUrl.url}
+            alt={imageUrl.alternativeText || "image"}
             fill
             className="object-cover"
-            sizes="(max-width: 640px) 100vw, 640px"
-            priority={false}
           />
         )}
       </CardHeader>

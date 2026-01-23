@@ -12,7 +12,7 @@ interface PageProps {
 
 const SingleBlog = async ({ params }: PageProps) => {
   const { slug } = await params;
-  const data = await strapiRequest<BlogsQuery>(GET_BLOG, { slug });
+  const data = await strapiRequest<BlogsQuery>(GET_BLOG, { filters: { slug: { eq: slug } } });
     if (!data) {
       notFound();
     }

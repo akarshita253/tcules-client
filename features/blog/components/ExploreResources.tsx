@@ -1,16 +1,28 @@
+"use client";
+
 import Section from "@/components/global/Section";
-import { Cards } from "@/components/shared/Cards";
+import { AllBlogsQuery } from "@/lib/codegen/graphql";
+import { GET_BLOGS } from "@/lib/queries/getBlogs";
+import { formatDate } from "@/lib/utils";
+import { useQuery } from "@apollo/client/react";
 import { ChevronRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 const ExploreResources = () => {
-  const imageUrl = {
-    url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29kZXJ8ZW58MHx8MHx8fDA%3D&w=1000&q=80",
-    alternativeText: "Code Image",
-  };
+  const {
+    data: blogsListData,
+    loading: blogsLoading,
+    error: blogsError,
+  } = useQuery<AllBlogsQuery>(GET_BLOGS, {});
+
+  console.log("ExploreResources blogsListData:", blogsListData);
+  if (blogsLoading) return <p>Loading...</p>;
+  if (blogsError) return <p>Error loading blogs.</p>;
+
   return (
     <Section>
-      <div className="flex flex-col md:flex-row justify-between items-baseline">
+      <div className="flex flex-col md:flex-row justify-between items-baseline sm:mb-16 mb-9">
         <h2 className="">
           <span className=" text-display-xs text-accent-500">Explore </span>
           <span className="text-heading-sm">other resources</span>
@@ -22,22 +34,30 @@ const ExploreResources = () => {
           View all <ChevronRight className="text-neutral-700 text-xs" />
         </Link>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-9 md:mt-16">
-        <Cards
-          imageUrl={imageUrl}
-          title="Do AI Not For AI’s Sake But For Your User: Insights from Eden AI’s CTPO"
-          createdAt={"2025-12-03T18:38:19.322Z"}
-        />
-        <Cards
-          imageUrl={imageUrl}
-          title="Do AI Not For AI’s Sake But For Your User: Insights from Eden AI’s CTPO"
-          createdAt={"2025-12-03T18:38:19.322Z"}
-        />
-        <Cards
-          imageUrl={imageUrl}
-          title="Do AI Not For AI’s Sake But For Your User: Insights from Eden AI’s CTPO"
-          createdAt={"2025-12-03T18:38:19.322Z"}
-        />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {blogsListData?.blogs?.map((blog, index) => {
+          return (
+            <Link key={index} className="flex flex-col justify-between gap-3" href={blog?.slug||"#"}>
+              <div className="w-full h-[285px] relative overflow-hidden rounded-lg">
+                {blog?.thumbnail?.url && (
+                  <Image
+                    src={blog?.thumbnail?.url || ""}
+                    alt={blog?.thumbnail?.alternativeText || "image"}
+                    fill
+                  />
+                )}
+              </div>
+                <div className="">
+                  <h3 className="mb-3 text-heading-2xs text-neutral-800">
+                    {blog?.title}
+                  </h3>
+                  <p className="text-label-md text-neutral-600">
+                    {formatDate(blog?.createdAt)}
+                  </p>
+                </div>
+            </Link>
+          );
+        })}
       </div>
     </Section>
   );

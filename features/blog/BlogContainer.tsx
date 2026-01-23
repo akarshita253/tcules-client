@@ -8,12 +8,14 @@ import Profiles from "./components/Profiles";
 import { renderBlock } from "./components/MainSection";
 import { Container } from "@/components/global/Container";
 import { Block } from "@/components/global/Block";
+import ApolloWrapper from "@/lib/providers/ApolloWrapper";
 
 const BlogContainer = ({
   blog,
 }: {
   blog: NonNullable<BlogsQuery["blogs"][0]>;
 }) => {
+  console.log("BlogContainer blog:", blog);
   const { title, createdAt, updatedAt, featureImage } = blog;
   const profiles = blog.blogProfileSection;
 
@@ -40,10 +42,12 @@ const BlogContainer = ({
       </Container>
       <Container>
         <Block className="col-span-12">
+        <ApolloWrapper>
           <ExploreResources />
-          <CtaSection />
+        </ApolloWrapper>
+        <CtaSection />
         </Block>
-      </Container>
+        </Container>
     </>
   );
 };
