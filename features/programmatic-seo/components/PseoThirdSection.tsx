@@ -5,6 +5,7 @@ import ecilips from "@/public/bulletcir.png";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
+import arrow from "@/public/white-arrow.svg"
 
 const PseoThirdSection = ({
   thirdSectionData,
@@ -25,9 +26,9 @@ const PseoThirdSection = ({
         <h3 className="text-heading-2xs text-neutral-900 mb-14">
           {thirdSectionData?.pspCards?.heading}
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-11">
           {thirdSectionData?.pspCards?.points &&
-            thirdSectionData?.pspCards?.points.map((point) => (
+            thirdSectionData?.pspCards?.points.map((point:{ id: string; listText: string }) => (
               <p key={point?.id} className="flex gap-2">
                 <span className="shrink-0">
                   <Image
@@ -44,30 +45,44 @@ const PseoThirdSection = ({
         </div>
       </div>
       <div className="p-8">
-        <div className="flex justify-between">
+        <div className="flex justify-between mb-6">
           <div>
             <h2 className="text-heading-xs text-neutral-800 mb-2">
-              {thirdSectionData?.headingBottom}
+              {thirdSectionData?.headingBottom || "Let’s connect!"}
             </h2>
             <p className="text-label-xl text-neutral-700 md:w-2/3">
-              {thirdSectionData?.descriptionBottom}
+              {thirdSectionData?.descriptionBottom ||
+                "Looking for something specific or have a unique ask?Let’s talk and figure it out together"}
             </p>
           </div>
           <div>
-            {thirdSectionData?.bottomIcon?.url && (
+            {thirdSectionData?.bottomIcon?.url ? (
               <Image
                 src={thirdSectionData?.bottomIcon?.url}
                 alt={thirdSectionData?.bottomIcon?.alternativeText || "icon"}
                 width={thirdSectionData?.bottomIcon?.width || 105}
                 height={thirdSectionData?.bottomIcon?.height || 105}
               />
+            ):(
+                <Image
+                src={arrow}
+                alt={"icon"}
+                width={105}
+                height={105}
+              />
             )}
           </div>
         </div>
         <div>
-            <Link className={cn(buttonVariants({ variant: "default" }),"bg-neutral-900 text-neutral-50")} href={thirdSectionData?.bottomLink?.href||"#"}>
-            {thirdSectionData?.bottomLink?.name}
-            </Link>
+          <Link
+            className={cn(
+              buttonVariants({ variant: "default" }),
+              "bg-neutral-900 text-neutral-50 uppercase",
+            )}
+            href={thirdSectionData?.bottomLink?.href || "#"}
+          >
+            {thirdSectionData?.bottomLink?.name||"Talk to labs"}
+          </Link>
         </div>
       </div>
     </Section>

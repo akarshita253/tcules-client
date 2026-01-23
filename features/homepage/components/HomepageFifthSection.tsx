@@ -8,6 +8,7 @@ const HomepageFifthSection = ({
 }: {
   fifthSectionData: NonNullable<HomepageQuery["homepage"]>["fifthSection"];
 }) => {
+  console.log(fifthSectionData, "fifthSectionData");
   return (
     <Section>
       <div className="mb-6 sm:mb-12 pl-10">
@@ -24,9 +25,9 @@ const HomepageFifthSection = ({
         </p>
       </div>
       <div className="flex flex-col justify-between gap-2 bg-neutral-50 rounded-lg p-2">
-        {fifthSectionData?.case_studies &&
-          fifthSectionData?.case_studies.length > 0 &&
-          fifthSectionData?.case_studies.map((item) => (
+        {fifthSectionData?.blogsDetails &&
+          fifthSectionData?.blogsDetails.length > 0 &&
+          fifthSectionData?.blogsDetails.map((item) => (
             <div
               className="bg-neutral-100 flex flex-col sm:flex-row justify-between items-center py-6 px-8 rounded-xl gap-12"
               key={item?.title}
@@ -49,7 +50,7 @@ const HomepageFifthSection = ({
                 </div>
               </div>
               <div>
-                <Link href="#">
+                <Link href={`/blogs/${item?.slug}`} className="flex items-center gap-2">
                   <ArrowRight />
                 </Link>
               </div>

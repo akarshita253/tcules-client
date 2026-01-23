@@ -9,7 +9,7 @@ const PseoFifthSection = ({
   >["fifthSection"];
 }) => {
   const [first, highlight, rest] =
-    fifthSectionData?.heading?.split("|").map((s) => s.trim()) ?? [];
+    fifthSectionData?.heading?.split("|").map((s: string) => s.trim()) ?? [];
   return (
     <Section>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -25,7 +25,7 @@ const PseoFifthSection = ({
         </div>
         {fifthSectionData?.cards &&
           fifthSectionData?.cards.length > 0 &&
-          fifthSectionData?.cards.map((card) => (
+          fifthSectionData?.cards.map((card:{ id: string; heading: string; description: string }) => (
             <div
               key={card?.id}
               className="p-8 flex flex-col justify-between gap-2 rounded-xl bg-noise min-h-[300px]"

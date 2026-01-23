@@ -5,14 +5,10 @@ query ProgrammaticSeoPages($filters: ProgrammaticSeoPageFiltersInput) {
   programmaticSeoPages(filters: $filters) {
     title
     slug
-    heroSection {
-      heading
-      description
-      heroSectionButton {
-        href
-        name
-        id
-      }
+    description
+    heroSectionLink {
+      href
+      name
     }
     secondSection {
       heading
@@ -26,56 +22,9 @@ query ProgrammaticSeoPages($filters: ProgrammaticSeoPageFiltersInput) {
         }
       }
     }
-    thirdSection {
-      headingTop
-      headingBottom
-      descriptionTop
-      descriptionBottom
-      bottomLink {
-        href
-        name
-      }
-      bottomIcon {
-        alternativeText
-        url
-        height
-        width
-      }
-      pspCards {
-        id
-        heading
-        points {
-          id
-          listText
-        }
-      }
-    }
-    fourthSection {
-      heading
-      description
-      cards {
-        id
-        heading
-        points {
-          id
-          listText
-        }
-        links {
-          href
-          id
-          name
-        }
-      }
-    }
-    fifthSection {
-      heading
-      description
-      cards {
-        id
-        heading
-        description
-      }
-    }
+    thirdSection 
+    fourthSection
+    fifthSection
     sixthSection {
       heading
       featureImage {

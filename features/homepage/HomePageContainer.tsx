@@ -20,7 +20,6 @@ const HomePageContainer = ({
   const fourthSectionData = homepageData?.fourthSection;
   const fifthSectionData = homepageData?.fifthSection;
   const contactSectionData = homepageData?.contactSection;
-
   return (
     <main className="bg-neutral-100 overflow-hidden relative">
       <Container className="md:grid grid-cols-12 gap-6">

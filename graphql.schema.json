@@ -1490,29 +1490,29 @@ export interface ComponentHomepageHomepageContactAndTestimonialsInput {
 
 export interface ComponentHomepageHomepageFifthSection {
   __typename?: 'ComponentHomepageHomepageFifthSection';
-  case_studies: Array<Maybe<CaseStudy>>;
-  case_studies_connection?: Maybe<CaseStudyRelationResponseCollection>;
+  blogsDetails: Array<Maybe<Blog>>;
+  blogsDetails_connection?: Maybe<BlogRelationResponseCollection>;
   description?: Maybe<Scalars['String']['output']>;
   heading?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
 }
 
 
-export interface ComponentHomepageHomepageFifthSectionCase_StudiesArgs {
-  filters?: InputMaybe<CaseStudyFiltersInput>;
+export interface ComponentHomepageHomepageFifthSectionBlogsDetailsArgs {
+  filters?: InputMaybe<BlogFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 }
 
 
-export interface ComponentHomepageHomepageFifthSectionCase_Studies_ConnectionArgs {
-  filters?: InputMaybe<CaseStudyFiltersInput>;
+export interface ComponentHomepageHomepageFifthSectionBlogsDetails_ConnectionArgs {
+  filters?: InputMaybe<BlogFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 }
 
 export interface ComponentHomepageHomepageFifthSectionInput {
-  case_studies?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  blogsDetails?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   description?: InputMaybe<Scalars['String']['input']>;
   heading?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['ID']['input']>;
@@ -2440,15 +2440,6 @@ export interface ComponentPspPspCardsFiltersInput {
   points?: InputMaybe<ComponentElementsPointsFiltersInput>;
 }
 
-export interface ComponentPspPspCardsInput {
-  description?: InputMaybe<Scalars['String']['input']>;
-  heading?: InputMaybe<Scalars['String']['input']>;
-  icon?: InputMaybe<Scalars['ID']['input']>;
-  id?: InputMaybe<Scalars['ID']['input']>;
-  links?: InputMaybe<ComponentElementsLinkInput>;
-  points?: InputMaybe<Array<InputMaybe<ComponentElementsPointsInput>>>;
-}
-
 export interface ComponentPspPspCardsSection {
   __typename?: 'ComponentPspPspCardsSection';
   cards?: Maybe<Array<Maybe<ComponentPspPspCards>>>;
@@ -2462,22 +2453,6 @@ export interface ComponentPspPspCardsSectionCardsArgs {
   filters?: InputMaybe<ComponentPspPspCardsFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-}
-
-export interface ComponentPspPspCardsSectionFiltersInput {
-  and?: InputMaybe<Array<InputMaybe<ComponentPspPspCardsSectionFiltersInput>>>;
-  cards?: InputMaybe<ComponentPspPspCardsFiltersInput>;
-  description?: InputMaybe<StringFilterInput>;
-  heading?: InputMaybe<StringFilterInput>;
-  not?: InputMaybe<ComponentPspPspCardsSectionFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<ComponentPspPspCardsSectionFiltersInput>>>;
-}
-
-export interface ComponentPspPspCardsSectionInput {
-  cards?: InputMaybe<Array<InputMaybe<ComponentPspPspCardsInput>>>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  heading?: InputMaybe<Scalars['String']['input']>;
-  id?: InputMaybe<Scalars['ID']['input']>;
 }
 
 export interface ComponentPspPspContactus {
@@ -2675,30 +2650,6 @@ export interface ComponentPspPspThirdSection {
   headingBottom?: Maybe<Scalars['String']['output']>;
   headingTop?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
-  pspCards?: Maybe<ComponentPspPspCards>;
-}
-
-export interface ComponentPspPspThirdSectionFiltersInput {
-  and?: InputMaybe<Array<InputMaybe<ComponentPspPspThirdSectionFiltersInput>>>;
-  bottomLink?: InputMaybe<ComponentElementsLinkFiltersInput>;
-  descriptionBottom?: InputMaybe<StringFilterInput>;
-  descriptionTop?: InputMaybe<StringFilterInput>;
-  headingBottom?: InputMaybe<StringFilterInput>;
-  headingTop?: InputMaybe<StringFilterInput>;
-  not?: InputMaybe<ComponentPspPspThirdSectionFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<ComponentPspPspThirdSectionFiltersInput>>>;
-  pspCards?: InputMaybe<ComponentPspPspCardsFiltersInput>;
-}
-
-export interface ComponentPspPspThirdSectionInput {
-  bottomIcon?: InputMaybe<Scalars['ID']['input']>;
-  bottomLink?: InputMaybe<ComponentElementsLinkInput>;
-  descriptionBottom?: InputMaybe<Scalars['String']['input']>;
-  descriptionTop?: InputMaybe<Scalars['String']['input']>;
-  headingBottom?: InputMaybe<Scalars['String']['input']>;
-  headingTop?: InputMaybe<Scalars['String']['input']>;
-  id?: InputMaybe<Scalars['ID']['input']>;
-  pspCards?: InputMaybe<ComponentPspPspCardsInput>;
 }
 
 export interface ComponentResourcesCards {
@@ -4847,11 +4798,12 @@ export interface ProgrammaticSeoPage {
   __typename?: 'ProgrammaticSeoPage';
   contactUs?: Maybe<ComponentPspPspContactus>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
   documentId: Scalars['ID']['output'];
   faqSection?: Maybe<ComponentPspPspFaqSection>;
-  fifthSection?: Maybe<ComponentPspPspCardsSection>;
-  fourthSection?: Maybe<ComponentPspPspCardsSection>;
-  heroSection?: Maybe<ComponentServiceHeroSection>;
+  fifthSection?: Maybe<Scalars['JSON']['output']>;
+  fourthSection?: Maybe<Scalars['JSON']['output']>;
+  heroSectionLink?: Maybe<ComponentElementsLink>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   resourceSection?: Maybe<ComponentPspPspResourceSection>;
   secondSection?: Maybe<ComponentPspPspSecondSection>;
@@ -4859,7 +4811,7 @@ export interface ProgrammaticSeoPage {
   sixthSection?: Maybe<ComponentPspPspSixthSection>;
   slug?: Maybe<Scalars['String']['output']>;
   testimonialSection?: Maybe<ComponentPspPspTestimonialSection>;
-  thirdSection?: Maybe<ComponentPspPspThirdSection>;
+  thirdSection?: Maybe<Scalars['JSON']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
 }
@@ -4874,11 +4826,12 @@ export interface ProgrammaticSeoPageFiltersInput {
   and?: InputMaybe<Array<InputMaybe<ProgrammaticSeoPageFiltersInput>>>;
   contactUs?: InputMaybe<ComponentPspPspContactusFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
+  description?: InputMaybe<StringFilterInput>;
   documentId?: InputMaybe<IdFilterInput>;
   faqSection?: InputMaybe<ComponentPspPspFaqSectionFiltersInput>;
-  fifthSection?: InputMaybe<ComponentPspPspCardsSectionFiltersInput>;
-  fourthSection?: InputMaybe<ComponentPspPspCardsSectionFiltersInput>;
-  heroSection?: InputMaybe<ComponentServiceHeroSectionFiltersInput>;
+  fifthSection?: InputMaybe<JsonFilterInput>;
+  fourthSection?: InputMaybe<JsonFilterInput>;
+  heroSectionLink?: InputMaybe<ComponentElementsLinkFiltersInput>;
   not?: InputMaybe<ProgrammaticSeoPageFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<ProgrammaticSeoPageFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
@@ -4888,17 +4841,18 @@ export interface ProgrammaticSeoPageFiltersInput {
   sixthSection?: InputMaybe<ComponentPspPspSixthSectionFiltersInput>;
   slug?: InputMaybe<StringFilterInput>;
   testimonialSection?: InputMaybe<ComponentPspPspTestimonialSectionFiltersInput>;
-  thirdSection?: InputMaybe<ComponentPspPspThirdSectionFiltersInput>;
+  thirdSection?: InputMaybe<JsonFilterInput>;
   title?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 }
 
 export interface ProgrammaticSeoPageInput {
   contactUs?: InputMaybe<ComponentPspPspContactusInput>;
+  description?: InputMaybe<Scalars['String']['input']>;
   faqSection?: InputMaybe<ComponentPspPspFaqSectionInput>;
-  fifthSection?: InputMaybe<ComponentPspPspCardsSectionInput>;
-  fourthSection?: InputMaybe<ComponentPspPspCardsSectionInput>;
-  heroSection?: InputMaybe<ComponentServiceHeroSectionInput>;
+  fifthSection?: InputMaybe<Scalars['JSON']['input']>;
+  fourthSection?: InputMaybe<Scalars['JSON']['input']>;
+  heroSectionLink?: InputMaybe<ComponentElementsLinkInput>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   resourceSection?: InputMaybe<ComponentPspPspResourceSectionInput>;
   secondSection?: InputMaybe<ComponentPspPspSecondSectionInput>;
@@ -4906,7 +4860,7 @@ export interface ProgrammaticSeoPageInput {
   sixthSection?: InputMaybe<ComponentPspPspSixthSectionInput>;
   slug?: InputMaybe<Scalars['String']['input']>;
   testimonialSection?: InputMaybe<ComponentPspPspTestimonialSectionInput>;
-  thirdSection?: InputMaybe<ComponentPspPspThirdSectionInput>;
+  thirdSection?: InputMaybe<Scalars['JSON']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
 }
 
@@ -6362,7 +6316,7 @@ export type GetSingleEventQuery = { __typename?: 'Query', events: Array<{ __type
 export type HomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type HomepageQuery = { __typename?: 'Query', homepage?: { __typename?: 'Homepage', heroSection?: { __typename?: 'ComponentHomepageHomepageHeroSection', headingOne?: string | null, headingTwo?: string | null, descriptionOne?: string | null, descriptionTwo?: string | null, rightSectionImage?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null, button?: Array<{ __typename?: 'ComponentElementsLink', id: string, name?: string | null, href?: string | null } | null> | null, bottomTags?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null } | null, secondSection?: { __typename?: 'ComponentHomepageHomepageSecondSection', secondSection?: Array<{ __typename?: 'ComponentHomepageHomepageSecondSectionPoints', id: string, heading?: string | null, description?: string | null, image?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null, bgImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null, link?: { __typename?: 'ComponentHomepageSecondSectionCaseStudyRelation', botomImage?: { __typename?: 'UploadFile', alternativeText?: string | null, height?: number | null, url: string, width?: number | null } | null, case_study?: { __typename?: 'CaseStudy', slug?: string | null, title?: string | null } | null } | null } | null> | null } | null, thirdSection?: { __typename?: 'ComponentHomepageHomepageThirdSection', heading?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, cards?: Array<{ __typename?: 'ComponentHomepageBranchCards', id: string, heading?: string | null, description?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null } | null> | null } | null, fourthSection?: { __typename?: 'ComponentHomepageHomepageFourthSection', heading?: string | null, description?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, button?: { __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null } | null, cards?: Array<{ __typename?: 'ComponentHomepageFourthSectionCards', id: string, heading?: string | null, cardImage?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null } | null> | null } | null, fifthSection?: { __typename?: 'ComponentHomepageHomepageFifthSection', heading?: string | null, description?: string | null, case_studies: Array<{ __typename?: 'CaseStudy', title?: string | null, tags: Array<{ __typename?: 'Tag', name?: string | null } | null> } | null> } | null, contactSection?: { __typename?: 'ComponentHomepageHomepageContactAndTestimonials', heading?: string | null, testimonial?: { __typename?: 'Testimonial', clientComments?: string | null, clientCompany?: string | null, clientName?: string | null, clientPosition?: string | null } | null } | null } | null };
+export type HomepageQuery = { __typename?: 'Query', homepage?: { __typename?: 'Homepage', heroSection?: { __typename?: 'ComponentHomepageHomepageHeroSection', headingOne?: string | null, headingTwo?: string | null, descriptionOne?: string | null, descriptionTwo?: string | null, rightSectionImage?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null, button?: Array<{ __typename?: 'ComponentElementsLink', id: string, name?: string | null, href?: string | null } | null> | null, bottomTags?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null } | null, secondSection?: { __typename?: 'ComponentHomepageHomepageSecondSection', secondSection?: Array<{ __typename?: 'ComponentHomepageHomepageSecondSectionPoints', id: string, heading?: string | null, description?: string | null, image?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null, bgImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null, link?: { __typename?: 'ComponentHomepageSecondSectionCaseStudyRelation', botomImage?: { __typename?: 'UploadFile', alternativeText?: string | null, height?: number | null, url: string, width?: number | null } | null, case_study?: { __typename?: 'CaseStudy', slug?: string | null, title?: string | null } | null } | null } | null> | null } | null, thirdSection?: { __typename?: 'ComponentHomepageHomepageThirdSection', heading?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, cards?: Array<{ __typename?: 'ComponentHomepageBranchCards', id: string, heading?: string | null, description?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null } | null> | null } | null, fourthSection?: { __typename?: 'ComponentHomepageHomepageFourthSection', heading?: string | null, description?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, button?: { __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null } | null, cards?: Array<{ __typename?: 'ComponentHomepageFourthSectionCards', id: string, heading?: string | null, cardImage?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null } | null> | null } | null, fifthSection?: { __typename?: 'ComponentHomepageHomepageFifthSection', heading?: string | null, description?: string | null, blogsDetails: Array<{ __typename?: 'Blog', title?: string | null, slug?: string | null, tags: Array<{ __typename?: 'Tag', name?: string | null } | null> } | null> } | null, contactSection?: { __typename?: 'ComponentHomepageHomepageContactAndTestimonials', heading?: string | null, testimonial?: { __typename?: 'Testimonial', clientComments?: string | null, clientCompany?: string | null, clientName?: string | null, clientPosition?: string | null } | null } | null } | null };
 
 export type InterviewsQueryVariables = Exact<{
   filters?: InputMaybe<InterviewFiltersInput>;
@@ -6421,7 +6375,7 @@ export type ProgrammaticSeoPagesQueryVariables = Exact<{
 }>;
 
 
-export type ProgrammaticSeoPagesQuery = { __typename?: 'Query', programmaticSeoPages: Array<{ __typename?: 'ProgrammaticSeoPage', title?: string | null, slug?: string | null, heroSection?: { __typename?: 'ComponentServiceHeroSection', heading?: string | null, description?: string | null, heroSectionButton?: Array<{ __typename?: 'ComponentElementsButtons', href?: string | null, name?: string | null, id: string } | null> | null } | null, secondSection?: { __typename?: 'ComponentPspPspSecondSection', heading?: string | null, cardImage?: Array<{ __typename?: 'ComponentSharedMedia', id: string, file?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null } | null> | null } | null, thirdSection?: { __typename?: 'ComponentPspPspThirdSection', headingTop?: string | null, headingBottom?: string | null, descriptionTop?: string | null, descriptionBottom?: string | null, bottomLink?: { __typename?: 'ComponentElementsLink', href?: string | null, name?: string | null } | null, bottomIcon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null, pspCards?: { __typename?: 'ComponentPspPspCards', id: string, heading?: string | null, points?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null } | null } | null, fourthSection?: { __typename?: 'ComponentPspPspCardsSection', heading?: string | null, description?: string | null, cards?: Array<{ __typename?: 'ComponentPspPspCards', id: string, heading?: string | null, points?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null, links?: { __typename?: 'ComponentElementsLink', href?: string | null, id: string, name?: string | null } | null } | null> | null } | null, fifthSection?: { __typename?: 'ComponentPspPspCardsSection', heading?: string | null, description?: string | null, cards?: Array<{ __typename?: 'ComponentPspPspCards', id: string, heading?: string | null, description?: string | null } | null> | null } | null, sixthSection?: { __typename?: 'ComponentPspPspSixthSection', heading?: string | null, featureImage?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null, link?: { __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null } | null } | null, testimonialSection?: { __typename?: 'ComponentPspPspTestimonialSection', heading?: string | null, description?: string | null, testimonials: Array<{ __typename?: 'Testimonial', clientComments?: string | null, clientName?: string | null, clientPosition?: string | null, clientProfilePicture?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null } | null> } | null, resourceSection?: { __typename?: 'ComponentPspPspResourceSection', heading?: string | null, link?: { __typename?: 'ComponentElementsLink', href?: string | null, name?: string | null } | null, case_studies: Array<{ __typename?: 'CaseStudy', slug?: string | null, title?: string | null, description?: string | null, thumbnail?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null, tags: Array<{ __typename?: 'Tag', name?: string | null } | null>, categories: Array<{ __typename?: 'Category', name?: string | null } | null> } | null> } | null, faqSection?: { __typename?: 'ComponentPspPspFaqSection', heading?: string | null, description?: string | null, faqs: Array<{ __typename?: 'Faq', documentId: string, question?: string | null, answer?: string | null } | null> } | null, contactUs?: { __typename?: 'ComponentPspPspContactus', heading?: string | null } | null, seo?: { __typename?: 'ComponentSharedSeo', metaTitle: string, metaDescription: string, canonicalURL?: string | null, codeJson?: any | null, focusString?: string | null, robots?: Enum_Componentsharedseo_Robots | null, slug?: string | null, structuredData?: any | null, og_graph?: { __typename?: 'ComponentSharedSeoOg', og_title?: string | null, og_description?: string | null, twitter_card_type?: Enum_Componentsharedseoog_Twitter_Card_Type | null, og_image?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null } | null } | null } | null> };
+export type ProgrammaticSeoPagesQuery = { __typename?: 'Query', programmaticSeoPages: Array<{ __typename?: 'ProgrammaticSeoPage', title?: string | null, slug?: string | null, description?: string | null, thirdSection?: any | null, fourthSection?: any | null, fifthSection?: any | null, heroSectionLink?: { __typename?: 'ComponentElementsLink', href?: string | null, name?: string | null } | null, secondSection?: { __typename?: 'ComponentPspPspSecondSection', heading?: string | null, cardImage?: Array<{ __typename?: 'ComponentSharedMedia', id: string, file?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null } | null> | null } | null, sixthSection?: { __typename?: 'ComponentPspPspSixthSection', heading?: string | null, featureImage?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null, link?: { __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null } | null } | null, testimonialSection?: { __typename?: 'ComponentPspPspTestimonialSection', heading?: string | null, description?: string | null, testimonials: Array<{ __typename?: 'Testimonial', clientComments?: string | null, clientName?: string | null, clientPosition?: string | null, clientProfilePicture?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null } | null> } | null, resourceSection?: { __typename?: 'ComponentPspPspResourceSection', heading?: string | null, link?: { __typename?: 'ComponentElementsLink', href?: string | null, name?: string | null } | null, case_studies: Array<{ __typename?: 'CaseStudy', slug?: string | null, title?: string | null, description?: string | null, thumbnail?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null, tags: Array<{ __typename?: 'Tag', name?: string | null } | null>, categories: Array<{ __typename?: 'Category', name?: string | null } | null> } | null> } | null, faqSection?: { __typename?: 'ComponentPspPspFaqSection', heading?: string | null, description?: string | null, faqs: Array<{ __typename?: 'Faq', documentId: string, question?: string | null, answer?: string | null } | null> } | null, contactUs?: { __typename?: 'ComponentPspPspContactus', heading?: string | null } | null, seo?: { __typename?: 'ComponentSharedSeo', metaTitle: string, metaDescription: string, canonicalURL?: string | null, codeJson?: any | null, focusString?: string | null, robots?: Enum_Componentsharedseo_Robots | null, slug?: string | null, structuredData?: any | null, og_graph?: { __typename?: 'ComponentSharedSeoOg', og_title?: string | null, og_description?: string | null, twitter_card_type?: Enum_Componentsharedseoog_Twitter_Card_Type | null, og_image?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null } | null } | null } | null> };
 
 export type ServiceQueryVariables = Exact<{ [key: string]: never; }>;
 

@@ -20,7 +20,7 @@ const PseoFourthSection = ({
       </p>
       <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
         {fourthSectionData?.cards &&
-          fourthSectionData?.cards?.map((singleCard) => {
+          fourthSectionData?.cards?.map((singleCard:{ id: string; heading: string; points: { id: string; listText: string }[]; links: { href: string }}) => {
             return (
               <div
                 key={singleCard?.id}
@@ -30,10 +30,16 @@ const PseoFourthSection = ({
                   <h3 className="text-heading-2xs text-neutral-900 mb-12 w-4/5">
                     {singleCard?.heading}
                   </h3>
-                  <div>
+                  <div className="flex flex-col gap-6">
                     {singleCard?.points?.map((singlePoint) => {
                       return (
-                        <p key={singlePoint?.id}>
+                        <p
+                          className="text-label-md text-neutral-700 flex gap-2"
+                          key={singlePoint?.id}
+                        >
+                          <span className="relative top-[5px]">
+                            <ArrowRight size={14} />
+                          </span>
                           <span>{singlePoint?.listText}</span>
                         </p>
                       );
@@ -42,12 +48,14 @@ const PseoFourthSection = ({
                 </div>
                 <div>
                   <Link
-                    href={singleCard?.links?.href || "#"}
+                    href={singleCard?.links?.href || "/contact-us"}
                     className="flex items-center gap-2"
                   >
-                    <span className="uppercase text-label-3xs text-neutral-900 ">{singleCard?.links?.name}</span>
+                    <span className="uppercase text-label-3xs text-neutral-900 ">
+                      BEGIN ENGAGEMENT
+                    </span>
                     <span>
-                      <ArrowRight size={14}/>
+                      <ArrowRight size={14} />
                     </span>
                   </Link>
                 </div>

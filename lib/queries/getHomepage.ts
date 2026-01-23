@@ -102,11 +102,12 @@ export const HOME_PAGE_QUERY = gql`
       fifthSection {
         heading
         description
-        case_studies {
-          title
+        blogsDetails {
           tags {
             name
           }
+          title
+          slug
         }
       }
       contactSection {
