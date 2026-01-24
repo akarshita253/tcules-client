@@ -1,10 +1,9 @@
 import Section from "@/components/global/Section";
-import { buttonVariants } from "@/components/ui/button";
+import ButtonTag from "@/components/shared/ButtonTag";
 import { AboutQuery } from "@/lib/codegen/graphql";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 const AboutSeventhSection = ({
   seventhSectionData,
@@ -65,15 +64,7 @@ const AboutSeventhSection = ({
           {seventhSectionData?.heading}
         </h2>
         <div className="flex justify-center items-center">
-          <Link
-            className={cn(
-              buttonVariants({ variant: "default" }),
-              "bg-neutral-900 text-neutral-50"
-            )}
-            href={seventhSectionData?.link?.href || "#"}
-          >
-            {seventhSectionData?.link?.name}
-          </Link>
+          <ButtonTag variant={"secondary"} label={seventhSectionData?.link?.name||"Link"} href={seventhSectionData?.link?.href||""}/>
         </div>
       </Section>
     </>

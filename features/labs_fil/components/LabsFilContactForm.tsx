@@ -112,8 +112,8 @@ const LabsFilContactForm = () => {
             )}
           />
           <Button
-            className="uppercase  text-neutral-800"
             type="submit"
+            variant={"default"}
           >
             {loading ? "Submitting..." : data ? "Submitted" : "Submit Form"}
           </Button>

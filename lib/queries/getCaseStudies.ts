@@ -143,32 +143,40 @@ query CaseStudyLandingPage {
 `
 
 export const GET_ALL_CASE_STUDIES = gql`
-  query AllCaseStudies($filters: CaseStudyFiltersInput) {
-  caseStudies(filters: $filters) {
-    __typename
-    documentId
-    title
-    description
-    createdAt
-    updatedAt
-    thumbnail {
-      url
-      width
-      height
-      alternativeText
-    }
-    slug
-    categories {
+  query AllCaseStudies(
+    $filters: CaseStudyFiltersInput
+    $pagination: PaginationArg
+    $sort: [String]
+  ) {
+    caseStudies(
+      filters: $filters
+      pagination: $pagination
+      sort: $sort
+    ) {
       documentId
-      name
-    }
-    tags {
-      documentId
-      name
+      title
+      description
+      createdAt
+      updatedAt
+      slug
+      thumbnail {
+        url
+        width
+        height
+        alternativeText
+      }
+      categories {
+        documentId
+        name
+      }
+      tags {
+        documentId
+        name
+      }
     }
   }
-}
 `;
+
 
 export const GET_CASESTUDY_CATEGORIES = gql`
   query Categories {

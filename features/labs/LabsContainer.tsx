@@ -30,7 +30,6 @@ const LabsContainer = ({ labsData }: { labsData: LabSingleTypeQuery }) => {
           <LabsHeroSec heroSectionData={heroSectionData} />
           <SecondSection cardsData={cardsData} />
           <ThirdSection cardsData={cardsData} />
-          {/* {labsMiscData && <LabsMiscSection labsMiscData={labsMiscData} />} */}
           {labsInterfaceSection && (
             <InterfaceLabsSection labsInterfaceSection={labsInterfaceSection} />
           )}

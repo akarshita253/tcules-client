@@ -1,10 +1,9 @@
 import Section from "@/components/global/Section";
-import { buttonVariants } from "@/components/ui/button";
 import { LabsFilLandingPageQuery } from "@/lib/codegen/graphql";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import Link from "next/link";
 import CircleInside from "@/public/CircleInside.svg";
+import ButtonTag from "@/components/shared/ButtonTag";
 
 const LabsFilFifthSection = ({
   fifthSectionData,
@@ -34,7 +33,7 @@ const LabsFilFifthSection = ({
                 key={index}
                 className={cn(
                   "relative z-10",
-                  index !== array.length - 1 && "mb-24"
+                  index !== array.length - 1 && "mb-24",
                 )}
               />
             ))}
@@ -55,15 +54,11 @@ const LabsFilFifthSection = ({
                     {singleCard?.heading}
                   </p>
                   <div className="overflow-hidden transition-all duration-300 max-h-0 group-hover:max-h-20 group-hover:mt-6">
-                    <Link
-                      href={singleCard?.link?.href || "#"}
-                      className={cn(
-                        buttonVariants({ variant: "default" }),
-                        "opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      )}
-                    >
-                      {singleCard?.link?.name || "Apply"}
-                    </Link>
+                    <ButtonTag
+                      label={singleCard?.link?.name || "Apply"}
+                      href={singleCard?.link?.href || ""}
+                      className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    />
                   </div>
                 </div>
               );

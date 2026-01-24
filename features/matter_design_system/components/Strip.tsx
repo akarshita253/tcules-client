@@ -1,10 +1,8 @@
 import Section from "@/components/global/Section";
-import { buttonVariants } from "@/components/ui/button";
+import ButtonTag from "@/components/shared/ButtonTag";
 import { MatterDesignSystemQuery } from "@/lib/codegen/graphql";
-import { cn } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 const Strip = ({
   stripData,
@@ -32,16 +30,7 @@ const Strip = ({
         <p className="text-label-xl text-neutral-200">
           {stripData?.description}
         </p>
-        <Link
-          className={cn(
-            buttonVariants({ variant: "default" }),
-            "flex items-center gap-1"
-          )}
-          href={stripData?.link?.href || "#"}
-        >
-          {stripData?.link?.name}
-          <ChevronRight />
-        </Link>
+        <ButtonTag icon={<ChevronRight />} href={stripData?.link?.href || "#"} label={stripData?.link?.name||"Know More"}/>
       </div>
     </Section>
   );

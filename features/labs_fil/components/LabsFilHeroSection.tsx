@@ -1,8 +1,7 @@
 import Section from "@/components/global/Section";
-import { buttonVariants } from "@/components/ui/button";
+import ButtonTag from "@/components/shared/ButtonTag";
 import { LabsFilLandingPageQuery } from "@/lib/codegen/graphql";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 
 const LabsFilHeroSection = ({
   heroSectionData,
@@ -29,15 +28,12 @@ const LabsFilHeroSection = ({
       </p>
       <div className="mt-12 flex justify-center items-center gap-4 flex-wrap">
         {heroSectionData?.button?.map((button, index) => (
-          <Link
-            key={index}
+          <ButtonTag
             href={button?.href || "#"}
-            className={`flex items-center gap-1 uppercase  ${buttonVariants(
-              { variant: "default" }
-            )}`}
-          >
-            {button?.name} {index === 1 ? <ArrowRight /> : null}
-          </Link>
+            label={button?.name || "Learn More"}
+            key={index}
+            icon={index === 1 ? <ArrowRight /> : null}
+          />
         ))}
       </div>
     </Section>

@@ -1,9 +1,8 @@
 import Section from "@/components/global/Section";
-import { buttonVariants } from "@/components/ui/button";
+import ButtonTag from "@/components/shared/ButtonTag";
 import { LabSingleTypeQuery } from "@/lib/codegen/graphql";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import Link from "next/link";
 type LabsInterfaceSectionProps = {
   labsInterfaceSection: NonNullable<
     NonNullable<LabSingleTypeQuery["labSingleType"]>["interfaceLabs"]
@@ -52,16 +51,10 @@ const InterfaceLabsSection = ({
                     .at(1)}
               </span>
             </h3>
-            <Link
-              href={
-                labsInterfaceSection?.labsInterfaceCards?.at(0)?.link?.href ||
-                "#"
-              }
-              className={cn(buttonVariants({ variant: "default" }))}
-            >
-              {labsInterfaceSection?.labsInterfaceCards &&
-                labsInterfaceSection?.labsInterfaceCards[0]?.link?.name}
-            </Link>
+            <ButtonTag
+              href={labsInterfaceSection?.labsInterfaceCards?.at(0)?.link?.href||"#"}
+              label={labsInterfaceSection?.labsInterfaceCards?.at(0)?.link?.name||"Button"}
+            />
           </div>
         </div>
         <div className="grid grid-cols-2 gap-2">

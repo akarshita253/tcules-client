@@ -1,7 +1,5 @@
 import Section from "@/components/global/Section";
 import { MatterDesignSystemQuery } from "@/lib/codegen/graphql";
-import Image from "next/image";
-import React from "react";
 
 const MatterDesignSecondSection = ({
   secondSectionData,
@@ -12,8 +10,8 @@ const MatterDesignSecondSection = ({
 }) => {
   return (
     <Section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div className="bg-neutral-800 rounded-xl p-8 relative">
-        {secondSectionData?.icon?.url && (
+      <div className="rounded-lg p-8 relative flex justify-center items-center">
+        {/* {secondSectionData?.icon?.url && (
           <div className="flex justify-end mb-4">
             <Image
               src={secondSectionData?.icon?.url}
@@ -22,7 +20,7 @@ const MatterDesignSecondSection = ({
               alt="icon"
             />
           </div>
-        )}
+        )} */}
         <h3 className="text-heading-md text-neutral-50 w-4/5">
           {secondSectionData?.heading}
         </h3>
@@ -31,10 +29,10 @@ const MatterDesignSecondSection = ({
         secondSectionData?.cardDetails.map((singleCard) => {
           return (
             <div
-              className="bg-neutral-800 rounded-xl p-8 relative "
+              className="bg-neutral-800 rounded-lg p-8 relative min-h-[360px] flex flex-col justify-between gap-2"
               key={singleCard?.id}
             >
-              {secondSectionData?.icon?.url && (
+              {/* {secondSectionData?.icon?.url && (
                 <div className="flex justify-end mb-6">
                   <Image
                     src={secondSectionData?.icon?.url}
@@ -43,11 +41,11 @@ const MatterDesignSecondSection = ({
                     alt="icon"
                   />
                 </div>
-              )}
+              )} */}
               <h3 className="text-heading-xs text-neutral-50 w-4/5 mb-6">
                 {secondSectionData?.heading}
               </h3>
-              <p className="text-label-3xl text-neutral-200">
+              <p className="text-label-md text-neutral-200">
                 {singleCard?.description}
               </p>
             </div>

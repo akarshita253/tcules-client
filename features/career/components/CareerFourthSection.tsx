@@ -1,10 +1,7 @@
 import Section from "@/components/global/Section";
-import { buttonVariants } from "@/components/ui/button";
+import ButtonTag from "@/components/shared/ButtonTag";
 import { CareerQuery } from "@/lib/codegen/graphql";
-import { cn } from "@/lib/utils";
 import Image from "next/image";
-import Link from "next/link";
-import React from "react";
 
 const CareerFourthSection = ({
   fourthSectionData,
@@ -35,12 +32,7 @@ const CareerFourthSection = ({
               </span>
             </h3>
             <div>
-              <Link
-                className={cn(buttonVariants({ variant: "default" }))}
-                href={fourthSectionData?.link?.href || "#"}
-              >
-                {fourthSectionData?.link?.name}
-              </Link>
+              <ButtonTag label={fourthSectionData?.link?.name||"Link"} href={fourthSectionData?.link?.href||""}/>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -76,12 +68,7 @@ const CareerFourthSection = ({
       <Section className="sm:py-[120px] border-y border-neutral-200">
         <h2 className="text-heading-xs text-neutral-800 mb-6 text-center sm:mb-9">{fourthSectionData?.bottomHeading}</h2>
         <div className="flex justify-center items-center">
-          <Link
-            className={cn(buttonVariants({ variant: "default" }),"bg-neutral-900 text-neutral-50")}
-            href={fourthSectionData?.bottomLink?.href || "#"}
-          >
-            {fourthSectionData?.bottomLink?.name}
-          </Link>
+          <ButtonTag variant={"secondary"} label={fourthSectionData?.bottomLink?.name||"Link"} href={fourthSectionData?.bottomLink?.href||""}/>
         </div>
       </Section>
     </>

@@ -163,7 +163,7 @@ const ContactUsFormSection = () => {
             )}
           />
           <Button
-            className="uppercase"
+            variant={"default"}
             type="submit"
           >
             {loading ? "Submitting..." : data ? "Submitted" : "Submit Form"}
