@@ -7,6 +7,7 @@ import Image from "next/image";
 import RenderMainSectionPIE from "../shared/MainSectionPIE";
 import BottomSectionPIE from "../shared/BottomSectionPIE";
 import ExploreResources from "@/features/blog/components/ExploreResources";
+import ApolloWrapper from "@/lib/providers/ApolloWrapper";
 
 const SingleEventContainer = ({
   singleEventData,
@@ -70,13 +71,15 @@ const SingleEventContainer = ({
       <Container className="pt-8 pb-24 md:grid grid-cols-12 gap-6">
         <div className="md:col-start-3 lg:col-start-4 lg:col-end-10 md:col-end-11">
           {(singleEventData.mainSection ?? []).map((block, index) =>
-            RenderMainSectionPIE(block, index)
+            RenderMainSectionPIE(block, index),
           )}
         </div>
       </Container>
       <Container>
         <Block className="col-span-12">
-          <ExploreResources />
+          <ApolloWrapper>
+            <ExploreResources />
+          </ApolloWrapper>
           <BottomSectionPIE />
         </Block>
       </Container>

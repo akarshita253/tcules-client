@@ -52,6 +52,7 @@ export const HOW_WE_WORK = gql`
           button {
             name
             description
+            href
           }
         }
       }

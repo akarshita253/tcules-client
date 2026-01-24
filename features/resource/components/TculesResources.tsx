@@ -108,7 +108,7 @@ const TculesResources = ({
               return (
                 <div key={singleFilter?.id}>
                   <Button
-                    variant={"link"}
+                    variant={"ghost"}
                     className="text-neutral-700 text-label-lg px-0 no-underline"
                     onClick={() => {
                       if (!singleFilter?.id) return;

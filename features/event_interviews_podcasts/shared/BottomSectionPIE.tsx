@@ -1,5 +1,5 @@
 import Section from "@/components/global/Section";
-import { Button } from "@/components/ui/button";
+import ButtonTag from "@/components/shared/ButtonTag";
 import { Input } from "@/components/ui/input";
 
 const BottomSectionPIE = () => {
@@ -18,7 +18,7 @@ const BottomSectionPIE = () => {
       </p>
       <div className="flex justify-center items-center gap-2">
         <Input placeholder="Enter your email" className="w-64"/>
-        <Button className="uppercase">Notify me</Button>
+        <ButtonTag label="Notify me" href="#"/>
       </div>
     </Section>
   );

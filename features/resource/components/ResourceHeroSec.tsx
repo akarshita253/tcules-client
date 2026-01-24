@@ -1,10 +1,8 @@
 import Section from "@/components/global/Section";
-import { buttonVariants } from "@/components/ui/button";
 import { ResourceQuery } from "@/lib/codegen/graphql";
-import { cn } from "@/lib/utils";
 import Image from "next/image";
-import Link from "next/link";
 import Substract from "@/public/Subtract.png";
+import ButtonTag from "@/components/shared/ButtonTag";
 
 type HeroSectionData = Pick<
   NonNullable<ResourceQuery["resource"]>,
@@ -73,12 +71,7 @@ const ResourceHeroSec = ({
         <p className="text-label-xl text-neutral-200 mb-8 lg:w-4/6">
           {secondSectionData?.description}
         </p>
-        <Link
-          href={secondSectionData?.link?.href || "#"}
-          className={cn(buttonVariants({ variant: "default" }))}
-        >
-          {secondSectionData?.link?.name}
-        </Link>
+        <ButtonTag label={secondSectionData?.link?.name||"Go to labs"} href={secondSectionData?.link?.href || "#" }/>
       </div>
     </>
   );

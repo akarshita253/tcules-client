@@ -1,8 +1,7 @@
 import Section from "@/components/global/Section";
-import { buttonVariants } from "@/components/ui/button";
+import ButtonTag from "@/components/shared/ButtonTag";
 import { ServiceQuery } from "@/lib/codegen/graphql";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 
 const ServiceHeroSection = ({
   heroSectionData,
@@ -26,7 +25,7 @@ const ServiceHeroSection = ({
         {heroSectionData?.label?.map((singleLabel) => {
           return (
             <p className="text-label-md" key={singleLabel?.id}>
-              <span className="text-accent-800">
+              <span className="text-accent-600">
                 {singleLabel?.listText?.split(",")[0]}
               </span>
               <span>{singleLabel?.listText?.split(",")[1]}</span>
@@ -36,15 +35,13 @@ const ServiceHeroSection = ({
       </div>
       <div className="mt-12 flex justify-center items-center gap-4 flex-wrap">
         {heroSectionData?.heroSectionButton?.map((button, index) => (
-          <Link
+          <ButtonTag
             key={index}
+            label={button?.name || "Button"}
             href={button?.href || "#"}
-            className={`flex items-center gap-1 uppercase bg-neutral-100  ${buttonVariants(
-              { variant: "default" }
-            )}`}
-          >
-            {button?.name} {index === 1 ? <ArrowRight /> : null}
-          </Link>
+            icon={index === 1 ? <ArrowRight /> : null}
+            variant={index===1?"ghost":"neutral"}
+          />
         ))}
       </div>
     </Section>

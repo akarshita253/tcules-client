@@ -1,9 +1,9 @@
 import Section from "@/components/global/Section";
-import { Button } from "@/components/ui/button";
 import { HowWeWorkQuery } from "@/lib/codegen/graphql";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import CircleDot from "@/public/CircleInside.svg";
+import ButtonTag from "@/components/shared/ButtonTag";
 
 const ChooseRightStartingPointSec = ({
   rightStartingPointData,
@@ -33,7 +33,7 @@ const ChooseRightStartingPointSec = ({
                         singleCard?.list.map((singleListItem) => {
                           return (
                             <p
-                              className="text-caption-lg uppercase bg-neutral-50 w-fit p-2 rounded-full"
+                              className="text-caption-lg uppercase bg-neutral-50 w-fit p-2 rounded-full mb-2"
                               key={singleListItem?.id}
                             >
                               {singleListItem?.listText}
@@ -45,10 +45,12 @@ const ChooseRightStartingPointSec = ({
                         {singleCard?.description?.[0]?.children?.[0]?.text}
                       </p>
                       <div className="flex p-2">
-                        <Button className="uppercase bg-neutral-900 text-neutral-50">
-                          {singleCard?.button?.name}
-                          <ArrowRight />
-                        </Button>
+                        <ButtonTag
+                          label={singleCard?.button?.name || "Learn More"}
+                          href={singleCard?.button?.href || "#"}
+                          icon={<ArrowRight />}
+                          variant={"secondary"}
+                        />
                       </div>
                     </div>
                   </div>
@@ -88,7 +90,7 @@ const ChooseRightStartingPointSec = ({
                                         </span>
                                       </p>
                                     );
-                                  }
+                                  },
                                 )}
                             </div>
                           </div>

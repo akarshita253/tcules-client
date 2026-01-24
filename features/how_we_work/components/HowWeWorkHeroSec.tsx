@@ -1,10 +1,13 @@
 import Section from "@/components/global/Section";
-import { buttonVariants } from "@/components/ui/button";
+import ButtonTag from "@/components/shared/ButtonTag";
 import { HowWeWorkQuery } from "@/lib/codegen/graphql";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 
-const HowWeWorkHeroSec = ({ heroSectionData }: { heroSectionData: NonNullable<HowWeWorkQuery["howWeWork"]>["heroSection"] }) => {
+const HowWeWorkHeroSec = ({
+  heroSectionData,
+}: {
+  heroSectionData: NonNullable<HowWeWorkQuery["howWeWork"]>["heroSection"];
+}) => {
   return (
     <Section>
       <h1 className="text-center lg:w-3/5 mx-auto">
@@ -20,15 +23,13 @@ const HowWeWorkHeroSec = ({ heroSectionData }: { heroSectionData: NonNullable<Ho
       </p>
       <div className="mt-12 flex justify-center items-center gap-4 flex-wrap">
         {heroSectionData?.button?.map((singleButton, index) => (
-          <Link
+          <ButtonTag
             key={index}
+            icon={index === 1 ? <ArrowRight /> : null}
+            label={singleButton?.name || "Learn More"}
             href={singleButton?.href || "#"}
-            className={`flex items-center gap-1 uppercase bg-neutral-50 hover:bg-neutral-100 ${buttonVariants(
-              { variant: "default" }
-            )}`}
-          >
-            {singleButton?.name} {index === 1 ? <ArrowRight /> : null}
-          </Link>
+            variant={index === 1 ? "ghost" : "neutral"}
+          />
         ))}
       </div>
     </Section>

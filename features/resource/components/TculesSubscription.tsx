@@ -88,7 +88,7 @@ const TculesSubscription = ({fourthSectionData}:{fourthSectionData: NonNullable<
             placeholder="Enter your email"
             className="w-52 text-label-sm"
           />
-          <Button onClick={handleSubscribe} disabled={loading}>
+          <Button onClick={handleSubscribe} disabled={loading} variant={"default"}>
             {loading ? "Subscribing..." : "Subscribe"}
           </Button>
         </div>

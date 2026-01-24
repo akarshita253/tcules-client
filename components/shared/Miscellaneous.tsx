@@ -1,7 +1,6 @@
 import Section from "@/components/global/Section";
-import { buttonVariants } from "@/components/ui/button";
 import { CaseStudyLandingPageQuery, ServiceQuery } from "@/lib/codegen/graphql";
-import Link from "next/link";
+import ButtonTag from "./ButtonTag";
 
 const Miscellaneous = ({
   miscSectionData,
@@ -22,9 +21,7 @@ const Miscellaneous = ({
         </p>
       </div>
       <div className="flex justify-center items-center">
-        <Link className={`uppercase text-neutral-50 bg-neutral-900 ${buttonVariants({ variant: "default" })}`} href={miscSectionData?.button?.href || "#"}>
-            {miscSectionData?.button?.name || "See how we work"}
-        </Link>
+        <ButtonTag label={miscSectionData?.button?.name || "See how we work"} href={miscSectionData?.button?.href || "#"} variant={"secondary"}/>
       </div>
     </Section>
   );

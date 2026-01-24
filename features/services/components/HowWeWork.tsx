@@ -1,7 +1,7 @@
 import Section from "@/components/global/Section";
+import ButtonTag from "@/components/shared/ButtonTag";
 import { ServiceQuery } from "@/lib/codegen/graphql";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 
 const HowWeWork = ({
   howWeWorkSectionData,
@@ -45,7 +45,11 @@ const HowWeWork = ({
                       className="flex items-start  gap-2"
                     >
                       <span className="shrink-0 relative top-1">
-                        <ArrowRight width={20} height={20} className="text-neutral-700"/>
+                        <ArrowRight
+                          width={20}
+                          height={20}
+                          className="text-neutral-700"
+                        />
                       </span>
 
                       <p className="sm:mb-6 mb-4">
@@ -61,13 +65,13 @@ const HowWeWork = ({
           );
         })}
       </div>
-      <div>
-        <p className="text-label-3xs text-neutral-900 text-center uppercase flex items-center gap-3 justify-center">
-          <Link href={howWeWorkSectionData?.link?.href || "#"}>
-            {howWeWorkSectionData?.link?.name}
-          </Link>
-          <ArrowRight size={16} />
-        </p>
+      <div className="flex items-center justify-center">
+        <ButtonTag
+          label={howWeWorkSectionData?.link?.name || "Learn More"}
+          href={howWeWorkSectionData?.link?.href || "#"}
+          variant={"ghost"}
+          icon={<ArrowRight />}
+        />
       </div>
     </Section>
   );

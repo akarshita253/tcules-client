@@ -2,12 +2,13 @@ import { Block } from "@/components/global/Block";
 import Breadcrumbs from "@/components/global/Breadcrumbs";
 import { Container } from "@/components/global/Container";
 import Section from "@/components/global/Section";
-import {  PodcastsQuery } from "@/lib/codegen/graphql";
+import { PodcastsQuery } from "@/lib/codegen/graphql";
 import Image from "next/image";
 import RenderMainSectionPIE from "../shared/MainSectionPIE";
 import BottomSectionPIE from "../shared/BottomSectionPIE";
 import ExploreResources from "@/features/blog/components/ExploreResources";
 import { formatDate } from "@/lib/utils";
+import ApolloWrapper from "@/lib/providers/ApolloWrapper";
 
 const SinglePodcastContainer = ({
   singlePodcastData,
@@ -46,7 +47,9 @@ const SinglePodcastContainer = ({
                 <span>.</span>
               </div>
               <p className="text-neutral-500 text-label-3xs">
-                <small>Last updated on {formatDate(singlePodcastData.updatedAt)}</small>
+                <small>
+                  Last updated on {formatDate(singlePodcastData.updatedAt)}
+                </small>
               </p>
             </div>
             {featureImage?.url && (
@@ -66,13 +69,15 @@ const SinglePodcastContainer = ({
       <Container className="pt-8 pb-24 md:grid grid-cols-12 gap-6">
         <div className="md:col-start-3 lg:col-start-4 lg:col-end-10 md:col-end-11">
           {(singlePodcastData.mainSection ?? []).map((block, index) =>
-            RenderMainSectionPIE(block, index)
+            RenderMainSectionPIE(block, index),
           )}
         </div>
       </Container>
       <Container>
         <Block className="col-span-12">
-          <ExploreResources />
+          <ApolloWrapper>
+            <ExploreResources />
+          </ApolloWrapper>
           <BottomSectionPIE />
         </Block>
       </Container>

@@ -4,8 +4,8 @@ import { Block } from "@/components/global/Block";
 import Sub from "@/public/Sub2.png";
 import { Container } from "@/components/global/Container";
 import { CircleDot } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { HowWeWorkQuery } from "@/lib/codegen/graphql";
+import ButtonTag from "@/components/shared/ButtonTag";
 
 const LowFrictionWaysSec = ({
   lowFrictionWaysData,
@@ -23,13 +23,19 @@ const LowFrictionWaysSec = ({
           </h2>
           <div className="flex flex-col justify-between gap-6">
             {lowFrictionWaysData?.details &&
-              lowFrictionWaysData?.details.map((singleDetail,index) => {
+              lowFrictionWaysData?.details.map((singleDetail, index) => {
                 return (
                   <div
                     className="p-[38px] bg-neutral-50 rounded-xl shadow-[0_4px_45.1px_0_rgba(0,0,0,0.03)] relative"
                     key={singleDetail?.id}
                   >
-                    <div className={index%2===0?"absolute bottom-0":"absolute bottom-0 right-0"}>
+                    <div
+                      className={
+                        index % 2 === 0
+                          ? "absolute bottom-0"
+                          : "absolute bottom-0 right-0"
+                      }
+                    >
                       <Image src={Sub} alt="Sub" width={376} height={376} />
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-4 mb-6 z-10">
@@ -45,7 +51,10 @@ const LowFrictionWaysSec = ({
                                 key={singlePoint?.id}
                               >
                                 <span>
-                                  <CircleDot className="text-neutral-500" size={16}/>
+                                  <CircleDot
+                                    className="text-accent-500"
+                                    size={16}
+                                  />
                                 </span>
                                 <span>{singlePoint?.listText}</span>
                               </p>
@@ -54,9 +63,12 @@ const LowFrictionWaysSec = ({
                       </div>
                     </div>
                     <div className="flex justify-end z-10">
-                      <Button className="uppercase bg-neutral-900 text-neutral-50 z-10">
-                        {singleDetail?.button?.name}
-                      </Button>
+                      <ButtonTag
+                        variant={"secondary"}
+                        label={singleDetail?.button?.name || "Learn More"}
+                        className="z-10"
+                        href={singleDetail?.button?.href || "#"}
+                      />
                     </div>
                   </div>
                 );

@@ -1,9 +1,9 @@
 import Section from "@/components/global/Section";
 import { CapablitiesCardSection } from "../CapablityContainer";
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import noise from "@/public/noise.png";
 import Image from "next/image";
+import ButtonTag from "@/components/shared/ButtonTag";
 
 type CommonEntryPointProps = {
   commonEntryPointSectionData: CapablitiesCardSection;
@@ -22,7 +22,7 @@ const CommonEntryPoint = ({
             return (
               <div
                 className="p-8 shadow-[0_4px_45.1px_0_rgb(0_0_0/0.05)] relative overflow-hidden
-                group hover:bg-neutral-50 cursor-pointer flex justify-between gap-6  rounded-xl"
+                group hover:bg-neutral-100 cursor-pointer flex justify-between gap-6  rounded-xl"
                 key={singleCard?.id}
               >
                 <div className="absolute hidden group-hover:block inset-0 opacity-10">
@@ -45,13 +45,13 @@ const CommonEntryPoint = ({
                       alt={singleCard?.icon?.alternativeText || ""}
                     />
                   )}
-                  <Link
-                    className="text-label-3xs font-semibold flex gap-2 items-center"
+                  <ButtonTag
+                    label={singleCard?.link?.name || "Learn More"}
                     href={singleCard?.link?.href || "#"}
-                  >
-                    {singleCard?.link?.name}
-                    <ArrowRight size={16} />{" "}
-                  </Link>
+                    icon={<ArrowRight size={16} />}
+                    variant="ghost"
+                    className="group-hover:bg-neutral-50 z-100"
+                  />
                 </div>
               </div>
             );

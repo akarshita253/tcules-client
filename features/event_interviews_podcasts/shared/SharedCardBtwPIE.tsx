@@ -1,7 +1,6 @@
-import { buttonVariants } from "@/components/ui/button";
+import ButtonTag from "@/components/shared/ButtonTag";
 import { EventsQuery } from "@/lib/codegen/graphql";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 type ShadowCard = Extract<
   NonNullable<NonNullable<EventsQuery["events"][0]>["mainSection"]>[number],
   { __typename: "ComponentPodcasteEventsInterviewsShadowCard" }
@@ -25,12 +24,7 @@ const SharedCardBtwPIE = ({ cardData }: { cardData: ShadowCard }) => {
           <h2 className="text-heading-xs text-neutral-800">{description}</h2>
         </div>
         <div>
-          <Link
-            className={cn(buttonVariants({ variant: "default" }), "")}
-            href={link.href}
-          >
-            {link?.name}
-          </Link>
+          <ButtonTag label={link?.name||"Know More"} href={link?.href||"#"}/>
         </div>
       </div>
     );

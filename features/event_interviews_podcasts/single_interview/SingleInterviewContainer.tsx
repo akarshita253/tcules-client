@@ -8,6 +8,7 @@ import RenderMainSectionPIE from "../shared/MainSectionPIE";
 import BottomSectionPIE from "../shared/BottomSectionPIE";
 import ExploreResources from "@/features/blog/components/ExploreResources";
 import { formatDate } from "@/lib/utils";
+import ApolloWrapper from "@/lib/providers/ApolloWrapper";
 
 const SingleInterviewContainer = ({
   singleInterviewData,
@@ -46,7 +47,9 @@ const SingleInterviewContainer = ({
                 <span>.</span>
               </div>
               <p className="text-neutral-500 text-label-3xs">
-                <small>Last updated on {formatDate(singleInterviewData.updatedAt)}</small>
+                <small>
+                  Last updated on {formatDate(singleInterviewData.updatedAt)}
+                </small>
               </p>
             </div>
             {featureImage?.url && (
@@ -66,13 +69,15 @@ const SingleInterviewContainer = ({
       <Container className="pt-8 pb-24 md:grid grid-cols-12 gap-6">
         <div className="md:col-start-3 lg:col-start-4 lg:col-end-10 md:col-end-11">
           {(singleInterviewData.mainSection ?? []).map((block, index) =>
-            RenderMainSectionPIE(block, index)
+            RenderMainSectionPIE(block, index),
           )}
         </div>
       </Container>
       <Container>
         <Block className="col-span-12">
-          <ExploreResources />
+          <ApolloWrapper>
+            <ExploreResources />
+          </ApolloWrapper>
           <BottomSectionPIE />
         </Block>
       </Container>

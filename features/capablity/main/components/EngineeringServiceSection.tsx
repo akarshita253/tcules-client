@@ -1,21 +1,25 @@
 import Section from "@/components/global/Section";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 import { CapablitiesCardSection } from "../CapablityContainer";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import ButtonTag from "@/components/shared/ButtonTag";
 
 type EngineeringServiceSectionProps = {
   engineeringServiceSectionData: CapablitiesCardSection;
 };
 
-const EngineeringServiceSection = ({engineeringServiceSectionData}:EngineeringServiceSectionProps) => {
+const EngineeringServiceSection = ({
+  engineeringServiceSectionData,
+}: EngineeringServiceSectionProps) => {
   return (
     <Section>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:mb-12 mb-6">
         <h2 className="p-8">
-            <span className="text-heading-sm text-neutral-800">{engineeringServiceSectionData?.heading?.split("|").at(0)}</span>
-            <span className="text-display-xs text-accent-600">{engineeringServiceSectionData?.heading?.split("|").at(1)}</span>
+          <span className="text-heading-sm text-neutral-800">
+            {engineeringServiceSectionData?.heading?.split("|").at(0)}
+          </span>
+          <span className="text-display-xs text-accent-600">
+            {engineeringServiceSectionData?.heading?.split("|").at(1)}
+          </span>
         </h2>
         {engineeringServiceSectionData?.sectionCards?.map((singleCard) => {
           return (
@@ -54,14 +58,15 @@ const EngineeringServiceSection = ({engineeringServiceSectionData}:EngineeringSe
           );
         })}
       </div>
-            <div className="flex justify-center items-center">
-        <Link
+      <div className="flex justify-center items-center">
+        <ButtonTag
+          label={
+            engineeringServiceSectionData?.subRouteLink?.name || "Learn More"
+          }
           href={engineeringServiceSectionData?.subRouteLink?.href || "#"}
-          className={cn(buttonVariants({ variant: "default" }),"hover:bg-neutral-100 bg-neutral-50")}
-        >
-          {engineeringServiceSectionData?.subRouteLink?.name}
-        <ArrowRight size={16} />
-        </Link>
+          variant="ghost"
+          icon={<ArrowRight size={16} />}
+        />
       </div>
     </Section>
   );

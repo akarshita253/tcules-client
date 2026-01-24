@@ -1,10 +1,9 @@
 import Section from "@/components/global/Section";
 import { CapablitiesCardSection } from "../CapablityContainer";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
+import ButtonTag from "@/components/shared/ButtonTag";
 
 type AIServiceSectionProps = {
   aiServiceSectionData: CapablitiesCardSection;
@@ -41,7 +40,7 @@ const AIServiceSection = ({ aiServiceSectionData }: AIServiceSectionProps) => {
                 "p-4 min-h-[350px] sm:p-6 flex flex-col gap-6 justify-between  rounded-xl relative",
                 index === arr?.length - 1
                   ? "bg-neutral-50"
-                  : "bg-neutral-100 shadow-[0_4px_45.1px_0_rgb(0_0_0/0.03)]"
+                  : "bg-neutral-100 shadow-[0_4px_45.1px_0_rgb(0_0_0/0.03)]",
               )}
               key={singleCard?.id}
             >
@@ -55,20 +54,20 @@ const AIServiceSection = ({ aiServiceSectionData }: AIServiceSectionProps) => {
                   />
                 </div>
               )}
-                <h3 className="text-heading-2xs text-neutral-900 mb-6 w-4/5">
-                  {singleCard?.heading}
-                </h3>
-                <p className="text-label-md text-neutral-700">
-                  {singleCard?.description}
-                </p>
+              <h3 className="text-heading-2xs text-neutral-900 mb-6 w-4/5">
+                {singleCard?.heading}
+              </h3>
+              <p className="text-label-md text-neutral-700">
+                {singleCard?.description}
+              </p>
               {singleCard?.link?.name && (
-                <Link
-                  className={cn(buttonVariants({variant:"default"}),"text-label-3xs flex justify-end gap-2 items-center ml-auto hover:bg-neutral-100 bg-neutral-50")}
+                <ButtonTag
+                  label={singleCard?.link?.name || "Learn More"}
                   href={singleCard?.link?.href || "#"}
-                >
-                  {singleCard?.link?.name}
-                  <ArrowRight size={16} />
-                </Link>
+                  icon={<ArrowRight size={16} />}
+                  variant="ghost"
+                  className="ml-auto"
+                />
               )}
             </div>
           );

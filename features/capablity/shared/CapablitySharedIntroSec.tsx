@@ -1,8 +1,7 @@
 import Section from "@/components/global/Section";
-import { buttonVariants } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 import { CapablitiesHeroSection } from "../main/CapablityContainer";
+import ButtonTag from "@/components/shared/ButtonTag";
 
 type CapablitySharedIntroSecProps = {
   introSectionData?: CapablitiesHeroSection;
@@ -35,15 +34,13 @@ const CapablitySharedIntroSec = ({
       </div>
       <div className="flex justify-center items-center gap-4 flex-wrap">
         {introSectionData?.heroSectionButton?.map((button, index) => (
-          <Link
-            key={index}
+          <ButtonTag
+            label={button?.name || "Learn More"}
             href={button?.href || "#"}
-            className={`flex items-center gap-1 uppercase bg-neutral-50 hover:bg-neutral-100  ${buttonVariants(
-              { variant: "default" }
-            )}`}
-          >
-            {button?.name} {index === 1 ? <ArrowRight /> : null}
-          </Link>
+            key={index}
+            icon={index === 1 ? <ArrowRight /> : null}
+            variant={index === 0 ? "secondary" : "link"}
+          />
         ))}
       </div>
     </Section>
