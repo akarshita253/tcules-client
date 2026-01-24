@@ -31,6 +31,15 @@ export const CASE_STUDY_QUERY = gql`
         type
         desc
       }
+      ctoSection {
+        heading
+        description
+        link {
+          name
+          href
+          isExternal
+        }
+      }
       caseStudyContents {
         ... on ComponentBlogAndCasestudiesBlogOrCasestudyText {
           __typename
@@ -119,28 +128,28 @@ export const CASE_STUDY_QUERY = gql`
 `;
 
 export const GET_CASESTUDY_LANDING_PAGE_DATA = gql`
-query CaseStudyLandingPage {
-  caseStudyLandingPage {
-    heroSection {
-      heading
-      description
-      button {
-        name
-        href
+  query CaseStudyLandingPage {
+    caseStudyLandingPage {
+      heroSection {
+        heading
+        description
+        button {
+          name
+          href
+        }
       }
-    }  
-    misc {
-      label
-      heading
-      description
-      button {
-        name
-        href
+      misc {
+        label
+        heading
+        description
+        button {
+          name
+          href
+        }
       }
     }
   }
-}
-`
+`;
 
 export const GET_ALL_CASE_STUDIES = gql`
   query AllCaseStudies(
@@ -148,11 +157,7 @@ export const GET_ALL_CASE_STUDIES = gql`
     $pagination: PaginationArg
     $sort: [String]
   ) {
-    caseStudies(
-      filters: $filters
-      pagination: $pagination
-      sort: $sort
-    ) {
+    caseStudies(filters: $filters, pagination: $pagination, sort: $sort) {
       documentId
       title
       description
@@ -176,7 +181,6 @@ export const GET_ALL_CASE_STUDIES = gql`
     }
   }
 `;
-
 
 export const GET_CASESTUDY_CATEGORIES = gql`
   query Categories {

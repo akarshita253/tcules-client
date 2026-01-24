@@ -17,6 +17,7 @@ const BlogContainer = ({
 }) => {
   const { title, createdAt, updatedAt, featureImage } = blog;
   const profiles = blog.blogProfileSection;
+  const ctaSectionData = blog.ctoSection;
 
   return (
     <>
@@ -44,7 +45,7 @@ const BlogContainer = ({
         <ApolloWrapper>
           <ExploreResources />
         </ApolloWrapper>
-        <CtaSection />
+        <CtaSection ctaSectionData={ctaSectionData} />
         </Block>
         </Container>
     </>

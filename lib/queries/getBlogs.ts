@@ -27,7 +27,15 @@ export const GET_BLOG = gql`
           alternativeText
         }
       }
-
+      ctoSection {
+        heading
+        description
+        link {
+          name
+          href
+          isExternal
+        }
+      }
       mainSection {
         ... on ComponentBlogAndCasestudiesBlogOrCasestudyText {
           __typename

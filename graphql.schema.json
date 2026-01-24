@@ -110,6 +110,7 @@ export interface Blog {
   categories: Array<Maybe<Category>>;
   categories_connection?: Maybe<CategoryRelationResponseCollection>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
+  ctoSection?: Maybe<ComponentBlogAndCasestudiesCtoSection>;
   documentId: Scalars['ID']['output'];
   featureImage: Array<Maybe<UploadFile>>;
   featureImage_connection?: Maybe<UploadFileRelationResponseCollection>;
@@ -184,6 +185,7 @@ export interface BlogFiltersInput {
   blogProfileSection?: InputMaybe<ComponentSharedProfileFiltersInput>;
   categories?: InputMaybe<CategoryFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
+  ctoSection?: InputMaybe<ComponentBlogAndCasestudiesCtoSectionFiltersInput>;
   documentId?: InputMaybe<IdFilterInput>;
   not?: InputMaybe<BlogFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<BlogFiltersInput>>>;
@@ -198,6 +200,7 @@ export interface BlogFiltersInput {
 export interface BlogInput {
   blogProfileSection?: InputMaybe<Array<InputMaybe<ComponentSharedProfileInput>>>;
   categories?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  ctoSection?: InputMaybe<ComponentBlogAndCasestudiesCtoSectionInput>;
   featureImage?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   mainSection?: InputMaybe<Array<Scalars['BlogMainSectionDynamicZoneInput']['input']>>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -346,6 +349,7 @@ export interface CaseStudy {
   categories: Array<Maybe<Category>>;
   categories_connection?: Maybe<CategoryRelationResponseCollection>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
+  ctoSection?: Maybe<ComponentBlogAndCasestudiesCtoSection>;
   description?: Maybe<Scalars['String']['output']>;
   documentId: Scalars['ID']['output'];
   heroImage?: Maybe<UploadFile>;
@@ -415,6 +419,7 @@ export interface CaseStudyFiltersInput {
   and?: InputMaybe<Array<InputMaybe<CaseStudyFiltersInput>>>;
   categories?: InputMaybe<CategoryFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
+  ctoSection?: InputMaybe<ComponentBlogAndCasestudiesCtoSectionFiltersInput>;
   description?: InputMaybe<StringFilterInput>;
   documentId?: InputMaybe<IdFilterInput>;
   not?: InputMaybe<CaseStudyFiltersInput>;
@@ -432,6 +437,7 @@ export interface CaseStudyFiltersInput {
 export interface CaseStudyInput {
   caseStudyContents?: InputMaybe<Array<Scalars['CaseStudyCaseStudyContentsDynamicZoneInput']['input']>>;
   categories?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  ctoSection?: InputMaybe<ComponentBlogAndCasestudiesCtoSectionInput>;
   description?: InputMaybe<Scalars['String']['input']>;
   heroImage?: InputMaybe<Scalars['ID']['input']>;
   profile?: InputMaybe<Array<InputMaybe<ComponentBlogAndCasestudiesCompanyProfileInput>>>;
@@ -871,6 +877,30 @@ export interface ComponentBlogAndCasestudiesCompanyProfileInput {
   description?: InputMaybe<Scalars['String']['input']>;
   heading?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['ID']['input']>;
+}
+
+export interface ComponentBlogAndCasestudiesCtoSection {
+  __typename?: 'ComponentBlogAndCasestudiesCtoSection';
+  description?: Maybe<Scalars['String']['output']>;
+  heading?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  link?: Maybe<ComponentElementsLink>;
+}
+
+export interface ComponentBlogAndCasestudiesCtoSectionFiltersInput {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlogAndCasestudiesCtoSectionFiltersInput>>>;
+  description?: InputMaybe<StringFilterInput>;
+  heading?: InputMaybe<StringFilterInput>;
+  link?: InputMaybe<ComponentElementsLinkFiltersInput>;
+  not?: InputMaybe<ComponentBlogAndCasestudiesCtoSectionFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentBlogAndCasestudiesCtoSectionFiltersInput>>>;
+}
+
+export interface ComponentBlogAndCasestudiesCtoSectionInput {
+  description?: InputMaybe<Scalars['String']['input']>;
+  heading?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  link?: InputMaybe<ComponentElementsLinkInput>;
 }
 
 export interface ComponentBlogAndCasestudiesIframe {
@@ -3629,7 +3659,7 @@ export interface FooterInput {
   socialMedia?: InputMaybe<ComponentFooterFooterSocialMediaLinksInput>;
 }
 
-export type GenericMorph = About | Author | Blog | CapablitiesSubPage | Capablity | Career | CaseStudy | CaseStudyLandingPage | Category | ClientContact | ComponentAboutAboutFifthSection | ComponentAboutAboutFifthSectionCards | ComponentAboutAboutFourthSection | ComponentAboutAboutFourthSectionDetails | ComponentAboutAboutSecondSection | ComponentAboutAboutSeventhSection | ComponentAboutAboutSixthSection | ComponentAboutSeventhSectionCards | ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCaseStudyPositioning | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesCompanyProfile | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesProblemAndSolution | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentCapablitiesCapablitiesCardSection | ComponentCapablitiesCapablitiesCards | ComponentCareerCareerCards | ComponentCareerCareerFifthSection | ComponentCareerCareerFourthSection | ComponentCareerCareerFourthSectionNew | ComponentCareerCareerIconPoints | ComponentCareerCareerNewCards | ComponentCareerCareerSecondSection | ComponentCareerCareerThirdSection | ComponentCareerThirdRightSection | ComponentContactUsContactUsBottomCards | ComponentContactUsSocialMediaLinks | ComponentElementsButtons | ComponentElementsElements | ComponentElementsLink | ComponentElementsPoints | ComponentEventsEventDetails | ComponentFooterFooterLegalSection | ComponentFooterFooterLinks | ComponentFooterFooterSocialMediaLinks | ComponentFooterFooterSocialMediaRightSection | ComponentFooterPagesLinks | ComponentHomepageBranchCards | ComponentHomepageFourthSectionCards | ComponentHomepageHomepageContactAndTestimonials | ComponentHomepageHomepageFifthSection | ComponentHomepageHomepageFourthSection | ComponentHomepageHomepageHeroSection | ComponentHomepageHomepageSecondSection | ComponentHomepageHomepageSecondSectionPoints | ComponentHomepageHomepageThirdSection | ComponentHomepageSecondSectionCaseStudyRelation | ComponentHowWeWorkCardDetails | ComponentHowWeWorkCards | ComponentHowWeWorkHowWeWorkHeroSection | ComponentHowWeWorkLowFrictionWays | ComponentHowWeWorkRightDetails | ComponentHowWeWorkRightStartingPoint | ComponentLabsCardSection | ComponentLabsFilCardDetails | ComponentLabsFilLabsFilEighthSection | ComponentLabsFilLabsFilFifthSection | ComponentLabsFilLabsFilFourthSection | ComponentLabsFilLabsFilHeroSection | ComponentLabsFilLabsFilSecondSection | ComponentLabsFilLabsFilSeventhSection | ComponentLabsFilLabsFilSixthSection | ComponentLabsFilLabsFilThirdSection | ComponentLabsFilSixthSectionLeftCard | ComponentLabsFilSixthSectionRightCard | ComponentLabsFilThirdSectionCards | ComponentLabsLabsInterface | ComponentLabsLabsInterfaceCards | ComponentLegalDetails | ComponentMatterDesignMatterDesignCards | ComponentMatterDesignMatterDesignContactUs | ComponentMatterDesignMatterDesignDisplayCards | ComponentMatterDesignMatterDesignFifthSection | ComponentMatterDesignMatterDesignFourthSection | ComponentMatterDesignMatterDesignHeroSection | ComponentMatterDesignMatterDesignSecondSection | ComponentMatterDesignMatterDesignStripOne | ComponentMatterDesignMatterDesignThirdSection | ComponentNavbarNavbarLevel1Group | ComponentNavbarNavbarLevel2Group | ComponentPodcasteEventsInterviewsShadowCard | ComponentPspPspCards | ComponentPspPspCardsSection | ComponentPspPspContactus | ComponentPspPspFaqSection | ComponentPspPspResourceSection | ComponentPspPspSecondSection | ComponentPspPspSixthSection | ComponentPspPspTestimonialSection | ComponentPspPspThirdSection | ComponentResourcesCards | ComponentResourcesFilterSection | ComponentResourcesResourceFourthSection | ComponentResourcesResourceThirdSection | ComponentResourcesSecondSection | ComponentServiceExploreRecentWork | ComponentServiceHeroSection | ComponentServiceHowWeWork | ComponentServiceOurOperatingPhilosophy | ComponentServiceServiceMisc | ComponentServiceWhatWeDesign | ComponentServiceWhyTeamHireUs | ComponentSharedCard | ComponentSharedFocusString | ComponentSharedHeroSection | ComponentSharedMedia | ComponentSharedProfile | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | ComponentSharedSeoFocus | ComponentSharedSeoOg | ComponentSharedSlider | ComponentSharedTiles | ComponentSingleTypeCaseStudyPageHeroSection | ComponentSingleTypeCaseStudyPageMiscellaneous | ContactUs | Event | Faq | Footer | Global | Homepage | HowWeWork | I18NLocale | Interview | LabSingleType | LabsFilLandingPage | MatterDesignSystem | Navbar | Opening | Podcast | PrivacyPolicy | ProgrammaticSeoPage | Resource | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Service | Subscription | Tag | TermsOfUse | Testimonial | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = About | Author | Blog | CapablitiesSubPage | Capablity | Career | CaseStudy | CaseStudyLandingPage | Category | ClientContact | ComponentAboutAboutFifthSection | ComponentAboutAboutFifthSectionCards | ComponentAboutAboutFourthSection | ComponentAboutAboutFourthSectionDetails | ComponentAboutAboutSecondSection | ComponentAboutAboutSeventhSection | ComponentAboutAboutSixthSection | ComponentAboutSeventhSectionCards | ComponentBlogAndCasestudiesBlogOrCasestudyText | ComponentBlogAndCasestudiesCaseStudyPositioning | ComponentBlogAndCasestudiesCodeSection | ComponentBlogAndCasestudiesCompanyProfile | ComponentBlogAndCasestudiesCtoSection | ComponentBlogAndCasestudiesIframe | ComponentBlogAndCasestudiesProblemAndSolution | ComponentBlogAndCasestudiesSectionImage | ComponentBlogAndCasestudiesSepration | ComponentBlogAndCasestudiesTldrSection | ComponentBlogAndCasestudiesVideo | ComponentCapablitiesCapablitiesCardSection | ComponentCapablitiesCapablitiesCards | ComponentCareerCareerCards | ComponentCareerCareerFifthSection | ComponentCareerCareerFourthSection | ComponentCareerCareerFourthSectionNew | ComponentCareerCareerIconPoints | ComponentCareerCareerNewCards | ComponentCareerCareerSecondSection | ComponentCareerCareerThirdSection | ComponentCareerThirdRightSection | ComponentContactUsContactUsBottomCards | ComponentContactUsSocialMediaLinks | ComponentElementsButtons | ComponentElementsElements | ComponentElementsLink | ComponentElementsPoints | ComponentEventsEventDetails | ComponentFooterFooterLegalSection | ComponentFooterFooterLinks | ComponentFooterFooterSocialMediaLinks | ComponentFooterFooterSocialMediaRightSection | ComponentFooterPagesLinks | ComponentHomepageBranchCards | ComponentHomepageFourthSectionCards | ComponentHomepageHomepageContactAndTestimonials | ComponentHomepageHomepageFifthSection | ComponentHomepageHomepageFourthSection | ComponentHomepageHomepageHeroSection | ComponentHomepageHomepageSecondSection | ComponentHomepageHomepageSecondSectionPoints | ComponentHomepageHomepageThirdSection | ComponentHomepageSecondSectionCaseStudyRelation | ComponentHowWeWorkCardDetails | ComponentHowWeWorkCards | ComponentHowWeWorkHowWeWorkHeroSection | ComponentHowWeWorkLowFrictionWays | ComponentHowWeWorkRightDetails | ComponentHowWeWorkRightStartingPoint | ComponentLabsCardSection | ComponentLabsFilCardDetails | ComponentLabsFilLabsFilEighthSection | ComponentLabsFilLabsFilFifthSection | ComponentLabsFilLabsFilFourthSection | ComponentLabsFilLabsFilHeroSection | ComponentLabsFilLabsFilSecondSection | ComponentLabsFilLabsFilSeventhSection | ComponentLabsFilLabsFilSixthSection | ComponentLabsFilLabsFilThirdSection | ComponentLabsFilSixthSectionLeftCard | ComponentLabsFilSixthSectionRightCard | ComponentLabsFilThirdSectionCards | ComponentLabsLabsInterface | ComponentLabsLabsInterfaceCards | ComponentLegalDetails | ComponentMatterDesignMatterDesignCards | ComponentMatterDesignMatterDesignContactUs | ComponentMatterDesignMatterDesignDisplayCards | ComponentMatterDesignMatterDesignFifthSection | ComponentMatterDesignMatterDesignFourthSection | ComponentMatterDesignMatterDesignHeroSection | ComponentMatterDesignMatterDesignSecondSection | ComponentMatterDesignMatterDesignStripOne | ComponentMatterDesignMatterDesignThirdSection | ComponentNavbarNavbarLevel1Group | ComponentNavbarNavbarLevel2Group | ComponentPodcasteEventsInterviewsShadowCard | ComponentPspPspCards | ComponentPspPspCardsSection | ComponentPspPspContactus | ComponentPspPspFaqSection | ComponentPspPspResourceSection | ComponentPspPspSecondSection | ComponentPspPspSixthSection | ComponentPspPspTestimonialSection | ComponentPspPspThirdSection | ComponentResourcesCards | ComponentResourcesFilterSection | ComponentResourcesResourceFourthSection | ComponentResourcesResourceThirdSection | ComponentResourcesSecondSection | ComponentServiceExploreRecentWork | ComponentServiceHeroSection | ComponentServiceHowWeWork | ComponentServiceOurOperatingPhilosophy | ComponentServiceServiceMisc | ComponentServiceWhatWeDesign | ComponentServiceWhyTeamHireUs | ComponentSharedCard | ComponentSharedFocusString | ComponentSharedHeroSection | ComponentSharedMedia | ComponentSharedProfile | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | ComponentSharedSeoFocus | ComponentSharedSeoOg | ComponentSharedSlider | ComponentSharedTiles | ComponentSingleTypeCaseStudyPageHeroSection | ComponentSingleTypeCaseStudyPageMiscellaneous | ContactUs | Event | Faq | Footer | Global | Homepage | HowWeWork | I18NLocale | Interview | LabSingleType | LabsFilLandingPage | MatterDesignSystem | Navbar | Opening | Podcast | PrivacyPolicy | ProgrammaticSeoPage | Resource | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Service | Subscription | Tag | TermsOfUse | Testimonial | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export interface Global {
   __typename?: 'Global';
@@ -6212,7 +6242,7 @@ export type BlogsQueryVariables = Exact<{
 }>;
 
 
-export type BlogsQuery = { __typename?: 'Query', blogs: Array<{ __typename: 'Blog', createdAt?: any | null, updatedAt?: any | null, title?: string | null, slug?: string | null, featureImage: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null>, blogProfileSection?: Array<{ __typename?: 'ComponentSharedProfile', id: string, name?: string | null, designation?: string | null, profilePicture: Array<{ __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null> } | null> | null, mainSection?: Array<
+export type BlogsQuery = { __typename?: 'Query', blogs: Array<{ __typename: 'Blog', createdAt?: any | null, updatedAt?: any | null, title?: string | null, slug?: string | null, featureImage: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null>, blogProfileSection?: Array<{ __typename?: 'ComponentSharedProfile', id: string, name?: string | null, designation?: string | null, profilePicture: Array<{ __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null> } | null> | null, ctoSection?: { __typename?: 'ComponentBlogAndCasestudiesCtoSection', heading?: string | null, description?: string | null, link?: { __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null, isExternal?: boolean | null } | null } | null, mainSection?: Array<
       | { __typename: 'ComponentBlogAndCasestudiesBlogOrCasestudyText', id: string, blogContent?: string | null }
       | { __typename: 'ComponentBlogAndCasestudiesCodeSection', id: string, codeSnippet?: string | null }
       | { __typename: 'ComponentBlogAndCasestudiesIframe', id: string, url?: string | null, title?: string | null, width?: number | null, height?: number | null, description?: any | null, embedCode?: string | null, thumbnail?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null }
@@ -6242,7 +6272,7 @@ export type CaseStudiesQueryVariables = Exact<{
 }>;
 
 
-export type CaseStudiesQuery = { __typename?: 'Query', caseStudies: Array<{ __typename: 'CaseStudy', title?: string | null, slug?: string | null, description?: string | null, publishedAt?: any | null, documentId: string, thumbnail?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, heroImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, profile?: Array<{ __typename?: 'ComponentBlogAndCasestudiesCompanyProfile', id: string, heading?: string | null, description?: string | null } | null> | null, statement?: Array<{ __typename?: 'ComponentBlogAndCasestudiesProblemAndSolution', id: string, type?: string | null, desc?: string | null } | null> | null, caseStudyContents?: Array<
+export type CaseStudiesQuery = { __typename?: 'Query', caseStudies: Array<{ __typename: 'CaseStudy', title?: string | null, slug?: string | null, description?: string | null, publishedAt?: any | null, documentId: string, thumbnail?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, heroImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, profile?: Array<{ __typename?: 'ComponentBlogAndCasestudiesCompanyProfile', id: string, heading?: string | null, description?: string | null } | null> | null, statement?: Array<{ __typename?: 'ComponentBlogAndCasestudiesProblemAndSolution', id: string, type?: string | null, desc?: string | null } | null> | null, ctoSection?: { __typename?: 'ComponentBlogAndCasestudiesCtoSection', heading?: string | null, description?: string | null, link?: { __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null, isExternal?: boolean | null } | null } | null, caseStudyContents?: Array<
       | { __typename: 'ComponentBlogAndCasestudiesBlogOrCasestudyText', id: string, blogContent?: string | null }
       | { __typename: 'ComponentBlogAndCasestudiesCodeSection', id: string, codeSnippet?: string | null }
       | { __typename: 'ComponentBlogAndCasestudiesIframe', id: string, title?: string | null, url?: string | null, height?: number | null, width?: number | null, embedCode?: string | null, description?: any | null, thumbnail?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null }
