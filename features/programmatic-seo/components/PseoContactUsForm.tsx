@@ -159,7 +159,7 @@ const PseoContactUsForm = () => {
               </FormItem>
             )}
           />
-          <Button className="uppercase bg-neutral-900 text-neutral-50" type="submit">
+          <Button variant={"secondary"} type="submit">
             {loading ? "Submitting..." : data ? "Submitted" : "Submit Form"}
           </Button>
         </form>

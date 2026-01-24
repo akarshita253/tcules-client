@@ -11,7 +11,7 @@ const CtaSection = () => {
           <span className="text-heading-md">fast and affordable</span>
         </h2>
         <div className="mt-8 flex justify-center items-center">
-          <Button className="uppercase">Start your project</Button>
+          <Button>Start your project</Button>
         </div>
     </section>
   );

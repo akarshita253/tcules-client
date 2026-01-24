@@ -1,9 +1,7 @@
 import Section from "@/components/global/Section";
-import { buttonVariants } from "@/components/ui/button";
+import ButtonTag from "@/components/shared/ButtonTag";
 import { ProgrammaticSeoPagesQuery } from "@/lib/codegen/graphql";
-import { cn } from "@/lib/utils";
 import Image from "next/image";
-import Link from "next/link";
 
 const PseoSixthSection = ({
   sixthSectionData,
@@ -29,16 +27,12 @@ const PseoSixthSection = ({
           />
         </div>
       )}
-      <div className="flex justify-center items-center"> 
-        <Link
+      <div className="flex justify-center items-center">
+        <ButtonTag
+          label={sixthSectionData?.link?.name || "Learn More"}
           href={sixthSectionData?.link?.href || "#"}
-          className={cn(
-            buttonVariants({ variant: "default" }),
-            "bg-neutral-900 text-neutral-50",
-          )}
-        >
-          {sixthSectionData?.link?.name}
-        </Link>
+          variant={"secondary"}
+        />
       </div>
     </Section>
   );

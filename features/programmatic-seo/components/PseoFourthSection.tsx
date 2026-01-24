@@ -1,7 +1,7 @@
 import Section from "@/components/global/Section";
+import ButtonTag from "@/components/shared/ButtonTag";
 import { ProgrammaticSeoPagesQuery } from "@/lib/codegen/graphql";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 
 const PseoFourthSection = ({
   fourthSectionData,
@@ -20,48 +20,50 @@ const PseoFourthSection = ({
       </p>
       <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
         {fourthSectionData?.cards &&
-          fourthSectionData?.cards?.map((singleCard:{ id: string; heading: string; points: { id: string; listText: string }[]; links: { href: string }}) => {
-            return (
-              <div
-                key={singleCard?.id}
-                className="p-8 rounded-xl bg-neutral-100 flex flex-col justify-between gap-2 min-h-[390px]"
-              >
-                <div>
-                  <h3 className="text-heading-2xs text-neutral-900 mb-12 w-4/5">
-                    {singleCard?.heading}
-                  </h3>
-                  <div className="flex flex-col gap-6">
-                    {singleCard?.points?.map((singlePoint) => {
-                      return (
-                        <p
-                          className="text-label-md text-neutral-700 flex gap-2"
-                          key={singlePoint?.id}
-                        >
-                          <span className="relative top-[5px]">
-                            <ArrowRight size={14} />
-                          </span>
-                          <span>{singlePoint?.listText}</span>
-                        </p>
-                      );
-                    })}
+          fourthSectionData?.cards?.map(
+            (singleCard: {
+              id: string;
+              heading: string;
+              points: { id: string; listText: string }[];
+              links: { href: string };
+            }) => {
+              return (
+                <div
+                  key={singleCard?.id}
+                  className="p-8 rounded-xl bg-neutral-100 flex flex-col justify-between gap-2 min-h-[390px]"
+                >
+                  <div>
+                    <h3 className="text-heading-2xs text-neutral-900 mb-12 w-4/5">
+                      {singleCard?.heading}
+                    </h3>
+                    <div className="flex flex-col gap-6">
+                      {singleCard?.points?.map((singlePoint) => {
+                        return (
+                          <p
+                            className="text-label-md text-neutral-700 flex gap-2"
+                            key={singlePoint?.id}
+                          >
+                            <span className="relative top-[5px]">
+                              <ArrowRight size={14} />
+                            </span>
+                            <span>{singlePoint?.listText}</span>
+                          </p>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  <div>
+                    <ButtonTag
+                      label={"Begin engagement"}
+                      href={singleCard?.links?.href || "/contact-us"}
+                      icon={<ArrowRight size={14} />}
+                      variant={"ghost"}
+                    />
                   </div>
                 </div>
-                <div>
-                  <Link
-                    href={singleCard?.links?.href || "/contact-us"}
-                    className="flex items-center gap-2"
-                  >
-                    <span className="uppercase text-label-3xs text-neutral-900 ">
-                      BEGIN ENGAGEMENT
-                    </span>
-                    <span>
-                      <ArrowRight size={14} />
-                    </span>
-                  </Link>
-                </div>
-              </div>
-            );
-          })}
+              );
+            },
+          )}
       </div>
     </Section>
   );
