@@ -25,14 +25,14 @@ const Footer = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
   const bgBlackLandingRoutes = ["/labs-fil", "/matter-design-systems", "/labs"];
-  const bgGrayLandingRoutes = ["/"];
-  const isLandingPagePathBgBlack = bgBlackLandingRoutes.some((route) =>
-    pathname.startsWith(route),
-  );
-  const isLandingPagePathBgGrey = bgGrayLandingRoutes.some((route) =>
-    pathname.startsWith(route),
+
+  const isHomePage = pathname === "/";
+
+  const isLandingPagePathBgBlack = bgBlackLandingRoutes.some(
+    (route) => pathname === route || pathname.startsWith(`${route}/`),
   );
 
+  const isLandingPagePathBgGrey = isHomePage;
   return (
     <div
       className={cn(
