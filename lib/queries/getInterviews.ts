@@ -13,6 +13,17 @@ export const GET_SINGLE_INTERVIEW = gql`
       tags {
         name
       }
+      seo {
+        metaTitle
+        metaDescription
+        canonicalURL
+        codeJson
+        focusString
+        robots
+        slug
+        structuredData
+        graphCode
+      }
       featureImage {
         alternativeText
         url

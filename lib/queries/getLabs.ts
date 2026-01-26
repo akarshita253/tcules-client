@@ -74,6 +74,17 @@ export const LABS_SINGLE_TYPE = gql`
           }
         }
       }
+      seo {
+        metaTitle
+        metaDescription
+        canonicalURL
+        codeJson
+        focusString
+        robots
+        slug
+        structuredData
+        graphCode
+      }
     }
   }
 `;

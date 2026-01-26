@@ -36,6 +36,17 @@ export const GET_BLOG = gql`
           isExternal
         }
       }
+      seo {
+        metaTitle
+        metaDescription
+        canonicalURL
+        codeJson
+        focusString
+        robots
+        slug
+        structuredData
+        graphCode
+      }
       mainSection {
         ... on ComponentBlogAndCasestudiesBlogOrCasestudyText {
           __typename
@@ -117,12 +128,6 @@ export const GET_BLOG = gql`
         ... on ComponentSharedRichText {
           __typename
           body
-        }
-
-        ... on ComponentSharedSeo {
-          __typename
-          metaTitle
-          metaDescription
         }
       }
     }

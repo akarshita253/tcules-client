@@ -3,7 +3,6 @@ import { Container } from "@/components/global/Container";
 import { LabSingleTypeQuery } from "@/lib/codegen/graphql";
 import LabsHeroSec from "./components/LabsHeroSec";
 import SecondSection from "./components/SecondSection";
-// import LabsMiscSection from "./components/LabsMiscSection";
 import ThirdSection from "./components/ThirdSection";
 import Breadcrumbs from "@/components/global/Breadcrumbs";
 import InterfaceLabsSection from "./components/InterfaceLabsSection";

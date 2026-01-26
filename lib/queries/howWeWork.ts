@@ -65,6 +65,17 @@ export const HOW_WE_WORK = gql`
           href
         }
       }
+      seo {
+        metaTitle
+        metaDescription
+        canonicalURL
+        codeJson
+        focusString
+        robots
+        slug
+        structuredData
+        graphCode
+      }
     }
   }
 `;

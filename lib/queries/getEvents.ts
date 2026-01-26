@@ -15,6 +15,17 @@ export const GET_SINGLE_EVENT_QUERY = gql`
         width
         height
       }
+      seo {
+        metaTitle
+        metaDescription
+        canonicalURL
+        codeJson
+        focusString
+        robots
+        slug
+        structuredData
+        graphCode
+      }
       thumbnail {
         url
         width

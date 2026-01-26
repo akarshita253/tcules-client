@@ -14,7 +14,7 @@ const CaseStudyHeroSection = ({
 }) => {
   return (
     <div className="relative h-screen w-full overflow-hidden px-2 border-x-8 border-t-4 border-neutral-900 bg-neutral-900">
-      <div className="h-full w-full overflow-hidden bg-red-400">
+      <div className="h-full w-full overflow-hidden">
         <Image
           src={`${image?.url ?? ""}`}
           alt={image?.alternativeText ?? "Case Study Hero Image"}

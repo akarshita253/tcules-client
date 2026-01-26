@@ -5,6 +5,17 @@ export const CONTACT_US_QUERY = gql`
     contactUs {
       heading
       description
+      seo {
+        metaTitle
+        metaDescription
+        canonicalURL
+        codeJson
+        focusString
+        robots
+        slug
+        structuredData
+        graphCode
+      }
       cards {
         id
         heading

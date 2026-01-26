@@ -88,6 +88,17 @@ export const ABOUT_QUERY = gql`
           }
         }
       }
+      seo {
+        metaTitle
+        metaDescription
+        canonicalURL
+        codeJson
+        focusString
+        robots
+        slug
+        structuredData
+        graphCode
+      }
     }
   }
 `;

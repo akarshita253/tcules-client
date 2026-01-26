@@ -26,7 +26,17 @@ export const GET_SINGLE_PODCAST = gql`
         name
         documentId
       }
-
+      seo {
+        metaTitle
+        metaDescription
+        canonicalURL
+        codeJson
+        focusString
+        robots
+        slug
+        structuredData
+        graphCode
+      }
       mainSection {
         ... on ComponentBlogAndCasestudiesTldrSection {
           __typename

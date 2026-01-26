@@ -1,66 +1,72 @@
-import {gql} from "@apollo/client";
+import { gql } from "@apollo/client";
 
 export const CAPABLITIES_QUERY = gql`
-query Capablity {
-  capablity {
-    capablitiesSingleType {
-      ... on ComponentServiceHeroSection {
-        __typename
-        heading
-        description
-        descriptionTwo
-        heroSectionButton {
-          id
-          name
-          href
-        }
-        label {
-          id
-          listText
-        }
+  query Capablity {
+    capablity {
+      seo {
+        metaTitle
+        metaDescription
+        canonicalURL
+        codeJson
+        focusString
+        robots
+        slug
+        structuredData
+        graphCode
       }
-      ...on ComponentCapablitiesCapablitiesCardSection{
-        __typename
-        id
-        heading
-        description
-        serviceName
-        icon {
-          alternativeText
-          url
-          width
-          height
-        }
-        sectionCards {
-          id
+      capablitiesSingleType {
+        ... on ComponentServiceHeroSection {
+          __typename
           heading
           description
-          icon {
-            alternativeText
-            url
-            height
-            width
+          descriptionTwo
+          heroSectionButton {
+            id
+            name
+            href
           }
-          cardPoints {
+          label {
             id
             listText
           }
-          link {
+        }
+        ... on ComponentCapablitiesCapablitiesCardSection {
+          __typename
+          id
+          heading
+          description
+          serviceName
+          icon {
+            alternativeText
+            url
+            width
+            height
+          }
+          sectionCards {
+            id
+            heading
+            description
+            icon {
+              alternativeText
+              url
+              height
+              width
+            }
+            cardPoints {
+              id
+              listText
+            }
+            link {
+              href
+              name
+            }
+          }
+          subRouteLink {
             href
             name
           }
         }
-        subRouteLink {
-          href
-          name
-        }
       }
-      ...on ComponentSharedSeo{
-        metaTitle
-        metaDescription
-      }
-    } 
+    }
   }
-}
-
-`
+`;

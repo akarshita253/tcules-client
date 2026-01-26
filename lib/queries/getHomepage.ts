@@ -120,6 +120,17 @@ export const HOME_PAGE_QUERY = gql`
           clientPosition
         }
       }
+      seo {
+        metaTitle
+        metaDescription
+        canonicalURL
+        codeJson
+        focusString
+        robots
+        slug
+        structuredData
+        graphCode
+      }
     }
   }
 `;

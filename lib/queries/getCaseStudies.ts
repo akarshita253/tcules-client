@@ -40,6 +40,17 @@ export const CASE_STUDY_QUERY = gql`
           isExternal
         }
       }
+      seo {
+        metaTitle
+        metaDescription
+        canonicalURL
+        codeJson
+        focusString
+        robots
+        slug
+        structuredData
+        graphCode
+      }
       caseStudyContents {
         ... on ComponentBlogAndCasestudiesBlogOrCasestudyText {
           __typename
@@ -146,6 +157,17 @@ export const GET_CASESTUDY_LANDING_PAGE_DATA = gql`
           name
           href
         }
+      }
+          seo {
+        metaTitle
+        metaDescription
+        canonicalURL
+        codeJson
+        focusString
+        robots
+        slug
+        structuredData
+        graphCode
       }
     }
   }

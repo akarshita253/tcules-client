@@ -60,6 +60,17 @@ export const RESOURCES_QUERY = gql`
         heading
         description
       }
+      seo {
+        metaTitle
+        metaDescription
+        canonicalURL
+        codeJson
+        focusString
+        robots
+        slug
+        structuredData
+        graphCode
+      }
     }
   }
 `;
