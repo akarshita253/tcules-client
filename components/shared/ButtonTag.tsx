@@ -38,7 +38,7 @@ const ButtonTag = ({
   icon,
   iconPosition = "right",
 }: ButtonTagProps) => {
-  const isPopover = href.toLowerCase() === "popover";
+  const isPopover = href.toLowerCase() === "popup";
   if (!isPopover) {
     const linkClassName = children
       ? className
