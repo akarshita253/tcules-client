@@ -77,7 +77,7 @@ const SecondSectionDynamicContent = ({
         <div className="bg-neutral-50 rounded-xl hidden lg:inline-block absolute bottom-8 p-6 md:right-32 max-w-[400px]">
           <Link
             href={
-              `case-studies/${secondSectionData?.secondSection[index]?.link?.case_study?.slug}` ||
+              `projects/${secondSectionData?.secondSection[index]?.link?.case_study?.slug}` ||
               "#"
             }
             className="text-heading-xs text-neutral-900"

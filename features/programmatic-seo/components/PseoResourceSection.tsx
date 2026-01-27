@@ -37,7 +37,7 @@ const PseoResourceSection = ({
               key={singleCaseStudy?.slug}
               className="bg-noise rounded-xl overflow-hidden p-2"
             >
-              <Link href={`/case-studies/${singleCaseStudy?.slug}`}>
+              <Link href={`/projects/${singleCaseStudy?.slug}`}>
                 <div className="relative w-full h-[323px] mb-3">
                   <Image
                     alt={singleCaseStudy?.thumbnail?.alternativeText || ""}

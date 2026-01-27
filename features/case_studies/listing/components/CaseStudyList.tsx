@@ -256,7 +256,7 @@ const CaseStudyList = () => {
                         })}
                     </div>
                     <Link
-                      href={`case-studies/${singleCaseStudy?.slug}`}
+                      href={`projects/${singleCaseStudy?.slug}`}
                       className={cn(
                         buttonVariants({ variant: "default" }),
                         "bg-neutral-900 text-neutral-50 w-fit ml-auto rounded-md hidden group-hover:inline-block"
