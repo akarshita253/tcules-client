@@ -50,7 +50,7 @@ const LabsFIL = async () => {
           }}
         />
       )}
-      <LabsFilContainer labsFilData={labsFilData} />;
+      <LabsFilContainer labsFilData={labsFilData} />
     </>
   );
 };

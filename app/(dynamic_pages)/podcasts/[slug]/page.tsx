@@ -59,7 +59,7 @@ const SinglePodcast = async ({ params }: PageProps) => {
         <script dangerouslySetInnerHTML={{ __html: podcastData?.seo.codeJson }} />
       )}
   {podcastData && <SinglePodcastContainer singlePodcastData={podcastData} />}
-  </>;
+  </>
 };
 
 export default SinglePodcast;

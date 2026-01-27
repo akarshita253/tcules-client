@@ -18,7 +18,7 @@ const RenderMainSectionPIE = (block: MainSectionPIEProps, index: number) => {
         <DisplayContent key={block.id} content={block.blogContent ?? ""} />
       );
     case "ComponentPodcasteEventsInterviewsShadowCard":
-      return <SharedCardBtwPIE cardData={block} key={block.id}/>;
+      return <SharedCardBtwPIE cardData={block} key={block.id}/>
     case "ComponentBlogAndCasestudiesSectionImage":
       return (
         <div key={index} className="my-10">
@@ -41,7 +41,7 @@ const RenderMainSectionPIE = (block: MainSectionPIEProps, index: number) => {
         <TdlrSection key={block.id} tdlrContent={block.tdlrDescription ?? ""} />
       );
     case "ComponentBlogAndCasestudiesSepration":
-      return <Separator key={index} />;
+      return <Separator key={index} />
     case "ComponentBlogAndCasestudiesVideo":
       return (
         <VideoBlock

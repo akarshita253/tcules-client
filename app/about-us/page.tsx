@@ -46,7 +46,7 @@ const AboutLandingPage = async () => {
           }}
         />
       )}
-      <AboutContainer aboutData={aboutData!} />;
+      <AboutContainer aboutData={aboutData!} />
     </>
   );
 };

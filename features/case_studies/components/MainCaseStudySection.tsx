@@ -28,7 +28,7 @@ export const renderBlock = (block: MainSectionBlock) => {
         </div>
       );
     case "ComponentBlogAndCasestudiesSepration":
-      return <Separator key={block.title} />;
+      return <Separator key={block.title} />
     case "ComponentBlogAndCasestudiesVideo":
       return (
         <VideoBlock
@@ -42,7 +42,7 @@ export const renderBlock = (block: MainSectionBlock) => {
         />
       );
     case "ComponentBlogAndCasestudiesCodeSection":
-      return <CodeBlock key={block.id} codeSnippet={block.codeSnippet ?? ""} />;
+      return <CodeBlock key={block.id} codeSnippet={block.codeSnippet ?? ""} />
     default:
       console.warn("Unknown block type:", block.__typename);
       return null;

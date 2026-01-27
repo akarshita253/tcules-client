@@ -48,7 +48,7 @@ const CapablityLandingPage = async () => {
           }}
         />
       )}
-      <CapablityContainer capablityData={capablityData?.capablitiesSingleType} />;
+      <CapablityContainer capablityData={capablityData?.capablitiesSingleType} />
     </>
   );
 };

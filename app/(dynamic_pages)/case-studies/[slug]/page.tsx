@@ -63,7 +63,7 @@ console.log(slug,"this is slug")
           dangerouslySetInnerHTML={{ __html: caseStudy?.seo.codeJson }}
         />
       )}
-      <CaseStudyContainer caseStudy={caseStudy!} />;
+      <CaseStudyContainer caseStudy={caseStudy!} />
     </>
   );
 };

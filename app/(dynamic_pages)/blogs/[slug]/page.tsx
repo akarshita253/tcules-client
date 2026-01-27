@@ -56,7 +56,7 @@ const SingleBlog = async ({ params }: PageProps) => {
       {blogData?.seo?.codeJson && (
         <script dangerouslySetInnerHTML={{ __html: blogData?.seo.codeJson }} />
       )}
-      <BlogContainer blog={blogData!} />;
+      <BlogContainer blog={blogData!} />
     </>
   );
 };

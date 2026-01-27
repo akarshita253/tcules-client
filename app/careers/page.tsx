@@ -47,7 +47,7 @@ const CareerLandingPage = async () => {
           }}
         />
       )}
-      <CareerContainer careerData={careerData} />;
+      <CareerContainer careerData={careerData} />
     </>
   );
 };

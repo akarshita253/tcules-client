@@ -53,7 +53,7 @@ const HowWeWork = async () => {
           }}
         />
       )}
-      <HowWeWorkContainer howWeWorkData={response} />;
+      <HowWeWorkContainer howWeWorkData={response} />
     </>
   );
 };

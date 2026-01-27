@@ -21,7 +21,7 @@ const LabsCaseStudies = () => {
     },
   });
   if (caseStudyLoading) {
-    return <Loader />;
+    return <Loader />
   }
   if (caseStudiesError) {
     console.log("caseStudiesError", caseStudiesError);

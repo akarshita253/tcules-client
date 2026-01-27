@@ -48,7 +48,7 @@ const ContactUS = async () => {
           }}
         />
       )}
-      <ContactUsContainer contactUsData={response} />;
+      <ContactUsContainer contactUsData={response} />
     </>
   );
 };
