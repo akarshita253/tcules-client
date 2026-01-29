@@ -32,7 +32,7 @@ const HomepageFourthSection = ({
             <p className="text-label-2xl text-neutral-50 mb-9">
               {fourthSectionData?.description}
             </p>
-            <ButtonTag label={fourthSectionData?.button?.name||"Button"} className="text-neutral-50" href={fourthSectionData?.button?.href||"#"}/>
+            <ButtonTag label={fourthSectionData?.button?.name||"Button"} href={fourthSectionData?.button?.href||"#"}/>
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-12 gap-2">

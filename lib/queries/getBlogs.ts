@@ -135,8 +135,8 @@ export const GET_BLOG = gql`
 `;
 
 export const GET_BLOGS = gql`
-  query AllBlogs {
-    blogs {
+  query AllBlogs($limit: Int) {
+    blogs(pagination: { limit: $limit }) {
       title
       slug
       publishedAt

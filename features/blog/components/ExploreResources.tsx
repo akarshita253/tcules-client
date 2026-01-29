@@ -14,7 +14,11 @@ const ExploreResources = () => {
     data: blogsListData,
     loading: blogsLoading,
     error: blogsError,
-  } = useQuery<AllBlogsQuery>(GET_BLOGS, {});
+  } = useQuery<AllBlogsQuery>(GET_BLOGS, {
+    variables: {
+      limit: 3,
+    },
+  });
 
   if (blogsLoading) return <p>Loading...</p>;
   if (blogsError) return <p>Error loading blogs.</p>;
@@ -36,7 +40,11 @@ const ExploreResources = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {blogsListData?.blogs?.map((blog, index) => {
           return (
-            <Link key={index} className="flex flex-col justify-between gap-3" href={blog?.slug||"#"}>
+            <Link
+              key={index}
+              className="flex flex-col justify-between gap-3"
+              href={blog?.slug || "#"}
+            >
               <div className="w-full h-[285px] relative overflow-hidden rounded-lg">
                 {blog?.thumbnail?.url && (
                   <Image
@@ -46,14 +54,14 @@ const ExploreResources = () => {
                   />
                 )}
               </div>
-                <div className="">
-                  <h3 className="mb-3 text-heading-2xs text-neutral-800">
-                    {blog?.title}
-                  </h3>
-                  <p className="text-label-md text-neutral-600">
-                    {formatDate(blog?.createdAt)}
-                  </p>
-                </div>
+              <div className="">
+                <h3 className="mb-3 text-heading-2xs text-neutral-800">
+                  {blog?.title}
+                </h3>
+                <p className="text-label-md text-neutral-600">
+                  {formatDate(blog?.createdAt)}
+                </p>
+              </div>
             </Link>
           );
         })}

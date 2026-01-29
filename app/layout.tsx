@@ -10,6 +10,7 @@ import {
 import Footer from "@/components/global/Footer";
 import ApolloWrapper from "@/lib/providers/ApolloWrapper";
 import Navbar from "@/components/global/Navbar";
+import ScrollToTop from "@/components/shared/ScrollTop";
 
 const figtree = Figtree({ subsets: ["latin"], variable: "--font-label" });
 const playfair = Playfair_Display({
@@ -36,6 +37,7 @@ export default function RootLayout({
       <body
         className={`${figtree.variable} ${playfair.variable} ${bricolageGrotesque.variable} antialiased relative`}
       >
+        <ScrollToTop/>
         <Navbar />
           {children}
         <ApolloWrapper>
