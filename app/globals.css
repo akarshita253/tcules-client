@@ -529,78 +529,87 @@
 
 .marquee-window {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: calc(100vh - 4rem);
+  inset: 0;
   overflow: hidden;
   display: flex;
-  align-items: center;
+  gap: 8px;
 }
 
+/* Each column wrapper */
 .diagonal-grid {
-  display: flex;
-  gap: 20px;
-  width: 100%;
-  transform: rotate(0deg);
-  animation: diagonalMarquee 16s linear infinite;
-}
-.diagonal-grid-2 {
-  display: flex;
-  gap: 20px;
-  width: 100%;
-  transform: rotate(0deg);
-  animation: diagonalMarquee 20s linear infinite;
+  flex: 1;
+  overflow: hidden;
 }
 
-@keyframes diagonalMarquee {
-  from {
-    transform: translateY(10%);
-  }
-  to {
-    transform: translateY(0%);
-  }
-}
-
+/* Actual scrolling content */
 .column-flex {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  flex: 1;
+  gap: 8px;
+  will-change: transform;
 }
 
+/* THE KEY: seamless infinite scroll */
+.animate-marquee {
+  animation-name: scrollY;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes scrollY {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+/* Different speeds = depth */
+.col-fast {
+  animation-duration: 40s;
+}
+
+.col-mid {
+  animation-duration: 30s;
+}
+
+.col-slow {
+  animation-duration: 40s;
+}
+
+/* Portrait image box */
 .portrait-box {
   width: 100%;
-  aspect-ratio: 3/4;
+  aspect-ratio: 3 / 4;
   border-radius: 16px;
-
   overflow: hidden;
+  background: #eee;
 }
 
-.portrait-box img {
+.portrait-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+/* Optional vertical offset */
+.mt-24 {
+  margin-top: 6rem;
+}
+
+/* Edge fade mask */
 .edge-mask {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 2;
-  /* background: radial-gradient(circle, transparent 30%, white 100%); */
+  z-index: 5;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
 }
 
-
-@keyframes infinite-scroll {
-  0% {
-    transform: translateY(0%);
-  }
-  100% {
-    transform: translateY(calc(-50% - 20px));
-  }
-}
-
-.infinite-scroll {
-  animation: infinite-scroll 20s linear infinite;
-}

@@ -6,42 +6,76 @@ type ScrollImages =
     NonNullable<HomepageQuery["homepage"]>["heroSection"]
   >["scrollImages"];
 
-const DiagonalMarquee = ({ scrollImages }: { scrollImages?: ScrollImages }) => {
-const images =
-  scrollImages
-    ?.filter((img): img is NonNullable<typeof img> => Boolean(img))
-    .map(img => img) ?? [];
+interface Props {
+  scrollImages?: ScrollImages;
+}
+
+const DiagonalMarquee = ({ scrollImages }: Props) => {
+  const images =
+    scrollImages?.filter(
+      (img): img is NonNullable<typeof img> => Boolean(img)
+    ) ?? [];
+
+  if (!images.length) return null;
+
+  // Duplicate images for seamless loop
+  const loopImages = [...images, ...images];
 
   return (
-    <div className="marquee-window space-x-4 bg-none!">
+    <div className="marquee-window">
+      {/* Column 1 */}
       <div className="diagonal-grid">
-        <div className="column-flex">
-          {[...images,...images].map((singleImage, i) => (
+        <div className="column-flex animate-marquee col-fast">
+          {loopImages.map((img, i) => (
             <div key={`a-${i}`} className="portrait-box">
-              <Image src={singleImage?.url} alt="" width={singleImage?.width||200} height={singleImage?.height||300}/>
+              <Image
+                src={img.url}
+                alt=""
+                width={300}
+                height={400}
+                className="portrait-img"
+                priority={i < 6}
+              />
             </div>
           ))}
         </div>
       </div>
-      <div className="diagonal-grid-2">
-        <div className="column-flex">
-          {[...images,...images].map((singleImage, i) => (
-            <div key={`b-${i}`} className="portrait-box">
-              <Image src={singleImage?.url} alt="" width={singleImage?.width||200} height={singleImage?.height||300}/>
-            </div>
-          ))}
-        </div>
-      </div>
+
+      {/* Column 2 */}
       <div className="diagonal-grid">
-        <div className="column-flex">
-          {[...images,...images].map((singleImage, i) => (
-            <div key={`c-${i}`} className="portrait-box">
-              <Image src={singleImage?.url} alt="" width={singleImage?.width||200} height={singleImage?.height||300}/>
+        <div className="column-flex animate-marquee col-mid mt-24">
+          {loopImages.map((img, i) => (
+            <div key={`b-${i}`} className="portrait-box">
+              <Image
+                src={img.url}
+                alt=""
+                width={300}
+                height={400}
+                className="portrait-img"
+              />
             </div>
           ))}
         </div>
       </div>
-      <div className="edge-mask"></div>
+
+      {/* Column 3 */}
+      <div className="diagonal-grid">
+        <div className="column-flex animate-marquee col-slow">
+          {loopImages.map((img, i) => (
+            <div key={`c-${i}`} className="portrait-box">
+              <Image
+                src={img.url}
+                alt=""
+                width={300}
+                height={400}
+                className="portrait-img"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="edge-mask" />
     </div>
   );
 };
