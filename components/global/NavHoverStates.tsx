@@ -1,7 +1,7 @@
 "use client";
 
 import { NavbarQuery } from "@/lib/codegen/graphql";
-import { useState } from "react";
+import {  useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -13,6 +13,8 @@ const NavHoverStates = ({
   navLinks: NonNullable<NavbarQuery["navbar"]>["navLevelOneGroup"];
 }) => {
   const [active, setActive] = useState<number | null>(null);
+
+  const closeMenu = () => setActive(null);
 
   const handleMegaMenu = (index: number) => {
     setActive(index);
@@ -35,6 +37,7 @@ const NavHoverStates = ({
                 onMouseEnter={() => handleMegaMenu(index)}
                 className="text-label-3xs uppercase text-neutral-700 hover:bg-neutral-100 py-2 px-4 rounded-sm"
                 href={singleNavLink?.href || "#"}
+                onClick={closeMenu}
               >
                 {singleNavLink?.name}
               </Link>
@@ -49,7 +52,7 @@ const NavHoverStates = ({
                     onMouseLeave={handleMegaMenuClose}
                     className={cn(
                       index === 2 ? "xl:max-w-[926px]" : "xl:max-w-[1207px]",
-                      "absolute top-[calc(100%+0.5rem)] min-h-[400px] left-0 right-0 shadow-lg w-full lg:max-w-5xl  mx-auto bg-neutral-50 z-100"
+                      "absolute top-[calc(100%+0.5rem)] min-h-[400px] left-0 right-0 shadow-lg w-full lg:max-w-5xl  mx-auto bg-neutral-50 z-100",
                     )}
                   >
                     <div
@@ -68,6 +71,7 @@ const NavHoverStates = ({
                             <Link
                               className="text-caption-md uppercase flex items-center gap-1 text-blue-600"
                               href={singleNavLink?.href || "#"}
+                              onClick={closeMenu}
                             >
                               View All
                               <ArrowRight className="shrink-0" size={10} />
@@ -83,12 +87,13 @@ const NavHoverStates = ({
                                   <div
                                     key={secondLevel?.id}
                                     className={cn(
-                                      "bg-noise hover:bg-linear-to-tr min-h-[358px] from-neutral-50 to-green-300 transition-all duration-300 flex flex-col justify-between gap-4 overflow-hidden rounded-lg p-6"
+                                      "bg-noise hover:bg-linear-to-tr min-h-[358px] from-neutral-50 to-green-300 transition-all duration-300 flex flex-col justify-between gap-4 overflow-hidden rounded-lg p-6",
                                     )}
                                   >
                                     <Link
                                       href={secondLevel?.href || "#"}
                                       className="flex items-start justify-between gap-1 text-heading-2xs text-neutral-900"
+                                      onClick={closeMenu}
                                     >
                                       {secondLevel?.name}
                                       <ArrowRight
@@ -105,6 +110,7 @@ const NavHoverStates = ({
                                               className="py-3 border-b border-neutral-300 last:border-b-0"
                                             >
                                               <Link
+                                                onClick={closeMenu}
                                                 href={
                                                   singleLevelTwoLink?.href ||
                                                   "#"
@@ -121,7 +127,7 @@ const NavHoverStates = ({
                                                 </small>
                                               </Link>
                                             </div>
-                                          )
+                                          ),
                                         )}
                                     </div>
                                     {secondLevel?.description && (
@@ -140,6 +146,7 @@ const NavHoverStates = ({
                         }
                       >
                         <Link
+                          onClick={closeMenu}
                           href={
                             singleNavLink?.navLevelTwoGroup?.at(-1)?.href || "#"
                           }
@@ -159,6 +166,7 @@ const NavHoverStates = ({
                                 className="py-3 border-b border-neutral-300 last:border-b-0 flex items-center justify-between gap-2"
                               >
                                 <Link
+                                  onClick={closeMenu}
                                   href={singleLevelTwoLink?.href || "#"}
                                   className="text-caption-md text-neutral-800 hover:underline flex flex-col"
                                 >

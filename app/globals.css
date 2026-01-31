@@ -567,15 +567,15 @@
 
 /* Different speeds = depth */
 .col-fast {
-  animation-duration: 40s;
+  animation-duration: 60s;
 }
 
 .col-mid {
-  animation-duration: 30s;
+  animation-duration: 50s;
 }
 
 .col-slow {
-  animation-duration: 40s;
+  animation-duration: 60s;
 }
 
 /* Portrait image box */
