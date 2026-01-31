@@ -16,7 +16,7 @@ const images =
     <div className="marquee-window space-x-4 bg-none!">
       <div className="diagonal-grid">
         <div className="column-flex">
-          {images.map((singleImage, i) => (
+          {[...images,...images].map((singleImage, i) => (
             <div key={`a-${i}`} className="portrait-box">
               <Image src={singleImage?.url} alt="" width={singleImage?.width||200} height={singleImage?.height||300}/>
             </div>
@@ -25,7 +25,7 @@ const images =
       </div>
       <div className="diagonal-grid-2">
         <div className="column-flex">
-          {images.map((singleImage, i) => (
+          {[...images,...images].map((singleImage, i) => (
             <div key={`b-${i}`} className="portrait-box">
               <Image src={singleImage?.url} alt="" width={singleImage?.width||200} height={singleImage?.height||300}/>
             </div>
@@ -34,7 +34,7 @@ const images =
       </div>
       <div className="diagonal-grid">
         <div className="column-flex">
-          {images.map((singleImage, i) => (
+          {[...images,...images].map((singleImage, i) => (
             <div key={`c-${i}`} className="portrait-box">
               <Image src={singleImage?.url} alt="" width={singleImage?.width||200} height={singleImage?.height||300}/>
             </div>
