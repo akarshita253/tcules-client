@@ -1586,7 +1586,8 @@ export interface ComponentHomepageHomepageHeroSection {
   headingOne?: Maybe<Scalars['String']['output']>;
   headingTwo?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
-  rightSectionImage?: Maybe<UploadFile>;
+  scrollImages: Array<Maybe<UploadFile>>;
+  scrollImages_connection?: Maybe<UploadFileRelationResponseCollection>;
 }
 
 
@@ -1603,6 +1604,20 @@ export interface ComponentHomepageHomepageHeroSectionButtonArgs {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 }
 
+
+export interface ComponentHomepageHomepageHeroSectionScrollImagesArgs {
+  filters?: InputMaybe<UploadFileFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
+
+export interface ComponentHomepageHomepageHeroSectionScrollImages_ConnectionArgs {
+  filters?: InputMaybe<UploadFileFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+}
+
 export interface ComponentHomepageHomepageHeroSectionInput {
   bottomTags?: InputMaybe<Array<InputMaybe<ComponentElementsPointsInput>>>;
   button?: InputMaybe<Array<InputMaybe<ComponentElementsLinkInput>>>;
@@ -1611,7 +1626,7 @@ export interface ComponentHomepageHomepageHeroSectionInput {
   headingOne?: InputMaybe<Scalars['String']['input']>;
   headingTwo?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['ID']['input']>;
-  rightSectionImage?: InputMaybe<Scalars['ID']['input']>;
+  scrollImages?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
 }
 
 export interface ComponentHomepageHomepageSecondSection {
@@ -6253,7 +6268,9 @@ export type BlogsQuery = { __typename?: 'Query', blogs: Array<{ __typename: 'Blo
       | { __typename?: 'Error' }
      | null> | null } | null> };
 
-export type AllBlogsQueryVariables = Exact<{ [key: string]: never; }>;
+export type AllBlogsQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>;
+}>;
 
 
 export type AllBlogsQuery = { __typename?: 'Query', blogs: Array<{ __typename?: 'Blog', title?: string | null, slug?: string | null, publishedAt?: any | null, updatedAt?: any | null, createdAt?: any | null, documentId: string, categories: Array<{ __typename?: 'Category', documentId: string, name?: string | null } | null>, thumbnail?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null, tags: Array<{ __typename?: 'Tag', documentId: string, name?: string | null } | null>, featureImage: Array<{ __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null> } | null> };
@@ -6332,7 +6349,7 @@ export type GetSingleEventQuery = { __typename?: 'Query', events: Array<{ __type
 export type HomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type HomepageQuery = { __typename?: 'Query', homepage?: { __typename?: 'Homepage', heroSection?: { __typename?: 'ComponentHomepageHomepageHeroSection', headingOne?: string | null, headingTwo?: string | null, descriptionOne?: string | null, descriptionTwo?: string | null, rightSectionImage?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null, button?: Array<{ __typename?: 'ComponentElementsLink', id: string, name?: string | null, href?: string | null } | null> | null, bottomTags?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null } | null, secondSection?: { __typename?: 'ComponentHomepageHomepageSecondSection', secondSection?: Array<{ __typename?: 'ComponentHomepageHomepageSecondSectionPoints', id: string, heading?: string | null, description?: string | null, image?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null, bgImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null, link?: { __typename?: 'ComponentHomepageSecondSectionCaseStudyRelation', botomImage?: { __typename?: 'UploadFile', alternativeText?: string | null, height?: number | null, url: string, width?: number | null } | null, case_study?: { __typename?: 'CaseStudy', slug?: string | null, title?: string | null } | null } | null } | null> | null } | null, thirdSection?: { __typename?: 'ComponentHomepageHomepageThirdSection', heading?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, cards?: Array<{ __typename?: 'ComponentHomepageBranchCards', id: string, heading?: string | null, description?: string | null, href?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null } | null> | null } | null, fourthSection?: { __typename?: 'ComponentHomepageHomepageFourthSection', heading?: string | null, description?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, button?: { __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null } | null, cards?: Array<{ __typename?: 'ComponentHomepageFourthSectionCards', id: string, heading?: string | null, cardImage?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null } | null> | null } | null, fifthSection?: { __typename?: 'ComponentHomepageHomepageFifthSection', heading?: string | null, description?: string | null, blogsDetails: Array<{ __typename?: 'Blog', title?: string | null, slug?: string | null, tags: Array<{ __typename?: 'Tag', name?: string | null } | null> } | null> } | null, contactSection?: { __typename?: 'ComponentHomepageHomepageContactAndTestimonials', heading?: string | null, testimonial?: { __typename?: 'Testimonial', clientComments?: string | null, clientCompany?: string | null, clientName?: string | null, clientPosition?: string | null } | null } | null, seo?: { __typename?: 'ComponentSharedSeo', metaTitle: string, metaDescription: string, canonicalURL?: string | null, codeJson?: any | null, focusString?: string | null, robots?: Enum_Componentsharedseo_Robots | null, slug?: string | null, structuredData?: any | null, graphCode?: string | null } | null } | null };
+export type HomepageQuery = { __typename?: 'Query', homepage?: { __typename?: 'Homepage', heroSection?: { __typename?: 'ComponentHomepageHomepageHeroSection', headingOne?: string | null, headingTwo?: string | null, descriptionOne?: string | null, descriptionTwo?: string | null, scrollImages: Array<{ __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null>, button?: Array<{ __typename?: 'ComponentElementsLink', id: string, name?: string | null, href?: string | null } | null> | null, bottomTags?: Array<{ __typename?: 'ComponentElementsPoints', id: string, listText?: string | null } | null> | null } | null, secondSection?: { __typename?: 'ComponentHomepageHomepageSecondSection', secondSection?: Array<{ __typename?: 'ComponentHomepageHomepageSecondSectionPoints', id: string, heading?: string | null, description?: string | null, image?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null, bgImage?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null, link?: { __typename?: 'ComponentHomepageSecondSectionCaseStudyRelation', botomImage?: { __typename?: 'UploadFile', alternativeText?: string | null, height?: number | null, url: string, width?: number | null } | null, case_study?: { __typename?: 'CaseStudy', slug?: string | null, title?: string | null } | null } | null } | null> | null } | null, thirdSection?: { __typename?: 'ComponentHomepageHomepageThirdSection', heading?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, cards?: Array<{ __typename?: 'ComponentHomepageBranchCards', id: string, heading?: string | null, description?: string | null, href?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, height?: number | null, width?: number | null } | null } | null> | null } | null, fourthSection?: { __typename?: 'ComponentHomepageHomepageFourthSection', heading?: string | null, description?: string | null, icon?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string, width?: number | null, height?: number | null } | null, button?: { __typename?: 'ComponentElementsLink', name?: string | null, href?: string | null } | null, cards?: Array<{ __typename?: 'ComponentHomepageFourthSectionCards', id: string, heading?: string | null, cardImage?: { __typename?: 'UploadFile', alternativeText?: string | null, width?: number | null, height?: number | null, url: string } | null } | null> | null } | null, fifthSection?: { __typename?: 'ComponentHomepageHomepageFifthSection', heading?: string | null, description?: string | null, blogsDetails: Array<{ __typename?: 'Blog', title?: string | null, slug?: string | null, tags: Array<{ __typename?: 'Tag', name?: string | null } | null> } | null> } | null, contactSection?: { __typename?: 'ComponentHomepageHomepageContactAndTestimonials', heading?: string | null, testimonial?: { __typename?: 'Testimonial', clientComments?: string | null, clientCompany?: string | null, clientName?: string | null, clientPosition?: string | null } | null } | null, seo?: { __typename?: 'ComponentSharedSeo', metaTitle: string, metaDescription: string, canonicalURL?: string | null, codeJson?: any | null, focusString?: string | null, robots?: Enum_Componentsharedseo_Robots | null, slug?: string | null, structuredData?: any | null, graphCode?: string | null } | null } | null };
 
 export type InterviewsQueryVariables = Exact<{
   filters?: InputMaybe<InterviewFiltersInput>;

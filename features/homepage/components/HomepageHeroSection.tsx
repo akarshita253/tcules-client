@@ -3,9 +3,9 @@ import Section from "@/components/global/Section";
 import ScrollReveal from "@/components/ui/scroll-change";
 import { HomepageQuery } from "@/lib/codegen/graphql";
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
 import HomePageHeroSecHeading from "./HomePageHeroSecHeading";
 import ButtonTag from "@/components/shared/ButtonTag";
+import PhotoMarquee from "./Scroll";
 
 const HomepageHeroSection = ({
   heroSectionData,
@@ -14,8 +14,8 @@ const HomepageHeroSection = ({
 }) => {
   return (
     <>
-      <Section className="sm:py-[120px] lg:flex items-center min-h-screen ">
-        <div className="h-fit my-auto relative bottom-8">
+      <Section className="sm:py-0  min-h-screen relative lg:grid grid-cols-12 gap-6">
+        <div className="h-fit my-auto  bottom-8 col-span-6">
           <div>
             {heroSectionData?.headingOne && heroSectionData?.headingTwo && (
               <div className="mb-4 sm:mb-6">
@@ -41,20 +41,8 @@ const HomepageHeroSection = ({
             </div>
           </div>
         </div>
-        <div className="lg:absolute lg:-right-40 xl:right-0 top-0 flex flex-1 justify-center items-center">
-          {heroSectionData?.rightSectionImage?.url && (
-            <div>
-              <Image
-                alt={
-                  heroSectionData?.rightSectionImage?.alternativeText ||
-                  "hero section image"
-                }
-                src={heroSectionData?.rightSectionImage?.url}
-                width={heroSectionData?.rightSectionImage?.width || 600}
-                height={heroSectionData?.rightSectionImage?.height || 800}
-              />
-            </div>
-          )}
+        <div className="col-span-6 relative">
+          <PhotoMarquee scrollImages = {heroSectionData?.scrollImages}/>
         </div>
       </Section>
       <Section>

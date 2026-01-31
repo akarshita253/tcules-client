@@ -8,7 +8,7 @@ export const HOME_PAGE_QUERY = gql`
         headingTwo
         descriptionOne
         descriptionTwo
-        rightSectionImage {
+        scrollImages {
           url
           width
           height
